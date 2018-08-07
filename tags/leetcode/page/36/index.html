@@ -426,9 +426,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 830. 较大分组的位置/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 832. 翻转图像/" itemprop="url">
               
-                <span itemprop="name">LeetCode 830. 较大分组的位置</span>
+                <span itemprop="name">LeetCode 832. 翻转图像</span>
               
             </a>
         
@@ -454,9 +454,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 832. 翻转图像/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 830. 较大分组的位置/" itemprop="url">
               
-                <span itemprop="name">LeetCode 832. 翻转图像</span>
+                <span itemprop="name">LeetCode 830. 较大分组的位置</span>
               
             </a>
         
@@ -538,9 +538,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 844. 比较含退格的字符串/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 848. 字母移位/" itemprop="url">
               
-                <span itemprop="name">LeetCode 844. 比较含退格的字符串</span>
+                <span itemprop="name">LeetCode 848. 字母移位</span>
               
             </a>
         
@@ -566,9 +566,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 848. 字母移位/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 844. 比较含退格的字符串/" itemprop="url">
               
-                <span itemprop="name">LeetCode 848. 字母移位</span>
+                <span itemprop="name">LeetCode 844. 比较含退格的字符串</span>
               
             </a>
         
@@ -1348,25 +1348,9 @@
             });
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
             
           }
         },

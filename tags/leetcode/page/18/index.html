@@ -426,9 +426,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 343. 整数拆分/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 342. 4的幂/" itemprop="url">
               
-                <span itemprop="name">LeetCode 343. 整数拆分</span>
+                <span itemprop="name">LeetCode 342. 4的幂</span>
               
             </a>
         
@@ -482,9 +482,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 342. 4的幂/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 343. 整数拆分/" itemprop="url">
               
-                <span itemprop="name">LeetCode 342. 4的幂</span>
+                <span itemprop="name">LeetCode 343. 整数拆分</span>
               
             </a>
         
@@ -594,9 +594,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 350. 两个数组的交集 II/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 35. 搜索插入位置/" itemprop="url">
               
-                <span itemprop="name">LeetCode 350. 两个数组的交集 II</span>
+                <span itemprop="name">LeetCode 35. 搜索插入位置</span>
               
             </a>
         
@@ -622,9 +622,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 355. 设计推特/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 350. 两个数组的交集 II/" itemprop="url">
               
-                <span itemprop="name">LeetCode 355. 设计推特</span>
+                <span itemprop="name">LeetCode 350. 两个数组的交集 II</span>
               
             </a>
         
@@ -1348,25 +1348,9 @@
             });
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
             
           }
         },

@@ -454,9 +454,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 268.缺失数字 /" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 27. 移除元素/" itemprop="url">
               
-                <span itemprop="name">LeetCode 268.缺失数字</span>
+                <span itemprop="name">LeetCode 27. 移除元素</span>
               
             </a>
         
@@ -482,9 +482,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 27. 移除元素/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 268.缺失数字 /" itemprop="url">
               
-                <span itemprop="name">LeetCode 27. 移除元素</span>
+                <span itemprop="name">LeetCode 268.缺失数字</span>
               
             </a>
         
@@ -566,9 +566,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 278. 第一个错误的版本/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 279. 完全平方数/" itemprop="url">
               
-                <span itemprop="name">LeetCode 278. 第一个错误的版本</span>
+                <span itemprop="name">LeetCode 279. 完全平方数</span>
               
             </a>
         
@@ -594,9 +594,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 279. 完全平方数/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 278. 第一个错误的版本/" itemprop="url">
               
-                <span itemprop="name">LeetCode 279. 完全平方数</span>
+                <span itemprop="name">LeetCode 278. 第一个错误的版本</span>
               
             </a>
         
@@ -1348,25 +1348,9 @@
             });
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
             
           }
         },

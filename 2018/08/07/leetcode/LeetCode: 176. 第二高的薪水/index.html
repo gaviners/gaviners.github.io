@@ -504,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 177. 第N高的薪水/" rel="next" title="LeetCode 177. 第N高的薪水">
-                <i class="fa fa-chevron-left"></i> LeetCode 177. 第N高的薪水
+              <a href="/2018/08/07/leetcode/LeetCode: 178.分数排名/" rel="next" title="LeetCode 178.分数排名">
+                <i class="fa fa-chevron-left"></i> LeetCode 178.分数排名
               </a>
             
           </div>
@@ -514,8 +514,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 175 . 组合两个表/" rel="prev" title="LeetCode 175 . 组合两个表">
-                LeetCode 175 . 组合两个表 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/" rel="prev" title="LeetCode 173. 二叉搜索树迭代器">
+                LeetCode 173. 二叉搜索树迭代器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1262,25 +1262,9 @@
             });
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
             
           }
         },

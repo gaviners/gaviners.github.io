@@ -370,37 +370,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 131. 分割回文串/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 130. 被围绕的区域/" itemprop="url">
               
-                <span itemprop="name">LeetCode 131. 分割回文串</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-07T12:15:57+08:00"
-              content="2018-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 133. 克隆图/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 133. 克隆图</span>
+                <span itemprop="name">LeetCode 130. 被围绕的区域</span>
               
             </a>
         
@@ -429,6 +401,34 @@
             <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 134. 加油站/" itemprop="url">
               
                 <span itemprop="name">LeetCode 134. 加油站</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-08-07T12:15:57+08:00"
+              content="2018-08-07" >
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 133. 克隆图/" itemprop="url">
+              
+                <span itemprop="name">LeetCode 133. 克隆图</span>
               
             </a>
         
@@ -510,9 +510,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 139. 单词拆分/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 138. 复制带随机指针的链表/" itemprop="url">
               
-                <span itemprop="name">LeetCode 139. 单词拆分</span>
+                <span itemprop="name">LeetCode 138. 复制带随机指针的链表</span>
               
             </a>
         
@@ -622,9 +622,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 144. 二叉树的前序遍历/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 143. 重排链表/" itemprop="url">
               
-                <span itemprop="name">LeetCode 144. 二叉树的前序遍历</span>
+                <span itemprop="name">LeetCode 143. 重排链表</span>
               
             </a>
         
@@ -1348,25 +1348,9 @@
             });
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
             
           }
         },

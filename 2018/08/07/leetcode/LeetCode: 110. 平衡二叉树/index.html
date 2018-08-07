@@ -511,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 113. 路径总和 II/" rel="next" title="LeetCode 113. 路径总和 II">
-                <i class="fa fa-chevron-left"></i> LeetCode 113. 路径总和 II
+              <a href="/2018/08/07/leetcode/LeetCode: 111 . 二叉树的最小深度/" rel="next" title="LeetCode 111 . 二叉树的最小深度">
+                <i class="fa fa-chevron-left"></i> LeetCode 111 . 二叉树的最小深度
               </a>
             
           </div>
@@ -521,8 +521,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 112. 路径总和/" rel="prev" title="LeetCode 112. 路径总和">
-                LeetCode 112. 路径总和 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/07/leetcode/LeetCode: 113. 路径总和 II/" rel="prev" title="LeetCode 113. 路径总和 II">
+                LeetCode 113. 路径总和 II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1269,25 +1269,9 @@
             });
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
             
           }
         },
