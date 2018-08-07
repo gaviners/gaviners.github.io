@@ -97,7 +97,7 @@
       apiKey: '',
       indexName: 'myblog',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"请输入关键字","hits_empty":"未找到: ${query}","hits_stats":"${hits} 搜索用时 ${time} ms"}
     }
   };
 </script>
@@ -285,26 +285,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -441,6 +437,17 @@
           
 
           
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 482. License Key Formatting/" class="leancloud_visitors" data-flag-title="LeetCode 482. License Key Formatting">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -625,6 +632,17 @@
 
           
           
+             <span id="/2018/08/07/leetcode/LeetCode: 485. 最大连续1的个数/" class="leancloud_visitors" data-flag-title="LeetCode 485. 最大连续1的个数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -801,6 +819,17 @@
           
 
           
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 49. 字母异位词分组/" class="leancloud_visitors" data-flag-title="LeetCode 49. 字母异位词分组">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -980,6 +1009,17 @@
 
           
           
+             <span id="/2018/08/07/leetcode/LeetCode: 492. 构造矩形/" class="leancloud_visitors" data-flag-title="LeetCode 492. 构造矩形">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -1158,6 +1198,17 @@
           
 
           
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 496. 下一个更大元素 I/" class="leancloud_visitors" data-flag-title="LeetCode 496. 下一个更大元素 I">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1339,6 +1390,17 @@
 
           
           
+             <span id="/2018/08/07/leetcode/LeetCode: 5. 最长回文子串/" class="leancloud_visitors" data-flag-title="LeetCode 5. 最长回文子串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -1382,186 +1444,6 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">longestPalindrome</span><span class="params">(<span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,id,maxid,ans=<span class="number">1</span>,pos=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//找到的最长回文串的左端下标</span></span><br><span class="line">    <span class="keyword">int</span> left;</span><br><span class="line">    <span class="comment">//最长回文串的临时数组</span></span><br><span class="line">    <span class="keyword">char</span> * result;</span><br><span class="line">    <span class="comment">//字符串长度</span></span><br><span class="line">    <span class="keyword">int</span> str_length=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(s[i++]) str_length++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化新的数组,存放每个元素对应的回文半径</span></span><br><span class="line">    <span class="keyword">int</span> p[<span class="number">2</span>*str_length+<span class="number">3</span>];</span><br><span class="line">    <span class="comment">//构造新的字符数组，用来计算</span></span><br><span class="line">    <span class="keyword">char</span> new_str[<span class="number">2</span>*str_length+<span class="number">3</span>];</span><br><span class="line">    new_str[<span class="number">0</span>]=<span class="string">'$'</span>;</span><br><span class="line">    new_str[<span class="number">1</span>]=<span class="string">'#'</span>;</span><br><span class="line">    <span class="keyword">for</span> (i =<span class="number">0</span>;i&lt; str_length;i++)&#123;</span><br><span class="line">        new_str[<span class="number">2</span>*i+<span class="number">2</span>]=s[i];</span><br><span class="line">        new_str[<span class="number">2</span>*i+<span class="number">3</span>]=<span class="string">'#'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    new_str[<span class="number">2</span>*str_length+<span class="number">2</span>]=<span class="string">'\0'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">2</span>*str_length+<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对每个字符求其回文半径，利用前面的数组</span></span><br><span class="line">    <span class="comment">// 最后面的'\0'不用求</span></span><br><span class="line">    <span class="comment">// 第一个字符"$"，p[0]=1</span></span><br><span class="line">    id = <span class="number">0</span>;</span><br><span class="line">    maxid = <span class="number">1</span>;</span><br><span class="line">    p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="comment">// 判断前一次的回文最右端是不是包含当前判断的字符</span></span><br><span class="line">        <span class="keyword">if</span> (maxid &gt; i)&#123;</span><br><span class="line">            p[i] = p[<span class="number">2</span>*id-i] &gt; (maxid-i)?(maxid-i):p[<span class="number">2</span>*id-i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            p[i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(new_str[i+p[i]] == new_str[i-p[i]])&#123;</span><br><span class="line">            p[i]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p[i]+i&gt; maxid)&#123;</span><br><span class="line">            maxid = p[i]+i;</span><br><span class="line">            id = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ans&lt;p[i])&#123;</span><br><span class="line">            ans = p[i];</span><br><span class="line">            pos = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    left = (pos-ans)/<span class="number">2</span>;</span><br><span class="line">    result = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*ans);</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;ans<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        result[i] = s[left+i];</span><br><span class="line">    &#125;</span><br><span class="line">    result[ans<span class="number">-1</span>] = <span class="string">'\0'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> * aa= <span class="string">"abb"</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, longestPalindrome(aa));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Users/zhangguohao/CLionProjects/untitled/cmake-build-debug/untitled</span><br><span class="line">bb</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 500.键盘行/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 500.键盘行/" itemprop="url">
-                  LeetCode 500.键盘行
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 500.键盘行/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 500.键盘行/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。</p>
-<p><img src="https://leetcode-cn.com/static/images/problemset/keyboard.png" alt="American keyboard"></p>
-<p><strong>示例1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;Hello&quot;, &quot;Alaska&quot;, &quot;Dad&quot;, &quot;Peace&quot;]</span><br><span class="line">输出: [&quot;Alaska&quot;, &quot;Dad&quot;]</span><br></pre></td></tr></table></figure>
-<p><strong>注意:</strong></p>
-<ol>
-<li>你可以重复使用键盘上同一字符。</li>
-<li>你可以假设输入的字符串将只包含字母。</li>
-</ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    直接建立3个缓冲数组，存放q这一行，a这一行以及z这一行的值的索引，每一次判断一下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Return an array of size *returnSize.</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>** <span class="title">findWords</span><span class="params">(<span class="keyword">char</span>** words, <span class="keyword">int</span> wordsSize, <span class="keyword">int</span>* returnSize)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">char</span> *q = <span class="string">"qwertyuiopQWERTYUIOP"</span>;</span><br><span class="line">    <span class="keyword">char</span> *a = <span class="string">"asdfghjklASDFGHJKL"</span>;</span><br><span class="line">    <span class="keyword">char</span> *z = <span class="string">"zxcvbnmZXCVBNM"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *index_q = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>((<span class="string">'z'</span> - <span class="string">'A'</span> + <span class="number">1</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">int</span> *index_a = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>((<span class="string">'z'</span> - <span class="string">'A'</span> + <span class="number">1</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">int</span> *index_z = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>((<span class="string">'z'</span> - <span class="string">'A'</span> + <span class="number">1</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (*q || *a || *z) &#123;</span><br><span class="line">        <span class="keyword">if</span> (*q) &#123;</span><br><span class="line">            index_q[*q - <span class="string">'A'</span>]++;</span><br><span class="line">            q++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (*a) &#123;</span><br><span class="line">            index_a[*a - <span class="string">'A'</span>]++;</span><br><span class="line">            a++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (*z) &#123;</span><br><span class="line">            index_z[*z - <span class="string">'A'</span>]++;</span><br><span class="line">            z++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> **result = (<span class="keyword">char</span> **) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span> *) * wordsSize);</span><br><span class="line">    <span class="keyword">int</span> result_pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *temp;</span><br><span class="line">    <span class="keyword">char</span> *current_word;</span><br><span class="line">    <span class="keyword">bool</span> isWord = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> current_line = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; wordsSize; i++) &#123;</span><br><span class="line">        current_word = temp = words[i];</span><br><span class="line">        isWord = <span class="literal">true</span>;</span><br><span class="line">        current_line = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (*temp) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (current_line == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (index_q[*temp - <span class="string">'A'</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">                    current_line = <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index_a[*temp - <span class="string">'A'</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">                    current_line = <span class="number">2</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index_z[*temp - <span class="string">'A'</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">                    current_line = <span class="number">3</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    isWord = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (current_line == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index_q[*temp - <span class="string">'A'</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                        isWord = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current_line == <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index_a[*temp - <span class="string">'A'</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                        isWord = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index_z[*temp - <span class="string">'A'</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                        isWord = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            temp++;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isWord) &#123;</span><br><span class="line">            result[result_pos++] = current_word;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *returnSize = result_pos;</span><br><span class="line">    <span class="comment">// result = realloc(result, result_pos);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    注意，在提交的时候，realloc出现问题了</p>
 
           
         
@@ -1707,6 +1589,17 @@
 
           
           
+             <span id="/2018/08/07/leetcode/LeetCode: 50.Pow(x, n)/" class="leancloud_visitors" data-flag-title="LeetCode 50.Pow(x, n)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -1744,6 +1637,197 @@
 </ul>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myPow</span><span class="params">(self, x, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: float</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> x ** n</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 500.键盘行/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 500.键盘行/" itemprop="url">
+                  LeetCode 500.键盘行
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 500.键盘行/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 500.键盘行/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 500.键盘行/" class="leancloud_visitors" data-flag-title="LeetCode 500.键盘行">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。</p>
+<p><img src="https://leetcode-cn.com/static/images/problemset/keyboard.png" alt="American keyboard"></p>
+<p><strong>示例1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;Hello&quot;, &quot;Alaska&quot;, &quot;Dad&quot;, &quot;Peace&quot;]</span><br><span class="line">输出: [&quot;Alaska&quot;, &quot;Dad&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong></p>
+<ol>
+<li>你可以重复使用键盘上同一字符。</li>
+<li>你可以假设输入的字符串将只包含字母。</li>
+</ol>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    直接建立3个缓冲数组，存放q这一行，a这一行以及z这一行的值的索引，每一次判断一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Return an array of size *returnSize.</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>** <span class="title">findWords</span><span class="params">(<span class="keyword">char</span>** words, <span class="keyword">int</span> wordsSize, <span class="keyword">int</span>* returnSize)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">char</span> *q = <span class="string">"qwertyuiopQWERTYUIOP"</span>;</span><br><span class="line">    <span class="keyword">char</span> *a = <span class="string">"asdfghjklASDFGHJKL"</span>;</span><br><span class="line">    <span class="keyword">char</span> *z = <span class="string">"zxcvbnmZXCVBNM"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *index_q = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>((<span class="string">'z'</span> - <span class="string">'A'</span> + <span class="number">1</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">int</span> *index_a = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>((<span class="string">'z'</span> - <span class="string">'A'</span> + <span class="number">1</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">int</span> *index_z = (<span class="keyword">int</span> *) <span class="built_in">calloc</span>((<span class="string">'z'</span> - <span class="string">'A'</span> + <span class="number">1</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (*q || *a || *z) &#123;</span><br><span class="line">        <span class="keyword">if</span> (*q) &#123;</span><br><span class="line">            index_q[*q - <span class="string">'A'</span>]++;</span><br><span class="line">            q++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (*a) &#123;</span><br><span class="line">            index_a[*a - <span class="string">'A'</span>]++;</span><br><span class="line">            a++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (*z) &#123;</span><br><span class="line">            index_z[*z - <span class="string">'A'</span>]++;</span><br><span class="line">            z++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> **result = (<span class="keyword">char</span> **) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span> *) * wordsSize);</span><br><span class="line">    <span class="keyword">int</span> result_pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *temp;</span><br><span class="line">    <span class="keyword">char</span> *current_word;</span><br><span class="line">    <span class="keyword">bool</span> isWord = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> current_line = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; wordsSize; i++) &#123;</span><br><span class="line">        current_word = temp = words[i];</span><br><span class="line">        isWord = <span class="literal">true</span>;</span><br><span class="line">        current_line = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (*temp) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (current_line == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (index_q[*temp - <span class="string">'A'</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">                    current_line = <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index_a[*temp - <span class="string">'A'</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">                    current_line = <span class="number">2</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index_z[*temp - <span class="string">'A'</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">                    current_line = <span class="number">3</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    isWord = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (current_line == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index_q[*temp - <span class="string">'A'</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                        isWord = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current_line == <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index_a[*temp - <span class="string">'A'</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                        isWord = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index_z[*temp - <span class="string">'A'</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                        isWord = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            temp++;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isWord) &#123;</span><br><span class="line">            result[result_pos++] = current_word;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *returnSize = result_pos;</span><br><span class="line">    <span class="comment">// result = realloc(result, result_pos);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    注意，在提交的时候，realloc出现问题了</p>
 
           
         
@@ -1888,6 +1972,17 @@
           
 
           
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/" class="leancloud_visitors" data-flag-title="LeetCode 501. 二叉搜索树中的众数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -2084,6 +2179,17 @@
 
           
           
+             <span id="/2018/08/07/leetcode/LeetCode: 504. 七进制数/" class="leancloud_visitors" data-flag-title="LeetCode 504. 七进制数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -2245,6 +2351,20 @@
           
 
           
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhishengqianjun123" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:zhishengqianjun@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
 
           
           
@@ -2349,6 +2469,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2368,6 +2491,16 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -2441,24 +2574,427 @@
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
 
   
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz", "vvn5PWl9IeL9y2UAFUKHlMLf");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
-  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
-
-  
 
   
 
