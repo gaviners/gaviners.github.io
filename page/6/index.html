@@ -2090,7 +2090,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 172. 阶乘后的零/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -2109,8 +2109,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/" itemprop="url">
-                  LeetCode 173. 二叉搜索树迭代器
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 172. 阶乘后的零/" itemprop="url">
+                  LeetCode 172. 阶乘后的零
                 </a>
               
             
@@ -2173,8 +2173,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 172. 阶乘后的零/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 172. 阶乘后的零/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2182,7 +2182,7 @@
 
           
           
-             <span id="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/" class="leancloud_visitors" data-flag-title="LeetCode 173. 二叉搜索树迭代器">
+             <span id="/2018/08/07/leetcode/LeetCode: 172. 阶乘后的零/" class="leancloud_visitors" data-flag-title="LeetCode 172. 阶乘后的零">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2216,13 +2216,23 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。</p>
-<p>调用 <code>next()</code> 将返回二叉搜索树中的下一个最小的数。</p>
-<p>注意: <code>next()</code> 和<code>hasNext()</code> 操作的时间复杂度是O(1)，并使用 <em>O(h)</em> 内存，其中 <em>h</em> 是树的高度。</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    想要得到下一个数值，我们使用栈来存储，因为要得到最小值，所以是中遍历，放到栈里面，顺序相反，因此遍历的顺序应该是右-》根 -》左</p>
-<p>​    这样就能够不断地pop了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a  binary tree node</span></span><br><span class="line"><span class="comment"># class TreeNode(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span><span class="params">(object)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.buff = []</span><br><span class="line">        self.dfs(root)</span><br><span class="line">        print(self.buff)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> self.buff:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.buff.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.dfs(node.right)</span><br><span class="line">        self.buff.append(node.val)</span><br><span class="line">        self.dfs(node.left)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="comment"># Your BSTIterator will be called like this:</span></span><br><span class="line"><span class="comment"># i, v = BSTIterator(root), []</span></span><br><span class="line"><span class="comment"># while i.hasNext(): v.append(i.next())</span></span><br></pre></td></tr></table></figure>
-<p>​    或者说另一个思路，不必一次缓冲所有的，直接按照非递归中序遍历，缓存前面的节点即可</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个整数 <em>n</em>，返回 <em>n</em>! 结果尾数中零的数量。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 3</span><br><span class="line">输出: 0</span><br><span class="line">解释: 3! = 6, 尾数中没有零。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出: 1</span><br><span class="line">解释: 5! = 120, 尾数中有 1 个零.</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong> 你算法的时间复杂度应为 <em>O</em>(log <em>n</em>) 。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    我们知道，如果想要在默认有0，表示是10的倍数，可以看成是5*2的倍数，因此，每一个0，都可以看成是一个因子5，乘以一个偶数的形式</p>
+<p>​    因此，如果想要得到阶乘后面有多少个0，就找出有多少个因子5就可以了</p>
+<p>举个例子，假如我们想要求解 n的阶乘后面有多少个0，也就是因子5</p>
+<p>当n&lt;5 </p>
+<p>​    没有因子5，没有0；</p>
+<p>当n&gt;=5</p>
+<p>​    我们将这个很大的数进行因式分解，可以看到<br>$$<br>5<em>k </em>5<em>(k-1)</em>…<em>5</em> a<br>$$<br>其中，a表示不能被5整除的数，</p>
+<p>​    k表示最大的那个可以被5整除的数，也就是说已经能够得到k个因子5</p>
+<p>​    然后，我们看到，从1到k又构成了一个阶乘，然后这里面可能也有因子5</p>
+<p>​    同样得到了，k继续往下分</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trailingZeroes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">        result += n / <span class="number">5</span>;</span><br><span class="line">        n /= <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2471,9 +2481,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -2493,16 +2500,6 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -2904,7 +2901,7 @@
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz", "vvn5PWl9IeL9y2UAFUKHlMLf");</script>
+  <script>AV.initialize("baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz", "baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
@@ -3003,6 +3000,35 @@
   
 
   
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+
 
   
   
