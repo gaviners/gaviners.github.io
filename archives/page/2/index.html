@@ -389,46 +389,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 107. 二叉树的层次遍历 II/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 109. 有序链表转换二叉搜索树/" itemprop="url">
               
-                <span itemprop="name">LeetCode 107. 二叉树的层次遍历 II</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-07T12:15:57+08:00"
-              content="2018-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 106. 从中序与后序遍历序列构造二叉树/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 106. 从中序与后序遍历序列构造二叉树</span>
+                <span itemprop="name">LeetCode 109. 有序链表转换二叉搜索树</span>
               
             </a>
         
@@ -463,9 +426,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 110. 平衡二叉树/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 11. 盛最多水的容器/" itemprop="url">
               
-                <span itemprop="name">LeetCode 110. 平衡二叉树</span>
+                <span itemprop="name">LeetCode 11. 盛最多水的容器</span>
               
             </a>
         
@@ -537,9 +500,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 111 . 二叉树的最小深度/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 110. 平衡二叉树/" itemprop="url">
               
-                <span itemprop="name">LeetCode 111 . 二叉树的最小深度</span>
+                <span itemprop="name">LeetCode 110. 平衡二叉树</span>
               
             </a>
         
@@ -611,6 +574,43 @@
 
       <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 111 . 二叉树的最小深度/" itemprop="url">
+              
+                <span itemprop="name">LeetCode 111 . 二叉树的最小深度</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-08-07T12:15:57+08:00"
+              content="2018-08-07" >
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
             <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 114. 二叉树展开为链表/" itemprop="url">
               
                 <span itemprop="name">LeetCode 114. 二叉树展开为链表</span>
@@ -648,9 +648,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 116. 填充同一层的兄弟节点/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 117. 填充同一层的兄弟节点 II/" itemprop="url">
               
-                <span itemprop="name">LeetCode 116. 填充同一层的兄弟节点</span>
+                <span itemprop="name">LeetCode 117. 填充同一层的兄弟节点 II</span>
               
             </a>
         
@@ -685,9 +685,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 117. 填充同一层的兄弟节点 II/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 116. 填充同一层的兄弟节点/" itemprop="url">
               
-                <span itemprop="name">LeetCode 117. 填充同一层的兄弟节点 II</span>
+                <span itemprop="name">LeetCode 116. 填充同一层的兄弟节点</span>
               
             </a>
         
@@ -1450,9 +1450,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

@@ -511,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 690. 员工的重要性/" rel="next" title="LeetCode 690. 员工的重要性">
-                <i class="fa fa-chevron-left"></i> LeetCode 690. 员工的重要性
+              <a href="/2018/08/07/leetcode/LeetCode: 696. 计数二进制子串/" rel="next" title="LeetCode 696. 计数二进制子串">
+                <i class="fa fa-chevron-left"></i> LeetCode 696. 计数二进制子串
               </a>
             
           </div>
@@ -521,8 +521,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 687. 最长同值路径/" rel="prev" title="LeetCode 687. 最长同值路径">
-                LeetCode 687. 最长同值路径 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/07/leetcode/LeetCode: 693. 交替位二进制数/" rel="prev" title="LeetCode 693. 交替位二进制数">
+                LeetCode 693. 交替位二进制数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1269,9 +1269,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

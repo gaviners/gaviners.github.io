@@ -370,37 +370,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 6. Z字形变换/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 60. 第k个排列/" itemprop="url">
               
-                <span itemprop="name">LeetCode 6. Z字形变换</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-07T12:15:57+08:00"
-              content="2018-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 61. 旋转链表</span>
+                <span itemprop="name">LeetCode 60. 第k个排列</span>
               
             </a>
         
@@ -429,34 +401,6 @@
             <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 605. 种花问题/" itemprop="url">
               
                 <span itemprop="name">LeetCode 605. 种花问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-07T12:15:57+08:00"
-              content="2018-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 62. 不同路径</span>
               
             </a>
         
@@ -538,6 +482,62 @@
 
       <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" itemprop="url">
+              
+                <span itemprop="name">LeetCode 61. 旋转链表</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-08-07T12:15:57+08:00"
+              content="2018-08-07" >
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" itemprop="url">
+              
+                <span itemprop="name">LeetCode 62. 不同路径</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-08-07T12:15:57+08:00"
+              content="2018-08-07" >
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
             <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 620. 有趣的电影/" itemprop="url">
               
                 <span itemprop="name">LeetCode 620. 有趣的电影</span>
@@ -594,9 +594,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 627. 交换工资/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 628. 三个数的最大乘积/" itemprop="url">
               
-                <span itemprop="name">LeetCode 627. 交换工资</span>
+                <span itemprop="name">LeetCode 628. 三个数的最大乘积</span>
               
             </a>
         
@@ -622,9 +622,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 63. 不同路径 II/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 627. 交换工资/" itemprop="url">
               
-                <span itemprop="name">LeetCode 63. 不同路径 II</span>
+                <span itemprop="name">LeetCode 627. 交换工资</span>
               
             </a>
         
@@ -1348,9 +1348,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

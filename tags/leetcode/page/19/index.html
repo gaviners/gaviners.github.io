@@ -370,9 +370,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 355. 设计推特/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 35. 搜索插入位置/" itemprop="url">
               
-                <span itemprop="name">LeetCode 355. 设计推特</span>
+                <span itemprop="name">LeetCode 35. 搜索插入位置</span>
               
             </a>
         
@@ -454,9 +454,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 365. 水壶问题/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 367. 有效的完全平方数/" itemprop="url">
               
-                <span itemprop="name">LeetCode 365. 水壶问题</span>
+                <span itemprop="name">LeetCode 367. 有效的完全平方数</span>
               
             </a>
         
@@ -510,9 +510,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 371.两整数之和/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 365. 水壶问题/" itemprop="url">
               
-                <span itemprop="name">LeetCode 371.两整数之和</span>
+                <span itemprop="name">LeetCode 365. 水壶问题</span>
               
             </a>
         
@@ -538,9 +538,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 373. 查找和最小的K对数字/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 371.两整数之和/" itemprop="url">
               
-                <span itemprop="name">LeetCode 373. 查找和最小的K对数字</span>
+                <span itemprop="name">LeetCode 371.两整数之和</span>
               
             </a>
         
@@ -594,9 +594,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 374. 猜数字大小/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 373. 查找和最小的K对数字/" itemprop="url">
               
-                <span itemprop="name">LeetCode 374. 猜数字大小</span>
+                <span itemprop="name">LeetCode 373. 查找和最小的K对数字</span>
               
             </a>
         
@@ -622,9 +622,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 367. 有效的完全平方数/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 374. 猜数字大小/" itemprop="url">
               
-                <span itemprop="name">LeetCode 367. 有效的完全平方数</span>
+                <span itemprop="name">LeetCode 374. 猜数字大小</span>
               
             </a>
         
@@ -1348,9 +1348,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

@@ -915,6 +915,208 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 289. 生命游戏/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" itemprop="url">
+                  LeetCode 289. 生命游戏
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" class="leancloud_visitors" data-flag-title="LeetCode 289. 生命游戏">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>根据<a href="https://baike.baidu.com/item/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/2926434?fr=aladdin" target="_blank" rel="noopener">百度百科</a>，生命游戏，简称为生命，是英国数学家约翰·何顿·康威在1970年发明的细胞自动机。</p>
+<p>给定一个包含 m × n 个格子的面板，每一个格子都可以看成是一个细胞。每个细胞具有一个初始状态 <em>live</em>（1）即为活细胞， 或 <em>dead</em>（0）即为死细胞。每个细胞与其八个相邻位置（水平，垂直，对角线）的细胞都遵循以下四条生存定律：</p>
+<ol>
+<li>如果活细胞周围八个位置的活细胞数少于两个，则该位置活细胞死亡；</li>
+<li>如果活细胞周围八个位置有两个或三个活细胞，则该位置活细胞仍然存活；</li>
+<li>如果活细胞周围八个位置有超过三个活细胞，则该位置活细胞死亡；</li>
+<li>如果死细胞周围正好有三个活细胞，则该位置死细胞复活；</li>
+</ol>
+<p>根据当前状态，写一个函数来计算面板上细胞的下一个（一次更新后的）状态。下一个状态是通过将上述规则同时应用于当前状态下的每个细胞所形成的，其中细胞的出生和死亡是同时发生的。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">[</span><br><span class="line">  [0,1,0],</span><br><span class="line">  [0,0,1],</span><br><span class="line">  [1,1,1],</span><br><span class="line">  [0,0,0]</span><br><span class="line">]</span><br><span class="line">输出: </span><br><span class="line">[</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [0,1,1],</span><br><span class="line">  [0,1,0]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>进阶:</strong></p>
+<ul>
+<li>你可以使用原地算法解决本题吗？请注意，面板上所有格子需要同时被更新：你不能先更新某些格子，然后使用它们的更新后的值再更新其他格子。</li>
+<li>本题中，我们使用二维数组来表示面板。原则上，面板是无限的，但当活细胞侵占了面板边界时会造成问题。你将如何解决这些问题？</li>
+</ul>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    最简单莫过于直接创建一个一模一样的矩阵，更新状态以后，复制返回</p>
+<p>​    题目要求原地算法，所以就要想办法，在原地就能够区分状态前与状态后的值</p>
+<p>一共两种状态，0，1</p>
+<p>状态的变化一共4种情况，0-&gt;0,  0-&gt;1, 1-&gt;0, 1-&gt;1</p>
+<p>我们分别用2，3，4，5表示这四种状态，就能够得到更新前后的结果</p>
+<p>最后，更新一遍状态，2，4更新为0，3，5更新为1即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gameOfLife</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type board: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify board in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        row = len(board)</span><br><span class="line">        <span class="keyword">if</span> row &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        col = len(board[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">if</span> col &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">            0-&gt;0: 2 </span></span><br><span class="line"><span class="string">            0-&gt;1: 3</span></span><br><span class="line"><span class="string">            1-&gt;0: 4</span></span><br><span class="line"><span class="string">            1-&gt;1: 5</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                count = <span class="number">0</span></span><br><span class="line">                start_row = i - <span class="number">1</span></span><br><span class="line">                start_col = j - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">                    start_row = i - <span class="number">1</span> + k // <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    start_col = j - <span class="number">1</span> + k % <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> <span class="number">0</span> &lt;= start_row &lt; row <span class="keyword">and</span> <span class="number">0</span> &lt;= start_col &lt; col:</span><br><span class="line">                        <span class="keyword">if</span> board[start_row][start_col] <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>]:</span><br><span class="line">                            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="number">1</span>:</span><br><span class="line">                    count -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> count &lt; <span class="number">2</span>:</span><br><span class="line">                        board[i][j] = <span class="number">4</span></span><br><span class="line">                    <span class="keyword">elif</span> count &lt;= <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">5</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        board[i][j] = <span class="number">4</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> count &lt; <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">2</span></span><br><span class="line">                    <span class="keyword">elif</span> count == <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">3</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        board[i][j] = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] <span class="keyword">in</span> [<span class="number">2</span>, <span class="number">4</span>]:</span><br><span class="line">                    board[i][j] = <span class="number">0</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    board[i][j] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 29.两数相除/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1302,400 +1504,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" itemprop="url">
-                  LeetCode 299. 猜数字游戏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" class="leancloud_visitors" data-flag-title="LeetCode 299. 猜数字游戏">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
-<p>你正在和你的朋友玩 <a href="https://baike.baidu.com/item/%E7%8C%9C%E6%95%B0%E5%AD%97/83200?fromtitle=Bulls+and+Cows&amp;fromid=12003488&amp;fr=aladdin" target="_blank" rel="noopener">猜数字（Bulls and Cows）</a>游戏：你写下一个数字让你的朋友猜。每次他猜测后，你给他一个提示，告诉他有多少位数字和确切位置都猜对了（称为“Bulls”, 公牛），有多少位数字猜对了但是位置不对（称为“Cows”, 奶牛）。你的朋友将会根据提示继续猜，直到猜出秘密数字。</p>
-<p>请写出一个根据秘密数字和朋友的猜测数返回提示的函数，用 <code>A</code> 表示公牛，用 <code>B</code> 表示奶牛。</p>
-<p>请注意秘密数字和朋友的猜测数都可能含有重复数字。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: secret = &quot;1807&quot;, guess = &quot;7810&quot;</span><br><span class="line"></span><br><span class="line">输出: &quot;1A3B&quot;</span><br><span class="line"></span><br><span class="line">解释: 1 公牛和 3 奶牛。公牛是 8，奶牛是 0, 1 和 7。</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: secret = &quot;1123&quot;, guess = &quot;0111&quot;</span><br><span class="line"></span><br><span class="line">输出: &quot;1A1B&quot;</span><br><span class="line"></span><br><span class="line">解释: 朋友猜测数中的第一个 1 是公牛，第二个或第三个 1 可被视为奶牛。</span><br></pre></td></tr></table></figure>
-<p><strong>说明:</strong> 你可以假设秘密数字和朋友的猜测数都只包含数字，并且它们的长度永远相等。</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先，正确理解题意，猜数字的时候，A表示数字正确，位置也正确的数字，B表示数字正确，位置不正确的数字</p>
-<p>​    一种解题思路，使用字典，如果两个数字不相等，就将当前的值作为字典的键，进行，考虑到重复的存在，记录数量</p>
-<p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getHint</span><span class="params">(self, secret, guess)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type secret: str</span></span><br><span class="line"><span class="string">        :type guess: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        secret_buff = &#123;&#125;</span><br><span class="line">        guess_buff = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        A = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(secret)):</span><br><span class="line">            <span class="keyword">if</span> secret[i] == guess[i]:</span><br><span class="line">                A += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                secret_buff[secret[i]] = secret_buff.get(secret[i], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">                guess_buff[guess[i]] = guess_buff.get(guess[i], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        B = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> guess_buff:</span><br><span class="line">            B += min(guess_buff[num], secret_buff.get(num, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> str(A) + <span class="string">"A"</span> + str(B) + <span class="string">"B"</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 289. 生命游戏/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" itemprop="url">
-                  LeetCode 289. 生命游戏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" class="leancloud_visitors" data-flag-title="LeetCode 289. 生命游戏">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>根据<a href="https://baike.baidu.com/item/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/2926434?fr=aladdin" target="_blank" rel="noopener">百度百科</a>，生命游戏，简称为生命，是英国数学家约翰·何顿·康威在1970年发明的细胞自动机。</p>
-<p>给定一个包含 m × n 个格子的面板，每一个格子都可以看成是一个细胞。每个细胞具有一个初始状态 <em>live</em>（1）即为活细胞， 或 <em>dead</em>（0）即为死细胞。每个细胞与其八个相邻位置（水平，垂直，对角线）的细胞都遵循以下四条生存定律：</p>
-<ol>
-<li>如果活细胞周围八个位置的活细胞数少于两个，则该位置活细胞死亡；</li>
-<li>如果活细胞周围八个位置有两个或三个活细胞，则该位置活细胞仍然存活；</li>
-<li>如果活细胞周围八个位置有超过三个活细胞，则该位置活细胞死亡；</li>
-<li>如果死细胞周围正好有三个活细胞，则该位置死细胞复活；</li>
-</ol>
-<p>根据当前状态，写一个函数来计算面板上细胞的下一个（一次更新后的）状态。下一个状态是通过将上述规则同时应用于当前状态下的每个细胞所形成的，其中细胞的出生和死亡是同时发生的。</p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">[</span><br><span class="line">  [0,1,0],</span><br><span class="line">  [0,0,1],</span><br><span class="line">  [1,1,1],</span><br><span class="line">  [0,0,0]</span><br><span class="line">]</span><br><span class="line">输出: </span><br><span class="line">[</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [0,1,1],</span><br><span class="line">  [0,1,0]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><strong>进阶:</strong></p>
-<ul>
-<li>你可以使用原地算法解决本题吗？请注意，面板上所有格子需要同时被更新：你不能先更新某些格子，然后使用它们的更新后的值再更新其他格子。</li>
-<li>本题中，我们使用二维数组来表示面板。原则上，面板是无限的，但当活细胞侵占了面板边界时会造成问题。你将如何解决这些问题？</li>
-</ul>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    最简单莫过于直接创建一个一模一样的矩阵，更新状态以后，复制返回</p>
-<p>​    题目要求原地算法，所以就要想办法，在原地就能够区分状态前与状态后的值</p>
-<p>一共两种状态，0，1</p>
-<p>状态的变化一共4种情况，0-&gt;0,  0-&gt;1, 1-&gt;0, 1-&gt;1</p>
-<p>我们分别用2，3，4，5表示这四种状态，就能够得到更新前后的结果</p>
-<p>最后，更新一遍状态，2，4更新为0，3，5更新为1即可</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gameOfLife</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type board: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify board in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        row = len(board)</span><br><span class="line">        <span class="keyword">if</span> row &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        col = len(board[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">if</span> col &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">            0-&gt;0: 2 </span></span><br><span class="line"><span class="string">            0-&gt;1: 3</span></span><br><span class="line"><span class="string">            1-&gt;0: 4</span></span><br><span class="line"><span class="string">            1-&gt;1: 5</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                count = <span class="number">0</span></span><br><span class="line">                start_row = i - <span class="number">1</span></span><br><span class="line">                start_col = j - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">                    start_row = i - <span class="number">1</span> + k // <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    start_col = j - <span class="number">1</span> + k % <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> <span class="number">0</span> &lt;= start_row &lt; row <span class="keyword">and</span> <span class="number">0</span> &lt;= start_col &lt; col:</span><br><span class="line">                        <span class="keyword">if</span> board[start_row][start_col] <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>]:</span><br><span class="line">                            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="number">1</span>:</span><br><span class="line">                    count -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> count &lt; <span class="number">2</span>:</span><br><span class="line">                        board[i][j] = <span class="number">4</span></span><br><span class="line">                    <span class="keyword">elif</span> count &lt;= <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">5</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        board[i][j] = <span class="number">4</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> count &lt; <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">2</span></span><br><span class="line">                    <span class="keyword">elif</span> count == <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">3</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        board[i][j] = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] <span class="keyword">in</span> [<span class="number">2</span>, <span class="number">4</span>]:</span><br><span class="line">                    board[i][j] = <span class="number">0</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    board[i][j] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 292.Nim游戏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1848,6 +1656,198 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">num: 0	 result: false </span><br><span class="line">num: 1	 result: true </span><br><span class="line">num: 2	 result: true </span><br><span class="line">num: 3	 result: true </span><br><span class="line">num: 4	 result: false </span><br><span class="line">num: 5	 result: true </span><br><span class="line">num: 6	 result: true </span><br><span class="line">num: 7	 result: true </span><br><span class="line">num: 8	 result: false </span><br><span class="line">num: 9	 result: true </span><br><span class="line">num: 10	 result: true </span><br><span class="line">num: 11	 result: true </span><br><span class="line">num: 12	 result: false </span><br><span class="line">num: 13	 result: true </span><br><span class="line">num: 14	 result: true </span><br><span class="line">num: 15	 result: true </span><br><span class="line">num: 16	 result: false </span><br><span class="line">num: 17	 result: true </span><br><span class="line">num: 18	 result: true </span><br><span class="line">num: 19	 result: true </span><br><span class="line">num: 20	 result: false </span><br><span class="line">num: 21	 result: true </span><br><span class="line">num: 22	 result: true </span><br><span class="line">num: 23	 result: true </span><br><span class="line">num: 24	 result: false </span><br><span class="line">num: 25	 result: true </span><br><span class="line">num: 26	 result: true </span><br><span class="line">num: 27	 result: true </span><br><span class="line">num: 28	 result: false </span><br><span class="line">num: 29	 result: true </span><br><span class="line">num: 30	 result: true </span><br><span class="line">num: 31	 result: true </span><br><span class="line">num: 32	 result: false </span><br><span class="line">num: 33	 result: true </span><br><span class="line">num: 34	 result: true </span><br><span class="line">num: 35	 result: true </span><br><span class="line">num: 36	 result: false </span><br><span class="line">num: 37	 result: true </span><br><span class="line">num: 38	 result: true </span><br><span class="line">num: 39	 result: true </span><br><span class="line">num: 40	 result: false </span><br><span class="line">num: 41	 result: true </span><br><span class="line">num: 42	 result: true </span><br><span class="line">num: 43	 result: true </span><br><span class="line">num: 44	 result: false </span><br><span class="line">num: 45	 result: true </span><br><span class="line">num: 46	 result: true </span><br><span class="line">num: 47	 result: true </span><br><span class="line">num: 48	 result: false </span><br><span class="line">num: 49	 result: true </span><br><span class="line">num: 50	 result: true </span><br><span class="line">num: 51	 result: true </span><br><span class="line">num: 52	 result: false </span><br><span class="line">num: 53	 result: true </span><br><span class="line">num: 54	 result: true</span><br></pre></td></tr></table></figure>
 <p>所以，最终结果如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n%<span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" itemprop="url">
+                  LeetCode 299. 猜数字游戏
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" class="leancloud_visitors" data-flag-title="LeetCode 299. 猜数字游戏">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
+<p>你正在和你的朋友玩 <a href="https://baike.baidu.com/item/%E7%8C%9C%E6%95%B0%E5%AD%97/83200?fromtitle=Bulls+and+Cows&amp;fromid=12003488&amp;fr=aladdin" target="_blank" rel="noopener">猜数字（Bulls and Cows）</a>游戏：你写下一个数字让你的朋友猜。每次他猜测后，你给他一个提示，告诉他有多少位数字和确切位置都猜对了（称为“Bulls”, 公牛），有多少位数字猜对了但是位置不对（称为“Cows”, 奶牛）。你的朋友将会根据提示继续猜，直到猜出秘密数字。</p>
+<p>请写出一个根据秘密数字和朋友的猜测数返回提示的函数，用 <code>A</code> 表示公牛，用 <code>B</code> 表示奶牛。</p>
+<p>请注意秘密数字和朋友的猜测数都可能含有重复数字。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: secret = &quot;1807&quot;, guess = &quot;7810&quot;</span><br><span class="line"></span><br><span class="line">输出: &quot;1A3B&quot;</span><br><span class="line"></span><br><span class="line">解释: 1 公牛和 3 奶牛。公牛是 8，奶牛是 0, 1 和 7。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: secret = &quot;1123&quot;, guess = &quot;0111&quot;</span><br><span class="line"></span><br><span class="line">输出: &quot;1A1B&quot;</span><br><span class="line"></span><br><span class="line">解释: 朋友猜测数中的第一个 1 是公牛，第二个或第三个 1 可被视为奶牛。</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong> 你可以假设秘密数字和朋友的猜测数都只包含数字，并且它们的长度永远相等。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先，正确理解题意，猜数字的时候，A表示数字正确，位置也正确的数字，B表示数字正确，位置不正确的数字</p>
+<p>​    一种解题思路，使用字典，如果两个数字不相等，就将当前的值作为字典的键，进行，考虑到重复的存在，记录数量</p>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getHint</span><span class="params">(self, secret, guess)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type secret: str</span></span><br><span class="line"><span class="string">        :type guess: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        secret_buff = &#123;&#125;</span><br><span class="line">        guess_buff = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        A = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(secret)):</span><br><span class="line">            <span class="keyword">if</span> secret[i] == guess[i]:</span><br><span class="line">                A += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                secret_buff[secret[i]] = secret_buff.get(secret[i], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">                guess_buff[guess[i]] = guess_buff.get(guess[i], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        B = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> guess_buff:</span><br><span class="line">            B += min(guess_buff[num], secret_buff.get(num, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> str(A) + <span class="string">"A"</span> + str(B) + <span class="string">"B"</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -2989,9 +2989,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

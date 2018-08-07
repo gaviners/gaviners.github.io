@@ -454,6 +454,34 @@
 
       <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" itemprop="url">
+              
+                <span itemprop="name">LeetCode 289. 生命游戏</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-08-07T12:15:57+08:00"
+              content="2018-08-07" >
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
             <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 29.两数相除/" itemprop="url">
               
                 <span itemprop="name">LeetCode 29.两数相除</span>
@@ -510,65 +538,37 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 299. 猜数字游戏</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-07T12:15:57+08:00"
-              content="2018-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 289. 生命游戏/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 289. 生命游戏</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-07T12:15:57+08:00"
-              content="2018-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
             <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 292.Nim游戏/" itemprop="url">
               
                 <span itemprop="name">LeetCode 292.Nim游戏</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-08-07T12:15:57+08:00"
+              content="2018-08-07" >
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 299. 猜数字游戏/" itemprop="url">
+              
+                <span itemprop="name">LeetCode 299. 猜数字游戏</span>
               
             </a>
         
@@ -1349,9 +1349,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

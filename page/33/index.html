@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 697. 数组的度/">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 720. 词典中最长的单词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -365,8 +365,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 697. 数组的度/" itemprop="url">
-                  LeetCode 697. 数组的度
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 720. 词典中最长的单词/" itemprop="url">
+                  LeetCode 720. 词典中最长的单词
                 </a>
               
             
@@ -429,8 +429,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 697. 数组的度/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 697. 数组的度/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 720. 词典中最长的单词/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 720. 词典中最长的单词/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,7 +438,7 @@
 
           
           
-             <span id="/2018/08/07/leetcode/LeetCode: 697. 数组的度/" class="leancloud_visitors" data-flag-title="LeetCode 697. 数组的度">
+             <span id="/2018/08/07/leetcode/LeetCode: 720. 词典中最长的单词/" class="leancloud_visitors" data-flag-title="LeetCode 720. 词典中最长的单词">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -472,19 +472,19 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个非空且只包含非负数的整数数组 <code>nums</code>, 数组的度的定义是指数组里任一元素出现频数的最大值。</p>
-<p>你的任务是找到与 <code>nums</code> 拥有相同大小的度的最短连续子数组，返回其长度。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给出一个字符串数组<code>words</code>组成的一本英语词典。从中找出最长的一个单词，该单词是由<code>words</code>词典中其他单词逐步添加一个字母组成。若其中有多个可行的答案，则返回答案中字典序最小的单词。</p>
+<p>若无答案，则返回空字符串。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [1, 2, 2, 3, 1]</span><br><span class="line">输出: 2</span><br><span class="line">解释: </span><br><span class="line">输入数组的度是2，因为元素1和2的出现频数最大，均为2.</span><br><span class="line">连续子数组里面拥有相同度的有如下所示:</span><br><span class="line">[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]</span><br><span class="line">最短连续子数组[2, 2]的长度为2，所以返回2.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">words = [&quot;w&quot;,&quot;wo&quot;,&quot;wor&quot;,&quot;worl&quot;, &quot;world&quot;]</span><br><span class="line">输出: &quot;world&quot;</span><br><span class="line">解释: </span><br><span class="line">单词&quot;world&quot;可由&quot;w&quot;, &quot;wo&quot;, &quot;wor&quot;, 和 &quot;worl&quot;添加一个字母组成。</span><br></pre></td></tr></table></figure>
 <p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,2,3,1,4,2]</span><br><span class="line">输出: 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">words = [&quot;a&quot;, &quot;banana&quot;, &quot;app&quot;, &quot;appl&quot;, &quot;ap&quot;, &quot;apply&quot;, &quot;apple&quot;]</span><br><span class="line">输出: &quot;apple&quot;</span><br><span class="line">解释: </span><br><span class="line">&quot;apply&quot;和&quot;apple&quot;都能由词典中的单词组成。但是&quot;apple&quot;得字典序小于&quot;apply&quot;。</span><br></pre></td></tr></table></figure>
 <p><strong>注意:</strong></p>
 <ul>
-<li><code>nums.length</code> 在1到50,000区间范围内。</li>
-<li><code>nums[i]</code> 是一个在0到49,999范围内的整数。</li>
+<li>所有输入的字符串都只包含小写字母。</li>
+<li><code>words</code>数组长度范围为<code>[1,1000]</code>。</li>
+<li><code>words[i]</code>的长度范围为<code>[1,30]</code>。</li>
 </ul>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先找出最大的度，然后从数组的左面和右面找到这个数字第一次出现的位置，返回这两个位置之差；</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findShortestSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        result = <span class="number">50000000</span></span><br><span class="line">        num_dict = &#123;&#125;</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num_dict.get(i) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                num_dict[i] = [<span class="number">1</span>, index, index]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                num_dict[i][<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">                num_dict[i][<span class="number">2</span>] = index</span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line">        count = max([v[<span class="number">0</span>] <span class="keyword">for</span> v <span class="keyword">in</span> num_dict.values()])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> num_dict.items():</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">0</span>] == count:</span><br><span class="line">                result = min(result, v[<span class="number">2</span>]-v[<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestWord</span><span class="params">(self, words)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="string">""</span></span><br><span class="line">        change = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> words:</span><br><span class="line">            <span class="keyword">if</span> len(i) &gt; len(res) <span class="keyword">or</span> (len(i) == len(res) <span class="keyword">and</span> i &lt; res):</span><br><span class="line">                change = <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(len(i)):</span><br><span class="line">                    <span class="keyword">if</span> i[<span class="number">0</span>:j + <span class="number">1</span>] <span class="keyword">not</span> <span class="keyword">in</span> words:</span><br><span class="line">                        change = <span class="keyword">False</span></span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> change:</span><br><span class="line">                    res = i</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
           
         
@@ -922,6 +922,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/" itemprop="url">
+                  LeetCode 73. 矩阵置零
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/" class="leancloud_visitors" data-flag-title="LeetCode 73. 矩阵置零">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个 <em>m</em> x <em>n</em> 的矩阵，如果一个元素为 0，则将其所在行和列的所有元素都设为 0。请使用<strong>原地</strong>算法<strong>。</strong></p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">[</span><br><span class="line">  [1,1,1],</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [1,1,1]</span><br><span class="line">]</span><br><span class="line">输出: </span><br><span class="line">[</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [1,0,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">[</span><br><span class="line">  [0,1,2,0],</span><br><span class="line">  [3,4,5,2],</span><br><span class="line">  [1,3,1,5]</span><br><span class="line">]</span><br><span class="line">输出: </span><br><span class="line">[</span><br><span class="line">  [0,0,0,0],</span><br><span class="line">  [0,4,5,0],</span><br><span class="line">  [0,3,1,0]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>进阶:</strong></p>
+<ul>
+<li>一个直接的解决方案是使用  O(<em>m**n</em>) 的额外空间，但这并不是一个好的解决方案。</li>
+<li>一个简单的改进方案是使用 O(<em>m</em> + <em>n</em>) 的额外空间，但这仍然不是最好的解决方案。</li>
+<li>你能想出一个常数空间的解决方案吗？</li>
+</ul>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    实际上，如上面进阶所说的 ，使用额外空间保存的话，题目很简单，但是，如果不用额外空间呢？</p>
+<p>​    只需要在数组中，使用第0行和第0列来打标记就可以了，然后通过编列第0行和第0列，将对应的行与列置零</p>
+<p>​    </p>
+<p>​    这里需要注意的就是，左上角的元素需要存储，单独设置一个变量存储即可，</p>
+<p>​    如果是行元素或者列元素将它置1，就设置为1，如果本身就是0，设置为2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setZeroes</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        row = len(matrix)</span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># top 存储左上角的交叉点的状态</span></span><br><span class="line">        <span class="comment"># 1: 行置0</span></span><br><span class="line">        <span class="comment"># 2: 列置0</span></span><br><span class="line">        <span class="comment"># 3: 行列都置0</span></span><br><span class="line">        top = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> matrix[i][j] == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                        top = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">elif</span> top != <span class="number">3</span>:</span><br><span class="line">                        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">if</span> top == <span class="number">2</span>:</span><br><span class="line">                                top = <span class="number">3</span></span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                top = <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> j == <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">if</span> top == <span class="number">1</span>:</span><br><span class="line">                                top = <span class="number">3</span></span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                top = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> top == <span class="number">2</span> <span class="keyword">and</span> i == <span class="number">0</span>:</span><br><span class="line">                            top = <span class="number">3</span></span><br><span class="line">                        <span class="keyword">elif</span> top == <span class="number">1</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                            top = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">                    matrix[<span class="number">0</span>][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, row):</span><br><span class="line">            <span class="keyword">if</span> matrix[i][<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                    matrix[i][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, col):</span><br><span class="line">            <span class="keyword">if</span> matrix[<span class="number">0</span>][i] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(row):</span><br><span class="line">                    matrix[j][i] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> top == <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> top == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> top == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 733. 图像渲染/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1062,6 +1258,197 @@
 </ul>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">flood</span><span class="params">(<span class="keyword">int</span> **image, <span class="keyword">int</span> imageRowSize, <span class="keyword">int</span> imageColSize, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> oldColor, <span class="keyword">int</span> newColor, <span class="keyword">int</span> **sign)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sign[sr][sc] == <span class="number">0</span>) &#123;</span><br><span class="line">        sign[sr][sc] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (oldColor == image[sr][sc]) &#123;</span><br><span class="line">            image[sr][sc] = newColor;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sr - <span class="number">1</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            flood(image, imageRowSize, imageColSize, sr - <span class="number">1</span>, sc, oldColor, newColor, sign);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sc - <span class="number">1</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            flood(image, imageRowSize, imageColSize, sr, sc - <span class="number">1</span>, oldColor, newColor, sign);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sr + <span class="number">1</span> &lt; imageRowSize) &#123;</span><br><span class="line">            flood(image, imageRowSize, imageColSize, sr + <span class="number">1</span>, sc, oldColor, newColor, sign);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sc + <span class="number">1</span> &lt; imageColSize) &#123;</span><br><span class="line">            flood(image, imageRowSize, imageColSize, sr, sc + <span class="number">1</span>, oldColor, newColor, sign);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> **<span class="title">floodFill</span><span class="params">(<span class="keyword">int</span> **image, <span class="keyword">int</span> imageRowSize, <span class="keyword">int</span> imageColSize, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor, <span class="keyword">int</span> **columnSizes,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">int</span> *returnSize)</span> </span>&#123;</span><br><span class="line">    *columnSizes = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * imageRowSize);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imageRowSize; i++) &#123;</span><br><span class="line">        (*columnSizes)[i] = imageColSize;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = imageRowSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> **result = (<span class="keyword">int</span> **) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span> *) * imageRowSize);</span><br><span class="line">    <span class="keyword">int</span> **sign = (<span class="keyword">int</span> **) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span> *) * imageRowSize);</span><br><span class="line"><span class="comment">//    int sign[imageRowSize][imageColSize];</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *line;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; imageRowSize; i++) &#123;</span><br><span class="line">        line = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * imageColSize);</span><br><span class="line">        result[i] = line;</span><br><span class="line">        line = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * imageColSize);</span><br><span class="line">        sign[i] = line;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; imageColSize; j++) &#123;</span><br><span class="line">            result[i][j] = image[i][j];</span><br><span class="line">            sign[i][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    flood(result, imageRowSize, imageColSize, sr, sc, image[sr][sc], newColor, sign);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/" itemprop="url">
+                  LeetCode 74. 搜索二维矩阵
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/" class="leancloud_visitors" data-flag-title="LeetCode 74. 搜索二维矩阵">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>编写一个高效的算法来判断 <em>m</em> x <em>n</em> 矩阵中，是否存在一个目标值。该矩阵具有如下特性：</p>
+<ul>
+<li>每行中的整数从左到右按升序排列。</li>
+<li>每行的第一个整数大于前一行的最后一个整数。</li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">matrix = [</span><br><span class="line">  [1,   3,  5,  7],</span><br><span class="line">  [10, 11, 16, 20],</span><br><span class="line">  [23, 30, 34, 50]</span><br><span class="line">]</span><br><span class="line">target = 3</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">matrix = [</span><br><span class="line">  [1,   3,  5,  7],</span><br><span class="line">  [10, 11, 16, 20],</span><br><span class="line">  [23, 30, 34, 50]</span><br><span class="line">]</span><br><span class="line">target = 13</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    从题意来看，实际上这个矩阵每一行遍历得到的就是排序好的数组，直接用二分法就行了，只需要将左右指针转化为二维坐标即可</p>
+<p>​    没有任何难点，只要注意一下边界条件即可，空的矩阵返回FALSE</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        row = len(matrix)</span><br><span class="line">        <span class="keyword">if</span> row &lt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = row * col - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">if</span> matrix[mid // col][mid % col] == target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> matrix[mid // col][mid % col] &gt; target:</span><br><span class="line">                    right = mid - <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    left = mid + <span class="number">1</span></span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -1500,202 +1887,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/" itemprop="url">
-                  LeetCode 73. 矩阵置零
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 73. 矩阵置零/" class="leancloud_visitors" data-flag-title="LeetCode 73. 矩阵置零">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个 <em>m</em> x <em>n</em> 的矩阵，如果一个元素为 0，则将其所在行和列的所有元素都设为 0。请使用<strong>原地</strong>算法<strong>。</strong></p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">[</span><br><span class="line">  [1,1,1],</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [1,1,1]</span><br><span class="line">]</span><br><span class="line">输出: </span><br><span class="line">[</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [1,0,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">[</span><br><span class="line">  [0,1,2,0],</span><br><span class="line">  [3,4,5,2],</span><br><span class="line">  [1,3,1,5]</span><br><span class="line">]</span><br><span class="line">输出: </span><br><span class="line">[</span><br><span class="line">  [0,0,0,0],</span><br><span class="line">  [0,4,5,0],</span><br><span class="line">  [0,3,1,0]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><strong>进阶:</strong></p>
-<ul>
-<li>一个直接的解决方案是使用  O(<em>m**n</em>) 的额外空间，但这并不是一个好的解决方案。</li>
-<li>一个简单的改进方案是使用 O(<em>m</em> + <em>n</em>) 的额外空间，但这仍然不是最好的解决方案。</li>
-<li>你能想出一个常数空间的解决方案吗？</li>
-</ul>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    实际上，如上面进阶所说的 ，使用额外空间保存的话，题目很简单，但是，如果不用额外空间呢？</p>
-<p>​    只需要在数组中，使用第0行和第0列来打标记就可以了，然后通过编列第0行和第0列，将对应的行与列置零</p>
-<p>​    </p>
-<p>​    这里需要注意的就是，左上角的元素需要存储，单独设置一个变量存储即可，</p>
-<p>​    如果是行元素或者列元素将它置1，就设置为1，如果本身就是0，设置为2</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setZeroes</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        row = len(matrix)</span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># top 存储左上角的交叉点的状态</span></span><br><span class="line">        <span class="comment"># 1: 行置0</span></span><br><span class="line">        <span class="comment"># 2: 列置0</span></span><br><span class="line">        <span class="comment"># 3: 行列都置0</span></span><br><span class="line">        top = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> matrix[i][j] == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                        top = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">elif</span> top != <span class="number">3</span>:</span><br><span class="line">                        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">if</span> top == <span class="number">2</span>:</span><br><span class="line">                                top = <span class="number">3</span></span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                top = <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> j == <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">if</span> top == <span class="number">1</span>:</span><br><span class="line">                                top = <span class="number">3</span></span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                top = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> top == <span class="number">2</span> <span class="keyword">and</span> i == <span class="number">0</span>:</span><br><span class="line">                            top = <span class="number">3</span></span><br><span class="line">                        <span class="keyword">elif</span> top == <span class="number">1</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                            top = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">                    matrix[<span class="number">0</span>][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, row):</span><br><span class="line">            <span class="keyword">if</span> matrix[i][<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                    matrix[i][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, col):</span><br><span class="line">            <span class="keyword">if</span> matrix[<span class="number">0</span>][i] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(row):</span><br><span class="line">                    matrix[j][i] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> top == <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> top == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> top == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 747. 至少是其他数字两倍的最大数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1889,7 +2080,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 762. 二进制表示中质数个计算置位/">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 75. 分类颜色/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -1908,8 +2099,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 762. 二进制表示中质数个计算置位/" itemprop="url">
-                  LeetCode 762. 二进制表示中质数个计算置位
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 75. 分类颜色/" itemprop="url">
+                  LeetCode 75. 分类颜色
                 </a>
               
             
@@ -1972,8 +2163,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 762. 二进制表示中质数个计算置位/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 762. 二进制表示中质数个计算置位/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 75. 分类颜色/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 75. 分类颜色/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1981,7 +2172,7 @@
 
           
           
-             <span id="/2018/08/07/leetcode/LeetCode: 762. 二进制表示中质数个计算置位/" class="leancloud_visitors" data-flag-title="LeetCode 762. 二进制表示中质数个计算置位">
+             <span id="/2018/08/07/leetcode/LeetCode: 75. 分类颜色/" class="leancloud_visitors" data-flag-title="LeetCode 75. 分类颜色">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2015,215 +2206,43 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个整数 <code>L</code> 和 <code>R</code> ，找到闭区间 <code>[L, R]</code> 范围内，计算置位位数为质数的整数个数。</p>
-<p>（注意，计算置位代表二进制表示中1的个数。例如 <code>21</code> 的二进制表示 <code>10101</code> 有 3 个计算置位。还有，1 不是质数。）</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: L = 6, R = 10</span><br><span class="line">输出: 4</span><br><span class="line">解释:</span><br><span class="line">6 -&gt; 110 (2 个计算置位，2 是质数)</span><br><span class="line">7 -&gt; 111 (3 个计算置位，3 是质数)</span><br><span class="line">9 -&gt; 1001 (2 个计算置位，2 是质数)</span><br><span class="line">10-&gt; 1010 (2 个计算置位，2 是质数)</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: L = 10, R = 15</span><br><span class="line">输出: 5</span><br><span class="line">解释:</span><br><span class="line">10 -&gt; 1010 (2 个计算置位, 2 是质数)</span><br><span class="line">11 -&gt; 1011 (3 个计算置位, 3 是质数)</span><br><span class="line">12 -&gt; 1100 (2 个计算置位, 2 是质数)</span><br><span class="line">13 -&gt; 1101 (3 个计算置位, 3 是质数)</span><br><span class="line">14 -&gt; 1110 (3 个计算置位, 3 是质数)</span><br><span class="line">15 -&gt; 1111 (4 个计算置位, 4 不是质数)</span><br></pre></td></tr></table></figure>
-<p><strong>注意:</strong></p>
-<ol>
-<li><code>L, R</code> 是 <code>L &lt;= R</code> 且在 <code>[1, 10^6]</code> 中的整数。</li>
-<li><code>R - L</code> 的最大值为 10000。</li>
-</ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题实际上很简单，因为位数最多是32位，其中是质数的有</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2,3,5,7,11,13,17,19,23,29,31</span><br></pre></td></tr></table></figure>
-<p>​    直接判断就可以了</p>
-<p>​    </p>
-<p>​    </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countOneNums</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((num &amp; (<span class="number">1</span> &lt;&lt; i)) != <span class="number">0</span>) &#123;</span><br><span class="line">            result++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (i) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">13</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">17</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">19</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">23</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">29</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">31</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countPrimeSetBits</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = L; i &lt;= R; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (isPrime(countOneNums(i)))&#123;</span><br><span class="line">            result++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    当然，质数判断也可以有更简单的方式，直接用32个数的缓冲数组，匹配下标即可</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/" itemprop="url">
-                  LeetCode 74. 搜索二维矩阵
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 74. 搜索二维矩阵/" class="leancloud_visitors" data-flag-title="LeetCode 74. 搜索二维矩阵">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>编写一个高效的算法来判断 <em>m</em> x <em>n</em> 矩阵中，是否存在一个目标值。该矩阵具有如下特性：</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个包含红色、白色和蓝色，一共 <em>n</em> 个元素的数组，<strong>原地</strong>对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
+<p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
+<p><strong>注意:</strong><br>不能使用代码库中的排序函数来解决这道题。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,0,2,1,1,0]</span><br><span class="line">输出: [0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
+<p><strong>进阶：</strong></p>
 <ul>
-<li>每行中的整数从左到右按升序排列。</li>
-<li>每行的第一个整数大于前一行的最后一个整数。</li>
+<li>一个直观的解决方案是使用计数排序的两趟扫描算法。<br>首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。</li>
+<li>你能想出一个仅使用常数空间的一趟扫描算法吗？</li>
 </ul>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">matrix = [</span><br><span class="line">  [1,   3,  5,  7],</span><br><span class="line">  [10, 11, 16, 20],</span><br><span class="line">  [23, 30, 34, 50]</span><br><span class="line">]</span><br><span class="line">target = 3</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">matrix = [</span><br><span class="line">  [1,   3,  5,  7],</span><br><span class="line">  [10, 11, 16, 20],</span><br><span class="line">  [23, 30, 34, 50]</span><br><span class="line">]</span><br><span class="line">target = 13</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    从题意来看，实际上这个矩阵每一行遍历得到的就是排序好的数组，直接用二分法就行了，只需要将左右指针转化为二维坐标即可</p>
-<p>​    没有任何难点，只要注意一下边界条件即可，空的矩阵返回FALSE</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        row = len(matrix)</span><br><span class="line">        <span class="keyword">if</span> row &lt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = row * col - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">if</span> matrix[mid // col][mid % col] == target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> matrix[mid // col][mid % col] &gt; target:</span><br><span class="line">                    right = mid - <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    left = mid + <span class="number">1</span></span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    如果是常规的排序，是很简单，但是不能一谈扫描就将数组排序好，但是这个数字有点特殊，他只有3中，0，1，2，也就是说，最后的结果是，0，1，2的顺序</p>
+<p>​    因此，我们设置两个指针，分别指向排好序的0的右端，2的左端，然后不断地判断，如果当前数字是0，直接与左端的指针位置数交换，并且，左指针加一</p>
+<p>​    如果是2，就与右面的2的指针位置交换，并且右指针减一</p>
+<p>​    等到判断到右指针的时候，表示整个数组都排好序了</p>
+<p>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2,0,2,1,1,0]</span><br></pre></td></tr></table></figure>
+<p>左指针=0</p>
+<p>右指针=5</p>
+<p>然后从0号位置开始判断</p>
+<p>判断是2，与右指针指向的位置交换，也就是变成了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0,0,2,1,1,2]</span><br></pre></td></tr></table></figure>
+<p>右指针减一</p>
+<p>right = 4</p>
+<p>此时，</p>
+<p>然后判断一下，发现现在指向的是0，但是当前指针与左指针相等，直接加一，左指针加一</p>
+<p>index=1</p>
+<p>left=1</p>
+<p>发现是0，当前指针和左指针相等，直接加一，左指针加一</p>
+<p>index=2</p>
+<p>left=2</p>
+<p>发现现在这个是2，与右指针交换，得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
+<p>然后index =3</p>
+<p>right = 3</p>
+<p>index = 4</p>
+<p>然后继续，index超过了right，退出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        length = len(nums)</span><br><span class="line">        <span class="keyword">if</span> length &lt;= <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = length - <span class="number">1</span></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> index &lt;= right:</span><br><span class="line">            <span class="keyword">if</span> nums[index] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> index == left:</span><br><span class="line">                    index += <span class="number">1</span></span><br><span class="line">                    left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    nums[index], nums[left] = nums[left], nums[index]</span><br><span class="line">                    left += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> nums[index] == <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span> index == right:</span><br><span class="line">                    index += <span class="number">1</span></span><br><span class="line">                    right -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    nums[index], nums[right] = nums[right], nums[index]</span><br><span class="line">                    right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                index += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -2962,9 +2981,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },
