@@ -346,206 +346,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 160 . 相交链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 160 . 相交链表/" itemprop="url">
-                  LeetCode 160 . 相交链表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 160 . 相交链表/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 160 . 相交链表/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 160 . 相交链表/" class="leancloud_visitors" data-flag-title="LeetCode 160 . 相交链表">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>编写一个程序，找到两个单链表相交的起始节点。</p>
-<p>例如，下面的两个链表<strong>：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A:          a1 → a2</span><br><span class="line">                   ↘</span><br><span class="line">                     c1 → c2 → c3</span><br><span class="line">                   ↗            </span><br><span class="line">B:     b1 → b2 → b3</span><br></pre></td></tr></table></figure>
-<p>在节点 c1 开始相交。</p>
-<p><strong>注意：</strong></p>
-<ul>
-<li>如果两个链表没有交点，返回 <code>null</code>.</li>
-<li>在返回结果后，两个链表仍须保持原有的结构。</li>
-<li>可假定整个链表结构中没有循环。</li>
-<li>程序尽量满足 O(<em>n</em>) 时间复杂度，且仅用 O(<em>1</em>) 内存。</li>
-</ul>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h3 id="2-1-哈希表法"><a href="#2-1-哈希表法" class="headerlink" title="2.1 哈希表法"></a>2.1 哈希表法</h3><p>​    直接将第一个表的所有的节点的地址放到哈希表中，然后第二链表从头开始，如果当前地址已经存在在哈希表中，表示找到了，返回该地址</p>
-<p>​    不过这种办法的空间复杂度是$O(m)$的，并不是$O(1)$</p>
-<h2 id="2-2-长度查找法"><a href="#2-2-长度查找法" class="headerlink" title="2.2 长度查找法"></a>2.2 长度查找法</h2><p>​    首先明确一个问题，就是加入两个单链表相交，那么最后面的节点肯定是相同的，也就是从相交节点后，一定是相同的，因此，从头找到两个链表的长度，m，n，假设n&gt;m</p>
-<p>​    让第二个链表先走n-m步，然后两个链表开始匹配，如果匹配到了，表示找到了</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct ListNode *<span class="title">getIntersectionNode</span><span class="params">(struct ListNode *headA, struct ListNode *headB)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length_a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> length_b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">dir_a</span> = <span class="title">headA</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">dir_b</span> = <span class="title">headB</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (dir_a || dir_b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dir_a) &#123;</span><br><span class="line">            length_a++;</span><br><span class="line">            dir_a = dir_a-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (dir_b) &#123;</span><br><span class="line">            length_b++;</span><br><span class="line">            dir_b = dir_b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (length_a &lt;= <span class="number">0</span> || length_b &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dir_a = headA;</span><br><span class="line">    dir_b = headB;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> differ = length_a &gt; length_b ? length_a - length_b : length_b - length_a;</span><br><span class="line">    <span class="keyword">int</span> equal = length_a &gt; length_b ? length_b : length_a;</span><br><span class="line">    <span class="keyword">if</span> (length_a &gt; length_b) &#123;</span><br><span class="line">        <span class="keyword">while</span> (differ-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            dir_a = dir_a-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (differ-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            dir_b = dir_b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (equal-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dir_a == dir_b) &#123;</span><br><span class="line">            <span class="keyword">return</span> dir_a;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dir_a = dir_a-&gt;next;</span><br><span class="line">            dir_b = dir_b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-回环法"><a href="#2-3-回环法" class="headerlink" title="2.3 回环法"></a>2.3 回环法</h3><p>​    回环法则是将第一个链表的末尾放到第二个链表的头上，如果两个链表相交，就找那个回环节点</p>
-<p>​    实际上，回环法有问题的，因为找到的回环点不一定是第一个相交点</p>
-<p>​    回环法可以用来检测是否有回环，但不能用来找到第一个相交点</p>
-<p>==注意：！！！==</p>
-<p>​    </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 162. 寻找峰值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1080,6 +880,193 @@
 </ul>
 <p>有一点需要注意，符号的问题，先把结果的正负号保存下来，然后计算的都用正数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fractionToDecimal</span><span class="params">(self, numerator, denominator)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type numerator: int</span></span><br><span class="line"><span class="string">        :type denominator: int</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        sign = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> (numerator &gt; <span class="number">0</span> <span class="keyword">and</span> denominator &lt; <span class="number">0</span>) <span class="keyword">or</span> (numerator &lt; <span class="number">0</span> <span class="keyword">and</span> denominator &gt; <span class="number">0</span>):</span><br><span class="line">            sign = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        numerator = abs(numerator)</span><br><span class="line">        denominator = abs(denominator)</span><br><span class="line"></span><br><span class="line">        integer_part = numerator // denominator</span><br><span class="line">        remainder = numerator % denominator</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> sign == <span class="number">1</span>:</span><br><span class="line">            result = <span class="string">""</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = <span class="string">"-"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> remainder == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> result + str(integer_part)</span><br><span class="line"></span><br><span class="line">        remainder_hash = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        decimal_cache = []</span><br><span class="line">        is_cycle = <span class="keyword">False</span></span><br><span class="line">        cycle_index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> remainder != <span class="number">0</span>:</span><br><span class="line">            temp = remainder = remainder</span><br><span class="line">            cur_num = remainder * <span class="number">10</span> // denominator</span><br><span class="line">            remainder = remainder * <span class="number">10</span> % denominator</span><br><span class="line">            <span class="keyword">if</span> remainder_hash.get(temp) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                remainder_hash[temp] = cycle_index</span><br><span class="line">                decimal_cache.append(cur_num)</span><br><span class="line">                cycle_index += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cycle_index = remainder_hash[temp]</span><br><span class="line">                is_cycle = <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> is_cycle:</span><br><span class="line">            result += str(integer_part) + <span class="string">"."</span> + <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result += str(integer_part) + <span class="string">"."</span> + <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache[:cycle_index]]) + <span class="string">"("</span> + <span class="string">""</span>.join(</span><br><span class="line">                [str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache[cycle_index:]]) + <span class="string">")"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 16. 最接近的三数之和/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 16. 最接近的三数之和/" itemprop="url">
+                  LeetCode 16. 最接近的三数之和
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 16. 最接近的三数之和/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 16. 最接近的三数之和/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 16. 最接近的三数之和/" class="leancloud_visitors" data-flag-title="LeetCode 16. 最接近的三数之和">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个包括 <em>n</em> 个整数的数组 <code>nums</code> 和 一个目标值 <code>target</code>。找出 <code>nums</code> 中的三个整数，使得它们的和与 <code>target</code> 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.</span><br><span class="line"></span><br><span class="line">与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题与第15题有相似之处，找到3个数之和，使得他们的和最接近给定的数</p>
+<p>​    假如我们将整个数组排序了，每次固定第一个数，在后面进行查找</p>
+<p>​    如果diff变小，更新结果值</p>
+<p>​    3数之和小于target，left增加</p>
+<p>​    3数之和大于target，right减一，表示需要减小</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    def threeSumClosest(self, nums, target):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        sorted_num = sorted(nums)</span><br><span class="line"></span><br><span class="line">        diff = <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line">        result = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i in range(len(sorted_num)):</span><br><span class="line"></span><br><span class="line">            left = i + <span class="number">1</span></span><br><span class="line">            right = len(sorted_num) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt; right:</span><br><span class="line">                temp_sum = sorted_num[i] + sorted_num[left] + sorted_num[right]</span><br><span class="line">                temp_diff = <span class="built_in">abs</span>(target - temp_sum)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> temp_diff == <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> temp_sum</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> temp_diff &lt; diff:</span><br><span class="line">                    diff = temp_diff</span><br><span class="line">                    result = temp_sum</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> temp_sum &lt; target:</span><br><span class="line">                    left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2559,8 +2546,8 @@
         el: '#comments' ,
         verify: false,
         notify: false,
-        appId: 'baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz',
-        appKey: 'vvn5PWl9IeL9y2UAFUKHlMLf',
+        appId: 'qluXerUVutA7CjS8IgGYE7wg-gzGzoHsz',
+        appKey: 'kkrJimHdrtGVpP0goHXGtGDW',
         placeholder: 'Just go go',
         avatar:'mm',
         meta:guest,
@@ -2901,7 +2888,7 @@
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz", "baazWwqAkUeIAoDH1fUc6lFl-gzGzoHsz");</script>
+  <script>AV.initialize("qluXerUVutA7CjS8IgGYE7wg-gzGzoHsz", "kkrJimHdrtGVpP0goHXGtGDW");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);

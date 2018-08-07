@@ -34,6 +34,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[LeetCode 102. 二叉树的层次遍历]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20102.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。 例如:给定二叉树: [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 返回其层次遍历结果： 12345[ [3], [9,20], [15,7]] 2、解题思路​ 借助数据结构，如队列，存储当前行的节点 ​ 然后将当前行的节点的子节点放入队列中，并将当前节点弹出，放入结果数组中 1234567891011121314151617181920212223242526272829303132333435# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneimport queueclass Solution: def levelOrder(self, root): """ :type root: TreeNode :rtype: List[List[int]] """ if not root: return [] result = [] q = queue.Queue() q.put(root) while not q.empty(): temp = [] size = q.qsize() for i in range(size): node = q.get() if node.left: q.put(node.left) if node.right: q.put(node.right) temp.append(node.val) result.append(temp) return result]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 104. 二叉树的最大深度]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，找出其最大深度。 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。 说明: 叶子节点是指没有子节点的节点。 示例：给定二叉树 [3,9,20,null,null,15,7]， 12345 3 / \9 20 / \ 15 7 返回它的最大深度 3 。 2、解题思路12345678910111213141516171819202122/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */int maxDepth(struct TreeNode* root) &#123; if (!root) &#123; return 0; &#125; int left = 0; int right = 0; if (root-&gt;left) &#123; left = maxDepth(root-&gt;left); &#125; if (root-&gt;right) &#123; right = maxDepth(root-&gt;right); &#125; return left &gt; right ? left + 1 : right + 1;&#125;]]></content>
@@ -67,9 +78,20 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 102. 二叉树的层次遍历]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20102.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。 例如:给定二叉树: [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 返回其层次遍历结果： 12345[ [3], [9,20], [15,7]] 2、解题思路​ 借助数据结构，如队列，存储当前行的节点 ​ 然后将当前行的节点的子节点放入队列中，并将当前节点弹出，放入结果数组中 1234567891011121314151617181920212223242526272829303132333435# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneimport queueclass Solution: def levelOrder(self, root): """ :type root: TreeNode :rtype: List[List[int]] """ if not root: return [] result = [] q = queue.Queue() q.put(root) while not q.empty(): temp = [] size = q.qsize() for i in range(size): node = q.get() if node.left: q.put(node.left) if node.right: q.put(node.right) temp.append(node.val) result.append(temp) return result]]></content>
+    <title><![CDATA[LeetCode 106. 从中序与后序遍历序列构造二叉树]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20106.%C2%A0%E4%BB%8E%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述根据一棵树的中序遍历与后序遍历构造二叉树。 注意:你可以假设树中没有重复的元素。 例如，给出 12中序遍历 inorder = [9,3,15,20,7]后序遍历 postorder = [9,15,7,20,3] 返回如下的二叉树： 12345 3 / \9 20 / \ 15 7 2、解题思路​ 在前面105题中，使用前序遍历和中序遍历得到二叉树一样，后序遍历就是根节点放在了最后，其他的与前面没有区别 12345678910111213141516171819202122232425262728293031# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution: def buildTree(self, inorder, postorder): """ :type inorder: List[int] :type postorder: List[int] :rtype: TreeNode """ if len(inorder) &lt;= 0: return None root = TreeNode(postorder[-1]) root_index = inorder.index(postorder[-1]) inorder_left_subTree = inorder[:root_index] inorder_right_subTree = inorder[root_index + 1:] postorder_left_subTree = postorder[:len(inorder_left_subTree)] postorder_right_subTree = postorder[len(inorder_left_subTree):-1] root.left = self.buildTree(inorder_left_subTree, postorder_left_subTree) root.right = self.buildTree(inorder_right_subTree, postorder_right_subTree) return root]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 11. 盛最多水的容器]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2011.%C2%A0%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。画 n 条垂直线，使得垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器，n 至少是2。 2、解题思路​ 一般能直接想到的就是暴力破解法，但是这个效率实在太差了 ​ 换个思路的话，我们从两边开始找起 ​ 考虑到盛水的容器仅与段的那个数字相关，我们设置两个指针，指向两头，然后不断地向中间移动，直到两个相遇为止，每一次都是小的边向长的边移动靠拢，这样能保证我们尽可能减少损失，找出最大的面积 ​ 1234567891011121314151617181920#define min(a, b) (a&lt;b?a:b)#define max(a, b) (a&gt;b?a:b)int maxArea(int* height, int heightSize) &#123; int left = 0; int right = heightSize - 1; int area = 0; while (left &lt; right) &#123; area = max(area, (right - left) * min(height[left], height[right])); if (height[left] &lt; height[right]) &#123; left++; &#125; else &#123; right--; &#125; &#125; return area;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -100,9 +122,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 11. 盛最多水的容器]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2011.%C2%A0%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。画 n 条垂直线，使得垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器，n 至少是2。 2、解题思路​ 一般能直接想到的就是暴力破解法，但是这个效率实在太差了 ​ 换个思路的话，我们从两边开始找起 ​ 考虑到盛水的容器仅与段的那个数字相关，我们设置两个指针，指向两头，然后不断地向中间移动，直到两个相遇为止，每一次都是小的边向长的边移动靠拢，这样能保证我们尽可能减少损失，找出最大的面积 ​ 1234567891011121314151617181920#define min(a, b) (a&lt;b?a:b)#define max(a, b) (a&gt;b?a:b)int maxArea(int* height, int heightSize) &#123; int left = 0; int right = heightSize - 1; int area = 0; while (left &lt; right) &#123; area = max(area, (right - left) * min(height[left], height[right])); if (height[left] &lt; height[right]) &#123; left++; &#125; else &#123; right--; &#125; &#125; return area;&#125;]]></content>
+    <title><![CDATA[LeetCode 111 . 二叉树的最小深度]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20111%20.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述12345678910111213141516给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。说明: 叶子节点是指没有子节点的节点。示例:给定二叉树 [3,9,20,null,null,15,7], 3 / \ 9 20 / \ 15 7返回它的最小深度 2. 2、解题思路12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */int minDepth(struct TreeNode* root) &#123; if (!root) &#123; return 0; &#125; int left = 0; int right = 0; int result = 0; if (root-&gt;left) &#123; left = minDepth(root-&gt;left); result = left+1; &#125;else&#123; result = left = INT_MAX; &#125; if (root-&gt;right) &#123; right = minDepth(root-&gt;right); result = result &gt; right+1 ? right + 1 : result; &#125; if(result == INT_MAX)&#123; result = 1; &#125; return result;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -111,9 +133,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 106. 从中序与后序遍历序列构造二叉树]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20106.%C2%A0%E4%BB%8E%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述根据一棵树的中序遍历与后序遍历构造二叉树。 注意:你可以假设树中没有重复的元素。 例如，给出 12中序遍历 inorder = [9,3,15,20,7]后序遍历 postorder = [9,15,7,20,3] 返回如下的二叉树： 12345 3 / \9 20 / \ 15 7 2、解题思路​ 在前面105题中，使用前序遍历和中序遍历得到二叉树一样，后序遍历就是根节点放在了最后，其他的与前面没有区别 12345678910111213141516171819202122232425262728293031# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution: def buildTree(self, inorder, postorder): """ :type inorder: List[int] :type postorder: List[int] :rtype: TreeNode """ if len(inorder) &lt;= 0: return None root = TreeNode(postorder[-1]) root_index = inorder.index(postorder[-1]) inorder_left_subTree = inorder[:root_index] inorder_right_subTree = inorder[root_index + 1:] postorder_left_subTree = postorder[:len(inorder_left_subTree)] postorder_right_subTree = postorder[len(inorder_left_subTree):-1] root.left = self.buildTree(inorder_left_subTree, postorder_left_subTree) root.right = self.buildTree(inorder_right_subTree, postorder_right_subTree) return root]]></content>
+    <title><![CDATA[LeetCode 112. 路径总和]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20112.%C2%A0%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和 sum = 22， 1234567 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&gt;4-&gt;11-&gt;2。 2、解题思路123456789101112131415161718192021222324252627282930313233/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */bool hasPathSum(struct TreeNode* root, int sum) &#123; if (!root) &#123; return false; &#125; int sub_num = sum - root-&gt;val; bool left_path = false; bool right_path = false; if (root-&gt;left) &#123; left_path = hasPathSum(root-&gt;left, sub_num); &#125; if (root-&gt;right) &#123; right_path = hasPathSum(root-&gt;right, sub_num); &#125; if (!root-&gt;left &amp;&amp; !root-&gt;right) &#123; if (sub_num == 0) &#123; return true; &#125;else&#123; return false; &#125; &#125; else &#123; return left_path || right_path; &#125;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -144,20 +166,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 111 . 二叉树的最小深度]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20111%20.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述12345678910111213141516给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。说明: 叶子节点是指没有子节点的节点。示例:给定二叉树 [3,9,20,null,null,15,7], 3 / \ 9 20 / \ 15 7返回它的最小深度 2. 2、解题思路12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */int minDepth(struct TreeNode* root) &#123; if (!root) &#123; return 0; &#125; int left = 0; int right = 0; int result = 0; if (root-&gt;left) &#123; left = minDepth(root-&gt;left); result = left+1; &#125;else&#123; result = left = INT_MAX; &#125; if (root-&gt;right) &#123; right = minDepth(root-&gt;right); result = result &gt; right+1 ? right + 1 : result; &#125; if(result == INT_MAX)&#123; result = 1; &#125; return result;&#125;]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 112. 路径总和]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20112.%C2%A0%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和 sum = 22， 1234567 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&gt;4-&gt;11-&gt;2。 2、解题思路123456789101112131415161718192021222324252627282930313233/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */bool hasPathSum(struct TreeNode* root, int sum) &#123; if (!root) &#123; return false; &#125; int sub_num = sum - root-&gt;val; bool left_path = false; bool right_path = false; if (root-&gt;left) &#123; left_path = hasPathSum(root-&gt;left, sub_num); &#125; if (root-&gt;right) &#123; right_path = hasPathSum(root-&gt;right, sub_num); &#125; if (!root-&gt;left &amp;&amp; !root-&gt;right) &#123; if (sub_num == 0) &#123; return true; &#125;else&#123; return false; &#125; &#125; else &#123; return left_path || right_path; &#125;&#125;]]></content>
+    <title><![CDATA[LeetCode 116. 填充同一层的兄弟节点]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20116.%C2%A0%E5%A1%AB%E5%85%85%E5%90%8C%E4%B8%80%E5%B1%82%E7%9A%84%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个二叉树 12345struct TreeLinkNode &#123; TreeLinkNode *left; TreeLinkNode *right; TreeLinkNode *next;&#125; 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。 初始状态下，所有 next 指针都被设置为 NULL。 说明: 你只能使用额外常数空间。 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。 你可以假设它是一个完美二叉树（即所有叶子节点都在同一层，每个父节点都有两个子节点）。 示例: 给定完美二叉树， 12345 1 / \ 2 3 / \ / \4 5 6 7 调用你的函数后，该完美二叉树变为： 12345 1 -&gt; NULL / \ 2 -&gt; 3 -&gt; NULL / \ / \4-&gt;5-&gt;6-&gt;7 -&gt; NULL 2、解题思路2.1 递归求解​ 首先，因为是完美二叉树，那么下一行的判断就能够依据上一行的结果 给定一个节点，如果当前节点有左子树，右子树，就将左子树指向右子树，右子树指向父节点的兄弟节点的左子树 123456789101112131415161718192021# Definition for binary tree with next pointer.# class TreeLinkNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = None# self.next = Noneclass Solution: # @param root, a tree link node # @return nothing def connect(self, root): if not root: return if not root.left: return root.left.next = root.right if root.next: root.right.next = root.next.left self.connect(root.left) self.connect(root.right) 2.2 非递归法​ 实际上，不一定要用递归来做，也可以通过遍历每一行来做，也是借助上一行的结果，设置两个指针，一个指向最左端，从最左端移动到最右端 ​ 123456789101112131415161718192021222324252627# Definition for binary tree with next pointer.# class TreeLinkNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = None# self.next = Noneclass Solution: # @param root, a tree link node # @return nothing def connect(self, root): if not root: return if not root.left: return line_start = root while line_start.left: cur = line_start while cur: cur.left.next = cur.right if cur.next: cur.right.next = cur.next.left cur = cur.next line_start = line_start.left]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -180,17 +191,6 @@
     <title><![CDATA[LeetCode 114. 二叉树展开为链表]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20114.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，原地将它展开为链表。 例如，给定二叉树 12345 1 / \ 2 5 / \ \3 4 6 将其展开为： 12345678910111 \ 2 \ 3 \ 4 \ 5 \ 6 2、解题思路2.1 递归法​ 一般看到二叉树，第一个想到的就是递归求解 ​ 首先，我们来分析一下将二叉树展开成链表的规律 对根节点来讲，如果左子树和右子树都展开了，直接将左子树中最右端的端点的右指针指向当前的右子树，左子树变成右子树，左子树变成None即可 对每个节点来讲，都是如此 那么使用什么方式，将左右子树变成链表呢？ 首先我们确定，左右子树应该是已经变成链表以后进行操作，所以，应该是后续遍历 12345678910111213141516171819202122232425# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution: def flatten(self, root): """ :type root: TreeNode :rtype: void Do not return anything, modify root in-place instead. """ if not root: return None self.flatten(root.left) self.flatten(root.right) if root.left: temp = root.right left_node = root.left while left_node.right: left_node = left_node.right root.right = root.left root.left = None left_node.right = temp 2.2 非递归法​ 实际上还可以用非递归法，比如说我们知道，当前节点的右子树应该放在什么位置呢？ ​ 就是当前节点左子树的最右节点的后面，我们直接把它放过去，然后，指针后移，如果有左子树，就把右子树放到左子树的最右面节点的后面 ​ 以此类推，直到最后一个节点，所有的就都被变成了链表了 123456789101112131415161718192021222324252627# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution: def flatten(self, root): """ :type root: TreeNode :rtype: void Do not return anything, modify root in-place instead. """ if not root: return None while root: if root.left: temp = root.right left_node = root.left while left_node.right: left_node = left_node.right root.right = root.left root.left = None left_node.right = temp root = root.right]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 116. 填充同一层的兄弟节点]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20116.%C2%A0%E5%A1%AB%E5%85%85%E5%90%8C%E4%B8%80%E5%B1%82%E7%9A%84%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个二叉树 12345struct TreeLinkNode &#123; TreeLinkNode *left; TreeLinkNode *right; TreeLinkNode *next;&#125; 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。 初始状态下，所有 next 指针都被设置为 NULL。 说明: 你只能使用额外常数空间。 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。 你可以假设它是一个完美二叉树（即所有叶子节点都在同一层，每个父节点都有两个子节点）。 示例: 给定完美二叉树， 12345 1 / \ 2 3 / \ / \4 5 6 7 调用你的函数后，该完美二叉树变为： 12345 1 -&gt; NULL / \ 2 -&gt; 3 -&gt; NULL / \ / \4-&gt;5-&gt;6-&gt;7 -&gt; NULL 2、解题思路2.1 递归求解​ 首先，因为是完美二叉树，那么下一行的判断就能够依据上一行的结果 给定一个节点，如果当前节点有左子树，右子树，就将左子树指向右子树，右子树指向父节点的兄弟节点的左子树 123456789101112131415161718192021# Definition for binary tree with next pointer.# class TreeLinkNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = None# self.next = Noneclass Solution: # @param root, a tree link node # @return nothing def connect(self, root): if not root: return if not root.left: return root.left.next = root.right if root.next: root.right.next = root.next.left self.connect(root.left) self.connect(root.right) 2.2 非递归法​ 实际上，不一定要用递归来做，也可以通过遍历每一行来做，也是借助上一行的结果，设置两个指针，一个指向最左端，从最左端移动到最右端 ​ 123456789101112131415161718192021222324252627# Definition for binary tree with next pointer.# class TreeLinkNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = None# self.next = Noneclass Solution: # @param root, a tree link node # @return nothing def connect(self, root): if not root: return if not root.left: return line_start = root while line_start.left: cur = line_start while cur: cur.left.next = cur.right if cur.next: cur.right.next = cur.next.left cur = cur.next line_start = line_start.left]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -232,9 +232,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 12. 整数转罗马数字]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2012.%C2%A0%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 12345678字符 数值I 1V 5X 10L 50C 100D 500M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。 X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。 给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1: 12输入: 3输出: &quot;III&quot; 示例 2: 12输入: 4输出: &quot;IV&quot; 示例 3: 12输入: 9输出: &quot;IX&quot; 示例 4: 123输入: 58输出: &quot;LVIII&quot;解释: C = 100, L = 50, XXX = 30, III = 3. 示例 5: 123输入: 1994输出: &quot;MCMXCIV&quot;解释: M = 1000, CM = 900, XC = 90, IV = 4. 2、解题思路​ 对不同的位上的数字进行判断，要么是小于4的，等于4，等于5，5到9，等于9，只有这几种情况 ​ 实际上，可以直接将所有的可能性变成列表，这样更加简单 ​ 12345678910111213141516171819202122232425262728class Solution: def intToRoman(self, num): """ :type num: int :rtype: str """ if num &lt;= 0: return "" roam = [&#123;1: "M"&#125;, &#123;1: "C", 5: "D", 4: "CD", 9: "CM"&#125;, &#123;1: "X", 5: "L", 4: "XL", 9: "XC"&#125;, &#123;1: "I", 5: "V", 4: "IV", 9: "IX"&#125;] result = "" temp = num for i in range(3, -1, -1): digit = (temp // 10 ** i) % 10 if digit &gt; 0: if digit &lt; 4: result += roam[3 - i][1] * digit elif digit == 4: result += roam[3 - i][4] elif digit == 5: result += roam[3 - i][5] elif digit &gt; 5 and digit &lt; 9: result += roam[3 - i][5] + roam[3 - i][1] * (digit - 5) elif digit == 9: result += roam[3 - i][9] return result]]></content>
+    <title><![CDATA[LeetCode 120. 三角形最小路径和]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20120.%C2%A0%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 ​ 例如，给定三角形： 123456[ [2], [3,4], [6,5,7], [4,1,8,3]] 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。 说明： 如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。 2、解题思路​ 通过上面的描述，第一时间能够想到的就是动态规划，这个动态规划与一般的不一样，之前做的题目的状态都是某个节点的状态依赖于其他的一个或几个节点，但这里不太一样的就是，我们要将每一行看作是一个状态，上一行依赖于下一行 ​ 因此，我们设计一个缓冲数组即可，长度为n，从下向上进行计算，左后一行比较特殊，直接赋值即可 倒数第二行，每一个数字都是当前数字和下面一行的数字之和中更小的那个 举个例子， 123456[ [2], [3,4], [6,5,7], [4,1,8,3]] 一开始，缓冲数组赋值为最后一行的值 1[4,1,8,3] 然后，计算前面一行的值，这时候，需要考虑一下下面一行的相邻节点的值 12345678910首先是6，他的相邻节点是4，1和值为10，7，我们取最小的，7，放到开头[7,1,8,3]然后是5，他的相邻节点是1，8和值是6，13，取最小值6[7,6,8,3]然后是7，他的相邻节点是8，3和值为15，10，取最小值10[7,6,10,3]这样，第三行的数据就处理完了，以此类推，处理到最后的第一行的时候，位于行首的元素就是我们所要的答案 1234567891011121314151617class Solution: def minimumTotal(self, triangle): """ :type triangle: List[List[int]] :rtype: int """ length = len(triangle) if length == 1: return triangle[0][0] line = triangle[-1][:] for i in range(length - 2, -1, -1): for j in range(i + 1): line[j] = min(triangle[i][j] + line[j], triangle[i][j] + line[j+1]) return line[0]]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -243,9 +243,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 120. 三角形最小路径和]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20120.%C2%A0%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 ​ 例如，给定三角形： 123456[ [2], [3,4], [6,5,7], [4,1,8,3]] 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。 说明： 如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。 2、解题思路​ 通过上面的描述，第一时间能够想到的就是动态规划，这个动态规划与一般的不一样，之前做的题目的状态都是某个节点的状态依赖于其他的一个或几个节点，但这里不太一样的就是，我们要将每一行看作是一个状态，上一行依赖于下一行 ​ 因此，我们设计一个缓冲数组即可，长度为n，从下向上进行计算，左后一行比较特殊，直接赋值即可 倒数第二行，每一个数字都是当前数字和下面一行的数字之和中更小的那个 举个例子， 123456[ [2], [3,4], [6,5,7], [4,1,8,3]] 一开始，缓冲数组赋值为最后一行的值 1[4,1,8,3] 然后，计算前面一行的值，这时候，需要考虑一下下面一行的相邻节点的值 12345678910首先是6，他的相邻节点是4，1和值为10，7，我们取最小的，7，放到开头[7,1,8,3]然后是5，他的相邻节点是1，8和值是6，13，取最小值6[7,6,8,3]然后是7，他的相邻节点是8，3和值为15，10，取最小值10[7,6,10,3]这样，第三行的数据就处理完了，以此类推，处理到最后的第一行的时候，位于行首的元素就是我们所要的答案 1234567891011121314151617class Solution: def minimumTotal(self, triangle): """ :type triangle: List[List[int]] :rtype: int """ length = len(triangle) if length == 1: return triangle[0][0] line = triangle[-1][:] for i in range(length - 2, -1, -1): for j in range(i + 1): line[j] = min(triangle[i][j] + line[j], triangle[i][j] + line[j+1]) return line[0]]]></content>
+    <title><![CDATA[LeetCode 12. 整数转罗马数字]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2012.%C2%A0%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 12345678字符 数值I 1V 5X 10L 50C 100D 500M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。 X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。 给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1: 12输入: 3输出: &quot;III&quot; 示例 2: 12输入: 4输出: &quot;IV&quot; 示例 3: 12输入: 9输出: &quot;IX&quot; 示例 4: 123输入: 58输出: &quot;LVIII&quot;解释: C = 100, L = 50, XXX = 30, III = 3. 示例 5: 123输入: 1994输出: &quot;MCMXCIV&quot;解释: M = 1000, CM = 900, XC = 90, IV = 4. 2、解题思路​ 对不同的位上的数字进行判断，要么是小于4的，等于4，等于5，5到9，等于9，只有这几种情况 ​ 实际上，可以直接将所有的可能性变成列表，这样更加简单 ​ 12345678910111213141516171819202122232425262728class Solution: def intToRoman(self, num): """ :type num: int :rtype: str """ if num &lt;= 0: return "" roam = [&#123;1: "M"&#125;, &#123;1: "C", 5: "D", 4: "CD", 9: "CM"&#125;, &#123;1: "X", 5: "L", 4: "XL", 9: "XC"&#125;, &#123;1: "I", 5: "V", 4: "IV", 9: "IX"&#125;] result = "" temp = num for i in range(3, -1, -1): digit = (temp // 10 ** i) % 10 if digit &gt; 0: if digit &lt; 4: result += roam[3 - i][1] * digit elif digit == 4: result += roam[3 - i][4] elif digit == 5: result += roam[3 - i][5] elif digit &gt; 5 and digit &lt; 9: result += roam[3 - i][5] + roam[3 - i][1] * (digit - 5) elif digit == 9: result += roam[3 - i][9] return result]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -331,17 +331,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 130. 被围绕的区域]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20130.%C2%A0%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%8C%BA%E5%9F%9F%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二维的矩阵，包含 &#39;X&#39; 和 &#39;O&#39;（字母 O）。 找到所有被 &#39;X&#39; 围绕的区域，并将这些区域里所有的 &#39;O&#39; 用 &#39;X&#39; 填充。 示例: 1234X X X XX O O XX X O XX O X X 运行你的函数后，矩阵变为： 1234X X X XX X X XX X X XX O X X 解释: 被围绕的区间不会存在于边界上，换句话说，任何边界上的 &#39;O&#39; 都不会被填充为 &#39;X&#39;。 任何不在边界上，或不与边界上的 &#39;O&#39; 相连的 &#39;O&#39; 最终都会被填充为 &#39;X&#39;。如果两个元素在水平或垂直方向相邻，则称它们是“相连”的。 2、解题思路​ 看到这道题，首先想到的就是利用dfs来搜索 ​ 基本思路就是乳沟在边界发现了一个’0’，就利用深度优先搜索，将所有的与之相邻的0并且不是边界的0标记位A ​ 然后将所有的0变成X， ​ 然后将左右的A变成0即可 ​ 注意，是字母$O$，不是数字$0$ 1234567891011121314151617181920212223242526272829303132333435363738class Solution: def solve(self, board): """ :type board: List[List[str]] :rtype: void Do not return anything, modify board in-place instead. """ row = len(board) if row &lt;= 2: return col = len(board[0]) for i in range(row): if board[i][0] == 'O': self.dfs(board, i, 0) if board[i][col - 1] == 'O': self.dfs(board, i, col - 1) for i in range(col): if board[0][i] == 'O': self.dfs(board, 0, i) if board[row - 1][i] == 'O': self.dfs(board, row - 1, i) for i in range(row): for j in range(col): if board[i][j] == 'O': board[i][j] = 'X' elif board[i][j] == 'A': board[i][j] = 'O' def dfs(self, board, i, j): if i &gt;= 0 and i &lt; len(board) and j &gt;= 0 and j &lt; len(board[0]) and board[i][j] == "O": board[i][j] = 'A' self.dfs(board, i - 1, j) self.dfs(board, i, j - 1) self.dfs(board, i + 1, j) self.dfs(board, i, j + 1)]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 133. 克隆图]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20133.%C2%A0%E5%85%8B%E9%9A%86%E5%9B%BE%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述克隆一张无向图，图中的每个节点包含一个 label （标签）和一个 neighbors （邻接点）列表 。 OJ的无向图序列化： 节点被唯一标记。 我们用 # 作为每个节点的分隔符，用 , 作为节点标签和邻接点的分隔符。 例如，序列化无向图 {0,1,2#1,2#2,2}。 该图总共有三个节点, 被两个分隔符 # 分为三部分。 第一个节点的标签为 0，存在从节点 0 到节点 1 和节点 2 的两条边。 第二个节点的标签为 1，存在从节点 1 到节点 2 的一条边。 第三个节点的标签为 2，存在从节点 2 到节点 2 (本身) 的一条边，从而形成自环。 我们将图形可视化如下： 123456 1 / \ / \0 --- 2 / \ \_/ 2、解题思路​ 看到图的问题，首先想到的就是深度优先很广度优先 使用深度优先 ​ 一开始写的深度优先，没有考虑到自循环的问题，陷入自循环中，所以，应该标记一下，已经访问过的点，保存到字典中，如果是已经添加过的节点，直接放到邻居中即可，不需要重新的生成一个节点 ​ 123456789101112131415161718192021222324252627# Definition for a undirected graph node# class UndirectedGraphNode:# def __init__(self, x):# self.label = x# self.neighbors = []class Solution: node_dict = &#123;&#125; # @param node, a undirected graph node # @return a undirected graph node def cloneGraph(self, node): if not node: return None return self.dfs(node) def dfs(self, node): if node in self.node_dict: return self.node_dict[node] current = UndirectedGraphNode(node.label) self.node_dict[node] = current for i in node.neighbors: self.node_dict[node].neighbors += [self.dfs(i)] return self.node_dict[node]]]></content>
@@ -353,9 +342,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 134. 加油站]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20134.%20%E5%8A%A0%E6%B2%B9%E7%AB%99%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述在一条环路上有 N 个加油站，其中第 i 个加油站有汽油 gas[i] 升。 你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。 如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1。 说明: 如果题目有解，该答案即为唯一答案。 输入数组均为非空数组，且长度相同。 输入数组中的元素均为非负数。 示例 1: 1234567891011121314输入: gas = [1,2,3,4,5]cost = [3,4,5,1,2]输出: 3解释:从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 = 0 + 4 = 4 升汽油开往 4 号加油站，此时油箱有 4 - 1 + 5 = 8 升汽油开往 0 号加油站，此时油箱有 8 - 2 + 1 = 7 升汽油开往 1 号加油站，此时油箱有 7 - 3 + 2 = 6 升汽油开往 2 号加油站，此时油箱有 6 - 4 + 3 = 5 升汽油开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。因此，3 可为起始索引。 示例 2: 12345678910111213输入: gas = [2,3,4]cost = [3,4,3]输出: -1解释:你不能从 0 号或 1 号加油站出发，因为没有足够的汽油可以让你行驶到下一个加油站。我们从 2 号加油站出发，可以获得 4 升汽油。 此时油箱有 = 0 + 4 = 4 升汽油开往 0 号加油站，此时油箱有 4 - 3 + 2 = 3 升汽油开往 1 号加油站，此时油箱有 3 - 3 + 3 = 3 升汽油你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。因此，无论怎样，你都不可能绕环路行驶一周。 2、解题思路2.1 暴力法​ 我们可以让每一个点作为起点进行尝试，如果能够走完，就返回 2.2 前向扫描移动​ 如果总的汽油数小于消耗数，肯定是不能环行的， ​ 如果从起始点开始，累积汽油小于0，表示从气势点到这个点过不去，起始点要从下一个点开始 123456789101112131415161718192021class Solution(object): def canCompleteCircuit(self, gas, cost): """ :type gas: List[int] :type cost: List[int] :rtype: int """ start = 0 total = 0 current_gas = 0 for i in range(len(gas)): current_gas += gas[i] - cost[i] total += gas[i] - cost[i] if current_gas &lt; 0: start = i + 1 current_gas = 0 if total &lt; 0: return -1 else: return start]]></content>
+    <title><![CDATA[LeetCode 130. 被围绕的区域]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20130.%C2%A0%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%8C%BA%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二维的矩阵，包含 &#39;X&#39; 和 &#39;O&#39;（字母 O）。 找到所有被 &#39;X&#39; 围绕的区域，并将这些区域里所有的 &#39;O&#39; 用 &#39;X&#39; 填充。 示例: 1234X X X XX O O XX X O XX O X X 运行你的函数后，矩阵变为： 1234X X X XX X X XX X X XX O X X 解释: 被围绕的区间不会存在于边界上，换句话说，任何边界上的 &#39;O&#39; 都不会被填充为 &#39;X&#39;。 任何不在边界上，或不与边界上的 &#39;O&#39; 相连的 &#39;O&#39; 最终都会被填充为 &#39;X&#39;。如果两个元素在水平或垂直方向相邻，则称它们是“相连”的。 2、解题思路​ 看到这道题，首先想到的就是利用dfs来搜索 ​ 基本思路就是乳沟在边界发现了一个’0’，就利用深度优先搜索，将所有的与之相邻的0并且不是边界的0标记位A ​ 然后将所有的0变成X， ​ 然后将左右的A变成0即可 ​ 注意，是字母$O$，不是数字$0$ 1234567891011121314151617181920212223242526272829303132333435363738class Solution: def solve(self, board): """ :type board: List[List[str]] :rtype: void Do not return anything, modify board in-place instead. """ row = len(board) if row &lt;= 2: return col = len(board[0]) for i in range(row): if board[i][0] == 'O': self.dfs(board, i, 0) if board[i][col - 1] == 'O': self.dfs(board, i, col - 1) for i in range(col): if board[0][i] == 'O': self.dfs(board, 0, i) if board[row - 1][i] == 'O': self.dfs(board, row - 1, i) for i in range(row): for j in range(col): if board[i][j] == 'O': board[i][j] = 'X' elif board[i][j] == 'A': board[i][j] = 'O' def dfs(self, board, i, j): if i &gt;= 0 and i &lt; len(board) and j &gt;= 0 and j &lt; len(board[0]) and board[i][j] == "O": board[i][j] = 'A' self.dfs(board, i - 1, j) self.dfs(board, i, j - 1) self.dfs(board, i + 1, j) self.dfs(board, i, j + 1)]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -367,6 +356,17 @@
     <title><![CDATA[LeetCode 136. 只出现一次的数字]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20136.%C2%A0%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 12输入: [2,2,1]输出: 1 示例 2: 12输入: [4,1,2,1,2]输出: 4 2、解题思路​ 题目要求是线性时间复杂度，并且不用额外的空间 ​ 考虑从头到尾扫描一遍，如何能够分辨呢 ​ 实际上，利用异或的特性，异或同一个值两次，就得到了答案 1234567int singleNumber(int* nums, int numsSize) &#123; int result = nums[0]; for (int i = 1; i &lt; numsSize; i++) &#123; result ^= nums[i]; &#125; return result;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 138. 复制带随机指针的链表]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20138.%C2%A0%E5%A4%8D%E5%88%B6%E5%B8%A6%E9%9A%8F%E6%9C%BA%E6%8C%87%E9%92%88%E7%9A%84%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。 要求返回这个链表的深度拷贝。 2、解题思路​ 这道题的深度拷贝，主要需要注意的问题就是不能形成环，也就是已经生成的节点不需要再次创建 1234567891011121314151617181920212223242526# Definition for singly-linked list with a random pointer.# class RandomListNode(object):# def __init__(self, x):# self.label = x# self.next = None# self.random = Noneclass Solution(object): def copyRandomList(self, head): """ :type head: RandomListNode :rtype: RandomListNode """ result = &#123;&#125; return self.dfs(head, result) def dfs(self, node, result): if node: if result.get(node) is None: result[node] = RandomListNode(node.label) result[node].next = self.dfs(node.next,result) result[node].random = self.dfs(node.random,result) else: return None return result[node]]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -397,17 +397,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 138. 复制带随机指针的链表]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20138.%C2%A0%E5%A4%8D%E5%88%B6%E5%B8%A6%E9%9A%8F%E6%9C%BA%E6%8C%87%E9%92%88%E7%9A%84%E9%93%BE%E8%A1%A8%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。 要求返回这个链表的深度拷贝。 2、解题思路​ 这道题的深度拷贝，主要需要注意的问题就是不能形成环，也就是已经生成的节点不需要再次创建 1234567891011121314151617181920212223242526# Definition for singly-linked list with a random pointer.# class RandomListNode(object):# def __init__(self, x):# self.label = x# self.next = None# self.random = Noneclass Solution(object): def copyRandomList(self, head): """ :type head: RandomListNode :rtype: RandomListNode """ result = &#123;&#125; return self.dfs(head, result) def dfs(self, node, result): if node: if result.get(node) is None: result[node] = RandomListNode(node.label) result[node].next = self.dfs(node.next,result) result[node].random = self.dfs(node.random,result) else: return None return result[node]]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 14. 最长公共前缀]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2014.%C2%A0%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述12345678910111213141516编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串 &quot;&quot;。示例 1:输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出: &quot;fl&quot;示例 2:输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]输出: &quot;&quot;解释: 输入不存在公共前缀。说明:所有输入只包含小写字母 a-z 。 2、解题思路1234567891011121314151617181920212223242526272829303132333435363738char* longestCommonPrefix(char** strs, int strsSize) &#123; if(strsSize &lt;=0)&#123; return ""; &#125; // 计算最长前缀的缓冲长度，使用所有字符串中最小的那个 int buff_length = INT32_MAX; for (int i = 0; i &lt; strsSize; i++) &#123; if (strlen(*(strs + i)) &lt; buff_length) &#123; buff_length = strlen(*(strs + i)); &#125; &#125; if (buff_length == 0) &#123; return ""; &#125; char *result = (char *) malloc(sizeof(char) * (buff_length + 1)); int count = 0; bool found = false; while (!found &amp;&amp; count &lt; buff_length) &#123; // 判断是不是所有的字符串都有这个字符，如果有一个没有，表示已经找到了最长前缀 for (int i = 0; i &lt; strsSize - 1; i++) &#123; if ((*(strs + i))[count] != (*(strs + i + 1))[count]) &#123; found = true; break; &#125; &#125; // 如果当前字符存在所有的字符串中，放入缓存，继续寻找 if (!found) &#123; result[count] = (*strs)[count]; count++; &#125; &#125; result[count] = '\0'; return result;&#125;]]></content>
@@ -430,9 +419,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 142. 环形链表 II]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20142.%C2%A0%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 说明：不允许修改给定的链表。 进阶： 你是否可以不用额外空间解决此题？ 2、解题思路​ 在前面循环链表中，使用快慢指针的技巧，判断是否存在环，这道题可以分为两步： 是否存在环 使用快慢指针来做 找出环的第一个节点 如果存在环，那么快指针比慢指针肯定是多走了一圈，那么记住相遇的节点，头结点与这个节点同时开始走，相遇的地方，就是环的第一个节点 123456789101112131415161718192021222324252627282930313233343536373839# Definition for singly-linked list.# class ListNode(object):# def __init__(self, x):# self.val = x# self.next = Noneclass Solution(object): def detectCycle(self, head): """ :type head: ListNode :rtype: ListNode """ if not head: return head faster = head slower = head meeting = None while faster: faster = faster.next if faster: faster = faster.next slower = slower.next else: return None if faster == slower: meeting = faster break if meeting is not None: while meeting != head: meeting = meeting.next head = head.next return meeting]]></content>
+    <title><![CDATA[LeetCode 134. 加油站]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20134.%20%E5%8A%A0%E6%B2%B9%E7%AB%99%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述在一条环路上有 N 个加油站，其中第 i 个加油站有汽油 gas[i] 升。 你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。 如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1。 说明: 如果题目有解，该答案即为唯一答案。 输入数组均为非空数组，且长度相同。 输入数组中的元素均为非负数。 示例 1: 1234567891011121314输入: gas = [1,2,3,4,5]cost = [3,4,5,1,2]输出: 3解释:从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 = 0 + 4 = 4 升汽油开往 4 号加油站，此时油箱有 4 - 1 + 5 = 8 升汽油开往 0 号加油站，此时油箱有 8 - 2 + 1 = 7 升汽油开往 1 号加油站，此时油箱有 7 - 3 + 2 = 6 升汽油开往 2 号加油站，此时油箱有 6 - 4 + 3 = 5 升汽油开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。因此，3 可为起始索引。 示例 2: 12345678910111213输入: gas = [2,3,4]cost = [3,4,3]输出: -1解释:你不能从 0 号或 1 号加油站出发，因为没有足够的汽油可以让你行驶到下一个加油站。我们从 2 号加油站出发，可以获得 4 升汽油。 此时油箱有 = 0 + 4 = 4 升汽油开往 0 号加油站，此时油箱有 4 - 3 + 2 = 3 升汽油开往 1 号加油站，此时油箱有 3 - 3 + 3 = 3 升汽油你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。因此，无论怎样，你都不可能绕环路行驶一周。 2、解题思路2.1 暴力法​ 我们可以让每一个点作为起点进行尝试，如果能够走完，就返回 2.2 前向扫描移动​ 如果总的汽油数小于消耗数，肯定是不能环行的， ​ 如果从起始点开始，累积汽油小于0，表示从气势点到这个点过不去，起始点要从下一个点开始 123456789101112131415161718192021class Solution(object): def canCompleteCircuit(self, gas, cost): """ :type gas: List[int] :type cost: List[int] :rtype: int """ start = 0 total = 0 current_gas = 0 for i in range(len(gas)): current_gas += gas[i] - cost[i] total += gas[i] - cost[i] if current_gas &lt; 0: start = i + 1 current_gas = 0 if total &lt; 0: return -1 else: return start]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -452,9 +441,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 144. 二叉树的前序遍历]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20144.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，返回它的 前序 遍历。 示例: 12345678输入: [1,null,2,3] 1 \ 2 / 3 输出: [1,2,3] 2、解题思路2.1 递归法​ 递归法已经做了很多遍了，直接写出来就好 123456789101112131415161718192021222324252627282930# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def preorderTraversal(self, root): """ :type root: TreeNode :rtype: List[int] """ if not root: return [] result = [] self.dfs(root, result) return result def dfs(self, node, result): if node: result.append(node.val) else: return self.dfs(node.left, result) self.dfs(node.right, result) 2.2 迭代法​ 迭代法借助队列来做 1234567891011121314151617181920212223242526272829# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def preorderTraversal(self, root): """ :type root: TreeNode :rtype: List[int] """ if not root: return [] result = [] stack = [root] while stack: node = stack.pop() result.append(node.val) if node.right: stack.append(node.right) if node.left: stack.append(node.left) return result]]></content>
+    <title><![CDATA[LeetCode 142. 环形链表 II]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20142.%C2%A0%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 说明：不允许修改给定的链表。 进阶： 你是否可以不用额外空间解决此题？ 2、解题思路​ 在前面循环链表中，使用快慢指针的技巧，判断是否存在环，这道题可以分为两步： 是否存在环 使用快慢指针来做 找出环的第一个节点 如果存在环，那么快指针比慢指针肯定是多走了一圈，那么记住相遇的节点，头结点与这个节点同时开始走，相遇的地方，就是环的第一个节点 123456789101112131415161718192021222324252627282930313233343536373839# Definition for singly-linked list.# class ListNode(object):# def __init__(self, x):# self.val = x# self.next = Noneclass Solution(object): def detectCycle(self, head): """ :type head: ListNode :rtype: ListNode """ if not head: return head faster = head slower = head meeting = None while faster: faster = faster.next if faster: faster = faster.next slower = slower.next else: return None if faster == slower: meeting = faster break if meeting is not None: while meeting != head: meeting = meeting.next head = head.next return meeting]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -474,9 +463,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 148. 排序链表]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20148.%C2%A0%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。 示例 1: 12输入: 4-&gt;2-&gt;1-&gt;3输出: 1-&gt;2-&gt;3-&gt;4 示例 2: 12输入: -1-&gt;5-&gt;3-&gt;4-&gt;0输出: -1-&gt;0-&gt;3-&gt;4-&gt;5 2、解题思路​ 前面刚刚过做了插入排序，可惜插入排序的时间复杂度是$O(n^2)$的，并不是题目要求的 ​ 题目要求的时间复杂度，一般能想到三种排序，快排，堆排序，归并排序，堆排序很复杂，也需要额外空间，快排引入了递归，所以归并排序是比较合适的 ​ 首先我们要获取链表的长度，然后归并的步伐从1开始，然后是2，4，8，16 ​ 不过这样实现有点麻烦，换个思路 首先给定一个链表，分成两部分，假定这两部分已经排序好，调用归并排序 左面这一部分，递归调用归并排序 右面这部分，递归调用归并排序 返回归并排序结果 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859# Definition for singly-linked list.# class ListNode:# def __init__(self, x):# self.val = x# self.next = Noneclass Solution: def sortList(self, head): """ :type head: ListNode :rtype: ListNode """ if not head or not head.next: return head first = head faster = head slower = head # 将链表分成两部分 while faster: faster = faster.next if faster: faster = faster.next if faster: slower = slower.next second = slower.next slower.next = None part1 = self.sortList(first) part2 = self.sortList(second) return self.merge(part1, part2) # 链表归并 def merge(self, first, second): result = ListNode(0) result.next = first prev = result while first or second: if first and second: if first.val &lt; second.val: prev.next = first first = first.next else: prev.next = second second = second.next prev = prev.next if not first: prev.next = second break if not second: prev.next = first break return result.next]]></content>
+    <title><![CDATA[LeetCode 144. 二叉树的前序遍历]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20144.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，返回它的 前序 遍历。 示例: 12345678输入: [1,null,2,3] 1 \ 2 / 3 输出: [1,2,3] 2、解题思路2.1 递归法​ 递归法已经做了很多遍了，直接写出来就好 123456789101112131415161718192021222324252627282930# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def preorderTraversal(self, root): """ :type root: TreeNode :rtype: List[int] """ if not root: return [] result = [] self.dfs(root, result) return result def dfs(self, node, result): if node: result.append(node.val) else: return self.dfs(node.left, result) self.dfs(node.right, result) 2.2 迭代法​ 迭代法借助队列来做 1234567891011121314151617181920212223242526272829# Definition for a binary tree node.# class TreeNode(object):# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution(object): def preorderTraversal(self, root): """ :type root: TreeNode :rtype: List[int] """ if not root: return [] result = [] stack = [root] while stack: node = stack.pop() result.append(node.val) if node.right: stack.append(node.right) if node.left: stack.append(node.left) return result]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -485,9 +474,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 15. 三数之和]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2015.%C2%A0%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。 注意：答案中不可以包含重复的三元组。 1234567例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，满足要求的三元组集合为：[ [-1, 0, 1], [-1, -1, 2]] 2、解题思路​ 首先是统计数量，分成两种情况讨论，一种是结果中有重复值，另一种没有 ​ 然后进行排序，固定左面的值，在右面的值中，寻找两数之和为当前值的负数，这个可以利用leetcode的第一题的思路来寻找 ​ 123456789101112131415161718192021222324252627282930313233343536class Solution: def threeSum(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ if len(nums) &lt; 3: return [] result = [] t = collections.Counter(nums) # count_big_two = [v for v in t if t[v] &gt;= 2] count_equal_one = sorted(list(t)) if t[0] &gt;= 3: result.append([0, 0, 0]) for i in range(len(count_equal_one)): if count_equal_one[i] &gt;= 0: break if count_equal_one[i] != 0 and t[count_equal_one[i]] &gt;= 2 and t[-count_equal_one[i] * 2] &gt; 0: result.append([count_equal_one[i], count_equal_one[i], -2 * count_equal_one[i]]) if count_equal_one[i] != 0 and count_equal_one[i] % 2 == 0 and t[-count_equal_one[i] // 2] &gt;= 2: result.append([count_equal_one[i], -count_equal_one[i] // 2, -count_equal_one[i] // 2]) temp = &#123;&#125; for j in range(i + 1, len(count_equal_one)): if count_equal_one[j] in temp: result.append([count_equal_one[i], count_equal_one[j], temp[count_equal_one[j]]]) else: temp[-count_equal_one[i] - count_equal_one[j]] = count_equal_one[j] return result]]></content>
+    <title><![CDATA[LeetCode 148. 排序链表]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20148.%C2%A0%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。 示例 1: 12输入: 4-&gt;2-&gt;1-&gt;3输出: 1-&gt;2-&gt;3-&gt;4 示例 2: 12输入: -1-&gt;5-&gt;3-&gt;4-&gt;0输出: -1-&gt;0-&gt;3-&gt;4-&gt;5 2、解题思路​ 前面刚刚过做了插入排序，可惜插入排序的时间复杂度是$O(n^2)$的，并不是题目要求的 ​ 题目要求的时间复杂度，一般能想到三种排序，快排，堆排序，归并排序，堆排序很复杂，也需要额外空间，快排引入了递归，所以归并排序是比较合适的 ​ 首先我们要获取链表的长度，然后归并的步伐从1开始，然后是2，4，8，16 ​ 不过这样实现有点麻烦，换个思路 首先给定一个链表，分成两部分，假定这两部分已经排序好，调用归并排序 左面这一部分，递归调用归并排序 右面这部分，递归调用归并排序 返回归并排序结果 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859# Definition for singly-linked list.# class ListNode:# def __init__(self, x):# self.val = x# self.next = Noneclass Solution: def sortList(self, head): """ :type head: ListNode :rtype: ListNode """ if not head or not head.next: return head first = head faster = head slower = head # 将链表分成两部分 while faster: faster = faster.next if faster: faster = faster.next if faster: slower = slower.next second = slower.next slower.next = None part1 = self.sortList(first) part2 = self.sortList(second) return self.merge(part1, part2) # 链表归并 def merge(self, first, second): result = ListNode(0) result.next = first prev = result while first or second: if first and second: if first.val &lt; second.val: prev.next = first first = first.next else: prev.next = second second = second.next prev = prev.next if not first: prev.next = second break if not second: prev.next = first break return result.next]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -507,9 +496,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 151. 翻转字符串里的单词]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20151.%C2%A0%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个字符串，逐个翻转字符串中的每个单词。 示例: 12输入: &quot;the sky is blue&quot;,输出: &quot;blue is sky the&quot;. 说明: 无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 进阶: 请选用C语言的用户尝试使用 O(1) 时间复杂度的原地解法。 2、解题思路​ 如果用python，当然是很简单就做出来了，不过题目要求如果用C的话，就写一下基本思路好了 ​ 一遍扫描肯定是不好做的，因为还不知道单词的分界线 ​ 分两步 预处理，将单词反转，并去掉多余的空格 整个数组反转，找到头结点，返回 示例 123456789&quot;the sky is blue&quot;上面是输入，我们两个指针，第一个指向单词的首部，第二个指向尾部，找到单词以后，反转，然后放到头上&quot;eht sky is blue&quot;如果有多个空格，只保留一个即可扫描到最后，整个数组应该长成这样子&quot;eht yks si eulb&quot;然后，整个数组反转就得到结果了&quot;blue is sky the&quot; 基本思路就是这样，需要注意返回的位置 下面直接用python做一下 1234567class Solution(object): def reverseWords(self, s): """ :type s: str :rtype: str """ return " ".join(reversed([v for v in s.split(" ") if v != ""])) ​ 用C语言要写这么多，用python只有一行，哈哈哈，超过99.29%，其实没差了]]></content>
+    <title><![CDATA[LeetCode 15. 三数之和]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2015.%C2%A0%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。 注意：答案中不可以包含重复的三元组。 1234567例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，满足要求的三元组集合为：[ [-1, 0, 1], [-1, -1, 2]] 2、解题思路​ 首先是统计数量，分成两种情况讨论，一种是结果中有重复值，另一种没有 ​ 然后进行排序，固定左面的值，在右面的值中，寻找两数之和为当前值的负数，这个可以利用leetcode的第一题的思路来寻找 ​ 123456789101112131415161718192021222324252627282930313233343536class Solution: def threeSum(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ if len(nums) &lt; 3: return [] result = [] t = collections.Counter(nums) # count_big_two = [v for v in t if t[v] &gt;= 2] count_equal_one = sorted(list(t)) if t[0] &gt;= 3: result.append([0, 0, 0]) for i in range(len(count_equal_one)): if count_equal_one[i] &gt;= 0: break if count_equal_one[i] != 0 and t[count_equal_one[i]] &gt;= 2 and t[-count_equal_one[i] * 2] &gt; 0: result.append([count_equal_one[i], count_equal_one[i], -2 * count_equal_one[i]]) if count_equal_one[i] != 0 and count_equal_one[i] % 2 == 0 and t[-count_equal_one[i] // 2] &gt;= 2: result.append([count_equal_one[i], -count_equal_one[i] // 2, -count_equal_one[i] // 2]) temp = &#123;&#125; for j in range(i + 1, len(count_equal_one)): if count_equal_one[j] in temp: result.append([count_equal_one[i], count_equal_one[j], temp[count_equal_one[j]]]) else: temp[-count_equal_one[i] - count_equal_one[j]] = count_equal_one[j] return result]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -529,9 +518,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 153. 寻找旋转排序数组中的最小值]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20153.%C2%A0%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 你可以假设数组中不存在重复元素。 示例 1: 12输入: [3,4,5,1,2]输出: 1 示例 2: 12输入: [4,5,6,7,0,1,2]输出: 0 2、解题思路​ 难道这道题就是要找到最小值？ ​ 虽然通过了。。 1234567class Solution: def findMin(self, nums): """ :type nums: List[int] :rtype: int """ return min(nums)]]></content>
+    <title><![CDATA[LeetCode 151. 翻转字符串里的单词]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20151.%C2%A0%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个字符串，逐个翻转字符串中的每个单词。 示例: 12输入: &quot;the sky is blue&quot;,输出: &quot;blue is sky the&quot;. 说明: 无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 进阶: 请选用C语言的用户尝试使用 O(1) 时间复杂度的原地解法。 2、解题思路​ 如果用python，当然是很简单就做出来了，不过题目要求如果用C的话，就写一下基本思路好了 ​ 一遍扫描肯定是不好做的，因为还不知道单词的分界线 ​ 分两步 预处理，将单词反转，并去掉多余的空格 整个数组反转，找到头结点，返回 示例 123456789&quot;the sky is blue&quot;上面是输入，我们两个指针，第一个指向单词的首部，第二个指向尾部，找到单词以后，反转，然后放到头上&quot;eht sky is blue&quot;如果有多个空格，只保留一个即可扫描到最后，整个数组应该长成这样子&quot;eht yks si eulb&quot;然后，整个数组反转就得到结果了&quot;blue is sky the&quot; 基本思路就是这样，需要注意返回的位置 下面直接用python做一下 1234567class Solution(object): def reverseWords(self, s): """ :type s: str :rtype: str """ return " ".join(reversed([v for v in s.split(" ") if v != ""])) ​ 用C语言要写这么多，用python只有一行，哈哈哈，超过99.29%，其实没差了]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -540,9 +529,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 16. 最接近的三数之和]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2016.%C2%A0%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 123例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2). 2、解题思路​ 这道题与第15题有相似之处，找到3个数之和，使得他们的和最接近给定的数 ​ 假如我们将整个数组排序了，每次固定第一个数，在后面进行查找 ​ 如果diff变小，更新结果值 ​ 3数之和小于target，left增加 ​ 3数之和大于target，right减一，表示需要减小 123456789101112131415161718192021222324252627282930313233class Solution: def threeSumClosest(self, nums, target): """ :type nums: List[int] :type target: int :rtype: int """ sorted_num = sorted(nums) diff = 0xffffffff result = 0 for i in range(len(sorted_num)): left = i + 1 right = len(sorted_num) - 1 while left &lt; right: temp_sum = sorted_num[i] + sorted_num[left] + sorted_num[right] temp_diff = abs(target - temp_sum) if temp_diff == 0: return temp_sum if temp_diff &lt; diff: diff = temp_diff result = temp_sum if temp_sum &lt; target: left += 1 else: right -= 1 return result]]></content>
+    <title><![CDATA[LeetCode 153. 寻找旋转排序数组中的最小值]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20153.%C2%A0%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 你可以假设数组中不存在重复元素。 示例 1: 12输入: [3,4,5,1,2]输出: 1 示例 2: 12输入: [4,5,6,7,0,1,2]输出: 0 2、解题思路​ 难道这道题就是要找到最小值？ ​ 虽然通过了。。 1234567class Solution: def findMin(self, nums): """ :type nums: List[int] :rtype: int """ return min(nums)]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -587,6 +576,17 @@
     <title><![CDATA[LeetCode 166. 分数到小数]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20166.%C2%A0%E5%88%86%E6%95%B0%E5%88%B0%E5%B0%8F%E6%95%B0%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。 如果小数部分为循环小数，则将循环的部分括在括号内。 示例 1: 12输入: numerator = 1, denominator = 2输出: &quot;0.5&quot; 示例 2: 12输入: numerator = 2, denominator = 1输出: &quot;2&quot; 示例 3: 12输入: numerator = 2, denominator = 3输出: &quot;0.(6)&quot; 2、解题思路​ 再找思路的过程中，反向思考，如果是无限循环小数，如何变成分数呢？ 123456789101112步骤1.将无限循环小数分为2个部分,0.3454545...45为例,将其分0.3+0.04545...45这2个部分.步骤2.将这2个部分分别化成分数,0.3=3/10,0.0454545...45的划分方法.先设它为a,那么就有：10a=0.454545...451000a=45.4545.451000a-10a=45990a=45a=45/990=1/22所以0.0454545...45=1/22步骤3.再将2个部分相加就得到该无限循环小数化成分数的结果了3/10+1/22=66/220+10/220=76/220=19/55所以0.3454545...45=19/55 ​ 这个题目可以这样做，首先将数据分成两部分，整数部分和小数部分， 建立一个哈希，缓存余数 对小数部分进行判断，是不是循环的，如果余数不为0，表示要继续计算下去 如果余数出现过了，表示这个就是循环的，当前的数字不需要加入结果集中 有一点需要注意，符号的问题，先把结果的正负号保存下来，然后计算的都用正数 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152class Solution: def fractionToDecimal(self, numerator, denominator): """ :type numerator: int :type denominator: int :rtype: str """ sign = 1 if (numerator &gt; 0 and denominator &lt; 0) or (numerator &lt; 0 and denominator &gt; 0): sign = -1 numerator = abs(numerator) denominator = abs(denominator) integer_part = numerator // denominator remainder = numerator % denominator if sign == 1: result = "" else: result = "-" if remainder == 0: return result + str(integer_part) remainder_hash = &#123;&#125; decimal_cache = [] is_cycle = False cycle_index = 0 while remainder != 0: temp = remainder = remainder cur_num = remainder * 10 // denominator remainder = remainder * 10 % denominator if remainder_hash.get(temp) is None: remainder_hash[temp] = cycle_index decimal_cache.append(cur_num) cycle_index += 1 else: cycle_index = remainder_hash[temp] is_cycle = True break if not is_cycle: result += str(integer_part) + "." + "".join([str(i) for i in decimal_cache]) else: result += str(integer_part) + "." + "".join([str(i) for i in decimal_cache[:cycle_index]]) + "(" + "".join( [str(i) for i in decimal_cache[cycle_index:]]) + ")" return result]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 16. 最接近的三数之和]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2016.%C2%A0%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 123例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2). 2、解题思路​ 这道题与第15题有相似之处，找到3个数之和，使得他们的和最接近给定的数 ​ 假如我们将整个数组排序了，每次固定第一个数，在后面进行查找 ​ 如果diff变小，更新结果值 ​ 3数之和小于target，left增加 ​ 3数之和大于target，right减一，表示需要减小 123456789101112131415161718192021222324252627282930313233class Solution: def threeSumClosest(self, nums, target): """ :type nums: List[int] :type target: int :rtype: int """ sorted_num = sorted(nums) diff = 0xffffffff result = 0 for i in range(len(sorted_num)): left = i + 1 right = len(sorted_num) - 1 while left &lt; right: temp_sum = sorted_num[i] + sorted_num[left] + sorted_num[right] temp_diff = abs(target - temp_sum) if temp_diff == 0: return temp_sum if temp_diff &lt; diff: diff = temp_diff result = temp_sum if temp_sum &lt; target: left += 1 else: right -= 1 return result]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -727,31 +727,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 181. 超过经理收入的员工]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20181.%C2%A0%E8%B6%85%E8%BF%87%E7%BB%8F%E7%90%86%E6%94%B6%E5%85%A5%E7%9A%84%E5%91%98%E5%B7%A5%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。 12345678+----+-------+--------+-----------+| Id | Name | Salary | ManagerId |+----+-------+--------+-----------+| 1 | Joe | 70000 | 3 || 2 | Henry | 80000 | 4 || 3 | Sam | 60000 | NULL || 4 | Max | 90000 | NULL |+----+-------+--------+-----------+ 给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。 12345+----------+| Employee |+----------+| Joe |+----------+ 2、解题思路12# Write your MySQL query statement belowselect e1.Name as "Employee" from Employee e1,Employee e2 where e1.ManagerId = e2.Id and e1.Salary&gt;e2.Salary]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 180. 连续出现的数字]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20180.%C2%A0%E8%BF%9E%E7%BB%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述编写一个 SQL 查询，查找所有至少连续出现三次的数字。 1234567891011+----+-----+| Id | Num |+----+-----+| 1 | 1 || 2 | 1 || 3 | 1 || 4 | 2 || 5 | 1 || 6 | 2 || 7 | 2 |+----+-----+ 例如，给定上面的 Logs 表， 1 是唯一连续出现至少三次的数字。 12345+-----------------+| ConsecutiveNums |+-----------------+| 1 |+-----------------+ 2、解题思路123# Write your MySQL query statement belowselect distinct l1.Num as "ConsecutiveNums" from Logs l1 ,Logs l2 ,Logs l3 where l1.Id = l2.Id-1 and l2.Id = l3.Id-1 and l1.Num = l2.Num and l1.Num = L3.Num]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 182. 查找重复的电子邮箱]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20182.%C2%A0%E6%9F%A5%E6%89%BE%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ 说明：所有电子邮箱都是小写字母。 2、解题思路12# Write your MySQL query statement belowselect Email from Person group by Email having count(Email) &gt; 1 3、附录Having与Where的区别 where 子句的作用是在对查询结果进行分组前，将不符合where条件的行去掉，即在分组之前过滤数据，where条件中不能包含聚组函数，使用where条件过滤出特定的行。 having 子句的作用是筛选满足条件的组，即在分组之后过滤数据，条件中经常包含聚组函数，使用having 条件过滤出特定的组，也可以使用多个分组标准进行分组。]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -771,9 +749,42 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 184. 部门工资最高的员工]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20184.%C2%A0%E9%83%A8%E9%97%A8%E5%B7%A5%E8%B5%84%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。 12345678+----+-------+--------+--------------+| Id | Name | Salary | DepartmentId |+----+-------+--------+--------------+| 1 | Joe | 70000 | 1 || 2 | Henry | 80000 | 2 || 3 | Sam | 60000 | 2 || 4 | Max | 90000 | 1 |+----+-------+--------+--------------+ Department 表包含公司所有部门的信息。 123456+----+----------+| Id | Name |+----+----------+| 1 | IT || 2 | Sales |+----+----------+ 编写一个 SQL 查询，找出每个部门工资最高的员工。例如，根据上述给定的表格，Max 在 IT 部门有最高工资，Henry 在 Sales 部门有最高工资。 123456+------------+----------+--------+| Department | Employee | Salary |+------------+----------+--------+| IT | Max | 90000 || Sales | Henry | 80000 |+------------+----------+--------+ 2、解题思路​ 在员工所属的部门中，找出最高工资，然后判断当前员工是不是，如果是，就把他选出来 12# Write your MySQL query statement belowselect d.Name as Department , e.Name as Employee , e.Salary as Salary from Employee e, Department d where e.DepartmentId = d.Id and e.Salary = (select max(Salary) from Employee em where em.DepartmentId = d.Id)]]></content>
+    <title><![CDATA[LeetCode 181. 超过经理收入的员工]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20181.%C2%A0%E8%B6%85%E8%BF%87%E7%BB%8F%E7%90%86%E6%94%B6%E5%85%A5%E7%9A%84%E5%91%98%E5%B7%A5%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。 12345678+----+-------+--------+-----------+| Id | Name | Salary | ManagerId |+----+-------+--------+-----------+| 1 | Joe | 70000 | 3 || 2 | Henry | 80000 | 4 || 3 | Sam | 60000 | NULL || 4 | Max | 90000 | NULL |+----+-------+--------+-----------+ 给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。 12345+----------+| Employee |+----------+| Joe |+----------+ 2、解题思路12# Write your MySQL query statement belowselect e1.Name as "Employee" from Employee e1,Employee e2 where e1.ManagerId = e2.Id and e1.Salary&gt;e2.Salary]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 182. 查找重复的电子邮箱]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20182.%C2%A0%E6%9F%A5%E6%89%BE%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ 说明：所有电子邮箱都是小写字母。 2、解题思路12# Write your MySQL query statement belowselect Email from Person group by Email having count(Email) &gt; 1 3、附录Having与Where的区别 where 子句的作用是在对查询结果进行分组前，将不符合where条件的行去掉，即在分组之前过滤数据，where条件中不能包含聚组函数，使用where条件过滤出特定的行。 having 子句的作用是筛选满足条件的组，即在分组之后过滤数据，条件中经常包含聚组函数，使用having 条件过滤出特定的组，也可以使用多个分组标准进行分组。]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 183. 从不订购的客户]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20183.%C2%A0%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。 Customers 表： 12345678+----+-------+| Id | Name |+----+-------+| 1 | Joe || 2 | Henry || 3 | Sam || 4 | Max |+----+-------+ Orders 表： 123456+----+------------+| Id | CustomerId |+----+------------+| 1 | 3 || 2 | 1 |+----+------------+ 例如给定上述表格，你的查询应返回： 123456+-----------+| Customers |+-----------+| Henry || Max |+-----------+ 2、解题思路12# Write your MySQL query statement belowselect Name as "Customers" from Customers where Id not in (select CustomerId from Orders )]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 189.旋转数组]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20189.%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。 示例 1: 123456输入: [1,2,3,4,5,6,7] 和 k = 3输出: [5,6,7,1,2,3,4]解释:向右旋转 1 步: [7,1,2,3,4,5,6]向右旋转 2 步: [6,7,1,2,3,4,5]向右旋转 3 步: [5,6,7,1,2,3,4] 示例 2: 12345输入: [-1,-100,3,99] 和 k = 2输出: [3,99,-1,-100]解释: 向右旋转 1 步: [99,-1,-100,3]向右旋转 2 步: [3,99,-1,-100] 说明: 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。 要求使用空间复杂度为 O(1) 的原地算法。 2、解题思路2.1 缓冲数组法​ 设置一个与当前数组同样大小的数组，将原数组中的所有的元素使用取余，计算出位置，直接赋值 2.2 单步移动法​ 每一次右旋移动一次，根据需要移动的数量，多次移动 2.3 分组法​ 分组法较为巧妙 例如，1，2，3，4，5，6，7 ​ 我们想要右移3位，那么实际上可以如何实现呢？ ​ 我们将1，2，3，4只有移动到右面底部，然后将5，6，7平移到左面，就得到结果了 ​ 但是，如果想要不借助其他的空间移动，我们发现，直接取反就可以做到，不过1，2，3，4的位置是反着的，5，6，7的位置也是反着的 ​ 因此，根据移动的步数，进行分组，然后将组内部元素取反，再整体取反，就得到想要的结果了 1234567891011121314151617181920212223void reverse(int *nums, int left, int right) &#123; int length = right - left + 1; if (length &lt;= 1) &#123; return; &#125; for (int i = 0; i &lt; length / 2; i++) &#123; nums[left + i] ^= nums[right - i]; nums[right - i] ^= nums[left + i]; nums[left + i] ^= nums[right - i]; &#125;&#125;void rotate(int *nums, int numsSize, int k) &#123; int step = k % numsSize; if (step == 0) &#123; return; &#125; reverse(nums, 0, numsSize - step - 1); reverse(nums, numsSize - step, numsSize - 1); reverse(nums, 0, numsSize - 1);&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -793,9 +804,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 187. 重复的DNA序列]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20187.%C2%A0%E9%87%8D%E5%A4%8D%E7%9A%84DNA%E5%BA%8F%E5%88%97%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述所有 DNA 由一系列缩写为 A，C，G 和 T 的核苷酸组成，例如：“ACGAATTCCG”。在研究 DNA 时，识别 DNA 中的重复序列有时会对研究非常有帮助。 编写一个函数来查找 DNA 分子中所有出现超多一次的10个字母长的序列（子串）。 示例: 123输入: s = &quot;AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT&quot;输出: [&quot;AAAAACCCCC&quot;, &quot;CCCCCAAAAA&quot;] 2、解题思路​ 直接用哈希来做，很简单 1234567891011121314151617class Solution(object): def findRepeatedDnaSequences(self, s): """ :type s: str :rtype: List[str] """ length = len(s) hash_buff = &#123;&#125; for i in range(length - 9): if hash_buff.get(s[i:i + 10]) is None: hash_buff[s[i:i + 10]] = 1 else: hash_buff[s[i:i + 10]] += 1 return [ k for k,v in hash_buff.items() if v &gt;= 2]]]></content>
+    <title><![CDATA[LeetCode 184. 部门工资最高的员工]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20184.%C2%A0%E9%83%A8%E9%97%A8%E5%B7%A5%E8%B5%84%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。 12345678+----+-------+--------+--------------+| Id | Name | Salary | DepartmentId |+----+-------+--------+--------------+| 1 | Joe | 70000 | 1 || 2 | Henry | 80000 | 2 || 3 | Sam | 60000 | 2 || 4 | Max | 90000 | 1 |+----+-------+--------+--------------+ Department 表包含公司所有部门的信息。 123456+----+----------+| Id | Name |+----+----------+| 1 | IT || 2 | Sales |+----+----------+ 编写一个 SQL 查询，找出每个部门工资最高的员工。例如，根据上述给定的表格，Max 在 IT 部门有最高工资，Henry 在 Sales 部门有最高工资。 123456+------------+----------+--------+| Department | Employee | Salary |+------------+----------+--------+| IT | Max | 90000 || Sales | Henry | 80000 |+------------+----------+--------+ 2、解题思路​ 在员工所属的部门中，找出最高工资，然后判断当前员工是不是，如果是，就把他选出来 12# Write your MySQL query statement belowselect d.Name as Department , e.Name as Employee , e.Salary as Salary from Employee e, Department d where e.DepartmentId = d.Id and e.Salary = (select max(Salary) from Employee em where em.DepartmentId = d.Id)]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -804,9 +815,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 183. 从不订购的客户]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20183.%C2%A0%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。 Customers 表： 12345678+----+-------+| Id | Name |+----+-------+| 1 | Joe || 2 | Henry || 3 | Sam || 4 | Max |+----+-------+ Orders 表： 123456+----+------------+| Id | CustomerId |+----+------------+| 1 | 3 || 2 | 1 |+----+------------+ 例如给定上述表格，你的查询应返回： 123456+-----------+| Customers |+-----------+| Henry || Max |+-----------+ 2、解题思路12# Write your MySQL query statement belowselect Name as "Customers" from Customers where Id not in (select CustomerId from Orders )]]></content>
+    <title><![CDATA[LeetCode 187. 重复的DNA序列]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20187.%C2%A0%E9%87%8D%E5%A4%8D%E7%9A%84DNA%E5%BA%8F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述所有 DNA 由一系列缩写为 A，C，G 和 T 的核苷酸组成，例如：“ACGAATTCCG”。在研究 DNA 时，识别 DNA 中的重复序列有时会对研究非常有帮助。 编写一个函数来查找 DNA 分子中所有出现超多一次的10个字母长的序列（子串）。 示例: 123输入: s = &quot;AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT&quot;输出: [&quot;AAAAACCCCC&quot;, &quot;CCCCCAAAAA&quot;] 2、解题思路​ 直接用哈希来做，很简单 1234567891011121314151617class Solution(object): def findRepeatedDnaSequences(self, s): """ :type s: str :rtype: List[str] """ length = len(s) hash_buff = &#123;&#125; for i in range(length - 9): if hash_buff.get(s[i:i + 10]) is None: hash_buff[s[i:i + 10]] = 1 else: hash_buff[s[i:i + 10]] += 1 return [ k for k,v in hash_buff.items() if v &gt;= 2]]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -837,17 +848,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 189.旋转数组]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20189.%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。 示例 1: 123456输入: [1,2,3,4,5,6,7] 和 k = 3输出: [5,6,7,1,2,3,4]解释:向右旋转 1 步: [7,1,2,3,4,5,6]向右旋转 2 步: [6,7,1,2,3,4,5]向右旋转 3 步: [5,6,7,1,2,3,4] 示例 2: 12345输入: [-1,-100,3,99] 和 k = 2输出: [3,99,-1,-100]解释: 向右旋转 1 步: [99,-1,-100,3]向右旋转 2 步: [3,99,-1,-100] 说明: 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。 要求使用空间复杂度为 O(1) 的原地算法。 2、解题思路2.1 缓冲数组法​ 设置一个与当前数组同样大小的数组，将原数组中的所有的元素使用取余，计算出位置，直接赋值 2.2 单步移动法​ 每一次右旋移动一次，根据需要移动的数量，多次移动 2.3 分组法​ 分组法较为巧妙 例如，1，2，3，4，5，6，7 ​ 我们想要右移3位，那么实际上可以如何实现呢？ ​ 我们将1，2，3，4只有移动到右面底部，然后将5，6，7平移到左面，就得到结果了 ​ 但是，如果想要不借助其他的空间移动，我们发现，直接取反就可以做到，不过1，2，3，4的位置是反着的，5，6，7的位置也是反着的 ​ 因此，根据移动的步数，进行分组，然后将组内部元素取反，再整体取反，就得到想要的结果了 1234567891011121314151617181920212223void reverse(int *nums, int left, int right) &#123; int length = right - left + 1; if (length &lt;= 1) &#123; return; &#125; for (int i = 0; i &lt; length / 2; i++) &#123; nums[left + i] ^= nums[right - i]; nums[right - i] ^= nums[left + i]; nums[left + i] ^= nums[right - i]; &#125;&#125;void rotate(int *nums, int numsSize, int k) &#123; int step = k % numsSize; if (step == 0) &#123; return; &#125; reverse(nums, 0, numsSize - step - 1); reverse(nums, numsSize - step, numsSize - 1); reverse(nums, 0, numsSize - 1);&#125;]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 191. 位1的个数]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20191.%C2%A0%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述编写一个函数，输入是一个无符号整数，返回其二进制表达式中数字位数为 ‘1’ 的个数（也被称为汉明重量）。 示例 : 123输入: 11输出: 3解释: 整数 11 的二进制表示为 00000000000000000000000000001011 示例 2: 123输入: 128输出: 1解释: 整数 128 的二进制表示为 00000000000000000000000010000000 2、解题思路12345678int hammingWeight(uint32_t n) &#123; int result = 0; for (int i = 0;i&lt;32;i++)&#123; result += n&amp;1; n = n&gt;&gt;1; &#125; return result;&#125;]]></content>
@@ -862,6 +862,17 @@
     <title><![CDATA[LeetCode 196. 删除重复的电子邮箱]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20196.%C2%A0%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。 12345678+----+------------------+| Id | Email |+----+------------------+| 1 | john@example.com || 2 | bob@example.com || 3 | john@example.com |+----+------------------+Id 是这个表的主键。 例如，在运行你的查询语句之后，上面的 Person 表应返回以下几行: 123456+----+------------------+| Id | Email |+----+------------------+| 1 | john@example.com || 2 | bob@example.com |+----+------------------+ 2、解题思路12# Write your MySQL query statement belowdelete p1 from Person p1, Person p2 where p1.Email = p2.Email and p1.Id &gt; p2.Id 12# Write your MySQL query statement belowdelete from Person where Id not in (select Id from (select min(Id) Id from Person group by Email) p)]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 197. 上升的温度]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20197.%C2%A0%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B8%A9%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。 12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ 2、解题思路​ 这里有一点需要注意，就是每一次比较，是今天的时间和昨天的时间进行比较 ​ 所以将日期转换为天数，得到差值为1的记录，并且过滤掉第一个，前面没有温度的 12# Write your MySQL query statement belowselect w1.Id from Weather w1 left join Weather w2 on to_days(w1.RecordDate) - to_days(w2.RecordDate) =1 and w1.Temperature &gt; w2.Temperature where w2.Id is not null;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -903,9 +914,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 197. 上升的温度]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20197.%C2%A0%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B8%A9%E5%BA%A6%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。 12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ 2、解题思路​ 这里有一点需要注意，就是每一次比较，是今天的时间和昨天的时间进行比较 ​ 所以将日期转换为天数，得到差值为1的记录，并且过滤掉第一个，前面没有温度的 12# Write your MySQL query statement belowselect w1.Id from Weather w1 left join Weather w2 on to_days(w1.RecordDate) - to_days(w2.RecordDate) =1 and w1.Temperature &gt; w2.Temperature where w2.Id is not null;]]></content>
+    <title><![CDATA[LeetCode 200. 岛屿的个数]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20200.%C2%A0%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个由 &#39;1&#39;（陆地）和 &#39;0&#39;（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。 示例 1: 1234567输入:11110110101100000000输出: 1 示例 2: 1234567输入:11000110000010000011输出: 3 2、解题思路​ 这道题目比较简单，直接只用深度优先搜索就可以了 建立访问路径数组 遇到1，并且未访问过，就调用深度优先访问，将所有的相邻节点进行标记 12345678910111213141516171819202122232425262728class Solution: def numIslands(self, grid): """ :type grid: List[List[str]] :rtype: int """ row = len(grid) if row &lt;= 0: return 0 col = len(grid[0]) visited = [[0] * col for i in range(row)] result = 0 for i in range(row): for j in range(col): if grid[i][j] == '1' and visited[i][j] == 0: self.dfs(i, j, row, col, grid, visited) result += 1 return result def dfs(self, i, j, row, col, grid, visited): if i &gt;= 0 and i &lt; row and j &gt;= 0 and j &lt; col and grid[i][j] == '1' and visited[i][j] == 0: visited[i][j] = 1 self.dfs(i - 1, j, row, col, grid, visited) self.dfs(i, j - 1, row, col, grid, visited) self.dfs(i + 1, j, row, col, grid, visited) self.dfs(i, j + 1, row, col, grid, visited)]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -947,9 +958,20 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 200. 岛屿的个数]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20200.%C2%A0%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个由 &#39;1&#39;（陆地）和 &#39;0&#39;（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。 示例 1: 1234567输入:11110110101100000000输出: 1 示例 2: 1234567输入:11000110000010000011输出: 3 2、解题思路​ 这道题目比较简单，直接只用深度优先搜索就可以了 建立访问路径数组 遇到1，并且未访问过，就调用深度优先访问，将所有的相邻节点进行标记 12345678910111213141516171819202122232425262728class Solution: def numIslands(self, grid): """ :type grid: List[List[str]] :rtype: int """ row = len(grid) if row &lt;= 0: return 0 col = len(grid[0]) visited = [[0] * col for i in range(row)] result = 0 for i in range(row): for j in range(col): if grid[i][j] == '1' and visited[i][j] == 0: self.dfs(i, j, row, col, grid, visited) result += 1 return result def dfs(self, i, j, row, col, grid, visited): if i &gt;= 0 and i &lt; row and j &gt;= 0 and j &lt; col and grid[i][j] == '1' and visited[i][j] == 0: visited[i][j] = 1 self.dfs(i - 1, j, row, col, grid, visited) self.dfs(i, j - 1, row, col, grid, visited) self.dfs(i + 1, j, row, col, grid, visited) self.dfs(i, j + 1, row, col, grid, visited)]]></content>
+    <title><![CDATA[LeetCode 204.计数质数]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20204.%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述统计所有小于非负整数 n 的质数的数量。 示例: 123输入: 10输出: 4解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。 2、解题思路2.1 链表缓存​ 使用一个链表，缓存所有小于n的质数，判断质数的时候，用这些质数判断 ​ 不够遗憾的是，在leetcode上，这种方法时间太长了 ==不通过== 12345678910111213141516171819202122232425262728293031323334353637383940414243444546int countPrimes(int n) &#123; if (n &lt;= 2) &#123; return 0; &#125; // 2 直接写到里面去 int count = 1; struct ListNode *primes = (struct ListNode *) malloc(sizeof(struct ListNode)); struct ListNode *tail = primes; struct ListNode *temp = primes; primes-&gt;val = 2; primes-&gt;next = NULL; bool flag; for (int i = 3; i &lt; n; i++) &#123; flag = true; while (temp) &#123; if (i % temp-&gt;val == 0) &#123; flag = false; break; &#125; temp = temp-&gt;next; &#125; if (flag) &#123; tail-&gt;next = (struct ListNode *) malloc(sizeof(struct ListNode)); tail = tail-&gt;next; tail-&gt;val = i; tail-&gt;next = NULL; count++; &#125; temp = primes; &#125; temp = primes-&gt;next; while (temp) &#123; free(primes); primes = temp; temp = temp-&gt;next; &#125; free(primes); return count;&#125; 2.2 标记法​ 创建一个数组，每一次将2的倍数，倍数，5的倍数依次进行标记，直到标记到这个数为止 ​ 统计有多少没有被标记的，得到结果 ​ ==埃拉托斯特尼筛法 Sieve of Eratosthenes== 1234567891011121314151617181920212223242526272829303132333435363738394041int countPrimes(int n) &#123; if (n &lt;= 2) &#123; return 0; &#125; bool buf[n + 1]; memset(buf,true,n+1); buf[0] = false; buf[1] = false; // 这个是哨兵 buf[n] = true; int count = 0; int sign_pos = 2; while (sign_pos &lt; n) &#123; // 将sign_pos所有的倍数都标记为false for (int i = 2 * sign_pos; i &lt; n; i += sign_pos) &#123; if (i % sign_pos == 0) &#123; buf[i] = false; &#125; &#125; buf[n] = true; while (!buf[++sign_pos]); &#125; buf[n] = false; for (int i = 0; i &lt; n; i++) &#123; if (buf[i]) &#123; count++; &#125; &#125; return count; &#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 205. 同构字符串]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20205.%C2%A0%E5%90%8C%E6%9E%84%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定两个字符串 *s* 和 t，判断它们是否是同构的。 如果 *s* 中的字符可以被替换得到 t ，那么这两个字符串是同构的。 所有出现的字符都必须用另一个字符替换，同时保留字符的顺序。两个字符不能映射到同一个字符上，但字符可以映射自己本身。 示例 1: 12输入: s = &quot;egg&quot;, t = &quot;add&quot;输出: true 示例 2: 12输入: s = &quot;foo&quot;, t = &quot;bar&quot;输出: false 示例 3: 12输入: s = &quot;paper&quot;, t = &quot;title&quot;输出: true 说明:你可以假设 *s* 和 t 具有相同的长度。 2、解题思路​ 这里需要说明的就是，字符串中，相同的字符，不管出现在什么位置上，都应该是相同的字符，不相同的字符不用管 ​ 创建一个映射数组，第一个字符串的一个字母映射到第二个字符串，遇到了以后就来判断，不相等，返回false； 123456789101112131415161718192021222324252627bool isIsomorphic(char* s, char* t) &#123; int sTot[256] = &#123;0&#125;; int tTos[256] = &#123;0&#125;; int size = strlen(s); for (int i = 0; i &lt; size; i++) &#123; if (sTot[s[i]] == 0) &#123; sTot[s[i]] = t[i]; &#125; if(tTos[t[i]] == 0)&#123; tTos[t[i]] = s[i]; &#125; if(sTot[s[i]] != t[i] || tTos[t[i]] != s[i])&#123; return false; &#125; &#125; return true; &#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -961,17 +983,6 @@
     <title><![CDATA[LeetCode 203. 删除链表中的节点]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20203.%C2%A0%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述删除链表中等于给定值 val 的所有节点。 示例: 12输入: 1-&gt;2-&gt;6-&gt;3-&gt;4-&gt;5-&gt;6, val = 6输出: 1-&gt;2-&gt;3-&gt;4-&gt;5 2、解题思路1234567891011121314151617181920212223242526272829303132333435363738394041/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode* removeElements(struct ListNode* head, int val) &#123; if (!head) &#123; return head; &#125; while (head &amp;&amp; head-&gt;val == val) &#123; head = head-&gt;next; &#125; struct ListNode *prev_node; struct ListNode *cur_node; if (head) &#123; prev_node = head; cur_node = head-&gt;next; &#125; else &#123; return head; &#125; while (cur_node) &#123; if (cur_node-&gt;val == val) &#123; prev_node-&gt;next = cur_node-&gt;next; cur_node = cur_node-&gt;next; &#125; else &#123; cur_node = cur_node-&gt;next; prev_node = prev_node-&gt;next; &#125; &#125; return head; &#125; 12345678910111213141516171819202122232425262728293031323334/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode* removeElements(struct ListNode* head, int val) &#123; if (!head) &#123; return head; &#125; struct ListNode *prev_node = head; struct ListNode *cur_node = head-&gt;next; while (cur_node) &#123; if (cur_node-&gt;val == val) &#123; prev_node-&gt;next = cur_node-&gt;next; cur_node = cur_node-&gt;next; &#125; else &#123; cur_node = cur_node-&gt;next; prev_node = prev_node-&gt;next; &#125; &#125; if(head-&gt;val==val)&#123; head = head-&gt;next; &#125; return head; &#125;]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 204.计数质数]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20204.%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述统计所有小于非负整数 n 的质数的数量。 示例: 123输入: 10输出: 4解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。 2、解题思路2.1 链表缓存​ 使用一个链表，缓存所有小于n的质数，判断质数的时候，用这些质数判断 ​ 不够遗憾的是，在leetcode上，这种方法时间太长了 ==不通过== 12345678910111213141516171819202122232425262728293031323334353637383940414243444546int countPrimes(int n) &#123; if (n &lt;= 2) &#123; return 0; &#125; // 2 直接写到里面去 int count = 1; struct ListNode *primes = (struct ListNode *) malloc(sizeof(struct ListNode)); struct ListNode *tail = primes; struct ListNode *temp = primes; primes-&gt;val = 2; primes-&gt;next = NULL; bool flag; for (int i = 3; i &lt; n; i++) &#123; flag = true; while (temp) &#123; if (i % temp-&gt;val == 0) &#123; flag = false; break; &#125; temp = temp-&gt;next; &#125; if (flag) &#123; tail-&gt;next = (struct ListNode *) malloc(sizeof(struct ListNode)); tail = tail-&gt;next; tail-&gt;val = i; tail-&gt;next = NULL; count++; &#125; temp = primes; &#125; temp = primes-&gt;next; while (temp) &#123; free(primes); primes = temp; temp = temp-&gt;next; &#125; free(primes); return count;&#125; 2.2 标记法​ 创建一个数组，每一次将2的倍数，倍数，5的倍数依次进行标记，直到标记到这个数为止 ​ 统计有多少没有被标记的，得到结果 ​ ==埃拉托斯特尼筛法 Sieve of Eratosthenes== 1234567891011121314151617181920212223242526272829303132333435363738394041int countPrimes(int n) &#123; if (n &lt;= 2) &#123; return 0; &#125; bool buf[n + 1]; memset(buf,true,n+1); buf[0] = false; buf[1] = false; // 这个是哨兵 buf[n] = true; int count = 0; int sign_pos = 2; while (sign_pos &lt; n) &#123; // 将sign_pos所有的倍数都标记为false for (int i = 2 * sign_pos; i &lt; n; i += sign_pos) &#123; if (i % sign_pos == 0) &#123; buf[i] = false; &#125; &#125; buf[n] = true; while (!buf[++sign_pos]); &#125; buf[n] = false; for (int i = 0; i &lt; n; i++) &#123; if (buf[i]) &#123; count++; &#125; &#125; return count; &#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1002,17 +1013,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 205. 同构字符串]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20205.%C2%A0%E5%90%8C%E6%9E%84%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定两个字符串 *s* 和 t，判断它们是否是同构的。 如果 *s* 中的字符可以被替换得到 t ，那么这两个字符串是同构的。 所有出现的字符都必须用另一个字符替换，同时保留字符的顺序。两个字符不能映射到同一个字符上，但字符可以映射自己本身。 示例 1: 12输入: s = &quot;egg&quot;, t = &quot;add&quot;输出: true 示例 2: 12输入: s = &quot;foo&quot;, t = &quot;bar&quot;输出: false 示例 3: 12输入: s = &quot;paper&quot;, t = &quot;title&quot;输出: true 说明:你可以假设 *s* 和 t 具有相同的长度。 2、解题思路​ 这里需要说明的就是，字符串中，相同的字符，不管出现在什么位置上，都应该是相同的字符，不相同的字符不用管 ​ 创建一个映射数组，第一个字符串的一个字母映射到第二个字符串，遇到了以后就来判断，不相等，返回false； 123456789101112131415161718192021222324252627bool isIsomorphic(char* s, char* t) &#123; int sTot[256] = &#123;0&#125;; int tTos[256] = &#123;0&#125;; int size = strlen(s); for (int i = 0; i &lt; size; i++) &#123; if (sTot[s[i]] == 0) &#123; sTot[s[i]] = t[i]; &#125; if(tTos[t[i]] == 0)&#123; tTos[t[i]] = s[i]; &#125; if(sTot[s[i]] != t[i] || tTos[t[i]] != s[i])&#123; return false; &#125; &#125; return true; &#125;]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 208. 实现 Trie (前缀树)]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20208.%C2%A0%E5%AE%9E%E7%8E%B0%20Trie%20(%E5%89%8D%E7%BC%80%E6%A0%91)%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述实现一个 Trie (前缀树)，包含 insert, search, 和 startsWith 这三个操作。 示例: 12345678Trie trie = new Trie();trie.insert(&quot;apple&quot;);trie.search(&quot;apple&quot;); // 返回 truetrie.search(&quot;app&quot;); // 返回 falsetrie.startsWith(&quot;app&quot;); // 返回 truetrie.insert(&quot;app&quot;); trie.search(&quot;app&quot;); // 返回 true 说明: 你可以假设所有的输入都是由小写字母 a-z 构成的。 保证所有输入均为非空字符串。 2、解题思路​ 直接用哈希来做，python的话，就用字典实现即可 初始化 一开始，头指针，指向一个字典，字典里面什么都没有 插入的时候，就判断字符在不在，如果不在，就加入一个字符，值为{} 如果插入到最后一个字符，就在下一个字典中放入一个”end”，用来标识单词结束 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162class Trie: def __init__(self): """ Initialize your data structure here. """ self.head = &#123;&#125; def insert(self, word): """ Inserts a word into the trie. :type word: str :rtype: void """ cur = self.head for i in word: if cur.get(i) is None: cur[i] = &#123;&#125; cur = cur[i] if cur.get("end") is None: cur["end"] = 1 def search(self, word): """ Returns if the word is in the trie. :type word: str :rtype: bool """ cur = self.head for i in word: if i not in cur: return False cur = cur[i] if cur.get("end") is not None: return True else: return False def startsWith(self, prefix): """ Returns if there is any word in the trie that starts with the given prefix. :type prefix: str :rtype: bool """ cur = self.head for i in prefix: if i not in cur: return False cur = cur[i] return True # Your Trie object will be instantiated and called as such:# obj = Trie()# obj.insert(word)# param_2 = obj.search(word)# param_3 = obj.startsWith(prefix)]]></content>
@@ -1027,6 +1027,17 @@
     <title><![CDATA[LeetCode 209. 长度最小的子数组]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20209.%C2%A0%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的子数组。如果不存在符合条件的子数组，返回 0。 示例: 123输入: s = 7, nums = [2,3,1,2,4,3]输出: 2解释: 子数组 [4,3] 是该条件下的长度最小的子数组。 进阶: 如果你已经完成了O(n) 时间复杂度的解法, 请尝试 O(n log n) 时间复杂度的解法。 2、解题思路​ 设置双指针，如果小于s，就将right加一，字数组之和加上新的数字 ​ 如果大于s，就更新result，并且减去left指向的值，left加一 123456789101112131415161718192021222324252627282930313233class Solution: def minSubArrayLen(self, s, nums): """ :type s: int :type nums: List[int] :rtype: int """ if len(nums) &lt;= 0: return 0 length = len(nums) result = length + 1 num_sums = nums[0] left = 0 right = 1 while left &lt; length: if num_sums &gt;= s: result = min(result, right - left) num_sums -= nums[left] left += 1 else: if right &lt; length: num_sums += nums[right] right += 1 else: break if result == length + 1: result = 0 return result]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 21. 合并两个有序链表]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2021.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述123456将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例：输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4 2、解题思路2.1 向前判断​ 设置头指针和临时指针 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) &#123; // 返回用的头指针，指向数据小的元素的头元素 struct ListNode *head; if (l1 == NULL || l2 == NULL) &#123; if (l1 == NULL) &#123; head = l2; &#125; else &#123; head = l1; &#125; return head; &#125; head = l1-&gt;val &gt; l2-&gt;val ? l2 : l1; struct ListNode *temp = head; if (l1-&gt;val &gt; l2-&gt;val) &#123; l2 = l2-&gt;next; &#125; else &#123; l1 = l1-&gt;next; &#125; while (l1 != NULL || l2 != NULL) &#123; if (l1 != NULL &amp;&amp; l2 == NULL) &#123; temp-&gt;next = l1; break; &#125; else if (l1 == NULL &amp;&amp; l2 != NULL) &#123; temp-&gt;next = l2; break; &#125; else &#123; if (l1-&gt;val &gt; l2-&gt;val) &#123; temp = temp-&gt;next = l2; l2 = l2-&gt;next; &#125; else &#123; temp = temp-&gt;next = l1; l1 = l1-&gt;next; &#125; &#125; &#125; return head; &#125; 2.2 递归法12345678910111213141516171819202122/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode *mergeTwoLists(struct ListNode *l1, struct ListNode *l2) &#123; if (l1 == NULL)&#123; return l2; &#125; if (l2 == NULL)&#123; return l1; &#125; if (l1-&gt;val &lt; l2-&gt;val)&#123; l1-&gt;next = mergeTwoLists(l1-&gt;next,l2); return l1; &#125;else&#123; l2-&gt;next = mergeTwoLists(l2-&gt;next,l1); return l2; &#125;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1068,9 +1079,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 21. 合并两个有序链表]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2021.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述123456将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例：输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4 2、解题思路2.1 向前判断​ 设置头指针和临时指针 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) &#123; // 返回用的头指针，指向数据小的元素的头元素 struct ListNode *head; if (l1 == NULL || l2 == NULL) &#123; if (l1 == NULL) &#123; head = l2; &#125; else &#123; head = l1; &#125; return head; &#125; head = l1-&gt;val &gt; l2-&gt;val ? l2 : l1; struct ListNode *temp = head; if (l1-&gt;val &gt; l2-&gt;val) &#123; l2 = l2-&gt;next; &#125; else &#123; l1 = l1-&gt;next; &#125; while (l1 != NULL || l2 != NULL) &#123; if (l1 != NULL &amp;&amp; l2 == NULL) &#123; temp-&gt;next = l1; break; &#125; else if (l1 == NULL &amp;&amp; l2 != NULL) &#123; temp-&gt;next = l2; break; &#125; else &#123; if (l1-&gt;val &gt; l2-&gt;val) &#123; temp = temp-&gt;next = l2; l2 = l2-&gt;next; &#125; else &#123; temp = temp-&gt;next = l1; l1 = l1-&gt;next; &#125; &#125; &#125; return head; &#125; 2.2 递归法12345678910111213141516171819202122/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode *mergeTwoLists(struct ListNode *l1, struct ListNode *l2) &#123; if (l1 == NULL)&#123; return l2; &#125; if (l2 == NULL)&#123; return l1; &#125; if (l1-&gt;val &lt; l2-&gt;val)&#123; l1-&gt;next = mergeTwoLists(l1-&gt;next,l2); return l1; &#125;else&#123; l2-&gt;next = mergeTwoLists(l2-&gt;next,l1); return l2; &#125;&#125;]]></content>
+    <title><![CDATA[LeetCode 215. 数组中的第K个最大元素]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20215.%C2%A0%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 12输入: [3,2,1,5,6,4] 和 k = 2输出: 5 示例 2: 12输入: [3,2,3,1,2,4,5,5,6] 和 k = 4输出: 4 说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 2、解题思路​ 一般直接想到的就是排序，然后找出来，但是快排的的话，时间复杂度也是$O(nlog(n))$的，这个时间复杂度，有堆排序，快排，还有归并排序，考虑不同的排序的特点，我们发现，堆排序在排序的过程中，就能找出第K个元素 ​ 堆是完全二叉树， 堆排序的基本思路是建立一个最大堆，然后将最前面的元素，也就是最大的元素与最后一个元素交换位置，然后将前面的元素调整成堆，不断地循环，最后得到排序数组 ​ 调整成堆在于将后面的每一个子树都调整成堆，然后整棵树就变成了堆 1234567891011121314151617181920212223242526272829303132333435363738class Solution: def findKthLargest(self, nums, k): """ :type nums: List[int] :type k: int :rtype: int """ size = len(nums) self.build_heap(nums, size) cur = size - 1 for i in range(k-1): nums[0], nums[cur] = nums[cur], nums[0] self.heapify(nums, 0, cur) cur -= 1 return nums[0] def build_heap(self, nums, size): heap_size = (size - 1) // 2 while heap_size &gt;= 0: self.heapify(nums, heap_size, size) heap_size -= 1 def heapify(self, nums, node, size): left_child = 2 * node + 1 right_child = 2 * node + 2 max_node = node if left_child &lt; size and nums[max_node] &lt; nums[left_child]: max_node = left_child if right_child &lt; size and nums[max_node] &lt; nums[right_child]: max_node = right_child if max_node != node: nums[node], nums[max_node] = nums[max_node], nums[node] self.heapify(nums, max_node, size) ​ 写完以后，看了一下其他人的解答， 直接使用的库函数。。。。]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1079,9 +1090,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 215. 数组中的第K个最大元素]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20215.%C2%A0%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 12输入: [3,2,1,5,6,4] 和 k = 2输出: 5 示例 2: 12输入: [3,2,3,1,2,4,5,5,6] 和 k = 4输出: 4 说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 2、解题思路​ 一般直接想到的就是排序，然后找出来，但是快排的的话，时间复杂度也是$O(nlog(n))$的，这个时间复杂度，有堆排序，快排，还有归并排序，考虑不同的排序的特点，我们发现，堆排序在排序的过程中，就能找出第K个元素 ​ 堆是完全二叉树， 堆排序的基本思路是建立一个最大堆，然后将最前面的元素，也就是最大的元素与最后一个元素交换位置，然后将前面的元素调整成堆，不断地循环，最后得到排序数组 ​ 调整成堆在于将后面的每一个子树都调整成堆，然后整棵树就变成了堆 1234567891011121314151617181920212223242526272829303132333435363738class Solution: def findKthLargest(self, nums, k): """ :type nums: List[int] :type k: int :rtype: int """ size = len(nums) self.build_heap(nums, size) cur = size - 1 for i in range(k-1): nums[0], nums[cur] = nums[cur], nums[0] self.heapify(nums, 0, cur) cur -= 1 return nums[0] def build_heap(self, nums, size): heap_size = (size - 1) // 2 while heap_size &gt;= 0: self.heapify(nums, heap_size, size) heap_size -= 1 def heapify(self, nums, node, size): left_child = 2 * node + 1 right_child = 2 * node + 2 max_node = node if left_child &lt; size and nums[max_node] &lt; nums[left_child]: max_node = left_child if right_child &lt; size and nums[max_node] &lt; nums[right_child]: max_node = right_child if max_node != node: nums[node], nums[max_node] = nums[max_node], nums[node] self.heapify(nums, max_node, size) ​ 写完以后，看了一下其他人的解答， 直接使用的库函数。。。。]]></content>
+    <title><![CDATA[LeetCode 216. 组合总和 III]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20216.%C2%A0%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%20III%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述找出所有相加之和为 *n* 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。 说明： 所有数字都是正整数。 解集不能包含重复的组合。 示例 1: 12输入: k = 3, n = 7输出: [[1,2,4]] 示例 2: 12输入: k = 3, n = 9输出: [[1,2,6], [1,3,5], [2,3,4]] 2、解题思路​ 题目里面要求每种组合不包含重复数字，1-9的组合数可以直接使用库函数来求出来 1234567891011121314class Solution: def combinationSum3(self, k, n): """ :type k: int :type n: int :rtype: List[List[int]] """ result = [] for i in itertools.combinations(range(1, 10), k): if sum(i) == n: result.append(list(i)) return result ​ ​ 还有一个思路，深度优先搜索，从1开始，假如和是5，那么从1开始判断，如果找到和是5的了，就将组合加进去，没找到的话，就去掉，如果是使用和的形式，判断和小于0，就表示不存在，返回 ​ 如果等于0，就将当前结果放入结果集中]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1104,17 +1115,6 @@
     <title><![CDATA[LeetCode 219.存在重复元素 II]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20219.%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20II%20%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，使得 nums [i] = nums [j]，并且 i 和 j 的差的绝对值最大为 k。 示例 1: 12输入: nums = [1,2,3,1], k = 3输出: true 示例 2: 12输入: nums = [1,0,1,1], k = 1输出: true 示例 3: 12输入: nums = [1,2,3,1,2,3], k = 2输出: false 2、解题思路​ 2.1 遍历法​ 这种方法比较慢 ​ 1234567891011121314151617181920bool containsNearbyDuplicate(int* nums, int numsSize, int k) &#123; if (!nums || numsSize &lt;= 1) &#123; return false; &#125; for (int i = 0; i &lt; numsSize; i++) &#123; for (int j = 1; j &lt;= k &amp;&amp; (i + j) &lt; numsSize; j++) &#123; if (nums[i] == nums[i + j]) &#123; return true; &#125; &#125; &#125; return false; &#125; 2.2 缓存法​ 在最大值和最小值的差值，创建缓存数组，存储下标 1234567891011121314151617181920212223242526272829303132bool containsNearbyDuplicate(int* nums, int numsSize, int k) &#123; if (!nums || numsSize &lt;= 1) &#123; return false; &#125; int min = INT32_MAX; int max = INT32_MIN; for (int i = 0; i &lt; numsSize; i++) &#123; min = min &gt; nums[i] ? nums[i] : min; max = max &lt; nums[i] ? nums[i] : max; &#125; int *buff_index = (int *) malloc(sizeof(int) * (max - min + 1)); for (int i = 0; i &lt; max - min + 1; ++i) buff_index[i] = -1; for (int i = 0; i &lt; numsSize; i++) &#123; if (buff_index[nums[i] - min] == -1) &#123; buff_index[nums[i] - min] = i; &#125; else &#123; if (i - buff_index[nums[i] - min] &lt;= k) &#123; return true; &#125; else &#123; buff_index[nums[i] - min] = i; &#125; &#125; &#125; return false; &#125;]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 216. 组合总和 III]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20216.%C2%A0%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%20III%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述找出所有相加之和为 *n* 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。 说明： 所有数字都是正整数。 解集不能包含重复的组合。 示例 1: 12输入: k = 3, n = 7输出: [[1,2,4]] 示例 2: 12输入: k = 3, n = 9输出: [[1,2,6], [1,3,5], [2,3,4]] 2、解题思路​ 题目里面要求每种组合不包含重复数字，1-9的组合数可以直接使用库函数来求出来 1234567891011121314class Solution: def combinationSum3(self, k, n): """ :type k: int :type n: int :rtype: List[List[int]] """ result = [] for i in itertools.combinations(range(1, 10), k): if sum(i) == n: result.append(list(i)) return result ​ ​ 还有一个思路，深度优先搜索，从1开始，假如和是5，那么从1开始判断，如果找到和是5的了，就将组合加进去，没找到的话，就去掉，如果是使用和的形式，判断和小于0，就表示不存在，返回 ​ 如果等于0，就将当前结果放入结果集中]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1178,6 +1178,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[LeetCode 226.翻转二叉树]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20226.%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述翻转一棵二叉树。 示例： 输入： 12345 4 / \ 2 7 / \ / \1 3 6 9 输出： 12345 4 / \ 7 2 / \ / \9 6 3 1 备注:这个问题是受到 Max Howell 的 原问题 启发的 ： 谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。 2、解题思路123456789101112131415161718192021222324/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */struct TreeNode* invertTree(struct TreeNode* root) &#123; if (!root) &#123; return NULL; &#125; struct TreeNode *temp; if (root-&gt;left || root-&gt;right) &#123; temp = root-&gt;left; root-&gt;left = root-&gt;right; root-&gt;right = temp; &#125; invertTree(root-&gt;left); invertTree(root-&gt;right); return root;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 225. 用队列实现栈]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20225.%C2%A0%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述使用队列实现栈的下列操作： push(x) – 元素 x 入栈 pop() – 移除栈顶元素 top() – 获取栈顶元素 empty() – 返回栈是否为空 注意: 你只能使用队列的基本操作– 也就是 push to back, peek/pop from front, size, 和 is empty 这些操作是合法的。 你所使用的语言也许不支持队列。 你可以使用 list 或者 deque（双端队列）来模拟一个队列 , 只要是标准的队列操作即可。 你可以假设所有操作都是有效的（例如, 对一个空的栈不会调用 pop 或者 top 操作）。 2、解题思路​ 因为在C的库里面，没有已经实现的队列，这里主要是写一下实现思路 ​ 想要用队列模拟一个栈，首先我们看到，队列是先入先出，栈是后入先出，先要模拟栈的操作，我们需要使用两个队列 ​ 假设现在有两个队列，队列1，队列2，想在想要入栈， ​ 判断队列1，2为空，将元素放入队列1中， ​ 继续入栈，队列1不为空，将元素放到队列1中 ​ 然后想要出栈，该如何做呢，首先将除了最后一个元素，其他所有的都出队列，放到另一个队列中，然后本队列就只剩下一个元素了，将这个元素弹出，并返回 ​ 继续想要入栈，这时候，队列2不为空，放到队列2里面 ​ 入栈，放到队列2中 ​ 出栈，将队列2中除了最后一个元素其他都出队列，放到第一个队列里面，然后将最后一个返回 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071typedef struct &#123; int *stack; int size; int head;&#125; MyStack;/** Initialize your data structure here. */MyStack *myStackCreate(int maxSize) &#123; MyStack *s = (MyStack *) malloc(sizeof(MyStack)); s-&gt;stack = (int *) malloc(sizeof(int) * maxSize); s-&gt;size = maxSize; s-&gt;head = -1; return s;&#125;/** Push element x onto stack. */void myStackPush(MyStack *obj, int x) &#123; if (obj-&gt;head &lt; obj-&gt;size - 1) &#123; obj-&gt;stack[++obj-&gt;head] = x; &#125;&#125;/** Removes the element on top of the stack and returns that element. */int myStackPop(MyStack *obj) &#123; if (obj-&gt;head &gt;= 0) &#123; return obj-&gt;stack[obj-&gt;head--]; &#125; else &#123; return -1; &#125;&#125;/** Get the top element. */int myStackTop(MyStack *obj) &#123; if (obj-&gt;head &gt;= 0) &#123; return obj-&gt;stack[obj-&gt;head]; &#125; else &#123; return -1; &#125;&#125;/** Returns whether the stack is empty. */bool myStackEmpty(MyStack *obj) &#123; if (obj-&gt;head &lt;= -1) &#123; return true; &#125; else &#123; return false; &#125;&#125;void myStackFree(MyStack *obj) &#123; if (obj) &#123; if (obj-&gt;stack) &#123; free(obj-&gt;stack); &#125; free(obj); &#125;&#125;/** * Your MyStack struct will be instantiated and called as such: * struct MyStack* obj = myStackCreate(maxSize); * myStackPush(obj, x); * int param_2 = myStackPop(obj); * int param_3 = myStackTop(obj); * bool param_4 = myStackEmpty(obj); * myStackFree(obj); */]]></content>
@@ -1214,17 +1225,6 @@
     <title><![CDATA[LeetCode 229. 求众数 II]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20229.%C2%A0%E6%B1%82%E4%BC%97%E6%95%B0%20II%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个大小为 n 的数组，找出其中所有出现超过 ⌊ n/3 ⌋ 次的元素。 说明: 要求算法的时间复杂度为 O(n)，空间复杂度为 O(1)。 示例 1: 12输入: [3,2,3]输出: [3] 示例 2: 12输入: [1,1,1,3,3,2,2,2]输出: [1,2] 2、解题思路​ 在前面已经做过求众数，之前是超过一半，现在是超过⌊ n/3 ⌋ ，那么最多就会有2个众数 ​ 同样的，使用摩尔投票法，选出两个候选众数 ​ 然后判断他们出现的次数是不是超过限定值 12345678910111213141516171819202122232425262728293031323334353637383940414243class Solution: def majorityElement(self, nums): """ :type nums: List[int] :rtype: List[int] """ if not nums: return [] m = nums[0] - 1 n = nums[0] - 1 count_m = 0 count_n = 0 for i in nums: if i == m: count_m += 1 elif i == n: count_n += 1 elif count_m &lt;= 0: m = i count_m = 1 elif count_n &lt;= 0: n = i count_n = 1 else: count_m -= 1 count_n -= 1 count_m = 0 count_n = 0 for i in nums: if i == m: count_m += 1 elif i == n: count_n += 1 result = [] if count_m &gt; len(nums) // 3: result.append(m) if count_n &gt; len(nums) // 3: result.append(n) return result]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 226.翻转二叉树]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20226.%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述翻转一棵二叉树。 示例： 输入： 12345 4 / \ 2 7 / \ / \1 3 6 9 输出： 12345 4 / \ 7 2 / \ / \9 6 3 1 备注:这个问题是受到 Max Howell 的 原问题 启发的 ： 谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。 2、解题思路123456789101112131415161718192021222324/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * struct TreeNode *left; * struct TreeNode *right; * &#125;; */struct TreeNode* invertTree(struct TreeNode* root) &#123; if (!root) &#123; return NULL; &#125; struct TreeNode *temp; if (root-&gt;left || root-&gt;right) &#123; temp = root-&gt;left; root-&gt;left = root-&gt;right; root-&gt;right = temp; &#125; invertTree(root-&gt;left); invertTree(root-&gt;right); return root;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2168,9 +2168,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 383. 赎金信]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20383.%C2%A0%E8%B5%8E%E9%87%91%E4%BF%A1%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串ransom能不能由第二个字符串magazines里面的字符构成。如果可以构成，返回 true ；否则返回 false。 (题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。) 注意： 你可以假设两个字符串均只含有小写字母。 123canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; falsecanConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; falsecanConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true 2、解题思路123456789101112131415161718192021222324252627282930bool canConstruct(char* ransomNote, char* magazine) &#123; int ran_count[26]; int mag_count[26]; for (int i = 0; i &lt; 26; i++) &#123; ran_count[i] = 0; mag_count[i] = 0; &#125; int length_ran = strlen(ransomNote); int length_mag = strlen(magazine); for (int i = 0; i &lt; length_ran; i++) &#123; ran_count[ransomNote[i] - 'a']++; &#125; for (int i = 0; i &lt; length_mag; i++) &#123; mag_count[magazine[i] - 'a']++; &#125; for(int i =0;i&lt;26;i++)&#123; if(ran_count[i] &gt; mag_count[i])&#123; return false; &#125; &#125; return true;&#125;]]></content>
+    <title><![CDATA[LeetCode 384. 打乱数组]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20384.%C2%A0%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述打乱一个没有重复元素的数组。 示例: 123456789101112// 以数字集合 1, 2 和 3 初始化数组。int[] nums = &#123;1,2,3&#125;;Solution solution = new Solution(nums);// 打乱数组 [1,2,3] 并返回结果。任何 [1,2,3]的排列返回的概率应该相同。solution.shuffle();// 重设数组到它的初始状态[1,2,3]。solution.reset();// 随机返回数组[1,2,3]打乱后的结果。solution.shuffle(); 2、解题思路 首先，我们保存原来的数组，在重置的时候，直接返回 然后，使用交换的思路，对每一个数，求解他想要取得位置，使用一个随机数，随机生成 ​ 当然，也可以直接使用random库中自带的shuffle函数 123456789101112131415161718192021222324252627282930313233class Solution: def __init__(self, nums): """ :type nums: List[int] """ self.origin = nums def reset(self): """ Resets the array to its original configuration and return it. :rtype: List[int] """ return self.origin def shuffle(self): """ Returns a random shuffling of the array. :rtype: List[int] """ cur = self.origin.copy() length = len(self.origin) for i in range(length): pos = random.randint(0, length - 1) cur[i], cur[pos] = cur[pos], cur[i] return cur # Your Solution object will be instantiated and called as such:# obj = Solution(nums)# param_1 = obj.reset()# param_2 = obj.shuffle() 123456789101112131415161718192021222324252627282930class Solution: def __init__(self, nums): """ :type nums: List[int] """ self.origin = nums def reset(self): """ Resets the array to its original configuration and return it. :rtype: List[int] """ return self.origin def shuffle(self): """ Returns a random shuffling of the array. :rtype: List[int] """ cur = self.origin.copy() random.shuffle(cur) return cur # Your Solution object will be instantiated and called as such:# obj = Solution(nums)# param_1 = obj.reset()# param_2 = obj.shuffle()]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2179,9 +2179,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 384. 打乱数组]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20384.%C2%A0%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述打乱一个没有重复元素的数组。 示例: 123456789101112// 以数字集合 1, 2 和 3 初始化数组。int[] nums = &#123;1,2,3&#125;;Solution solution = new Solution(nums);// 打乱数组 [1,2,3] 并返回结果。任何 [1,2,3]的排列返回的概率应该相同。solution.shuffle();// 重设数组到它的初始状态[1,2,3]。solution.reset();// 随机返回数组[1,2,3]打乱后的结果。solution.shuffle(); 2、解题思路 首先，我们保存原来的数组，在重置的时候，直接返回 然后，使用交换的思路，对每一个数，求解他想要取得位置，使用一个随机数，随机生成 ​ 当然，也可以直接使用random库中自带的shuffle函数 123456789101112131415161718192021222324252627282930313233class Solution: def __init__(self, nums): """ :type nums: List[int] """ self.origin = nums def reset(self): """ Resets the array to its original configuration and return it. :rtype: List[int] """ return self.origin def shuffle(self): """ Returns a random shuffling of the array. :rtype: List[int] """ cur = self.origin.copy() length = len(self.origin) for i in range(length): pos = random.randint(0, length - 1) cur[i], cur[pos] = cur[pos], cur[i] return cur # Your Solution object will be instantiated and called as such:# obj = Solution(nums)# param_1 = obj.reset()# param_2 = obj.shuffle() 123456789101112131415161718192021222324252627282930class Solution: def __init__(self, nums): """ :type nums: List[int] """ self.origin = nums def reset(self): """ Resets the array to its original configuration and return it. :rtype: List[int] """ return self.origin def shuffle(self): """ Returns a random shuffling of the array. :rtype: List[int] """ cur = self.origin.copy() random.shuffle(cur) return cur # Your Solution object will be instantiated and called as such:# obj = Solution(nums)# param_1 = obj.reset()# param_2 = obj.shuffle()]]></content>
+    <title><![CDATA[LeetCode 383. 赎金信]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20383.%C2%A0%E8%B5%8E%E9%87%91%E4%BF%A1%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串ransom能不能由第二个字符串magazines里面的字符构成。如果可以构成，返回 true ；否则返回 false。 (题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。) 注意： 你可以假设两个字符串均只含有小写字母。 123canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; falsecanConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; falsecanConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true 2、解题思路123456789101112131415161718192021222324252627282930bool canConstruct(char* ransomNote, char* magazine) &#123; int ran_count[26]; int mag_count[26]; for (int i = 0; i &lt; 26; i++) &#123; ran_count[i] = 0; mag_count[i] = 0; &#125; int length_ran = strlen(ransomNote); int length_mag = strlen(magazine); for (int i = 0; i &lt; length_ran; i++) &#123; ran_count[ransomNote[i] - 'a']++; &#125; for (int i = 0; i &lt; length_mag; i++) &#123; mag_count[magazine[i] - 'a']++; &#125; for(int i =0;i&lt;26;i++)&#123; if(ran_count[i] &gt; mag_count[i])&#123; return false; &#125; &#125; return true;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2498,6 +2498,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[LeetCode 448. 找到所有数组中消失的数字]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20448.%C2%A0%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 12345输入:[4,3,2,7,8,2,3,1]输出:[5,6] 2、解题思路​ 根据上面的描述，我们知道，有一些元素重复出现了，如果我们将这些元素和下标关联起来，街能够找出来 ​ 例如，如果是数字2，就把[2-1]的下表的数字变成负数，从头向后扫描一遍，哪一个数字没有变成负数，就把[i+1]放到结果中 ​ 另一种，则是将对应下标的数加上n，如果有哪一个数最后没有被加，表示这个数就是缺失的 ​ 或者使用交换，将当前数与下标对应的数进行交换，交换了以后，判断对应下标的数字是不是下标+1，不是，表示这个数缺失 1234567891011121314151617181920212223242526272829/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize) &#123; int count = 0; int target; for (int i = 0; i &lt; numsSize; i++) &#123; target = nums[i] &gt; 0 ? nums[i] : -nums[i]; if (nums[target - 1] &gt; 0) &#123; count++; nums[target - 1] = -nums[target - 1]; &#125; &#125; int *result = (int *) calloc(numsSize - count, sizeof(int)); int pos = 0; for (int i = 0; i &lt; numsSize; i++) &#123; if (nums[i] &gt; 0) &#123; result[pos++] = i + 1; &#125; &#125; *returnSize = pos; return result;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 453. 最小移动次数使数组元素相等]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20453.%C2%A0%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9B%B8%E7%AD%89%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个长度为 n 的非空整数数组，找到让数组所有元素相等的最小移动次数。每次移动可以使 n - 1 个元素增加 1。 示例: 12345678910输入:[1,2,3]输出:3解释:只需要3次移动（注意每次移动会增加两个元素的值）：[1,2,3] =&gt; [2,3,3] =&gt; [3,4,3] =&gt; [4,4,4] 2、解题思路​ 理解题意很重要，实际上，上面的描述主要表达了一个问题，每一次选取n-1个元素，使他们增加1，其实对应着另外一层意思，就是每次选取一个元素，使它减一，也就是说，题目的需要是将所有的元素调整为相等的，也就是说计算所有的元素相对于最小元素的差值就可以了 12345678910111213141516int minMoves(int* nums, int numsSize) &#123; int min = nums[0]; int result = 0; for (int i = 1; i &lt; numsSize; i++) &#123; if (nums[i] &lt; min) &#123; min = nums[i]; &#125; &#125; for(int i = 0;i&lt;numsSize;i++)&#123; result+= nums[i] - min; &#125; return result;&#125;]]></content>
@@ -2523,17 +2534,6 @@
     <title><![CDATA[LeetCode 458. 可怜的小猪]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20458.%C2%A0%E5%8F%AF%E6%80%9C%E7%9A%84%E5%B0%8F%E7%8C%AA%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述有1000只水桶，其中有且只有一桶装的含有毒药，其余装的都是水。它们从外观看起来都一样。如果小猪喝了毒药，它会在15分钟内死去。 问题来了，如果需要你在一小时内，弄清楚哪只水桶含有毒药，你最少需要多少只猪？ 回答这个问题，并为下列的进阶问题编写一个通用算法。 进阶: 假设有 n 只水桶，猪饮水中毒后会在 m 分钟内死亡，你需要多少猪（x）就能在 p 分钟内找出“有毒”水桶？n只水桶里有且仅有一只有毒的桶。 2、解题思路​ 这个题目很巧妙，从头开始分析问题 假如现在有一头猪，测试一次，能够确认几桶水呢？ ​ 答案是2桶，喝一桶，如果没事，表示有毒的是另一桶 如果同样是一头猪，测试两次呢？ 11 2 3 让这头猪第一次喝1，第二次是2，只能是3桶 如果是两头猪，测试一次，那么能够测试几桶水？ 4桶， 11 2 3 4 是4桶，为什么呢？ 两头猪有四种死亡状态，都没死，其中一个死，也就是第一个猪喝1，2，第二个猪是1，3，这样根据得到的4种状态，得到结果 如果是两头猪，测试2次呢？ 1231 2 34 5 67 8 9 测试2次，就是一个二维的，第一头猪第一次喝1，2，3，第二头猪第一次喝1，4，7，假如两头猪都没事， 125 68 9 结果集变成了上面这样，两头猪就能直接测试4桶水了 如果第一头死了，那么剩下一头猪，结果集如下 12 3 第二头猪就能够测试两个数 ​ 3头猪测试两次，能够测试多少呢？ ​ 答案是27头，相当于上面的9头的，增加了一个维度， ​ 如果测试一次，那么n头猪最多是$2^n$ ​ 也就是说，用猪的数量表示维度，测试次数加一，表示的是维度坐标长度， ​ 例如，2头猪，一次， 表示二维，维度长度是1+1 = 2 ​ ​ 3头猪，一次，三维，维度长度是2， 2*2*2 = 8 ​ 3头猪，2次，三维，维度长度是3，3*3*3=27 ​ 所以，就可以得出结果了 ​ n头猪，测试次数是k，能够测试的数量就是$$(k+1)^{n}$$​ 所以，如果是m通水，$$(k+1)^{n} &gt;=m$$ ​ 使用对数求解$$n * log(k+1) &gt;= logm\n &gt;= \frac{logm}{log(k+1)}$$​ 在c中，math.h提供了ceil函数，天花板，表示求解党的等于当前数的最小整数 ​ floor，地板，表示小于等于这个数的最大整数 123int poorPigs(int buckets, int minutesToDie, int minutesToTest) &#123; return (int)ceil(log(buckets) / log(minutesToTest /minutesToDie +1));&#125; ​ 所以解题思路很重要啊，哈哈]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 448. 找到所有数组中消失的数字]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20448.%C2%A0%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 12345输入:[4,3,2,7,8,2,3,1]输出:[5,6] 2、解题思路​ 根据上面的描述，我们知道，有一些元素重复出现了，如果我们将这些元素和下标关联起来，街能够找出来 ​ 例如，如果是数字2，就把[2-1]的下表的数字变成负数，从头向后扫描一遍，哪一个数字没有变成负数，就把[i+1]放到结果中 ​ 另一种，则是将对应下标的数加上n，如果有哪一个数最后没有被加，表示这个数就是缺失的 ​ 或者使用交换，将当前数与下标对应的数进行交换，交换了以后，判断对应下标的数字是不是下标+1，不是，表示这个数缺失 1234567891011121314151617181920212223242526272829/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize) &#123; int count = 0; int target; for (int i = 0; i &lt; numsSize; i++) &#123; target = nums[i] &gt; 0 ? nums[i] : -nums[i]; if (nums[target - 1] &gt; 0) &#123; count++; nums[target - 1] = -nums[target - 1]; &#125; &#125; int *result = (int *) calloc(numsSize - count, sizeof(int)); int pos = 0; for (int i = 0; i &lt; numsSize; i++) &#123; if (nums[i] &gt; 0) &#123; result[pos++] = i + 1; &#125; &#125; *returnSize = pos; return result;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2674,17 +2674,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 492. 构造矩形]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20492.%C2%A0%E6%9E%84%E9%80%A0%E7%9F%A9%E5%BD%A2%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述作为一位web开发者， 懂得怎样去规划一个页面的尺寸是很重要的。 现给定一个具体的矩形页面面积，你的任务是设计一个长度为 L 和宽度为 W 且满足以下要求的矩形的页面。要求： 123451. 你设计的矩形页面必须等于给定的目标面积。2. 宽度 W 不应大于长度 L，换言之，要求 L &gt;= W 。3. 长度 L 和宽度 W 之间的差距应当尽可能小。 你需要按顺序输出你设计的页面的长度 L 和宽度 W。 示例： 1234输入: 4输出: [2, 2]解释: 目标面积是 4， 所有可能的构造方案有 [1,4], [2,2], [4,1]。但是根据要求2，[1,4] 不符合要求; 根据要求3，[2,2] 比 [4,1] 更能符合要求. 所以输出长度 L 为 2， 宽度 W 为 2。 说明: 给定的面积不大于 10,000,000 且为正整数。 你设计的页面的长度和宽度必须都是正整数。 2、解题思路12345678910111213141516171819202122232425262728/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* constructRectangle(int area, int* returnSize) &#123; *returnSize = 2; int *result = malloc(sizeof(int) * 2); int upper_num = (int) ceil(sqrt(area)); for (int i = upper_num; i &gt;= 1; i--) &#123; if (area % i == 0) &#123; result[0] = i; result[1] = area / i; break; &#125; &#125; if(result[0]&lt;result[1])&#123; result[0] ^=result[1]; result[1] ^=result[0]; result[0] ^=result[1]; &#125; return result;&#125;]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 496. 下一个更大元素 I]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20496.%C2%A0%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0%20I%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定两个没有重复元素的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。找到 nums1 中每个元素在 nums2 中的下一个比其大的值。 nums1 中数字 x 的下一个更大元素是指 x 在 nums2 中对应位置的右边的第一个比 x 大的元素。如果不存在，对应位置输出-1。 示例 1: 123456输入: nums1 = [4,1,2], nums2 = [1,3,4,2].输出: [-1,3,-1]解释: 对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。 对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。 对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。 示例 2: 12345输入: nums1 = [2,4], nums2 = [1,2,3,4].输出: [3,-1]解释: 对于num1中的数字2，第二个数组中的下一个较大数字是3。 对于num1中的数字4，第二个数组中没有下一个更大的数字，因此输出 -1。 注意: nums1和nums2中所有元素是唯一的。 nums1和nums2 的数组大小都不超过1000。 2、解题思路12345678910111213141516171819202122232425262728293031/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* nextGreaterElement(int* findNums, int findNumsSize, int* nums, int numsSize, int* returnSize) &#123; int *result = (int *) malloc(sizeof(int) * findNumsSize); *returnSize = findNumsSize; int findNum = -1; bool start_to_find = false; for (int i = 0; i &lt; findNumsSize; i++) &#123; for (int j = 0; j &lt; numsSize; j++) &#123; if (nums[j] == findNums[i]) &#123; start_to_find = true; &#125; if (start_to_find) &#123; if (nums[j] &gt; findNums[i]) &#123; findNum = nums[j]; break; &#125; &#125; &#125; result[i] = findNum; findNum = -1; start_to_find = false; &#125; return result; &#125;]]></content>
@@ -2710,6 +2699,17 @@
     <title><![CDATA[LeetCode 50.Pow(x, n)]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2050.Pow(x%2C%20n)%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述实现 pow(x, n) ，即计算 x 的 n 次幂函数。 示例 1: 12输入: 2.00000, 10输出: 1024.00000 示例 2: 12输入: 2.10000, 3输出: 9.26100 示例 3: 123输入: 2.00000, -2输出: 0.25000解释: 2-2 = 1/22 = 1/4 = 0.25 说明: -100.0 &lt; x &lt; 100.0 n 是 32 位有符号整数，其数值范围是 [−231, 231 − 1] 。 2、解题思路​ 12345678class Solution: def myPow(self, x, n): """ :type x: float :type n: int :rtype: float """ return x ** n]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 492. 构造矩形]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20492.%C2%A0%E6%9E%84%E9%80%A0%E7%9F%A9%E5%BD%A2%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述作为一位web开发者， 懂得怎样去规划一个页面的尺寸是很重要的。 现给定一个具体的矩形页面面积，你的任务是设计一个长度为 L 和宽度为 W 且满足以下要求的矩形的页面。要求： 123451. 你设计的矩形页面必须等于给定的目标面积。2. 宽度 W 不应大于长度 L，换言之，要求 L &gt;= W 。3. 长度 L 和宽度 W 之间的差距应当尽可能小。 你需要按顺序输出你设计的页面的长度 L 和宽度 W。 示例： 1234输入: 4输出: [2, 2]解释: 目标面积是 4， 所有可能的构造方案有 [1,4], [2,2], [4,1]。但是根据要求2，[1,4] 不符合要求; 根据要求3，[2,2] 比 [4,1] 更能符合要求. 所以输出长度 L 为 2， 宽度 W 为 2。 说明: 给定的面积不大于 10,000,000 且为正整数。 你设计的页面的长度和宽度必须都是正整数。 2、解题思路12345678910111213141516171819202122232425262728/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* constructRectangle(int area, int* returnSize) &#123; *returnSize = 2; int *result = malloc(sizeof(int) * 2); int upper_num = (int) ceil(sqrt(area)); for (int i = upper_num; i &gt;= 1; i--) &#123; if (area % i == 0) &#123; result[0] = i; result[1] = area / i; break; &#125; &#125; if(result[0]&lt;result[1])&#123; result[0] ^=result[1]; result[1] ^=result[0]; result[0] ^=result[1]; &#125; return result;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3774,9 +3774,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 81. 搜索旋转排序数组 II]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2081.%C2%A0%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%20II%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,0,1,2,2,5,6] 可能变为 [2,5,6,0,0,1,2] )。 编写一个函数来判断给定的目标值是否存在于数组中。若存在返回 true，否则返回 false。 示例 1: 12输入: nums = [2,5,6,0,0,1,2], target = 0输出: true 示例 2: 12输入: nums = [2,5,6,0,0,1,2], target = 3输出: false 进阶: 这是 搜索旋转排序数组 的延伸题目，本题中的 nums 可能包含重复元素。 这会影响到程序的时间复杂度吗？会有怎样的影响，为什么？ 2、解题思路​ 前面33题，搜索旋转排序数组，之前的是没有重复元素的，实际上这道题的解题思路与前面没什么区别，需要注意的就是，要判断等于的情况 ​ 左右边界的问题，在前面，我们能够直接判断的情况，现在需要继续判断 [1,3,1,1,1] 3 如上面的例子，如果出现了这种情况，我们需要知道要排除哪一边才行 我们分为4种情况， middle=left=right ​ 这种情况，需要判断是左面的相等，还是右面的相等，将相等的删掉 middle = left middle≠right ​ 直接删除左面的 middle ≠ left middle=right ​ 直接删除右面的 middle ≠ left middle≠right ​ 按照正常情况讨论 出现不同情况，分别进行讨论 实际上，只要判断中间值是不是等于两边中的一个就好了，如果中间值等于 主要是，每一次进行二分法的时候，要排除哪一边才好 不过呢，用python没这么麻烦，直接判断数量就好了 123456789101112class Solution: def search(self, nums, target): """ :type nums: List[int] :type target: int :rtype: bool """ if nums.count(target) &gt;= 1: return True return False ​ 不过呢，这个办法有点取巧，而且效率不高 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849class Solution: def search(self, nums, target): """ :type nums: List[int] :type target: int :rtype: bool """ left = 0 right = len(nums) - 1 middle = (left + right) // 2 while left &lt;= right: if nums[middle] == target: return True equal = True if nums[middle] == nums[left] and nums[middle] == nums[right]: for i in range(left, middle): if nums[i] != nums[left]: equal = False break if equal: left = middle + 1 else: right = middle - 1 elif nums[middle] == nums[left] and nums[middle] != nums[right]: left = middle + 1 elif nums[middle] != nums[left] and nums[middle] == nums[right]: right = middle - 1 else: if nums[middle] &gt; nums[left]: if nums[left] &lt;= target and target &lt; nums[middle]: right = middle - 1 else: left = middle + 1 else: # 现在middle位与右面的递增数组上面 if nums[right] &gt;= target and target &gt; nums[middle]: left = middle + 1 else: right = middle - 1 middle = (left + right) // 2 return False]]></content>
+    <title><![CDATA[LeetCode 806. 写字符串需要的行数]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20806.%C2%A0%E5%86%99%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9C%80%E8%A6%81%E7%9A%84%E8%A1%8C%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述我们要把给定的字符串 S 从左到右写到每一行上，每一行的最大宽度为100个单位，如果我们在写某个字母的时候会使这行超过了100 个单位，那么我们应该把这个字母写到下一行。我们给定了一个数组 widths ，这个数组 widths[0] 代表 ‘a’ 需要的单位， widths[1] 代表 ‘b’ 需要的单位，…， widths[25] 代表 ‘z’ 需要的单位。 现在回答两个问题：至少多少行能放下S，以及最后一行使用的宽度是多少个单位？将你的答案作为长度为2的整数列表返回。 12345678示例 1:输入: widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]S = &quot;abcdefghijklmnopqrstuvwxyz&quot;输出: [3, 60]解释: 所有的字符拥有相同的占用单位10。所以书写所有的26个字母，我们需要2个整行和占用60个单位的一行。 123456789示例 2:输入: widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]S = &quot;bbbcccdddaaa&quot;输出: [2, 4]解释: 除去字母&apos;a&apos;所有的字符都是相同的单位10，并且字符串 &quot;bbbcccdddaa&quot; 将会覆盖 9 * 10 + 2 * 4 = 98 个单位.最后一个字母 &apos;a&apos; 将会被写到第二行，因为第一行只剩下2个单位了。所以，这个答案是2行，第二行有4个单位宽度。 注: 字符串 S 的长度在 [1, 1000] 的范围。 S 只包含小写字母。 widths 是长度为 26的数组。 widths[i] 值的范围在 [2, 10]。 2、解题思路​ 12345678910111213141516171819202122232425/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* numberOfLines(int* widths, int widthsSize, char* S, int* returnSize) &#123; *returnSize = 2; int lines = 0; int remaining = 0; for (int i = 0; i &lt; strlen(S); i++) &#123; if (remaining &gt;= widths[S[i] - 'a']) &#123; remaining -= widths[S[i] - 'a']; &#125; else &#123; lines++; remaining = 100; i--; &#125; &#125; int *result = (int *) malloc(sizeof(int) * 2); result[0] = lines; result[1] = 100 - remaining; return result;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3785,9 +3785,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 806. 写字符串需要的行数]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20806.%C2%A0%E5%86%99%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9C%80%E8%A6%81%E7%9A%84%E8%A1%8C%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述我们要把给定的字符串 S 从左到右写到每一行上，每一行的最大宽度为100个单位，如果我们在写某个字母的时候会使这行超过了100 个单位，那么我们应该把这个字母写到下一行。我们给定了一个数组 widths ，这个数组 widths[0] 代表 ‘a’ 需要的单位， widths[1] 代表 ‘b’ 需要的单位，…， widths[25] 代表 ‘z’ 需要的单位。 现在回答两个问题：至少多少行能放下S，以及最后一行使用的宽度是多少个单位？将你的答案作为长度为2的整数列表返回。 12345678示例 1:输入: widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]S = &quot;abcdefghijklmnopqrstuvwxyz&quot;输出: [3, 60]解释: 所有的字符拥有相同的占用单位10。所以书写所有的26个字母，我们需要2个整行和占用60个单位的一行。 123456789示例 2:输入: widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]S = &quot;bbbcccdddaaa&quot;输出: [2, 4]解释: 除去字母&apos;a&apos;所有的字符都是相同的单位10，并且字符串 &quot;bbbcccdddaa&quot; 将会覆盖 9 * 10 + 2 * 4 = 98 个单位.最后一个字母 &apos;a&apos; 将会被写到第二行，因为第一行只剩下2个单位了。所以，这个答案是2行，第二行有4个单位宽度。 注: 字符串 S 的长度在 [1, 1000] 的范围。 S 只包含小写字母。 widths 是长度为 26的数组。 widths[i] 值的范围在 [2, 10]。 2、解题思路​ 12345678910111213141516171819202122232425/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* numberOfLines(int* widths, int widthsSize, char* S, int* returnSize) &#123; *returnSize = 2; int lines = 0; int remaining = 0; for (int i = 0; i &lt; strlen(S); i++) &#123; if (remaining &gt;= widths[S[i] - 'a']) &#123; remaining -= widths[S[i] - 'a']; &#125; else &#123; lines++; remaining = 100; i--; &#125; &#125; int *result = (int *) malloc(sizeof(int) * 2); result[0] = lines; result[1] = 100 - remaining; return result;&#125;]]></content>
+    <title><![CDATA[LeetCode 81. 搜索旋转排序数组 II]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2081.%C2%A0%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%20II%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,0,1,2,2,5,6] 可能变为 [2,5,6,0,0,1,2] )。 编写一个函数来判断给定的目标值是否存在于数组中。若存在返回 true，否则返回 false。 示例 1: 12输入: nums = [2,5,6,0,0,1,2], target = 0输出: true 示例 2: 12输入: nums = [2,5,6,0,0,1,2], target = 3输出: false 进阶: 这是 搜索旋转排序数组 的延伸题目，本题中的 nums 可能包含重复元素。 这会影响到程序的时间复杂度吗？会有怎样的影响，为什么？ 2、解题思路​ 前面33题，搜索旋转排序数组，之前的是没有重复元素的，实际上这道题的解题思路与前面没什么区别，需要注意的就是，要判断等于的情况 ​ 左右边界的问题，在前面，我们能够直接判断的情况，现在需要继续判断 [1,3,1,1,1] 3 如上面的例子，如果出现了这种情况，我们需要知道要排除哪一边才行 我们分为4种情况， middle=left=right ​ 这种情况，需要判断是左面的相等，还是右面的相等，将相等的删掉 middle = left middle≠right ​ 直接删除左面的 middle ≠ left middle=right ​ 直接删除右面的 middle ≠ left middle≠right ​ 按照正常情况讨论 出现不同情况，分别进行讨论 实际上，只要判断中间值是不是等于两边中的一个就好了，如果中间值等于 主要是，每一次进行二分法的时候，要排除哪一边才好 不过呢，用python没这么麻烦，直接判断数量就好了 123456789101112class Solution: def search(self, nums, target): """ :type nums: List[int] :type target: int :rtype: bool """ if nums.count(target) &gt;= 1: return True return False ​ 不过呢，这个办法有点取巧，而且效率不高 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849class Solution: def search(self, nums, target): """ :type nums: List[int] :type target: int :rtype: bool """ left = 0 right = len(nums) - 1 middle = (left + right) // 2 while left &lt;= right: if nums[middle] == target: return True equal = True if nums[middle] == nums[left] and nums[middle] == nums[right]: for i in range(left, middle): if nums[i] != nums[left]: equal = False break if equal: left = middle + 1 else: right = middle - 1 elif nums[middle] == nums[left] and nums[middle] != nums[right]: left = middle + 1 elif nums[middle] != nums[left] and nums[middle] == nums[right]: right = middle - 1 else: if nums[middle] &gt; nums[left]: if nums[left] &lt;= target and target &lt; nums[middle]: right = middle - 1 else: left = middle + 1 else: # 现在middle位与右面的递增数组上面 if nums[right] &gt;= target and target &gt; nums[middle]: left = middle + 1 else: right = middle - 1 middle = (left + right) // 2 return False]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3807,9 +3807,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 812. 最大三角形面积]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20812.%C2%A0%E6%9C%80%E5%A4%A7%E4%B8%89%E8%A7%92%E5%BD%A2%E9%9D%A2%E7%A7%AF%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定包含多个点的集合，从其中取三个点组成三角形，返回能组成的最大三角形的面积。 12345示例:输入: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]输出: 2解释: 这五个点如下图所示。组成的橙色三角形是最大的，面积为2。 注意: 3 &lt;= points.length &lt;= 50. 不存在重复的点。 -50 &lt;= points[i][j] &lt;= 50. 结果误差值在 10^-6 以内都认为是正确答案。 2、解题思路​ 这个题目的难点在于要知道如何利用三个点的坐标求解面积， ​ 有时间可以看看有限元分析 已知三个点坐标求 三角形面积 12345678910设A(x1,y1),B(x2,y2),C(x3,y3) 由A--&gt;B--&gt;C--&gt;A 按逆时针方向转。(行列式书写要求） 设三角形的面积为S 则S=（1/2)*(下面行列式） |x1 y1 1| |x2 y2 1| |x3 y3 1| S=(1/2)*(x1y2*1+x2y3*1+x3y1*1-x1y3*1-x2y1*1-x3y2*1) 即用三角形的三个顶点坐标求其面积的公式为: S=(1/2)*(x1y2+x2y3+x3y1-x1y3-x2y1-x3y2) 1234567891011class Solution: def largestTriangleArea(self, points): """ :type points: List[List[int]] :rtype: float """ return max([self.getArea(point1, point2, point3) for point1, point2, point3 in itertools.combinations(points, 3)]) def getArea(self, point1, point2, point3): (x1, y1), (x2, y2), (x3, y3) = point1, point2, point3 return 0.5 * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))]]></content>
+    <title><![CDATA[LeetCode 819. 最常见的单词]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20819.%C2%A0%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8D%95%E8%AF%8D%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中的单词。题目保证至少有一个词不在禁用列表中，而且答案唯一。 禁用列表中的单词用小写字母表示，不含标点符号。段落中的单词不区分大小写。答案都是小写字母。 12345678910示例:输入: paragraph = &quot;Bob hit a ball, the hit BALL flew far after it was hit.&quot;banned = [&quot;hit&quot;]输出: &quot;ball&quot;解释: &quot;hit&quot; 出现了3次，但它是一个禁用的单词。&quot;ball&quot; 出现了2次 (同时没有其他单词出现2次)，所以它是段落里出现次数最多的，且不在禁用列表中的单词。 注意，所有这些单词在段落里不区分大小写，标点符号需要忽略（即使是紧挨着单词也忽略， 比如 &quot;ball,&quot;）， &quot;hit&quot;不是最终的答案，虽然它出现次数更多，但它在禁用单词列表中。 说明: 1 &lt;= 段落长度 &lt;= 1000. 1 &lt;= 禁用单词个数 &lt;= 100. 1 &lt;= 禁用单词长度 &lt;= 10. 答案是唯一的, 且都是小写字母 (即使在 paragraph 里是大写的，即使是一些特定的名词，答案都是小写的。) paragraph 只包含字母、空格和下列标点符号!?&#39;,;. paragraph 里单词之间都由空格隔开。 不存在没有连字符或者带有连字符的单词。 单词里只包含字母，不会出现省略号或者其他标点符号。 2、解题思路​ 文本中有特殊字符，可以用正则删掉，也可以使用translate，maketrans的方式， ​ 这个是建立映射关系，将某个字符映射到某个字符上 1234567891011121314class Solution: def mostCommonWord(self, paragraph, banned): """ :type paragraph: str :type banned: List[str] :rtype: str """ pa = [v.lower().translate(str.maketrans('!?\',;.', '\0\0\0\0\0\0')).replace("\0","") for v in paragraph.split(" ")] count = collections.Counter(pa) for i in banned: if count.get(i): count.pop(i) return count.most_common(1)[0][0]]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3818,9 +3818,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 819. 最常见的单词]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20819.%C2%A0%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8D%95%E8%AF%8D%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中的单词。题目保证至少有一个词不在禁用列表中，而且答案唯一。 禁用列表中的单词用小写字母表示，不含标点符号。段落中的单词不区分大小写。答案都是小写字母。 12345678910示例:输入: paragraph = &quot;Bob hit a ball, the hit BALL flew far after it was hit.&quot;banned = [&quot;hit&quot;]输出: &quot;ball&quot;解释: &quot;hit&quot; 出现了3次，但它是一个禁用的单词。&quot;ball&quot; 出现了2次 (同时没有其他单词出现2次)，所以它是段落里出现次数最多的，且不在禁用列表中的单词。 注意，所有这些单词在段落里不区分大小写，标点符号需要忽略（即使是紧挨着单词也忽略， 比如 &quot;ball,&quot;）， &quot;hit&quot;不是最终的答案，虽然它出现次数更多，但它在禁用单词列表中。 说明: 1 &lt;= 段落长度 &lt;= 1000. 1 &lt;= 禁用单词个数 &lt;= 100. 1 &lt;= 禁用单词长度 &lt;= 10. 答案是唯一的, 且都是小写字母 (即使在 paragraph 里是大写的，即使是一些特定的名词，答案都是小写的。) paragraph 只包含字母、空格和下列标点符号!?&#39;,;. paragraph 里单词之间都由空格隔开。 不存在没有连字符或者带有连字符的单词。 单词里只包含字母，不会出现省略号或者其他标点符号。 2、解题思路​ 文本中有特殊字符，可以用正则删掉，也可以使用translate，maketrans的方式， ​ 这个是建立映射关系，将某个字符映射到某个字符上 1234567891011121314class Solution: def mostCommonWord(self, paragraph, banned): """ :type paragraph: str :type banned: List[str] :rtype: str """ pa = [v.lower().translate(str.maketrans('!?\',;.', '\0\0\0\0\0\0')).replace("\0","") for v in paragraph.split(" ")] count = collections.Counter(pa) for i in banned: if count.get(i): count.pop(i) return count.most_common(1)[0][0]]]></content>
+    <title><![CDATA[LeetCode 812. 最大三角形面积]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20812.%C2%A0%E6%9C%80%E5%A4%A7%E4%B8%89%E8%A7%92%E5%BD%A2%E9%9D%A2%E7%A7%AF%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定包含多个点的集合，从其中取三个点组成三角形，返回能组成的最大三角形的面积。 12345示例:输入: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]输出: 2解释: 这五个点如下图所示。组成的橙色三角形是最大的，面积为2。 注意: 3 &lt;= points.length &lt;= 50. 不存在重复的点。 -50 &lt;= points[i][j] &lt;= 50. 结果误差值在 10^-6 以内都认为是正确答案。 2、解题思路​ 这个题目的难点在于要知道如何利用三个点的坐标求解面积， ​ 有时间可以看看有限元分析 已知三个点坐标求 三角形面积 12345678910设A(x1,y1),B(x2,y2),C(x3,y3) 由A--&gt;B--&gt;C--&gt;A 按逆时针方向转。(行列式书写要求） 设三角形的面积为S 则S=（1/2)*(下面行列式） |x1 y1 1| |x2 y2 1| |x3 y3 1| S=(1/2)*(x1y2*1+x2y3*1+x3y1*1-x1y3*1-x2y1*1-x3y2*1) 即用三角形的三个顶点坐标求其面积的公式为: S=(1/2)*(x1y2+x2y3+x3y1-x1y3-x2y1-x3y2) 1234567891011class Solution: def largestTriangleArea(self, points): """ :type points: List[List[int]] :rtype: float """ return max([self.getArea(point1, point2, point3) for point1, point2, point3 in itertools.combinations(points, 3)]) def getArea(self, point1, point2, point3): (x1, y1), (x2, y2), (x3, y3) = point1, point2, point3 return 0.5 * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3873,9 +3873,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 830. 较大分组的位置]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20830.%C2%A0%E8%BE%83%E5%A4%A7%E5%88%86%E7%BB%84%E7%9A%84%E4%BD%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述在一个由小写字母构成的字符串 S 中，包含由一些连续的相同字符所构成的分组。 例如，在字符串 S = &quot;abbxxxxzyy&quot; 中，就含有 &quot;a&quot;, &quot;bb&quot;, &quot;xxxx&quot;, &quot;z&quot; 和 &quot;yy&quot; 这样的一些分组。 我们称所有包含大于或等于三个连续字符的分组为较大分组。找到每一个较大分组的起始和终止位置。 最终结果按照字典顺序输出。 示例 1: 123输入: &quot;abbxxxxzzy&quot;输出: [[3,6]]解释: &quot;xxxx&quot; 是一个起始于 3 且终止于 6 的较大分组。 示例 2: 123输入: &quot;abc&quot;输出: []解释: &quot;a&quot;,&quot;b&quot; 和 &quot;c&quot; 均不是符合要求的较大分组。 示例 3: 12输入: &quot;abcdddeeeeaabbbcd&quot;输出: [[3,5],[6,9],[12,14]] 说明: 1 &lt;= S.length &lt;= 1000 2、解题思路​ 1234567891011121314151617181920212223242526class Solution: def largeGroupPositions(self, S): """ :type S: str :rtype: List[List[int]] """ if S is None: return [] result = [] current_index = 0 current_count = 0 current_char = S[0] for i, c in enumerate(S): if current_char == c: current_count += 1 else: current_char = c if current_count &gt;= 3: result.append([current_index, current_index + current_count - 1]) current_index = i current_count = 1 if current_count &gt;= 3: result.append([current_index, current_index + current_count - 1]) return result]]></content>
+    <title><![CDATA[LeetCode 832. 翻转图像]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20832.%C2%A0%E7%BF%BB%E8%BD%AC%E5%9B%BE%E5%83%8F%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二进制矩阵 A，我们想先水平翻转图像，然后反转图像并返回结果。 水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 [1, 1, 0] 的结果是 [0, 1, 1]。 反转图片的意思是图片中的 0 全部被 1 替换， 1 全部被 0 替换。例如，反转 [0, 1, 1] 的结果是 [1, 0, 0]。 示例 1: 1234输入: [[1,1,0],[1,0,1],[0,0,0]]输出: [[1,0,0],[0,1,0],[1,1,1]]解释: 首先翻转每一行: [[0,1,1],[1,0,1],[0,0,0]]； 然后反转图片: [[1,0,0],[0,1,0],[1,1,1]] 示例 2: 1234输入: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]输出: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]解释: 首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]； 然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]] 说明: 1 &lt;= A.length = A[0].length &lt;= 20 0 &lt;= A[i][j] &lt;= 1 2、解题思路​ 12345678910class Solution: def flipAndInvertImage(self, A): """ :type A: List[List[int]] :rtype: List[List[int]] """ result = [] for i in A: result.append([1 if v == 0 else 0 for v in reversed(i)]) return result]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3884,9 +3884,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 832. 翻转图像]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20832.%C2%A0%E7%BF%BB%E8%BD%AC%E5%9B%BE%E5%83%8F%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二进制矩阵 A，我们想先水平翻转图像，然后反转图像并返回结果。 水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 [1, 1, 0] 的结果是 [0, 1, 1]。 反转图片的意思是图片中的 0 全部被 1 替换， 1 全部被 0 替换。例如，反转 [0, 1, 1] 的结果是 [1, 0, 0]。 示例 1: 1234输入: [[1,1,0],[1,0,1],[0,0,0]]输出: [[1,0,0],[0,1,0],[1,1,1]]解释: 首先翻转每一行: [[0,1,1],[1,0,1],[0,0,0]]； 然后反转图片: [[1,0,0],[0,1,0],[1,1,1]] 示例 2: 1234输入: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]输出: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]解释: 首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]； 然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]] 说明: 1 &lt;= A.length = A[0].length &lt;= 20 0 &lt;= A[i][j] &lt;= 1 2、解题思路​ 12345678910class Solution: def flipAndInvertImage(self, A): """ :type A: List[List[int]] :rtype: List[List[int]] """ result = [] for i in A: result.append([1 if v == 0 else 0 for v in reversed(i)]) return result]]></content>
+    <title><![CDATA[LeetCode 830. 较大分组的位置]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20830.%C2%A0%E8%BE%83%E5%A4%A7%E5%88%86%E7%BB%84%E7%9A%84%E4%BD%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述在一个由小写字母构成的字符串 S 中，包含由一些连续的相同字符所构成的分组。 例如，在字符串 S = &quot;abbxxxxzyy&quot; 中，就含有 &quot;a&quot;, &quot;bb&quot;, &quot;xxxx&quot;, &quot;z&quot; 和 &quot;yy&quot; 这样的一些分组。 我们称所有包含大于或等于三个连续字符的分组为较大分组。找到每一个较大分组的起始和终止位置。 最终结果按照字典顺序输出。 示例 1: 123输入: &quot;abbxxxxzzy&quot;输出: [[3,6]]解释: &quot;xxxx&quot; 是一个起始于 3 且终止于 6 的较大分组。 示例 2: 123输入: &quot;abc&quot;输出: []解释: &quot;a&quot;,&quot;b&quot; 和 &quot;c&quot; 均不是符合要求的较大分组。 示例 3: 12输入: &quot;abcdddeeeeaabbbcd&quot;输出: [[3,5],[6,9],[12,14]] 说明: 1 &lt;= S.length &lt;= 1000 2、解题思路​ 1234567891011121314151617181920212223242526class Solution: def largeGroupPositions(self, S): """ :type S: str :rtype: List[List[int]] """ if S is None: return [] result = [] current_index = 0 current_count = 0 current_char = S[0] for i, c in enumerate(S): if current_char == c: current_count += 1 else: current_char = c if current_count &gt;= 3: result.append([current_index, current_index + current_count - 1]) current_index = i current_count = 1 if current_count &gt;= 3: result.append([current_index, current_index + current_count - 1]) return result]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3906,9 +3906,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 844. 比较含退格的字符串]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20844.%20%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述1234567891011121314151617181920212223242526272829给定 S 和 T 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 # 代表退格字符。示例 1：输入：S = &quot;ab#c&quot;, T = &quot;ad#c&quot;输出：true解释：S 和 T 都会变成 “ac”。示例 2：输入：S = &quot;ab##&quot;, T = &quot;c#d#&quot;输出：true解释：S 和 T 都会变成 “”。示例 3：输入：S = &quot;a##c&quot;, T = &quot;#a#c&quot;输出：true解释：S 和 T 都会变成 “c”。示例 4：输入：S = &quot;a#c&quot;, T = &quot;b&quot;输出：false解释：S 会变成 “c”，但 T 仍然是 “b”。 提示：1 &lt;= S.length &lt;= 2001 &lt;= T.length &lt;= 200S 和 T 只含有小写字母以及字符 &apos;#&apos;。 2、 解题思路2.1 从后向前递推法​ 因为字符串中仅包含退格键和小写字母，而退格键则是取消掉前面的一个字符，如果是多个退格键，则取消多个字符 ​ 基本思路就是，从右面向左进行比较，判断出现去掉退格键的影响以后的第一个字符是什么，如果第一个字符相同，继续判断下一个 ​ 直到出现不相同的或者字符串比较完毕，返回结果 12345678910111213141516171819202122232425262728293031323334353637char findFisrtCharForBackspaceString(char *s, int *length) &#123; int backspaces = 0; char temp = 0; while (!temp &amp;&amp; *length &gt; 0) &#123; if (s[*length - 1] == '#') &#123; backspaces++; (*length)--; &#125; else if (backspaces &gt; 0) &#123; (*length)--; backspaces--; &#125; else if (*length &gt;=1) &#123; temp = s[*length - 1]; &#125; else &#123; break; &#125; &#125; return temp;&#125;bool backspaceCompare(char *S, char *T) &#123; bool flag = true; int length_s = strlen(S); int length_t = strlen(T); while (length_s &gt; 0 || length_t &gt; 0) &#123; if (findFisrtCharForBackspaceString(S, &amp;length_s) != findFisrtCharForBackspaceString(T,&amp;length_t))&#123; flag = false; break; &#125; length_s--; length_t--; &#125; return flag;&#125;]]></content>
+    <title><![CDATA[LeetCode 840. 矩阵中的幻方]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20840.%C2%A0%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%BB%E6%96%B9%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述3 x 3 的幻方是一个填充有从 1 到 9 的不同数字的 3 x 3 矩阵，其中每行，每列以及两条对角线上的各数之和都相等。 给定一个由整数组成的 N × N 矩阵，其中有多少个 3 × 3 的 “幻方” 子矩阵？（每个子矩阵都是连续的）。 示例 1: 12345678910111213141516输入: [[4,3,8,4], [9,5,1,9], [2,7,6,2]]输出: 1解释: 下面的子矩阵是一个 3 x 3 的幻方：438951276而这一个不是：384519762总的来说，在本示例所给定的矩阵中只有一个 3 x 3 的幻方子矩阵。 提示: 1 &lt;= grid.length = grid[0].length &lt;= 10 0 &lt;= grid[i][j] &lt;= 15 2、解题思路​ 首先，不断地取出3*3的矩阵，用来判断是不是幻方 ​ 在判断的时候，首先，判断有没有重复数字，有的话，直接返回False 1234567891011121314151617181920212223242526272829303132333435363738394041424344class Solution: def numMagicSquaresInside(self, grid): """ :type grid: List[List[int]] :rtype: int """ row = len(grid) col = len(grid[0]) result = 0 nine_num = [] for i in range(row): if i + 2 &lt; row: for j in range(col): if j + 2 &lt; col: nine_num.clear() nine_num.append(grid[i][j:j + 3]) nine_num.append(grid[i + 1][j:j + 3]) nine_num.append(grid[i + 2][j:j + 3]) if self.isMagic(nine_num): result += 1 return result def isMagic(self, grid): nums = set([1, 2, 3, 4, 5, 6, 7, 8, 9]) nums_grid = set(grid[0] + grid[1] + grid[2]) if len(nums_grid) &lt; 9 or nums.difference(nums_grid) != set() : return False total = sum(grid[0]) if sum(grid[1]) != total or sum(grid[2]) != total: return False if sum([v[0] for v in grid]) != total or sum([v[0] for v in grid]) != total or sum( [v[0] for v in grid]) != total: return False if sum([grid[0][0], grid[1][1], grid[2][2]]) != total or sum([grid[0][2], grid[1][1], grid[2][0]]) != total: return False return True]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3917,9 +3917,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 840. 矩阵中的幻方]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20840.%C2%A0%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%BB%E6%96%B9%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述3 x 3 的幻方是一个填充有从 1 到 9 的不同数字的 3 x 3 矩阵，其中每行，每列以及两条对角线上的各数之和都相等。 给定一个由整数组成的 N × N 矩阵，其中有多少个 3 × 3 的 “幻方” 子矩阵？（每个子矩阵都是连续的）。 示例 1: 12345678910111213141516输入: [[4,3,8,4], [9,5,1,9], [2,7,6,2]]输出: 1解释: 下面的子矩阵是一个 3 x 3 的幻方：438951276而这一个不是：384519762总的来说，在本示例所给定的矩阵中只有一个 3 x 3 的幻方子矩阵。 提示: 1 &lt;= grid.length = grid[0].length &lt;= 10 0 &lt;= grid[i][j] &lt;= 15 2、解题思路​ 首先，不断地取出3*3的矩阵，用来判断是不是幻方 ​ 在判断的时候，首先，判断有没有重复数字，有的话，直接返回False 1234567891011121314151617181920212223242526272829303132333435363738394041424344class Solution: def numMagicSquaresInside(self, grid): """ :type grid: List[List[int]] :rtype: int """ row = len(grid) col = len(grid[0]) result = 0 nine_num = [] for i in range(row): if i + 2 &lt; row: for j in range(col): if j + 2 &lt; col: nine_num.clear() nine_num.append(grid[i][j:j + 3]) nine_num.append(grid[i + 1][j:j + 3]) nine_num.append(grid[i + 2][j:j + 3]) if self.isMagic(nine_num): result += 1 return result def isMagic(self, grid): nums = set([1, 2, 3, 4, 5, 6, 7, 8, 9]) nums_grid = set(grid[0] + grid[1] + grid[2]) if len(nums_grid) &lt; 9 or nums.difference(nums_grid) != set() : return False total = sum(grid[0]) if sum(grid[1]) != total or sum(grid[2]) != total: return False if sum([v[0] for v in grid]) != total or sum([v[0] for v in grid]) != total or sum( [v[0] for v in grid]) != total: return False if sum([grid[0][0], grid[1][1], grid[2][2]]) != total or sum([grid[0][2], grid[1][1], grid[2][0]]) != total: return False return True]]></content>
+    <title><![CDATA[LeetCode 844. 比较含退格的字符串]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%20844.%20%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述1234567891011121314151617181920212223242526272829给定 S 和 T 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 # 代表退格字符。示例 1：输入：S = &quot;ab#c&quot;, T = &quot;ad#c&quot;输出：true解释：S 和 T 都会变成 “ac”。示例 2：输入：S = &quot;ab##&quot;, T = &quot;c#d#&quot;输出：true解释：S 和 T 都会变成 “”。示例 3：输入：S = &quot;a##c&quot;, T = &quot;#a#c&quot;输出：true解释：S 和 T 都会变成 “c”。示例 4：输入：S = &quot;a#c&quot;, T = &quot;b&quot;输出：false解释：S 会变成 “c”，但 T 仍然是 “b”。 提示：1 &lt;= S.length &lt;= 2001 &lt;= T.length &lt;= 200S 和 T 只含有小写字母以及字符 &apos;#&apos;。 2、 解题思路2.1 从后向前递推法​ 因为字符串中仅包含退格键和小写字母，而退格键则是取消掉前面的一个字符，如果是多个退格键，则取消多个字符 ​ 基本思路就是，从右面向左进行比较，判断出现去掉退格键的影响以后的第一个字符是什么，如果第一个字符相同，继续判断下一个 ​ 直到出现不相同的或者字符串比较完毕，返回结果 12345678910111213141516171819202122232425262728293031323334353637char findFisrtCharForBackspaceString(char *s, int *length) &#123; int backspaces = 0; char temp = 0; while (!temp &amp;&amp; *length &gt; 0) &#123; if (s[*length - 1] == '#') &#123; backspaces++; (*length)--; &#125; else if (backspaces &gt; 0) &#123; (*length)--; backspaces--; &#125; else if (*length &gt;=1) &#123; temp = s[*length - 1]; &#125; else &#123; break; &#125; &#125; return temp;&#125;bool backspaceCompare(char *S, char *T) &#123; bool flag = true; int length_s = strlen(S); int length_t = strlen(T); while (length_s &gt; 0 || length_t &gt; 0) &#123; if (findFisrtCharForBackspaceString(S, &amp;length_s) != findFisrtCharForBackspaceString(T,&amp;length_t))&#123; flag = false; break; &#125; length_s--; length_t--; &#125; return flag;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -4115,9 +4115,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 90. 子集 II]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2090.%C2%A0%E5%AD%90%E9%9B%86%20II%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个可能包含重复元素的整数数组 *nums*，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。 示例: 12345678910输入: [1,2,2]输出:[ [2], [1], [1,2,2], [2,2], [1,2], []] 2、解题思路​ 实际上，这道题与前面的子集并没有什么区别，只需要判断一下是不是重复的即可 ​ 借助实现的求解组合的函数 12345678910111213class Solution: def subsetsWithDup(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ hash_dict = &#123;&#125; for i in range(len(nums) + 1): for k in itertools.combinations(nums, i): hash_dict[tuple(sorted(k))] = 1 return [list(v) for v in hash_dict.keys()]]]></content>
+    <title><![CDATA[LeetCode 9. 回文数]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%209.%C2%A0%E5%9B%9E%E6%96%87%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述12345678910111213141516171819Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.Example 1:Input: 121Output: trueExample 2:Input: -121Output: falseExplanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.Example 3:Input: 10Output: falseExplanation: Reads 01 from right to left. Therefore it is not a palindrome.Follow up:Coud you solve it without converting the integer to a string? 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1: 12输入: 121输出: true 示例 2: 123输入: -121输出: false解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。 示例 3: 123输入: 10输出: false解释: 从右向左读, 为 01 。因此它不是一个回文数。 进阶: 你能不将整数转为字符串来解决这个问题吗？ 2、解题思路2.1 按位比较​ 首先判断一共有多少位，例如123，1234，分别是3，4位，实际上，我们只需要比较位数的一般，也就是3位的，比较1次，4位的比较两次 1234567891011121314151617181920212223242526272829303132333435bool isPalindrome(int x) &#123; if (x&lt;0)&#123; return false; &#125; int nums = 1; int temp = x; bool flag = true; int left_num, right_num; if (x &lt; 10) &#123; return true; &#125; while ((temp = temp / 10) &gt; 0) &#123; nums++; &#125; for (int i = 0, j = 1; i &lt; nums / 2; i++) &#123; left_num = right_num = x; while (nums - i - j++ &gt; 0) &#123; left_num /= 10; &#125; left_num %= 10; j = i; while (j-- &gt; 0) &#123; right_num /= 10; &#125; right_num %= 10; j = 1; if (left_num != right_num) &#123; flag = false; break; &#125; &#125; return flag;&#125; 2.2 按位取（减少计算量）​ 上面的方式是按照位数取得，下面按照同时得到最高位的阶数，也就是$10^n$ 123456789101112131415161718192021222324252627bool isPalindrome(int x) &#123; if (x &lt; 0) &#123; return false; &#125; else if (x &lt; 10) &#123; return true; &#125; int div = 1; int nums = 1; int temp = x; bool flag = true; while ((temp = temp / 10) &gt; 0) &#123; nums++; div *= 10; &#125; for (int i = 0; i &lt; nums / 2; i++) &#123; if (((x / div) %10) != (x % 10))&#123; flag = false; break; &#125; x /=10; div /=100; &#125; return flag;&#125; ​ 有一点可以注意一下，在leetcode上提交的运行时间不一定就很准，第一次提交需要124ms，第二次就用了104ms，上面的按理说会多一些，大约120ms左右； 2.3 整数比较​ 前面是按照每一位进行比较，实际上有些慢，如果直接取出多位，直接比较数字，会快很多 ​ 后面的几位很好取出来，前面的就不太好取出来，需要反着取出来 1234567891011121314151617181920212223242526272829303132333435363738394041bool isPalindrome(int x) &#123; if (x &lt; 0) &#123; return false; &#125; else if (x &lt; 10) &#123; return true; &#125; int div_left = 1; int div_right = 1; int nums = 1; int temp = x; bool flag = true; int left_num = 0, right_num = 0; int i; while ((temp = temp / 10) &gt; 0) &#123; nums++; &#125; i = nums - (nums / 2); while (i-- &gt; 0) &#123; div_left *= 10; &#125; if ((nums % 2) == 0) &#123; div_right = div_left; &#125; else &#123; div_right = div_left / 10; &#125; left_num = x / div_left % 10; div_left *= 10; for (int i = 0; i &lt; nums / 2 - 1; i++) &#123; left_num = 10 * left_num + x / div_left % 10; div_left *= 10; &#125; right_num = x % (div_right); if (left_num != right_num) &#123; flag = false; &#125; return flag;&#125;]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -4126,9 +4126,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 9. 回文数]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%209.%C2%A0%E5%9B%9E%E6%96%87%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述12345678910111213141516171819Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.Example 1:Input: 121Output: trueExample 2:Input: -121Output: falseExplanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.Example 3:Input: 10Output: falseExplanation: Reads 01 from right to left. Therefore it is not a palindrome.Follow up:Coud you solve it without converting the integer to a string? 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1: 12输入: 121输出: true 示例 2: 123输入: -121输出: false解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。 示例 3: 123输入: 10输出: false解释: 从右向左读, 为 01 。因此它不是一个回文数。 进阶: 你能不将整数转为字符串来解决这个问题吗？ 2、解题思路2.1 按位比较​ 首先判断一共有多少位，例如123，1234，分别是3，4位，实际上，我们只需要比较位数的一般，也就是3位的，比较1次，4位的比较两次 1234567891011121314151617181920212223242526272829303132333435bool isPalindrome(int x) &#123; if (x&lt;0)&#123; return false; &#125; int nums = 1; int temp = x; bool flag = true; int left_num, right_num; if (x &lt; 10) &#123; return true; &#125; while ((temp = temp / 10) &gt; 0) &#123; nums++; &#125; for (int i = 0, j = 1; i &lt; nums / 2; i++) &#123; left_num = right_num = x; while (nums - i - j++ &gt; 0) &#123; left_num /= 10; &#125; left_num %= 10; j = i; while (j-- &gt; 0) &#123; right_num /= 10; &#125; right_num %= 10; j = 1; if (left_num != right_num) &#123; flag = false; break; &#125; &#125; return flag;&#125; 2.2 按位取（减少计算量）​ 上面的方式是按照位数取得，下面按照同时得到最高位的阶数，也就是$10^n$ 123456789101112131415161718192021222324252627bool isPalindrome(int x) &#123; if (x &lt; 0) &#123; return false; &#125; else if (x &lt; 10) &#123; return true; &#125; int div = 1; int nums = 1; int temp = x; bool flag = true; while ((temp = temp / 10) &gt; 0) &#123; nums++; div *= 10; &#125; for (int i = 0; i &lt; nums / 2; i++) &#123; if (((x / div) %10) != (x % 10))&#123; flag = false; break; &#125; x /=10; div /=100; &#125; return flag;&#125; ​ 有一点可以注意一下，在leetcode上提交的运行时间不一定就很准，第一次提交需要124ms，第二次就用了104ms，上面的按理说会多一些，大约120ms左右； 2.3 整数比较​ 前面是按照每一位进行比较，实际上有些慢，如果直接取出多位，直接比较数字，会快很多 ​ 后面的几位很好取出来，前面的就不太好取出来，需要反着取出来 1234567891011121314151617181920212223242526272829303132333435363738394041bool isPalindrome(int x) &#123; if (x &lt; 0) &#123; return false; &#125; else if (x &lt; 10) &#123; return true; &#125; int div_left = 1; int div_right = 1; int nums = 1; int temp = x; bool flag = true; int left_num = 0, right_num = 0; int i; while ((temp = temp / 10) &gt; 0) &#123; nums++; &#125; i = nums - (nums / 2); while (i-- &gt; 0) &#123; div_left *= 10; &#125; if ((nums % 2) == 0) &#123; div_right = div_left; &#125; else &#123; div_right = div_left / 10; &#125; left_num = x / div_left % 10; div_left *= 10; for (int i = 0; i &lt; nums / 2 - 1; i++) &#123; left_num = 10 * left_num + x / div_left % 10; div_left *= 10; &#125; right_num = x % (div_right); if (left_num != right_num) &#123; flag = false; &#125; return flag;&#125;]]></content>
+    <title><![CDATA[LeetCode 90. 子集 II]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2090.%C2%A0%E5%AD%90%E9%9B%86%20II%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个可能包含重复元素的整数数组 *nums*，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。 示例: 12345678910输入: [1,2,2]输出:[ [2], [1], [1,2,2], [2,2], [1,2], []] 2、解题思路​ 实际上，这道题与前面的子集并没有什么区别，只需要判断一下是不是重复的即可 ​ 借助实现的求解组合的函数 12345678910111213class Solution: def subsetsWithDup(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ hash_dict = &#123;&#125; for i in range(len(nums) + 1): for k in itertools.combinations(nums, i): hash_dict[tuple(sorted(k))] = 1 return [list(v) for v in hash_dict.keys()]]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -4151,6 +4151,28 @@
     <title><![CDATA[LeetCode 92. 反转链表 II]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2092.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%20II%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。 说明:1 ≤ m ≤ n ≤ 链表长度。 示例: 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4输出: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL 2、解题思路​ 设置两个指针，第一个指针先走m步然后两个指针一块走一面走，一面反转 ​ 考虑到头部的元素也可能反转，所以要在最前面添加一个节点，用来指向返回的头结点 ​ ​ 123456789101112131415161718192021222324252627282930313233343536373839class Solution: def reverseBetween(self, head, m, n): """ :type head: ListNode :type m: int :type n: int :rtype: ListNode """ prev = ListNode(0) result_head = prev prev.next = head temp = m while temp &gt; 1: prev = prev.next temp -= 1 first_reverse = prev.next first = prev.next second = first.next temp_node = second if temp_node: temp_node = first.next.next temp = n while temp - m &gt; 0: second.next = first first = second second = temp_node if temp_node: temp_node = temp_node.next temp -= 1 prev.next = first first_reverse.next = second return result_head.next ​]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 93. 复原IP地址]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2093.%C2%A0%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例: 12输入: &quot;25525511135&quot;输出: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;] 2、解题思路​ 先想到的是深度优先搜索 ​ 每一次，取一个字符，2个字符，3个字符，分别判断，如果满足条件，继续判断 如果刚好用尽了所有字符，并且数组里面元素刚刚好4个，表示满足条件，加入结果数组 需要注意，如果有0，那么前两位不能是0 12345678910111213141516171819202122232425262728293031323334353637class Solution: def restoreIpAddresses(self, s): """ :type s: str :rtype: List[str] """ result = [] self.dfs(s, 0, [], result) return list(set(result)) def dfs(self, s, index, current, result): if index &gt;= len(s): if len(current) == 4: result.append(".".join(current)) return elif len(current) &gt;= 4: return temp = current[:] temp_num = int(s[index:index + 1]) if temp_num &lt;= 255 and (len(s) - index - 1) &lt;= (3 - len(current)) * 3: temp.append(s[index:index + 1]) self.dfs(s, index + 1, temp, result) temp = current[:] temp_num = int(s[index:index + 2]) if temp_num &lt;= 255 and s[index] != '0' and (len(s) - index - 2) &lt;= (3 - len(current)) * 3: temp.append(s[index:index + 2]) self.dfs(s, index + 2, temp, result) temp = current[:] temp_num = int(s[index:index + 3]) if temp_num &lt;= 255 and s[index:index + 2] != '00' and s[index] != '0' and (len(s) - index - 3) &lt;= ( 3 - len(current)) * 3: temp.append(s[index:index + 3]) self.dfs(s, index + 3, temp, result)]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 94. 二叉树的中序遍历]]></title>
+    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2094.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%2F</url>
+    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，返回它的中序 遍历。 示例: 12345678输入: [1,null,2,3] 1 \ 2 / 3输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 2、解题思路​ 一般二叉树的问题都能够用递归来解决，不过这个问题既然不用递归，就需要借助数据结构，例如栈来存储 前面尚未放到结果中的节点 123456789101112131415161718192021222324252627282930313233343536# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneimport queueclass Solution: def inorderTraversal(self, root): """ :type root: TreeNode :rtype: List[int] """ result = [] q = queue.deque() if root: q.append(root) judge = True while q: if judge and q[-1].left: q.append(q[-1].left) continue judge = False result.append(q[-1].val) if q[-1].right: q.append(q.pop().right) judge = True else: q.pop() return result ​ 一开始，没有用judge变量，发现陷入了死循环，然后分析了一下，发现，是因为我们将队列中的节点弹出，这时候就不应该是去判断左节点，不然那就会出现下面的情况 弹出左节点 发现有左节点，放入 这种情况是不对的 ​ 什么时候重新判断左节点呢？ 就是当放入新的右节点的时候，需要判断他有没有左节点]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -4184,28 +4206,6 @@
     <title><![CDATA[LeetCode 98. 验证二叉搜索树]]></title>
     <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2098.%C2%A0%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%2F</url>
     <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。 一个二叉搜索树具有如下特征： 节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。 示例 1: 12345输入: 2 / \ 1 3输出: true 示例 2: 123456789输入: 5 / \ 1 4 / \ 3 6输出: false解释: 输入为: [5,1,4,null,null,3,6]。 根节点的值为 5 ，但是其右子节点值为 4 。 2、解题思路​ 假设左子树是二叉搜索树，右子树也是二叉搜索树，那么只要当前节点大于左子树的最大节点，小于右子树的最小节点即可 ​ 其实一个简单的做法，二叉搜索树的中序遍历是一个排序数组，如果使用中序遍历找到最后，每一个值都是大于前面的值，表示这就是二叉搜索树 ​ 1234567891011121314151617181920212223242526272829# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneclass Solution: prev = -1 res = True def isValidBST(self, root): """ :type root: TreeNode :rtype: bool """ self.dfs(root) return self.res def dfs(self, node): if node is not None: self.dfs(node.left) if self.prev != -1: if node.val &lt;= self.prev: self.res = False return self.prev = node.val self.dfs(node.right) ​ 需要注意的是，prev和res不能采用参数传递的方式，因为每个函数有自己的调用栈，会导致每次使用的都是之前的prev ​]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 94. 二叉树的中序遍历]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2094.%C2%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述给定一个二叉树，返回它的中序 遍历。 示例: 12345678输入: [1,null,2,3] 1 \ 2 / 3输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 2、解题思路​ 一般二叉树的问题都能够用递归来解决，不过这个问题既然不用递归，就需要借助数据结构，例如栈来存储 前面尚未放到结果中的节点 123456789101112131415161718192021222324252627282930313233343536# Definition for a binary tree node.# class TreeNode:# def __init__(self, x):# self.val = x# self.left = None# self.right = Noneimport queueclass Solution: def inorderTraversal(self, root): """ :type root: TreeNode :rtype: List[int] """ result = [] q = queue.deque() if root: q.append(root) judge = True while q: if judge and q[-1].left: q.append(q[-1].left) continue judge = False result.append(q[-1].val) if q[-1].right: q.append(q.pop().right) judge = True else: q.pop() return result ​ 一开始，没有用judge变量，发现陷入了死循环，然后分析了一下，发现，是因为我们将队列中的节点弹出，这时候就不应该是去判断左节点，不然那就会出现下面的情况 弹出左节点 发现有左节点，放入 这种情况是不对的 ​ 什么时候重新判断左节点呢？ 就是当放入新的右节点的时候，需要判断他有没有左节点]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 93. 复原IP地址]]></title>
-    <url>%2F2018%2F08%2F07%2Fleetcode%2FLeetCode%3A%2093.%C2%A0%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80%2F</url>
-    <content type="text"><![CDATA[[TOC] 1、题目描述​ 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例: 12输入: &quot;25525511135&quot;输出: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;] 2、解题思路​ 先想到的是深度优先搜索 ​ 每一次，取一个字符，2个字符，3个字符，分别判断，如果满足条件，继续判断 如果刚好用尽了所有字符，并且数组里面元素刚刚好4个，表示满足条件，加入结果数组 需要注意，如果有0，那么前两位不能是0 12345678910111213141516171819202122232425262728293031323334353637class Solution: def restoreIpAddresses(self, s): """ :type s: str :rtype: List[str] """ result = [] self.dfs(s, 0, [], result) return list(set(result)) def dfs(self, s, index, current, result): if index &gt;= len(s): if len(current) == 4: result.append(".".join(current)) return elif len(current) &gt;= 4: return temp = current[:] temp_num = int(s[index:index + 1]) if temp_num &lt;= 255 and (len(s) - index - 1) &lt;= (3 - len(current)) * 3: temp.append(s[index:index + 1]) self.dfs(s, index + 1, temp, result) temp = current[:] temp_num = int(s[index:index + 2]) if temp_num &lt;= 255 and s[index] != '0' and (len(s) - index - 2) &lt;= (3 - len(current)) * 3: temp.append(s[index:index + 2]) self.dfs(s, index + 2, temp, result) temp = current[:] temp_num = int(s[index:index + 3]) if temp_num &lt;= 255 and s[index:index + 2] != '00' and s[index] != '0' and (len(s) - index - 3) &lt;= ( 3 - len(current)) * 3: temp.append(s[index:index + 3]) self.dfs(s, index + 3, temp, result)]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
