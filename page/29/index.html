@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 601. 体育馆的人流量/">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 6. Z字形变换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -365,8 +365,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 601. 体育馆的人流量/" itemprop="url">
-                  LeetCode 601. 体育馆的人流量
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 6. Z字形变换/" itemprop="url">
+                  LeetCode 6. Z字形变换
                 </a>
               
             
@@ -429,8 +429,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 601. 体育馆的人流量/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 601. 体育馆的人流量/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 6. Z字形变换/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 6. Z字形变换/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,7 +438,7 @@
 
           
           
-             <span id="/2018/08/07/leetcode/LeetCode: 601. 体育馆的人流量/" class="leancloud_visitors" data-flag-title="LeetCode 601. 体育馆的人流量">
+             <span id="/2018/08/07/leetcode/LeetCode: 6. Z字形变换/" class="leancloud_visitors" data-flag-title="LeetCode 6. Z字形变换">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -472,15 +472,316 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>X 市建了一个新的体育馆，每日人流量信息被记录在这三列信息中：<strong>序号</strong> (id)、<strong>日期</strong> (date)、 <strong>人流量</strong> (people)。</p>
-<p>请编写一个查询语句，找出高峰期时段，要求连续三天及以上，并且每天人流量均不少于100。</p>
-<p>例如，表 <code>stadium</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+------+------------+-----------+</span><br><span class="line">| id   | date       | people    |</span><br><span class="line">+------+------------+-----------+</span><br><span class="line">| 1    | 2017-01-01 | 10        |</span><br><span class="line">| 2    | 2017-01-02 | 109       |</span><br><span class="line">| 3    | 2017-01-03 | 150       |</span><br><span class="line">| 4    | 2017-01-04 | 99        |</span><br><span class="line">| 5    | 2017-01-05 | 145       |</span><br><span class="line">| 6    | 2017-01-06 | 1455      |</span><br><span class="line">| 7    | 2017-01-07 | 199       |</span><br><span class="line">| 8    | 2017-01-08 | 188       |</span><br><span class="line">+------+------------+-----------+</span><br></pre></td></tr></table></figure>
-<p>对于上面的示例数据，输出为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+------+------------+-----------+</span><br><span class="line">| id   | date       | people    |</span><br><span class="line">+------+------------+-----------+</span><br><span class="line">| 5    | 2017-01-05 | 145       |</span><br><span class="line">| 6    | 2017-01-06 | 1455      |</span><br><span class="line">| 7    | 2017-01-07 | 199       |</span><br><span class="line">| 8    | 2017-01-08 | 188       |</span><br><span class="line">+------+------------+-----------+</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong><br>每天只有一行记录，日期随着 id 的增加而增加。</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> s1.* <span class="keyword">from</span> stadium s1, stadium s2, stadium s3 <span class="keyword">where</span> s1.people &gt;= <span class="number">100</span> <span class="keyword">and</span> s2.people &gt;= <span class="number">100</span> <span class="keyword">and</span> s3.people &gt;=<span class="number">100</span> </span><br><span class="line"><span class="keyword">and</span> </span><br><span class="line">(</span><br><span class="line">(s1.id - s2.id = <span class="number">1</span> <span class="keyword">and</span> s2.id - s3.id =<span class="number">1</span>)  </span><br><span class="line"><span class="keyword">or</span>  </span><br><span class="line">(s2.id - s1.id = <span class="number">1</span> <span class="keyword">and</span> s1.id - s3.id =<span class="number">1</span>)   </span><br><span class="line"><span class="keyword">or</span>  </span><br><span class="line">(s3.id - s2.id = <span class="number">1</span> <span class="keyword">and</span> s2.id - s1.id = <span class="number">1</span>)   </span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> s1.date <span class="keyword">asc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZigZag变换，是一种打乱顺序的方式</span><br></pre></td></tr></table></figure>
+<h2 id="1、题目要求"><a href="#1、题目要求" class="headerlink" title="1、题目要求"></a>1、题目要求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">The string &quot;PAYPALISHIRING&quot; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</span><br><span class="line"></span><br><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br><span class="line">And then read line by line: &quot;PAHNAPLSIIGYIR&quot;</span><br><span class="line"></span><br><span class="line">Write the code that will take a string and make this conversion given a number of rows:</span><br><span class="line"></span><br><span class="line">string convert(string s, int numRows);</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: s = &quot;PAYPALISHIRING&quot;, numRows = 3</span><br><span class="line">Output: &quot;PAHNAPLSIIGYIR&quot;</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: s = &quot;PAYPALISHIRING&quot;, numRows = 4</span><br><span class="line">Output: &quot;PINALSIGYAHRPI&quot;</span><br><span class="line">Explanation:</span><br><span class="line"></span><br><span class="line">P     I    N</span><br><span class="line">A   L S  I G</span><br><span class="line">Y A   H R</span><br><span class="line">P     I</span><br></pre></td></tr></table></figure>
+<p>将字符串 <code>&quot;PAYPALISHIRING&quot;</code> 以Z字形排列成给定的行数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br></pre></td></tr></table></figure>
+<p>之后从左往右，逐行读取字符：<code>&quot;PAHNAPLSIIGYIR&quot;</code></p>
+<p>实现一个将字符串进行指定行数变换的函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string convert(string s, int numRows);</span><br></pre></td></tr></table></figure>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;PAYPALISHIRING&quot;, numRows = 3</span><br><span class="line">输出: &quot;PAHNAPLSIIGYIR&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;PAYPALISHIRING&quot;, numRows = 4</span><br><span class="line">输出: &quot;PINALSIGYAHRPI&quot;</span><br><span class="line">解释:</span><br><span class="line"></span><br><span class="line">P     I    N</span><br><span class="line">A   L S  I G</span><br><span class="line">Y A   H R</span><br><span class="line">P     I</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h3 id="2-1-依次写入法"><a href="#2-1-依次写入法" class="headerlink" title="2.1 依次写入法"></a>2.1 依次写入法</h3><p>​    如果有5行，则准备5个缓冲，将不同的字符依次放入不同的缓冲，然后从第一个开始，依次取出即可得到</p>
+<h3 id="2-2-移位写入法"><a href="#2-2-移位写入法" class="headerlink" title="2.2 移位写入法"></a>2.2 移位写入法</h3><p>​    </p>
+<table>
+<thead>
+<tr>
+<th>行号</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>4</td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td></td>
+<td>6</td>
+<td></td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>​    根据上面的写法，数据第一行的，下标间隔为4，第2行讲个为2，第三行间隔为4</p>
+<table>
+<thead>
+<tr>
+<th>行</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td></td>
+<td>6</td>
+<td></td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td>11</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>​    再根据上面的表格，</p>
+<p>第一行间隔为：8</p>
+<p>第二行间隔为：6，2</p>
+<p>第三行间隔为：4，4</p>
+<p>第四行间隔为：2，6</p>
+<p>第五行间隔为：8</p>
+<p>​    根据上面的规律，可以看到，如果每一行都看成是两个间隔，就能统一，除去第一行与最后一行，如下改一下，就可以得到每一次移动的下标数；</p>
+<p>第一行间隔为：8，8</p>
+<p>第二行间隔为：6，2</p>
+<p>第三行间隔为：4，4</p>
+<p>第四行间隔为：2，6</p>
+<p>第五行间隔为：8，8</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">convert</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, moves[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> result_pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> source_pos;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (s[i++]) &#123;</span><br><span class="line">        length++;</span><br><span class="line">    &#125;</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *result = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * length + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (numRows &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= length) &#123;</span><br><span class="line">            result[i] = s[i];</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span> || i == (numRows - <span class="number">1</span>)) &#123;</span><br><span class="line">            moves[<span class="number">0</span>] = moves[<span class="number">1</span>] = (numRows - <span class="number">1</span>) * <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            moves[<span class="number">0</span>] = (numRows - <span class="number">1</span>) * <span class="number">2</span> - <span class="number">2</span> * i;</span><br><span class="line">            moves[<span class="number">1</span>] = <span class="number">2</span> * i;</span><br><span class="line">        &#125;</span><br><span class="line">        source_pos = i;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (source_pos &lt; length) &#123;</span><br><span class="line">            result[result_pos++] = s[source_pos];</span><br><span class="line">            source_pos += moves[(count++) % <span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    result[length] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 61. 旋转链表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" itemprop="url">
+                  LeetCode 61. 旋转链表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" class="leancloud_visitors" data-flag-title="LeetCode 61. 旋转链表">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
+<p>给定一个链表，旋转链表，将链表每个节点向右移动 <em>k</em> 个位置，其中 <em>k</em> 是非负数。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2</span><br><span class="line">输出: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br><span class="line">解释:</span><br><span class="line">向右旋转 1 步: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL</span><br><span class="line">向右旋转 2 步: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: 0-&gt;1-&gt;2-&gt;NULL, k = 4</span><br><span class="line">输出: 2-&gt;0-&gt;1-&gt;NULL</span><br><span class="line">解释:</span><br><span class="line">向右旋转 1 步: 2-&gt;0-&gt;1-&gt;NULL</span><br><span class="line">向右旋转 2 步: 1-&gt;2-&gt;0-&gt;NULL</span><br><span class="line">向右旋转 3 步: 0-&gt;1-&gt;2-&gt;NULL</span><br><span class="line">向右旋转 4 步: 2-&gt;0-&gt;1-&gt;NULL</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这个链表旋转实在是很简单的题目，如果将链表头尾相连，直接然后找到尾部，加上NULL，返回头部指针就可以了</p>
+<p>​    需要注意的就是，如果旋转长度超过了链表长度，我们需要取余处理</p>
+<p>在前面，19题，删除链表的倒数第N个节点中，我们使用了双指针来找到第N个需要删除的节点，这里也是这样做</p>
+<p>​    第一个指针先走n步，然后第二个指针走到头，这样我们就得到了倒数第n个元素，将这个元素设为头指针，然后将尾部与头部相连，就可以了</p>
+<p>​    需要注意的就是边界条件</p>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotateRight</span><span class="params">(self, head, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        first = head</span><br><span class="line">        second = head</span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        temp = head</span><br><span class="line">        temp_k = k</span><br><span class="line">        result = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">while</span> temp_k &gt; <span class="number">0</span> <span class="keyword">and</span> temp:</span><br><span class="line">            temp = temp.next</span><br><span class="line">            temp_k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> temp_k == <span class="number">0</span> <span class="keyword">and</span> temp <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> temp_k == <span class="number">0</span> <span class="keyword">and</span> temp <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            first = temp</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> temp_k &gt; <span class="number">0</span> <span class="keyword">and</span> temp <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            total = k - temp_k</span><br><span class="line">            temp_k = k % total</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> temp_k &gt; <span class="number">0</span>:</span><br><span class="line">                first = first.next</span><br><span class="line">                temp_k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> first.next:</span><br><span class="line">            first = first.next</span><br><span class="line">            second = second.next</span><br><span class="line">        first.next = head</span><br><span class="line">        result = second.next</span><br><span class="line">        second.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
           
         
@@ -732,6 +1033,239 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 62. 不同路径/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" itemprop="url">
+                  LeetCode 62. 不同路径
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 62. 不同路径/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" class="leancloud_visitors" data-flag-title="LeetCode 62. 不同路径">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>一个机器人位于一个 <em>m x n</em> 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p><img src="https://leetcode-cn.com/static/images/problemset/robot_maze.png" alt="img"></p>
+<p>例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
+<p><strong>说明：*</strong>m<em> 和 </em>n* 的值均不超过 100。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: m = 3, n = 2</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">从左上角开始，总共有 3 条路径可以到达右下角。</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line">2. 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line">3. 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: m = 7, n = 3</span><br><span class="line">输出: 28</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这个题目是有规律的，我们仔细观察，能够看到，方格的列值，例如7*3，也就是说机器人可以向下走两次，</p>
+<p>那么机器人第一步可能怎么走呢？</p>
+<p>​    如果直接向右，也就是向下走了0步，还需要向下走两步</p>
+<p>​    如果向下走了一步，在剩下的格子里，还需要走一步</p>
+<p>​    如果向下走了2步，表示只能向右走</p>
+<p>​    直观的，这道题可以用动态规划来做，如何做呢，比如，在第一行，机器人直接向右走，只有一条道</p>
+<p>​    如果机器人直接向下走，也是只有一一条道</p>
+<p>​    但是，其他的位置，都能由上面，和左面走过来，也就是其他的位置都是上面与左面之和</p>
+<p><code>以7*3为例</code></p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>6</td>
+<td>10</td>
+<td>15</td>
+<td>21</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<p>​    从上面的表格可以看到，每个位置对应的路径条数，最终的位置就是想要求解的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type m: int</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> m == <span class="number">1</span> <span class="keyword">and</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">                dp[i][j] = dp[i][j - <span class="number">1</span>] + dp[i - <span class="number">1</span>][j]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">1</span>][m - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 606. 根据二叉树创建字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -919,198 +1453,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 61. 旋转链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" itemprop="url">
-                  LeetCode 61. 旋转链表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 61. 旋转链表/" class="leancloud_visitors" data-flag-title="LeetCode 61. 旋转链表">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
-<p>给定一个链表，旋转链表，将链表每个节点向右移动 <em>k</em> 个位置，其中 <em>k</em> 是非负数。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2</span><br><span class="line">输出: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br><span class="line">解释:</span><br><span class="line">向右旋转 1 步: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL</span><br><span class="line">向右旋转 2 步: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: 0-&gt;1-&gt;2-&gt;NULL, k = 4</span><br><span class="line">输出: 2-&gt;0-&gt;1-&gt;NULL</span><br><span class="line">解释:</span><br><span class="line">向右旋转 1 步: 2-&gt;0-&gt;1-&gt;NULL</span><br><span class="line">向右旋转 2 步: 1-&gt;2-&gt;0-&gt;NULL</span><br><span class="line">向右旋转 3 步: 0-&gt;1-&gt;2-&gt;NULL</span><br><span class="line">向右旋转 4 步: 2-&gt;0-&gt;1-&gt;NULL</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这个链表旋转实在是很简单的题目，如果将链表头尾相连，直接然后找到尾部，加上NULL，返回头部指针就可以了</p>
-<p>​    需要注意的就是，如果旋转长度超过了链表长度，我们需要取余处理</p>
-<p>在前面，19题，删除链表的倒数第N个节点中，我们使用了双指针来找到第N个需要删除的节点，这里也是这样做</p>
-<p>​    第一个指针先走n步，然后第二个指针走到头，这样我们就得到了倒数第n个元素，将这个元素设为头指针，然后将尾部与头部相连，就可以了</p>
-<p>​    需要注意的就是边界条件</p>
-<p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotateRight</span><span class="params">(self, head, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        first = head</span><br><span class="line">        second = head</span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        temp = head</span><br><span class="line">        temp_k = k</span><br><span class="line">        result = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">while</span> temp_k &gt; <span class="number">0</span> <span class="keyword">and</span> temp:</span><br><span class="line">            temp = temp.next</span><br><span class="line">            temp_k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> temp_k == <span class="number">0</span> <span class="keyword">and</span> temp <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> temp_k == <span class="number">0</span> <span class="keyword">and</span> temp <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            first = temp</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> temp_k &gt; <span class="number">0</span> <span class="keyword">and</span> temp <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            total = k - temp_k</span><br><span class="line">            temp_k = k % total</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> temp_k &gt; <span class="number">0</span>:</span><br><span class="line">                first = first.next</span><br><span class="line">                temp_k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> first.next:</span><br><span class="line">            first = first.next</span><br><span class="line">            second = second.next</span><br><span class="line">        first.next = head</span><br><span class="line">        result = second.next</span><br><span class="line">        second.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 617. 合并二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1244,239 +1586,6 @@
 <p><strong>注意:</strong> 合并必须从两个树的根节点开始。</p>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p># </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *right;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct TreeNode* <span class="title">mergeTrees</span><span class="params">(struct TreeNode* t1, struct TreeNode* t2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!t1 &amp;&amp; !t2) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!t1) &#123;</span><br><span class="line">        <span class="keyword">return</span> t2;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!t2) &#123;</span><br><span class="line">        <span class="keyword">return</span> t1;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        t1-&gt;val = t1-&gt;val + t2-&gt;val;</span><br><span class="line">        t1-&gt;left = mergeTrees(t1-&gt;left, t2-&gt;left);</span><br><span class="line">        t1-&gt;right = mergeTrees(t1-&gt;right, t2-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> t1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 62. 不同路径/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" itemprop="url">
-                  LeetCode 62. 不同路径
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 62. 不同路径/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 62. 不同路径/" class="leancloud_visitors" data-flag-title="LeetCode 62. 不同路径">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>一个机器人位于一个 <em>m x n</em> 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
-<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
-<p>问总共有多少条不同的路径？</p>
-<p><img src="https://leetcode-cn.com/static/images/problemset/robot_maze.png" alt="img"></p>
-<p>例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
-<p><strong>说明：*</strong>m<em> 和 </em>n* 的值均不超过 100。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: m = 3, n = 2</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">从左上角开始，总共有 3 条路径可以到达右下角。</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line">2. 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line">3. 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: m = 7, n = 3</span><br><span class="line">输出: 28</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这个题目是有规律的，我们仔细观察，能够看到，方格的列值，例如7*3，也就是说机器人可以向下走两次，</p>
-<p>那么机器人第一步可能怎么走呢？</p>
-<p>​    如果直接向右，也就是向下走了0步，还需要向下走两步</p>
-<p>​    如果向下走了一步，在剩下的格子里，还需要走一步</p>
-<p>​    如果向下走了2步，表示只能向右走</p>
-<p>​    直观的，这道题可以用动态规划来做，如何做呢，比如，在第一行，机器人直接向右走，只有一条道</p>
-<p>​    如果机器人直接向下走，也是只有一一条道</p>
-<p>​    但是，其他的位置，都能由上面，和左面走过来，也就是其他的位置都是上面与左面之和</p>
-<p><code>以7*3为例</code></p>
-<table>
-<thead>
-<tr>
-<th>0</th>
-<th>1</th>
-<th>1</th>
-<th>1</th>
-<th>1</th>
-<th>1</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-</tr>
-<tr>
-<td>1</td>
-<td>3</td>
-<td>6</td>
-<td>10</td>
-<td>15</td>
-<td>21</td>
-<td>28</td>
-</tr>
-</tbody>
-</table>
-<p>​    从上面的表格可以看到，每个位置对应的路径条数，最终的位置就是想要求解的</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type m: int</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> m == <span class="number">1</span> <span class="keyword">and</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">                dp[i][j] = dp[i][j - <span class="number">1</span>] + dp[i - <span class="number">1</span>][j]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">1</span>][m - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2095,7 +2204,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 628. 三个数的最大乘积/">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 63. 不同路径 II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -2114,8 +2223,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 628. 三个数的最大乘积/" itemprop="url">
-                  LeetCode 628. 三个数的最大乘积
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 63. 不同路径 II/" itemprop="url">
+                  LeetCode 63. 不同路径 II
                 </a>
               
             
@@ -2178,8 +2287,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 628. 三个数的最大乘积/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 628. 三个数的最大乘积/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 63. 不同路径 II/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 63. 不同路径 II/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2187,7 +2296,7 @@
 
           
           
-             <span id="/2018/08/07/leetcode/LeetCode: 628. 三个数的最大乘积/" class="leancloud_visitors" data-flag-title="LeetCode 628. 三个数的最大乘积">
+             <span id="/2018/08/07/leetcode/LeetCode: 63. 不同路径 II/" class="leancloud_visitors" data-flag-title="LeetCode 63. 不同路径 II">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2221,23 +2330,16 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>一个机器人位于一个 <em>m x n</em> 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
+<p><img src="https://leetcode-cn.com/static/images/problemset/robot_maze.png" alt="img"></p>
+<p>网格中的障碍物和空位置分别用 <code>1</code> 和 <code>0</code> 来表示。</p>
+<p><strong>说明：*</strong>m<em> 和 </em>n* 的值均不超过 100。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3]</span><br><span class="line">输出: 6</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,4]</span><br><span class="line">输出: 24</span><br></pre></td></tr></table></figure>
-<p><strong>注意:</strong></p>
-<ol>
-<li>给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。</li>
-<li>输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。</li>
-</ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h3 id="2-1-排序法"><a href="#2-1-排序法" class="headerlink" title="2.1 排序法"></a>2.1 排序法</h3><p>​    首先提议总是要得到最大的3个数的乘积，数据都是整型，因此，就会有两种情况</p>
-<p>​    三个都是正数，2个负数一个正数</p>
-<p>​    </p>
-<p>简单的做法，直接排序，然后判断一下就好了</p>
-<p>​    </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> *a - *b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maximumProduct</span><span class="params">(<span class="keyword">int</span> *nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    qsort(nums, numsSize, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), cmp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result_left = nums[<span class="number">0</span>] * nums[<span class="number">1</span>] * nums[numsSize - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> result_right = nums[numsSize - <span class="number">3</span>] * nums[numsSize - <span class="number">2</span>] * nums[numsSize - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result_left &gt; result_right ? result_left : result_right;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-遍历法"><a href="#2-2-遍历法" class="headerlink" title="2.2 遍历法"></a>2.2 遍历法</h3><p>​    通过遍历，找出最小的两个和最大的三个，比较最小的两个与最大的那个的乘积 与最大的3个数的乘积</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [0,1,0],</span><br><span class="line">  [0,0,0]</span><br><span class="line">]</span><br><span class="line">输出: 2</span><br><span class="line">解释:</span><br><span class="line">3x3 网格的正中间有一个障碍物。</span><br><span class="line">从左上角到右下角一共有 2 条不同的路径：</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line">2. 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题和前面的62题区别不大，同样是动态规划，区别是，遇到障碍物，当前节点的路径值直接置0即可，其他的不变</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(self, obstacleGrid)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type obstacleGrid: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        dp = [obstacleGrid[i][:] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(obstacleGrid))]</span><br><span class="line"></span><br><span class="line">        row = len(dp)</span><br><span class="line">        col = len(dp[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> row == <span class="number">1</span> <span class="keyword">and</span> col == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> dp[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> dp[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>:</span><br><span class="line">            dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, col):</span><br><span class="line">            <span class="keyword">if</span> dp[<span class="number">0</span>][i] == <span class="number">1</span>:</span><br><span class="line">                dp[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, row):</span><br><span class="line">            <span class="keyword">if</span> dp[i][<span class="number">0</span>] == <span class="number">1</span>:</span><br><span class="line">                dp[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, col):</span><br><span class="line">                <span class="keyword">if</span> dp[i][j] == <span class="number">1</span>:</span><br><span class="line">                    dp[i][j] = <span class="number">0</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[row - <span class="number">1</span>][col - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
           
         

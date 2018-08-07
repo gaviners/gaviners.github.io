@@ -346,195 +346,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 506. 相对名次/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 506. 相对名次/" itemprop="url">
-                  LeetCode 506. 相对名次
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 506. 相对名次/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 506. 相对名次/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 506. 相对名次/" class="leancloud_visitors" data-flag-title="LeetCode 506. 相对名次">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给出 <strong>N</strong> 名运动员的成绩，找出他们的相对名次并授予前三名对应的奖牌。前三名运动员将会被分别授予 “金牌”，“银牌” 和“ 铜牌”（”Gold Medal”, “Silver Medal”, “Bronze Medal”）。</p>
-<p>(注：分数越高的选手，排名越靠前。)</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [5, 4, 3, 2, 1]</span><br><span class="line">输出: [&quot;Gold Medal&quot;, &quot;Silver Medal&quot;, &quot;Bronze Medal&quot;, &quot;4&quot;, &quot;5&quot;]</span><br><span class="line">解释: 前三名运动员的成绩为前三高的，因此将会分别被授予 “金牌”，“银牌”和“铜牌” (&quot;Gold Medal&quot;, &quot;Silver Medal&quot; and &quot;Bronze Medal&quot;).</span><br><span class="line">余下的两名运动员，我们只需要通过他们的成绩计算将其相对名次即可。</span><br></pre></td></tr></table></figure>
-<p><strong>提示:</strong></p>
-<ol>
-<li>N 是一个正整数并且不会超过 10000。</li>
-<li>所有运动员的成绩都不相同。</li>
-</ol>
-<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Return an array of size *returnSize.</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">numToString</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> digits = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> temp = num;</span><br><span class="line">    <span class="keyword">while</span> (temp / <span class="number">10</span>) &#123;</span><br><span class="line">        digits++;</span><br><span class="line">        temp /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *result = (<span class="keyword">char</span> *) <span class="built_in">calloc</span>(digits + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sprintf</span>(result, <span class="string">"%d"</span>, num);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> *b - *a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> **<span class="title">findRelativeRanks</span><span class="params">(<span class="keyword">int</span> *nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> *returnSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *sort_num = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * numsSize);</span><br><span class="line">    <span class="built_in">memcpy</span>(sort_num, nums, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * numsSize);</span><br><span class="line"></span><br><span class="line">    qsort(sort_num, numsSize, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), cmp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> **result = (<span class="keyword">char</span> **) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span> *) * numsSize);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; numsSize; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] == sort_num[i]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">                    result[j] = <span class="string">"Gold Medal"</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                    result[j] = <span class="string">"Silver Medal"</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">2</span>) &#123;</span><br><span class="line">                    result[j] = <span class="string">"Bronze Medal"</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    result[j] = numToString(i+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *returnSize = numsSize;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 507. 完美数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,6 +477,212 @@
 <p><strong>示例：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 28</span><br><span class="line">输出: True</span><br><span class="line">解释: 28 = 1 + 2 + 4 + 7 + 14</span><br></pre></td></tr></table></figure>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkPerfectNumber</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">1</span> || num == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">int</span> sq = (<span class="keyword">int</span>) <span class="built_in">sqrt</span>(num);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= sq; i++) &#123;</span><br><span class="line">        temp = num % i;</span><br><span class="line">        <span class="keyword">if</span> (temp == <span class="number">0</span>) &#123;</span><br><span class="line">            ans += num / i + i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (sq != <span class="number">1</span> &amp;&amp; num / sq == sq &amp;&amp; num %sq == <span class="number">0</span>) &#123;</span><br><span class="line">        num -= sq;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num == ans) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/" itemprop="url">
+                  LeetCode 501. 二叉搜索树中的众数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/" class="leancloud_visitors" data-flag-title="LeetCode 501. 二叉搜索树中的众数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>Given a binary search tree (BST) with duplicates, find all the <a href="https://en.wikipedia.org/wiki/Mode_(statistics" target="_blank" rel="noopener">mode(s)</a>) (the most frequently occurred element) in the given BST.</p>
+<p>Assume a BST is defined as follows:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with keys <strong>less than or equal to</strong> the node’s key.</li>
+<li>The right subtree of a node contains only nodes with keys <strong>greater than or equal to</strong> the node’s key.</li>
+<li>Both the left and right subtrees must also be binary search trees.</li>
+</ul>
+<p>For example:<br>Given BST <code>[1,null,2,2]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"> \</span><br><span class="line">  2</span><br><span class="line"> /</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>return <code>[2]</code>.</p>
+<p><strong>Note:</strong> If a tree has more than one mode, you can return them in any order.</p>
+<p><strong>Follow up:</strong> Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).</p>
+<p>给定一个有相同值的二叉搜索树（BST），找出 BST 中的所有众数（出现频率最高的元素）。</p>
+<p>假定 BST 有如下定义：</p>
+<ul>
+<li>结点左子树中所含结点的值小于等于当前结点的值</li>
+<li>结点右子树中所含结点的值大于等于当前结点的值</li>
+<li>左子树和右子树都是二叉搜索树</li>
+</ul>
+<p>例如：<br>给定 BST <code>[1,null,2,2]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"> \</span><br><span class="line">  2</span><br><span class="line"> /</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p><code>返回[2]</code>.</p>
+<p><strong>提示</strong>：如果众数超过1个，不需考虑输出顺序</p>
+<p><strong>进阶：</strong>你可以不使用额外的空间吗？（假设由递归产生的隐式调用栈的开销不被计算在内）</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先，假设我们有一个排好序的数组，从前往后寻找出现次数最多的那个数，如果遇到一个，就来判断一下，当前数字的次数，如果等于最大计数值，就加入到结果数组中，如果大于，就将结果数组清空，并加入当前数</p>
+<p>​    因为是二叉搜索树，因此，中序遍历就得到了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"># Definition <span class="keyword">for</span> a binary tree node.</span><br><span class="line"><span class="meta"># class TreeNode:</span></span><br><span class="line"><span class="meta">#     def __init__(self, x):</span></span><br><span class="line"><span class="meta">#         self.val = x</span></span><br><span class="line"><span class="meta">#         self.left = None</span></span><br><span class="line"><span class="meta">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    </span><br><span class="line">    current_value = <span class="number">0</span>;</span><br><span class="line">    max_count = <span class="number">0</span>;</span><br><span class="line">    count = <span class="number">0</span>;</span><br><span class="line">    result = [];</span><br><span class="line">    </span><br><span class="line">    def findMode(self, root):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> root != None:</span><br><span class="line">            current_value = root.val</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [];</span><br><span class="line"></span><br><span class="line">        self.find(root)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.count &gt; self.max_count:</span><br><span class="line">            self.result.clear()</span><br><span class="line">            self.result.append(self.current_value) </span><br><span class="line">        elif self.count == self.max_count:</span><br><span class="line">            self.result.append(self.current_value) </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.result;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    def find(self,root):</span><br><span class="line">        <span class="keyword">if</span> root == None:</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        self.find(root.left)</span><br><span class="line">        <span class="keyword">if</span> root.val == self.current_value:</span><br><span class="line">            self.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> self.count &gt; self.max_count:</span><br><span class="line">                self.result.clear()</span><br><span class="line">                self.result.append(self.current_value) </span><br><span class="line">                self.max_count = self.count</span><br><span class="line">            elif self.count == self.max_count:</span><br><span class="line">                self.result.append(self.current_value) </span><br><span class="line">            self.count = <span class="number">1</span>;</span><br><span class="line">            self.current_value = root.val</span><br><span class="line"></span><br><span class="line">        self.find(root.right)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -859,208 +876,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;FlaG&quot;</span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure>
 <p><strong>注意:</strong> 输入是由大写和小写拉丁字母组成的非空单词。</p>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">detectCapitalUse</span><span class="params">(<span class="keyword">char</span>* word)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!word) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> result = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * type:</span></span><br><span class="line"><span class="comment">     *  1：首字母大写</span></span><br><span class="line"><span class="comment">     *  2：全部大写</span></span><br><span class="line"><span class="comment">     *  3：全部小写</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span> type = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">strlen</span>(word);</span><br><span class="line">    <span class="keyword">while</span> (length-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (type == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (*word &gt;= <span class="string">'A'</span> &amp;&amp; *word &lt;= <span class="string">'Z'</span>) &#123;</span><br><span class="line">                type = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> ((word + <span class="number">1</span>) &amp;&amp; *(word + <span class="number">1</span>) &gt;= <span class="string">'A'</span> &amp;&amp; *(word + <span class="number">1</span>) &lt;= <span class="string">'Z'</span>) &#123;</span><br><span class="line">                    type = <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                length--;</span><br><span class="line">                word++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                type = <span class="number">3</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (type == <span class="number">1</span> || type == <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (*word &lt; <span class="string">'a'</span>) &#123;</span><br><span class="line">                    result = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (*word &gt; <span class="string">'Z'</span>) &#123;</span><br><span class="line">                    result = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        word++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/" itemprop="url">
-                  LeetCode 521. 最长特殊序列 Ⅰ
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/" class="leancloud_visitors" data-flag-title="LeetCode 521. 最长特殊序列 Ⅰ">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个字符串，你需要从这两个字符串中找出最长的特殊序列。最长特殊序列定义如下：该序列为某字符串独有的最长子序列（即不能是其他字符串的子序列）。</p>
-<p><strong>子序列</strong>可以通过删去字符串中的某些字符实现，但不能改变剩余字符的相对顺序。空序列为所有字符串的子序列，任何字符串为其自身的子序列。</p>
-<p>输入为两个字符串，输出最长特殊序列的长度。如果不存在，则返回 -1。</p>
-<p><strong>示例 :</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;aba&quot;, &quot;cdc&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解析: 最长特殊序列可为 &quot;aba&quot; (或 &quot;cdc&quot;)</span><br></pre></td></tr></table></figure>
-<p><strong>说明:</strong></p>
-<ol>
-<li>两个字符串长度均小于100。</li>
-<li>字符串中的字符仅含有 ‘a’~’z’。</li>
-</ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
-<p>​    这道题一开始没有理解题意，实际上比较简单的，就是给定两个字符串，如果一个字符串不能由另一个字符串删掉某些字符得到，就返回这个字符串的长度</p>
-<p>​    其实一共可以分成3种情况</p>
-<ul>
-<li><p>A的长度 &gt; B的长度</p>
-<p>这时候，A肯定不能由B得到，直接返回A的长度</p>
-</li>
-<li><p>A的长度=B的长度</p>
-<p>这时候，判断A和B是不是相同的字符串，如果不是，返回A的长度</p>
-<p>如果是相同的字符串，返回-1</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findLUSlength</span><span class="params">(<span class="keyword">char</span>* a, <span class="keyword">char</span>* b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length_a = <span class="built_in">strlen</span>(a);</span><br><span class="line">    <span class="keyword">int</span> length_b = <span class="built_in">strlen</span>(b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (length_a != length_b) &#123;</span><br><span class="line">        <span class="keyword">return</span> length_a &gt; length_b ? length_a : length_b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;length_a;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] != b[i])&#123;</span><br><span class="line">            <span class="keyword">return</span> length_a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1431,6 +1246,208 @@
 <p>​    </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *right;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">in_order</span><span class="params">(struct TreeNode *root, <span class="keyword">int</span> *prev, <span class="keyword">int</span> *abs_max)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    in_order(root-&gt;left, prev, abs_max);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*prev != <span class="number">-1</span>) &#123;</span><br><span class="line">        *abs_max = *abs_max &lt; root-&gt;val - *prev ? *abs_max : root-&gt;val - *prev;</span><br><span class="line">        *prev = root-&gt;val;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        *prev = root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    in_order(root-&gt;right, prev, abs_max);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getMinimumDifference</span><span class="params">(struct TreeNode *root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> prev = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> abs_max = INT32_MAX;</span><br><span class="line">    in_order(root, &amp;prev, &amp;abs_max);</span><br><span class="line">    <span class="keyword">return</span> abs_max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一开始，没有使用传参的方式，使用全局变量，报错，需要注意</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/" itemprop="url">
+                  LeetCode 521. 最长特殊序列 Ⅰ
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/07/leetcode/LeetCode: 521. 最长特殊序列 Ⅰ/" class="leancloud_visitors" data-flag-title="LeetCode 521. 最长特殊序列 Ⅰ">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个字符串，你需要从这两个字符串中找出最长的特殊序列。最长特殊序列定义如下：该序列为某字符串独有的最长子序列（即不能是其他字符串的子序列）。</p>
+<p><strong>子序列</strong>可以通过删去字符串中的某些字符实现，但不能改变剩余字符的相对顺序。空序列为所有字符串的子序列，任何字符串为其自身的子序列。</p>
+<p>输入为两个字符串，输出最长特殊序列的长度。如果不存在，则返回 -1。</p>
+<p><strong>示例 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;aba&quot;, &quot;cdc&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解析: 最长特殊序列可为 &quot;aba&quot; (或 &quot;cdc&quot;)</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong></p>
+<ol>
+<li>两个字符串长度均小于100。</li>
+<li>字符串中的字符仅含有 ‘a’~’z’。</li>
+</ol>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
+<p>​    这道题一开始没有理解题意，实际上比较简单的，就是给定两个字符串，如果一个字符串不能由另一个字符串删掉某些字符得到，就返回这个字符串的长度</p>
+<p>​    其实一共可以分成3种情况</p>
+<ul>
+<li><p>A的长度 &gt; B的长度</p>
+<p>这时候，A肯定不能由B得到，直接返回A的长度</p>
+</li>
+<li><p>A的长度=B的长度</p>
+<p>这时候，判断A和B是不是相同的字符串，如果不是，返回A的长度</p>
+<p>如果是相同的字符串，返回-1</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findLUSlength</span><span class="params">(<span class="keyword">char</span>* a, <span class="keyword">char</span>* b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length_a = <span class="built_in">strlen</span>(a);</span><br><span class="line">    <span class="keyword">int</span> length_b = <span class="built_in">strlen</span>(b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (length_a != length_b) &#123;</span><br><span class="line">        <span class="keyword">return</span> length_a &gt; length_b ? length_a : length_b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;length_a;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] != b[i])&#123;</span><br><span class="line">            <span class="keyword">return</span> length_a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
