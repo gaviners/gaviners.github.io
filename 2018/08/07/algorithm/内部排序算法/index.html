@@ -56,21 +56,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+<link href="/blog/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.3.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.3.0" color="#222">
 
 
 
@@ -83,7 +83,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Gemini',
     version: '6.3.0',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -112,31 +112,31 @@
 <meta name="keywords" content="sorting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内部排序算法">
-<meta property="og:url" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/index.html">
+<meta property="og:url" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/index.html">
 <meta property="og:site_name" content="夜行">
 <meta property="og:description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2_{a},5,3,2_{b}]$，如果排序之后，$2_{a}$依然在$2_{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/bubble.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/fast.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/random_quick.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/chose.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/heap.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/insert.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/merge.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/counting.gif">
-<meta property="og:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/radix.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/bubble.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/fast.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/random_quick.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/chose.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/heap.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/insert.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/merge.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/counting.gif">
+<meta property="og:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/radix.gif">
 <meta property="og:updated_time" content="2018-08-07T14:57:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内部排序算法">
 <meta name="twitter:description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2_{a},5,3,2_{b}]$，如果排序之后，$2_{a}$依然在$2_{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳">
-<meta name="twitter:image" content="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/bubble.gif">
+<meta name="twitter:image" content="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/bubble.gif">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/"/>
+  <link rel="canonical" href="https://zhishengqianjun.gitee.io/blog/2018/08/07/algorithm/内部排序算法/"/>
 
 
 
@@ -212,7 +212,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">夜行</span>
         <span class="logo-line-after"><i></i></span>
@@ -241,7 +241,7 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
+    <a href="/blog/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
         
@@ -249,7 +249,7 @@
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
+    <a href="/blog/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
         
@@ -257,7 +257,7 @@
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
+    <a href="/blog/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
         
@@ -265,7 +265,7 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
+    <a href="/blog/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
         
@@ -273,7 +273,7 @@
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
+    <a href="/blog/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
   </li>
 
@@ -356,12 +356,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.aisky.men/2018/08/07/algorithm/内部排序算法/">
+    <link itemprop="mainEntityOfPage" href="https://zhishengqianjun.gitee.io/blog/blog/2018/08/07/algorithm/内部排序算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
       <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -420,7 +420,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/sorting/" itemprop="url" rel="index"><span itemprop="name">sorting</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/sorting/" itemprop="url" rel="index"><span itemprop="name">sorting</span></a></span>
 
                 
                 
@@ -435,8 +435,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/algorithm/内部排序算法/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/algorithm/内部排序算法/" itemprop="commentCount"></span>
+                <a href="/blog/2018/08/07/algorithm/内部排序算法/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/blog/2018/08/07/algorithm/内部排序算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -659,7 +659,7 @@
 </tbody>
 </table>
 <h2 id="2、交换排序"><a href="#2、交换排序" class="headerlink" title="2、交换排序"></a>2、交换排序</h2><h3 id="2-1-冒泡排序"><a href="#2-1-冒泡排序" class="headerlink" title="2.1 冒泡排序"></a>2.1 冒泡排序</h3><p>   <code>Bubble Sort</code></p>
-<h4 id="2-1-1-直接冒泡排序"><a href="#2-1-1-直接冒泡排序" class="headerlink" title="2.1.1 直接冒泡排序"></a>2.1.1 直接冒泡排序</h4><p> <img src="/2018/08/07/algorithm/内部排序算法/bubble.gif" alt="bubble"></p>
+<h4 id="2-1-1-直接冒泡排序"><a href="#2-1-1-直接冒泡排序" class="headerlink" title="2.1.1 直接冒泡排序"></a>2.1.1 直接冒泡排序</h4><p> <img src="/blog/2018/08/07/algorithm/内部排序算法/bubble.gif" alt="bubble"></p>
 <p>​    冒泡排序如上图所示，给定一个待排序列，从前往后依次扫描，将最大的元素放到最后面正确的位置，已经放到正确位置的序列在下一次扫描中就不会继续比对。</p>
 <blockquote>
 <p>待排序列：[4,3,1,2]</p>
@@ -716,7 +716,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comb_sort</span><span class="params">(l_A)</span>:</span></span><br><span class="line">    size = len(l_A)</span><br><span class="line">    gap = int(size/<span class="number">1.3</span>)</span><br><span class="line">    <span class="keyword">while</span> gap &gt;= <span class="number">1</span> :</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,size - gap):</span><br><span class="line">            <span class="keyword">if</span> l_A[i] &gt; l_A[i + gap]:</span><br><span class="line">                l_A[i] , l_A[i + gap] = l_A[i + gap] , l_A[i]</span><br><span class="line">        gap = int(gap/<span class="number">1.3</span>)</span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    sorted_A = comb_sort(A)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> sorted_A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-快速排序"><a href="#2-2-快速排序" class="headerlink" title="2.2 快速排序"></a>2.2 快速排序</h3><p>​        <code>Quick Sort</code></p>
-<h4 id="2-2-1-快速排序"><a href="#2-2-1-快速排序" class="headerlink" title="2.2.1 快速排序"></a>2.2.1 快速排序</h4><p><img src="/2018/08/07/algorithm/内部排序算法/fast.gif" alt="fast"></p>
+<h4 id="2-2-1-快速排序"><a href="#2-2-1-快速排序" class="headerlink" title="2.2.1 快速排序"></a>2.2.1 快速排序</h4><p><img src="/blog/2018/08/07/algorithm/内部排序算法/fast.gif" alt="fast"></p>
 <p>​    快速排序算法分治策略(Divide and Conquer)，将一个序列分成两个序列，然后选取基准，使用基准，将小于等于基准的放到左面，大于等于基准的数，放到右面；</p>
 <p>我们来看这样的处理顺序：</p>
 <ul>
@@ -744,7 +744,7 @@
 <p>如上所示，目前基准选择的是最右面的元素，第一次，选择1作为基准，第二次选择6作为基准，一次类推；</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partation</span><span class="params">(l_A , left , right)</span>:</span></span><br><span class="line">    pivot = l_A[right]</span><br><span class="line">    pivot_index = left</span><br><span class="line">    <span class="comment"># print('下标',right,'基准',pivot)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right):</span><br><span class="line">        <span class="keyword">if</span> l_A[i] &lt;= pivot:</span><br><span class="line">            l_A[i] ,l_A[pivot_index] = l_A[pivot_index], l_A[i]</span><br><span class="line">            pivot_index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> pivot_index != right:</span><br><span class="line">        l_A[pivot_index] , l_A[right] =  l_A[right] ,l_A[pivot_index]</span><br><span class="line">    <span class="comment"># print(l_A)</span></span><br><span class="line">    <span class="keyword">return</span> pivot_index</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(l_A, left , right)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> left &gt;= right:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    pivot_index = partation(l_A ,left, right)</span><br><span class="line">    quick_sort(l_A,left,pivot_index <span class="number">-1</span>)</span><br><span class="line">    quick_sort(l_A,  pivot_index+<span class="number">1</span> , right)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    quick_sort(A,<span class="number">0</span>,len(A)<span class="number">-1</span>)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-2-随机快速排序"><a href="#2-2-2-随机快速排序" class="headerlink" title="2.2.2 随机快速排序"></a>2.2.2 随机快速排序</h4><p><img src="/2018/08/07/algorithm/内部排序算法/random_quick.gif" alt="random_quick"></p>
+<h4 id="2-2-2-随机快速排序"><a href="#2-2-2-随机快速排序" class="headerlink" title="2.2.2 随机快速排序"></a>2.2.2 随机快速排序</h4><p><img src="/blog/2018/08/07/algorithm/内部排序算法/random_quick.gif" alt="random_quick"></p>
 <p>​    随机快速排序与快速排序的主要区别就在于基准的选择上，随机快排是随机的选择基准，然后</p>
 <blockquote>
 <p>待排序列：[6,5,4,3,2,1]</p>
@@ -766,7 +766,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partation</span><span class="params">(l_A , left , right)</span>:</span></span><br><span class="line">    p = left + int((right - left + <span class="number">1</span>) * random.random())</span><br><span class="line">    l_A[p] ,l_A[right] = l_A[right], l_A[p]</span><br><span class="line">    pivot = l_A[right]</span><br><span class="line">    <span class="comment"># print('下标',p,'基准',pivot)</span></span><br><span class="line">    pivot_index = left</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right):</span><br><span class="line">        <span class="keyword">if</span> l_A[i] &lt;= pivot:</span><br><span class="line">            l_A[i] ,l_A[pivot_index] = l_A[pivot_index], l_A[i]</span><br><span class="line">            pivot_index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> pivot_index != right:</span><br><span class="line">        l_A[pivot_index] , l_A[right] =  l_A[right] ,l_A[pivot_index]</span><br><span class="line">    <span class="comment"># print(l_A)</span></span><br><span class="line">    <span class="keyword">return</span> pivot_index</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(l_A, left , right)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> left &gt;= right:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    pivot_index = partation(l_A ,left, right)</span><br><span class="line">    quick_sort(l_A,left,pivot_index <span class="number">-1</span>)</span><br><span class="line">    quick_sort(l_A,  pivot_index+<span class="number">1</span> , right)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    quick_sort(A,<span class="number">0</span>,len(A)<span class="number">-1</span>)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
 <h2 id="3、选择排序"><a href="#3、选择排序" class="headerlink" title="3、选择排序"></a>3、选择排序</h2><h3 id="3-1-选择排序"><a href="#3-1-选择排序" class="headerlink" title="3.1 选择排序"></a>3.1 选择排序</h3><p>​    <code>Selection Sort</code></p>
-<p><img src="/2018/08/07/algorithm/内部排序算法/chose.gif" alt="chose"></p>
+<p><img src="/blog/2018/08/07/algorithm/内部排序算法/chose.gif" alt="chose"></p>
 <p>​    插入排序的基本思路就是从未排序的序列里面选出一个最小的，然后将至放到已排序列的尾部后面元素交换位置，一直到待排序列为0.</p>
 <blockquote>
 <p>待排序列：[5,4,3,2,1]</p>
@@ -786,7 +786,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sort</span><span class="params">(l_A)</span>:</span></span><br><span class="line">    n = len(l_A)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n):</span><br><span class="line">        swap_num = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>,n):</span><br><span class="line">            <span class="keyword">if</span> l_A[j] &lt; l_A[i]:</span><br><span class="line">                swap_num = j</span><br><span class="line">        <span class="keyword">if</span> swap_num != i:</span><br><span class="line">            l_A[i] , l_A[swap_num] = l_A[swap_num], l_A[i]</span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    sorted_A = selection_sort(A)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> sorted_A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-堆排序"><a href="#3-2-堆排序" class="headerlink" title="3.2 堆排序"></a>3.2 堆排序</h3><p>​    <code>Heap Sort</code></p>
-<p><img src="/2018/08/07/algorithm/内部排序算法/heap.gif" alt="heap"></p>
+<p><img src="/blog/2018/08/07/algorithm/内部排序算法/heap.gif" alt="heap"></p>
 <p>​    堆是完全二叉树，分为最大堆和最小堆，最大堆中，根节点都比其子节点要大，而最小堆中，根节点都比其子节点要小；</p>
 <p>​    最大堆的应用场景，例如带有优先级的排队进程，当系统空闲，优先处理优先级高的；</p>
 <p>​    最大堆主要有这样几个注意点：</p>
@@ -822,7 +822,7 @@
 </ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapify</span><span class="params">(l_A, node , size)</span>:</span></span><br><span class="line">    left_child = <span class="number">2</span> * node + <span class="number">1</span></span><br><span class="line">    right_child = <span class="number">2</span> * node + <span class="number">2</span></span><br><span class="line">    max = node</span><br><span class="line">    <span class="keyword">if</span> left_child &lt; size <span class="keyword">and</span> l_A[max] &lt; l_A[left_child] :</span><br><span class="line">        max = left_child</span><br><span class="line">    <span class="keyword">if</span> right_child &lt; size <span class="keyword">and</span> l_A[max] &lt; l_A[right_child] : </span><br><span class="line">        max = right_child</span><br><span class="line">    <span class="keyword">if</span> max != node:</span><br><span class="line">        l_A[max] , l_A[node] = l_A[node],l_A[max]</span><br><span class="line">        heapify(l_A, max , size)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_heap</span><span class="params">(l_A, size)</span>:</span></span><br><span class="line">    heap_size = (size - <span class="number">1</span>) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> heap_size &gt;= <span class="number">0</span> :</span><br><span class="line">        heapify(l_A, heap_size , size)</span><br><span class="line">        heap_size -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_sort</span><span class="params">(l_A)</span>:</span></span><br><span class="line">    size = len(l_A)</span><br><span class="line">    temp = build_heap(l_A, size)</span><br><span class="line">    <span class="keyword">while</span> size &gt; <span class="number">1</span>:</span><br><span class="line">        size -= <span class="number">1</span></span><br><span class="line">        l_A[<span class="number">0</span>],l_A[size] = l_A[size],l_A[<span class="number">0</span>] </span><br><span class="line">        heapify(l_A,<span class="number">0</span>, size)</span><br><span class="line">    <span class="keyword">return</span> temp</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    sorted_A = heap_sort(A)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> sorted_A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
-<h2 id="4、插入排序"><a href="#4、插入排序" class="headerlink" title="4、插入排序"></a>4、插入排序</h2><h3 id="4-1-直接插入排序"><a href="#4-1-直接插入排序" class="headerlink" title="4.1 直接插入排序"></a>4.1 直接插入排序</h3><p><img src="/2018/08/07/algorithm/内部排序算法/insert.gif" alt="insert"></p>
+<h2 id="4、插入排序"><a href="#4、插入排序" class="headerlink" title="4、插入排序"></a>4、插入排序</h2><h3 id="4-1-直接插入排序"><a href="#4-1-直接插入排序" class="headerlink" title="4.1 直接插入排序"></a>4.1 直接插入排序</h3><p><img src="/blog/2018/08/07/algorithm/内部排序算法/insert.gif" alt="insert"></p>
 <p>​    直接插入排序也是将待排序列分成两部分，其一是左面排好序的，然后是右面待排序，首先将待排序的第一个元素取出来，与排好序的序列机芯从右向左的比对，如果小于，则将此元素向右移动，一直找到当前元素应该放在的位置。</p>
 <blockquote>
 <p>待排序列：[5,4,3,2,1]</p>
@@ -892,7 +892,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shell_sort</span><span class="params">(l_A)</span>:</span></span><br><span class="line">    n = len(l_A)</span><br><span class="line">    h = n // <span class="number">2</span> </span><br><span class="line">    <span class="keyword">while</span> h &gt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(h,n):</span><br><span class="line">            get = l_A[i]</span><br><span class="line">            j = i - h</span><br><span class="line">            <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> l_A[j] &gt; get:</span><br><span class="line">                l_A[j + h] = l_A[j]</span><br><span class="line">                j -= h</span><br><span class="line">            l_A[j+h] = get</span><br><span class="line">        h = h // <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    sorted_A = shell_sort(A)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> sorted_A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
 <p>​    上面采用的增量序列为[3,1]，是利用<code>h = n // 2</code>获得，我们可以使用增量函数，或者直接使用增量序列。</p>
-<h2 id="5、归并排序"><a href="#5、归并排序" class="headerlink" title="5、归并排序"></a>5、归并排序</h2><p><img src="/2018/08/07/algorithm/内部排序算法/merge.gif" alt="merge"></p>
+<h2 id="5、归并排序"><a href="#5、归并排序" class="headerlink" title="5、归并排序"></a>5、归并排序</h2><p><img src="/blog/2018/08/07/algorithm/内部排序算法/merge.gif" alt="merge"></p>
 <p>​    归并排序是建立在分治法上的典型应用，分为递归实现和非递归实现</p>
 <blockquote>
 <p>基本步骤：</p>
@@ -949,7 +949,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(l_A, left, mid, right)</span>:</span></span><br><span class="line">    temp = []</span><br><span class="line">    i = left</span><br><span class="line">    j = mid + <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= mid <span class="keyword">and</span> j &lt;= right:</span><br><span class="line">        <span class="keyword">if</span> l_A[i] &lt;= l_A[j]:</span><br><span class="line">            temp.append(l_A[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            temp.append(l_A[j])</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= mid:</span><br><span class="line">        temp.append(l_A[i])</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j &lt;= right:</span><br><span class="line">        temp.append(j)</span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">    l_A[left:right+<span class="number">1</span>] = temp</span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_recursion</span><span class="params">(l_A, left , right)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> left == right:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    mid = (left + right) // <span class="number">2</span></span><br><span class="line">    merge_recursion(l_A,left,mid)</span><br><span class="line">    merge_recursion(l_A,mid+<span class="number">1</span>,right)</span><br><span class="line">    merge(l_A,left,mid,right)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_iteration</span><span class="params">(l_A)</span>:</span></span><br><span class="line">    length = len(l_A)</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; length :</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> left + i &lt; length:</span><br><span class="line">            mid = left + i <span class="number">-1</span></span><br><span class="line">            <span class="keyword">if</span> mid + i &lt; length:</span><br><span class="line">                right = mid + i</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = length - <span class="number">1</span></span><br><span class="line">            merge(l_A,left,mid,right)</span><br><span class="line">            left = right + <span class="number">1</span></span><br><span class="line">        i *= <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(l_A)</span></span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    <span class="comment"># merge_recursion(A,0,len(A)-1)</span></span><br><span class="line">    merge_iteration(A)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
 <h2 id="6、分布排序"><a href="#6、分布排序" class="headerlink" title="6、分布排序"></a>6、分布排序</h2><h3 id="6-1-计数排序"><a href="#6-1-计数排序" class="headerlink" title="6.1 计数排序"></a>6.1 计数排序</h3><p>​    <code>Counting Sort</code></p>
-<p><img src="/2018/08/07/algorithm/内部排序算法/counting.gif" alt="counting"></p>
+<p><img src="/blog/2018/08/07/algorithm/内部排序算法/counting.gif" alt="counting"></p>
 <p>​    计数排序的思想：假如现在有10个数，[2,3,4,5,1,2,3,4,2,5]，如何能直接确定数字2在排好序的数组里面的位置呢？假如现在已经将数组中所有小于2的数的总数量统计了，如上面的数组，小于2的数一共有1个，那么在排好序的数组里面，2是从下标为1的数组中开始存储，占有的存储单元就是2个个数。</p>
 <p>计数排序的步骤：</p>
 <ul>
@@ -996,7 +996,7 @@
 </ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">counting_sort</span><span class="params">(l_A)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">        l_A：待排数组</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    size = len(l_A)</span><br><span class="line">    nums = max(l_A) + <span class="number">1</span></span><br><span class="line">    temp_position_len = nums + <span class="number">1</span></span><br><span class="line">    temp_position = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(temp_position_len)]</span><br><span class="line">    temp_position_right = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(size)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size):</span><br><span class="line">        temp_position[l_A[i]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(temp_position)):</span><br><span class="line">        temp_position[i] += temp_position[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">        temp_position_right[temp_position[l_A[i]] <span class="number">-1</span>] = l_A[i]</span><br><span class="line">        temp_position[l_A[i]] -= <span class="number">1</span></span><br><span class="line">    l_A = temp_position_right</span><br><span class="line">    <span class="keyword">return</span> l_A</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    A = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">    A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> A])</span><br><span class="line">    sorted_A = counting_sort(A)</span><br><span class="line">    sorted_A_str = <span class="string">","</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> sorted_A])</span><br><span class="line">    print(<span class="string">"待排序列："</span>,A_str)</span><br><span class="line">    print(<span class="string">"已排序列："</span>,sorted_A_str)</span><br></pre></td></tr></table></figure>
-<h3 id="6-2-基数排序"><a href="#6-2-基数排序" class="headerlink" title="6.2 基数排序"></a>6.2 基数排序</h3><p>​    <code>Radix Sort</code><img src="/2018/08/07/algorithm/内部排序算法/radix.gif" alt="radix"></p>
+<h3 id="6-2-基数排序"><a href="#6-2-基数排序" class="headerlink" title="6.2 基数排序"></a>6.2 基数排序</h3><p>​    <code>Radix Sort</code><img src="/blog/2018/08/07/algorithm/内部排序算法/radix.gif" alt="radix"></p>
 <p>​    基数排序，其原理为利用数字不同位置的数码，进行排序；假如有这样的数组，[12,45,6,77,88]，我们发现数字最多两位，数码有10个，也就是<code>0~9</code>，我们创建10个数组，分别代表<code>0~9</code>, 第一次，将最低位相同的数字放到同样的数组里面，也就是最低位为1的数字放到表示1的数组中，将待排数组从前往后扫描，然后从第0个数组开始，将数据取出来，为了保障是稳定性，取出数据的时候，从后往前取出来，然后在扫描第二次，判断第二个数码；</p>
 <blockquote>
 <p>待排数组: [89,88,77,6,5,4,3,2,1]</p>
@@ -1106,7 +1106,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sorting/" rel="tag"># sorting</a>
+            <a href="/blog/tags/sorting/" rel="tag"># sorting</a>
           
         </div>
       
@@ -1119,7 +1119,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 1. 两数之和/" rel="next" title="LeetCode 1. 两数之和">
+              <a href="/blog/2018/08/07/leetcode/LeetCode: 1. 两数之和/" rel="next" title="LeetCode 1. 两数之和">
                 <i class="fa fa-chevron-left"></i> LeetCode 1. 两数之和
               </a>
             
@@ -1190,7 +1190,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/blog/images/avatar.jpg"
                 alt="夜行" />
             
               <p class="site-author-name" itemprop="name">夜行</p>
@@ -1202,7 +1202,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/blog/archives/">
                 
                     <span class="site-state-item-count">386</span>
                     <span class="site-state-item-name">日志</span>
@@ -1214,7 +1214,7 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  <a href="/blog/categories/index.html">
                     
                     
                       
@@ -1231,7 +1231,7 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  <a href="/blog/tags/index.html">
                     
                     
                       
@@ -1411,49 +1411,49 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
@@ -1510,7 +1510,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/" + search_path;
+    var path = "/blog/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
