@@ -346,6 +346,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/" itemprop="url">
+                  LeetCode 501. 二叉搜索树中的众数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 501. 二叉搜索树中的众数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>Given a binary search tree (BST) with duplicates, find all the <a href="https://en.wikipedia.org/wiki/Mode_(statistics" target="_blank" rel="noopener">mode(s)</a>) (the most frequently occurred element) in the given BST.</p>
+<p>Assume a BST is defined as follows:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with keys <strong>less than or equal to</strong> the node’s key.</li>
+<li>The right subtree of a node contains only nodes with keys <strong>greater than or equal to</strong> the node’s key.</li>
+<li>Both the left and right subtrees must also be binary search trees.</li>
+</ul>
+<p>For example:<br>Given BST <code>[1,null,2,2]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"> \</span><br><span class="line">  2</span><br><span class="line"> /</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>return <code>[2]</code>.</p>
+<p><strong>Note:</strong> If a tree has more than one mode, you can return them in any order.</p>
+<p><strong>Follow up:</strong> Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).</p>
+<p>给定一个有相同值的二叉搜索树（BST），找出 BST 中的所有众数（出现频率最高的元素）。</p>
+<p>假定 BST 有如下定义：</p>
+<ul>
+<li>结点左子树中所含结点的值小于等于当前结点的值</li>
+<li>结点右子树中所含结点的值大于等于当前结点的值</li>
+<li>左子树和右子树都是二叉搜索树</li>
+</ul>
+<p>例如：<br>给定 BST <code>[1,null,2,2]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"> \</span><br><span class="line">  2</span><br><span class="line"> /</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p><code>返回[2]</code>.</p>
+<p><strong>提示</strong>：如果众数超过1个，不需考虑输出顺序</p>
+<p><strong>进阶：</strong>你可以不使用额外的空间吗？（假设由递归产生的隐式调用栈的开销不被计算在内）</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先，假设我们有一个排好序的数组，从前往后寻找出现次数最多的那个数，如果遇到一个，就来判断一下，当前数字的次数，如果等于最大计数值，就加入到结果数组中，如果大于，就将结果数组清空，并加入当前数</p>
+<p>​    因为是二叉搜索树，因此，中序遍历就得到了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"># Definition <span class="keyword">for</span> a binary tree node.</span><br><span class="line"><span class="meta"># class TreeNode:</span></span><br><span class="line"><span class="meta">#     def __init__(self, x):</span></span><br><span class="line"><span class="meta">#         self.val = x</span></span><br><span class="line"><span class="meta">#         self.left = None</span></span><br><span class="line"><span class="meta">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    </span><br><span class="line">    current_value = <span class="number">0</span>;</span><br><span class="line">    max_count = <span class="number">0</span>;</span><br><span class="line">    count = <span class="number">0</span>;</span><br><span class="line">    result = [];</span><br><span class="line">    </span><br><span class="line">    def findMode(self, root):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> root != None:</span><br><span class="line">            current_value = root.val</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [];</span><br><span class="line"></span><br><span class="line">        self.find(root)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.count &gt; self.max_count:</span><br><span class="line">            self.result.clear()</span><br><span class="line">            self.result.append(self.current_value) </span><br><span class="line">        elif self.count == self.max_count:</span><br><span class="line">            self.result.append(self.current_value) </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.result;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    def find(self,root):</span><br><span class="line">        <span class="keyword">if</span> root == None:</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        self.find(root.left)</span><br><span class="line">        <span class="keyword">if</span> root.val == self.current_value:</span><br><span class="line">            self.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> self.count &gt; self.max_count:</span><br><span class="line">                self.result.clear()</span><br><span class="line">                self.result.append(self.current_value) </span><br><span class="line">                self.max_count = self.count</span><br><span class="line">            elif self.count == self.max_count:</span><br><span class="line">                self.result.append(self.current_value) </span><br><span class="line">            self.count = <span class="number">1</span>;</span><br><span class="line">            self.current_value = root.val</span><br><span class="line"></span><br><span class="line">        self.find(root.right)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 504. 七进制数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1941,184 +2136,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 54. 螺旋矩阵/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 54. 螺旋矩阵/" itemprop="url">
-                  LeetCode 54. 螺旋矩阵
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 54. 螺旋矩阵/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 54. 螺旋矩阵/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个包含 <em>m</em> x <em>n</em> 个元素的矩阵（<em>m</em> 行, <em>n</em> 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    看到这个题，首先，想到的就是像贪吃蛇一样，不断地向前走，然后遇到障碍以后，拐弯，不过贪吃蛇只能向前，向左，向右，不能回退</p>
-<p>​    这样的话，我们就设计一个表示已经走过的路径的墙壁，表示已经走过的路</p>
-<p>例如是2*2的矩阵，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1 2</span><br><span class="line">3 4</span><br><span class="line">我们要的顺序就是1 2 4 3</span><br><span class="line"></span><br><span class="line">如何控制方向呢？</span><br><span class="line">1 1 1 1</span><br><span class="line">1 0 0 1</span><br><span class="line">1 0 0 1</span><br><span class="line">1 1 1 1</span><br><span class="line"></span><br><span class="line">设计一个矩阵，专门用来表示走过的路径，最外围的是墙，然后每走过一步，就将该位置一</span><br><span class="line">没一次走之前，都要判断下一位是0才可以，不然就要调转方向</span><br><span class="line">如果无路可走，跳出即可</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spiralOrder</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        row = len(matrix)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> row == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        </span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line">        </span><br><span class="line">        buff = np.zeros((row + <span class="number">2</span>, col + <span class="number">2</span>), dtype=int)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row + <span class="number">2</span>):</span><br><span class="line">            buff[i][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">            buff[i][col + <span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(col + <span class="number">2</span>):</span><br><span class="line">            buff[<span class="number">0</span>][i] = <span class="number">1</span></span><br><span class="line">            buff[row + <span class="number">1</span>][i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        result = []</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">            方向：</span></span><br><span class="line"><span class="string">                右 0</span></span><br><span class="line"><span class="string">                下 1</span></span><br><span class="line"><span class="string">                左 2</span></span><br><span class="line"><span class="string">                上 3</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        direct = <span class="number">0</span></span><br><span class="line">        print(buff)</span><br><span class="line"></span><br><span class="line">        x = <span class="number">0</span></span><br><span class="line">        y = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        finish = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> finish:</span><br><span class="line">            x_temp = x</span><br><span class="line">            y_temp = y</span><br><span class="line">            <span class="keyword">if</span> direct == <span class="number">0</span>:</span><br><span class="line">                y += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> direct == <span class="number">1</span>:</span><br><span class="line">                x += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> direct == <span class="number">2</span>:</span><br><span class="line">                y -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> direct == <span class="number">3</span>:</span><br><span class="line">                x -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> buff[x + <span class="number">1</span>][y + <span class="number">1</span>] == <span class="number">0</span>:</span><br><span class="line">                result.append(matrix[x][y])</span><br><span class="line">                buff[x + <span class="number">1</span>][y + <span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x = x_temp</span><br><span class="line">                y = y_temp</span><br><span class="line">                direct = (direct + <span class="number">1</span>) % <span class="number">4</span></span><br><span class="line">                <span class="keyword">if</span> buff[x_temp][y_temp + <span class="number">1</span>] == <span class="number">1</span> <span class="keyword">and</span> buff[x_temp + <span class="number">1</span>][y_temp] == <span class="number">1</span> <span class="keyword">and</span> buff[x_temp + <span class="number">2</span>][</span><br><span class="line">                            y_temp + <span class="number">1</span>] == <span class="number">1</span> <span class="keyword">and</span> buff[x_temp + <span class="number">1</span>][y_temp + <span class="number">2</span>] == <span class="number">1</span>:</span><br><span class="line">                    finish = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2170,7 +2187,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">387</span>
+                    <span class="site-state-item-count">389</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2187,7 +2204,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2204,7 +2225,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

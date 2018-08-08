@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="[TOC] 1、题目描述给定一个迭代器类的接口，接口包含两个方法： next() 和 hasNext()。设计并实现一个支持 peek() 操作的顶端迭代器 – 其本质就是把原本应由 next() 方法返回的元素 peek() 出来。 示例: 12345假设迭代器被初始化为列表 [1,2,3]。调用 next() 返回 1，得到列表中的第一个元素。现在调用 peek() 返回 2，下一个元素。在此">
+  <meta name="description" content="[TOC] 1、题目描述给定一个迭代器类的接口，接口包含两个方法： next() 和 hasNext()。设计并实现一个支持 peek() 操作的顶端迭代器 — 其本质就是把原本应由 next() 方法返回的元素 peek() 出来。 示例: 12345假设迭代器被初始化为列表 [1,2,3]。调用 next() 返回 1，得到列表中的第一个元素。现在调用 peek() 返回 2，下一个元素。在此">
 <meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 284. 顶端迭代器">
 <meta property="og:url" content="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 284. 顶端迭代器/index.html">
 <meta property="og:site_name" content="夜行">
-<meta property="og:description" content="[TOC] 1、题目描述给定一个迭代器类的接口，接口包含两个方法： next() 和 hasNext()。设计并实现一个支持 peek() 操作的顶端迭代器 – 其本质就是把原本应由 next() 方法返回的元素 peek() 出来。 示例: 12345假设迭代器被初始化为列表 [1,2,3]。调用 next() 返回 1，得到列表中的第一个元素。现在调用 peek() 返回 2，下一个元素。在此">
+<meta property="og:description" content="[TOC] 1、题目描述给定一个迭代器类的接口，接口包含两个方法： next() 和 hasNext()。设计并实现一个支持 peek() 操作的顶端迭代器 — 其本质就是把原本应由 next() 方法返回的元素 peek() 出来。 示例: 12345假设迭代器被初始化为列表 [1,2,3]。调用 next() 返回 1，得到列表中的第一个元素。现在调用 peek() 返回 2，下一个元素。在此">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-08-07T04:16:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 284. 顶端迭代器">
-<meta name="twitter:description" content="[TOC] 1、题目描述给定一个迭代器类的接口，接口包含两个方法： next() 和 hasNext()。设计并实现一个支持 peek() 操作的顶端迭代器 – 其本质就是把原本应由 next() 方法返回的元素 peek() 出来。 示例: 12345假设迭代器被初始化为列表 [1,2,3]。调用 next() 返回 1，得到列表中的第一个元素。现在调用 peek() 返回 2，下一个元素。在此">
+<meta name="twitter:description" content="[TOC] 1、题目描述给定一个迭代器类的接口，接口包含两个方法： next() 和 hasNext()。设计并实现一个支持 peek() 操作的顶端迭代器 — 其本质就是把原本应由 next() 方法返回的元素 peek() 出来。 示例: 12345假设迭代器被初始化为列表 [1,2,3]。调用 next() 返回 1，得到列表中的第一个元素。现在调用 peek() 返回 2，下一个元素。在此">
 
 
 
@@ -463,7 +463,7 @@
 
       
         <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个迭代器类的接口，接口包含两个方法： <code>next()</code> 和 <code>hasNext()</code>。设计并实现一个支持 <code>peek()</code> 操作的顶端迭代器 – 其本质就是把原本应由 <code>next()</code> 方法返回的元素 <code>peek()</code> 出来。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个迭代器类的接口，接口包含两个方法： <code>next()</code> 和 <code>hasNext()</code>。设计并实现一个支持 <code>peek()</code> 操作的顶端迭代器 — 其本质就是把原本应由 <code>next()</code> 方法返回的元素 <code>peek()</code> 出来。</p>
 <p><strong>示例:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">假设迭代器被初始化为列表 [1,2,3]。</span><br><span class="line"></span><br><span class="line">调用 next() 返回 1，得到列表中的第一个元素。</span><br><span class="line">现在调用 peek() 返回 2，下一个元素。在此之后调用 next() 仍然返回 2。</span><br><span class="line">最后一次调用 next() 返回 3，末尾元素。在此之后调用 hasNext() 应该返回 false。</span><br></pre></td></tr></table></figure>
 <p><strong>进阶：</strong>你将如何拓展你的设计？使之变得通用化，从而适应所有的类型，而不只是整数型？</p>
@@ -591,7 +591,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">387</span>
+                    <span class="site-state-item-count">389</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -608,7 +608,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -625,7 +629,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

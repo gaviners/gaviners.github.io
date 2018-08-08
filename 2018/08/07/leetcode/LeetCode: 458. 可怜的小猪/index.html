@@ -505,8 +505,14 @@
 <p>​    3头猪，一次，三维，维度长度是2， <code>2*2*2 = 8</code></p>
 <p>​    3头猪，2次，三维，维度长度是3，<code>3*3*3=27</code></p>
 <p>​    所以，就可以得出结果了</p>
-<p>​    n头猪，测试次数是k，能够测试的数量就是<br>$$<br>(k+1)^{n}<br>$$<br>​    所以，如果是m通水，<br>$$<br>(k+1)^{n} &gt;=m<br>$$</p>
-<p>​    使用对数求解<br>$$<br>n * log(k+1) &gt;= logm\<br>n &gt;= \frac{logm}{log(k+1)}<br>$$<br>​    在c中，math.h提供了ceil函数，天花板，表示求解党的等于当前数的最小整数</p>
+<p>​    n头猪，测试次数是k，能够测试的数量就是</p>
+<script type="math/tex; mode=display">
+(k+1)^{n}</script><p>​    所以，如果是m通水，</p>
+<script type="math/tex; mode=display">
+(k+1)^{n} >=m</script><p>​    使用对数求解</p>
+<script type="math/tex; mode=display">
+n * log(k+1) >= logm\\
+n >= \frac{logm}{log(k+1)}</script><p>​    在c中，math.h提供了ceil函数，天花板，表示求解党的等于当前数的最小整数</p>
 <p>​    floor，地板，表示小于等于这个数的最大整数</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">poorPigs</span><span class="params">(<span class="keyword">int</span> buckets, <span class="keyword">int</span> minutesToDie, <span class="keyword">int</span> minutesToTest)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)<span class="built_in">ceil</span>(<span class="built_in">log</span>(buckets) / <span class="built_in">log</span>(minutesToTest /minutesToDie +<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    所以解题思路很重要啊，哈哈</p>
@@ -632,7 +638,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">387</span>
+                    <span class="site-state-item-count">389</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -649,7 +655,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -666,7 +676,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -475,6 +475,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!*p)</span><br><span class="line">    <span class="keyword">return</span> !*s;</span><br><span class="line"><span class="keyword">if</span> (p[<span class="number">1</span>] == <span class="string">'*'</span>)</span><br><span class="line">    <span class="keyword">return</span> isMatch(s, p+<span class="number">2</span>) || (*p == <span class="string">'.'</span> &amp;&amp; *s || *s == *p) &amp;&amp; isMatch(s+<span class="number">1</span>, p);</span><br><span class="line"><span class="keyword">return</span> (*s == *p || (*p == <span class="string">'.'</span> &amp;&amp; *s)) &amp;&amp; isMatch(s+<span class="number">1</span>, p+<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-动态规划"><a href="#2-2-动态规划" class="headerlink" title="2.2 动态规划"></a>2.2 动态规划</h3><p>​    创建一个数组，用来存放中间结果</p>
 <p>​    例如，字符串字符数是3，匹配字符是4，那么考虑到都可能是0的情况，也就是说，有下面的对应情况</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -520,8 +521,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>​    如上表，我们知道，0个字符和0个匹配字符，肯定是匹配的</p>
 <p>​    然后，如果匹配字符的第二个字符是”*”,也是会匹配的，由此得到下面的情况</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -567,6 +570,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>​    第一列中，出列第一个，其他的都不会匹配，这是初始状况</p>
 <p>​    剩下的就是不断地将匹配状况判断出来，并写入表格，直到得到最后一个，字符数是3，匹配字符数是4，这种情况是不是匹配</p>
 <p>​    举个例子，<code>&quot;abc&quot;</code>和<code>&quot;a*bc&quot;</code> ，很明显这个是匹配的</p>
@@ -576,6 +580,7 @@
 <p>​    1：1</p>
 <p>因为这时候，需要判断的是前面的一个字符是不是匹配，也就是<code>dp[0][0]</code>, 并且当前字符是相等的，或者匹配字符是”.“</p>
 <p>（如果是奇数个匹配字符，肯定无法匹配0个字符）</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -621,6 +626,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>接下来判断1：2</p>
 <p>​    这时候需要判断几种情况，只要有一种能够匹配，就代表可以匹配到</p>
 <ul>
@@ -644,6 +650,7 @@
 <p>​    根据上面的规则，得到下面的矩阵：</p>
 <p>s：abc</p>
 <p>p：a*bc</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -690,6 +697,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>​    由此可见，最右下角的依赖于其他的元素进行判断，也就是动态规划的主要思想，依赖于前面的计算结果</p>
 <p>​    不管什么样的规则，我们都能够找到这样的一个矩阵进行匹配</p>
 <p>​    相比起递归调用的繁琐，动态规划要快</p>
@@ -729,8 +737,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 155. 最小栈/" rel="next" title="LeetCode 155. 最小栈">
-                <i class="fa fa-chevron-left"></i> LeetCode 155. 最小栈
+              <a href="/2017/10/10/tools/Vmware Fusion配置Nat静态IP/" rel="next" title="VMware Fusion配置Nat静态IP">
+                <i class="fa fa-chevron-left"></i> VMware Fusion配置Nat静态IP
               </a>
             
           </div>
@@ -739,8 +747,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 98. 验证二叉搜索树/" rel="prev" title="LeetCode 98. 验证二叉搜索树">
-                LeetCode 98. 验证二叉搜索树 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/07/leetcode/LeetCode: 155. 最小栈/" rel="prev" title="LeetCode 155. 最小栈">
+                LeetCode 155. 最小栈 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -818,7 +826,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">387</span>
+                    <span class="site-state-item-count">389</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -835,7 +843,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -852,7 +864,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -108,13 +108,13 @@
 
 
 
-  <meta name="description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2_{a},5,3,2_{b}]$，如果排序之后，$2_{a}$依然在$2_{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳">
+  <meta name="description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2{a},5,3,2{b}]$，如果排序之后，$2{a}$依然在$2{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳定，如将">
 <meta name="keywords" content="sorting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内部排序算法">
 <meta property="og:url" content="https://www.aisky.men/2018/08/07/algorithm/内部排序算法/index.html">
 <meta property="og:site_name" content="夜行">
-<meta property="og:description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2_{a},5,3,2_{b}]$，如果排序之后，$2_{a}$依然在$2_{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳">
+<meta property="og:description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2{a},5,3,2{b}]$，如果排序之后，$2{a}$依然在$2{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳定，如将">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.aisky.men/2018/08/07/algorithm/内部排序算法/bubble.gif">
 <meta property="og:image" content="https://www.aisky.men/2018/08/07/algorithm/内部排序算法/fast.gif">
@@ -128,7 +128,7 @@
 <meta property="og:updated_time" content="2018-08-07T14:57:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内部排序算法">
-<meta name="twitter:description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2_{a},5,3,2_{b}]$，如果排序之后，$2_{a}$依然在$2_{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳">
+<meta name="twitter:description" content="1python：3.6.2 前言​    排序算法是计算机中最基础的算法，很多高级算法都依赖于此；  排序算法的稳定性 ​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定； ​    例如待排序列$[1,2{a},5,3,2{b}]$，如果排序之后，$2{a}$依然在$2{b}$的前面，就表示稳定；  ​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳定，如将">
 <meta name="twitter:image" content="https://www.aisky.men/2018/08/07/algorithm/内部排序算法/bubble.gif">
 
 
@@ -477,7 +477,7 @@
 <blockquote>
 <p><strong>排序算法的稳定性</strong></p>
 <p>​    如果待排序的数列中，相同的元素在排序前后相对顺序不变，即为稳定；</p>
-<p>​    例如待排序列$[1,2_{a},5,3,2_{b}]$，如果排序之后，$2_{a}$依然在$2_{b}$的前面，就表示稳定；</p>
+<p>​    例如待排序列$[1,2<em>{a},5,3,2</em>{b}]$，如果排序之后，$2<em>{a}$依然在$2</em>{b}$的前面，就表示稳定；</p>
 </blockquote>
 <p>​    算法的判断条件很重要，更改了条件，稳定的排序也会变得不稳定，如将冒泡的比较变成$\ge$。</p>
 <p>​    一图胜千言，在下面搜集了一些简单的示例图，使用gif录屏器制作(算法可视化参见见参考文献)。</p>
@@ -496,6 +496,7 @@
 </ul>
 </blockquote>
 <p>​    根据排序的方法：插入、交换、选择、合并等, 将排序进行划分：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -538,6 +539,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>下面是常用的算法列表：</p>
 <blockquote>
 <ul>
@@ -564,6 +566,7 @@
 <li>桶排序</li>
 </ul>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -658,6 +661,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="2、交换排序"><a href="#2、交换排序" class="headerlink" title="2、交换排序"></a>2、交换排序</h2><h3 id="2-1-冒泡排序"><a href="#2-1-冒泡排序" class="headerlink" title="2.1 冒泡排序"></a>2.1 冒泡排序</h3><p>   <code>Bubble Sort</code></p>
 <h4 id="2-1-1-直接冒泡排序"><a href="#2-1-1-直接冒泡排序" class="headerlink" title="2.1.1 直接冒泡排序"></a>2.1.1 直接冒泡排序</h4><p> <img src="/2018/08/07/algorithm/内部排序算法/bubble.gif" alt="bubble"></p>
 <p>​    冒泡排序如上图所示，给定一个待排序列，从前往后依次扫描，将最大的元素放到最后面正确的位置，已经放到正确位置的序列在下一次扫描中就不会继续比对。</p>
@@ -864,8 +868,6 @@
 <li>插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率。</li>
 <li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位。</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>待排序列：[6,5,4,3,2,1]</p>
 <p>增量序列：[4,1]</p>
 <ol>
@@ -903,8 +905,6 @@
 <li>重复上面步骤，直到指针指向有序数组的末尾</li>
 <li>将另一个未指向末尾的数组放入到和数组中</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>递归实现：[6,5,4,3,2,1]</p>
 <ul>
 <li><p>[5, 6]</p>
@@ -930,8 +930,6 @@
 <p>上面表示待排数字的依次变化</p>
 </li>
 </ul>
-</blockquote>
-<blockquote>
 <p>非递归实现：[6,5,4,3,2,1]</p>
 <ul>
 <li><p>[5, 6]</p>
@@ -1119,8 +1117,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/07/leetcode/LeetCode: 101. 对称二叉树/" rel="next" title="LeetCode 101. 对称二叉树">
-                <i class="fa fa-chevron-left"></i> LeetCode 101. 对称二叉树
+              <a href="/2018/08/07/leetcode/LeetCode: 100. 相同的树/" rel="next" title="LeetCode 100. 相同的树">
+                <i class="fa fa-chevron-left"></i> LeetCode 100. 相同的树
               </a>
             
           </div>
@@ -1208,7 +1206,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">387</span>
+                    <span class="site-state-item-count">389</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1225,7 +1223,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1242,7 +1244,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

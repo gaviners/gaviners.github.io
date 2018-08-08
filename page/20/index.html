@@ -520,6 +520,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 375. 猜数字大小 II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 375. 猜数字大小 II/" itemprop="url">
+                  LeetCode 375. 猜数字大小 II
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 375. 猜数字大小 II/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 375. 猜数字大小 II/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
+<p>我们正在玩一个猜数游戏，游戏规则如下：</p>
+<p>我从 <strong>1</strong> 到 <strong>n</strong> 之间选择一个数字，你来猜我选了哪个数字。</p>
+<p>每次你猜错了，我都会告诉你，我选的数字比你的大了或者小了。</p>
+<p>然而，当你猜了数字 x 并且猜错了的时候，你需要支付金额为 x 的现金。直到你猜到我选的数字，你才算赢得了这个游戏。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n = 10, 我选择了8.</span><br><span class="line"></span><br><span class="line">第一轮: 你猜我选择的数字是5，我会告诉你，我的数字更大一些，然后你需要支付5块。</span><br><span class="line">第二轮: 你猜是7，我告诉你，我的数字更大一些，你支付7块。</span><br><span class="line">第三轮: 你猜是9，我告诉你，我的数字更小一些，你支付9块。</span><br><span class="line"></span><br><span class="line">游戏结束。8 就是我选的数字。</span><br><span class="line"></span><br><span class="line">你最终要支付 5 + 7 + 9 = 21 块钱。</span><br></pre></td></tr></table></figure>
+<p>给定一个 <strong>n ≥ 1，</strong>计算你至少需要拥有多少现金才能确保你能赢得这个游戏。</p>
+<p><strong>致谢:</strong></p>
+<p>特别感谢 <a href="https://leetcode.com/agave/" target="_blank" rel="noopener">@agave</a> 和 <a href="https://leetcode.com/stefanpochmann/" target="_blank" rel="noopener">@StefanPochmann</a> 添加了这道题目，并且提供了所有测试用例。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    用动态规划来解决</p>
+<p>分析一下思路，我们设置一个区间，在这个区间里面，才一个数，假设区间边界分别是，i，j</p>
+<ul>
+<li><p>如果区间中只有一个数，<code>i=j</code>，那么花费肯定是0，一次就猜中了</p>
+</li>
+<li><p>如果<code>i+1=j</code>，那么如何保证能赢呢？每次都选小的那个数，如果挑选的正好是大的那个数，花费就是i，也就是说，只要有i，那么，不管挑选的是i还是j，肯定能赢</p>
+</li>
+<li><p>如果<code>i+2=j</code>,也就是我们有三个数可以选择的时候，如何保证一定能赢呢？</p>
+<p>首先，我们有<code>i+1</code>块钱，然后在前面区间和后面区间中，找到花钱最多的，加上i+1，这时候，就找到了</p>
+<p>因为你会告诉我是大了还是小了，因此，3个数猜，肯定是中间的，i+1，因此，</p>
+</li>
+<li><p>以此类推，假如想要找从1到10的花费，那么，将区间分开，</p>
+<p>假设我们第一次挑选的数字是5，因为你会告诉我猜的大了，还是猜的小了，因此，花费就是5加上前面区间和后面区间中较大的那个，这样才能保证能赢</p>
+</li>
+</ul>
+<p>假如想要的到1-10，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1+dp[2][10]</span><br><span class="line">2+ max(dp[1][1], dp[3][10])</span><br><span class="line">3+ max(dp[1][2], dp[4][10])</span><br><span class="line">4+ max(dp[1][3], dp[5][10])</span><br><span class="line">5+ max(dp[1][4], dp[6][10])</span><br><span class="line">6+ max(dp[1][5], dp[7][10])</span><br><span class="line">7+ max(dp[1][6], dp[8][10])</span><br><span class="line">8+ max(dp[1][7], dp[9][10])</span><br><span class="line">9+ max(dp[1][8], dp[10][10])</span><br><span class="line">10+ dp[1][9]</span><br></pre></td></tr></table></figure>
+<p>​    当我们求解1-9的时候，1-9之间的组合已经有了，但是前面的数到10的组合还没有，因此，需要从后面向前运算</p>
+<p>​    也就是先将<code>dp[9][10]</code>算出来，然后是根据这个，就能计算<code>dp[8][10]</code></p>
+<p>​    一次类推，最后，我们就得到了<code>dp[1][10]</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMoneyAmount</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(n + <span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(j - <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>):</span><br><span class="line">                temp = <span class="number">0x7fffffff</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(i + <span class="number">1</span>, j):</span><br><span class="line">                    current = k + max(dp[i][k - <span class="number">1</span>], dp[k + <span class="number">1</span>][j])</span><br><span class="line">                    temp = min(temp, current)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> i + <span class="number">1</span> == j:</span><br><span class="line">                    dp[i][j] = i</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = temp</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>][n]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 376. 摆动序列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -724,7 +923,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -743,8 +942,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/" itemprop="url">
-                  LeetCode 377. 组合总和 Ⅳ
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/" itemprop="url">
+                  LeetCode 378. 有序矩阵中第K小的元素
                 </a>
               
             
@@ -807,8 +1006,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -839,36 +1038,22 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
-<p>给定一个由正整数组成且不存在重复数字的数组，找出和为给定目标正整数的组合的个数。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个 <em>n x n</em> 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第k小的元素。<br>请注意，它是排序后的第k小元素，而不是第k个元素。</p>
 <p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">nums = [1, 2, 3]</span><br><span class="line">target = 4</span><br><span class="line"></span><br><span class="line">所有可能的组合为：</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line"></span><br><span class="line">请注意，顺序不同的序列被视作不同的组合。</span><br><span class="line"></span><br><span class="line">因此输出为 7。</span><br></pre></td></tr></table></figure>
-<p><strong>进阶：</strong><br>如果给定的数组中含有负数会怎么样？<br>问题会产生什么变化？<br>我们需要在题目中添加什么限制来允许负数的出现？</p>
-<p><strong>致谢：</strong><br>特别感谢 <a href="https://leetcode.com/pbrother/" target="_blank" rel="noopener">@pbrother</a> 添加此问题并创建所有测试用例。</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题使用动态规划来做</p>
-<ul>
-<li><p>首先，将书数组中的所有的数字，建立哈希，方便查找</p>
-</li>
-<li><p>然后，建立dp[target+1]</p>
-</li>
-<li><p>然后对每一个下标开始判断</p>
-<ul>
-<li><p>例如，对和为5进行判断</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dp[5]  =  	dp[0]+5(if 5 in nums) </span><br><span class="line">		+	dp[1]+4(if 4 in nums) </span><br><span class="line">		+ 	dp[2]+3(if 3 in nums)</span><br><span class="line">		+	dp[3]+2(if 2 in nums) </span><br><span class="line">		+	dp[4]+1(if 1 in nums)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>以此类推，最后得到结果</p>
-</li>
-</ul>
-<p>​    上面的思路好像有点问题，还超时了</p>
-<p>​    换个思路，再来一次，这一次我们使用构造法，</p>
-<p>首先，将dp数组创建出来，然后将所有的nums数组中出现的数字对应的下标置一</p>
-<p>接着，从前面向后进行扫描，遇到不为0的数，就用这个数字，加上nums中的数字，将对应的下标的数字增加1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">返回 13。</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong><br>你可以假设 k 的值永远是有效的, $1 ≤ k ≤ n^2$ 。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    有一种思路，我们能够直接判断当前值所处的范围</p>
+<p>左上角的都是小于当前值的，右下角的都是大于当前值的，因此，我们就能够直接得到当前值在整个矩阵中所可能处于的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1,1) (2,4) (3,7)</span><br><span class="line">(2,4) (4,6) (6,8)</span><br><span class="line">(3,7) (6,8) (9,9)</span><br></pre></td></tr></table></figure>
+<p>假如我们想要找第8个元素，就判断(6,8)位置的数字</p>
+<p>如果想要找第6个元素，就要判断(3,7),(4,6),(6,8)所处的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1,1) 	(2,4) 	(3,7) 	(4,13)</span><br><span class="line">(2,4) 	(4,6) 	(6,8) 	(8,14)</span><br><span class="line">(3,7) 	(6,8) 	(9,9) 	(12,15)</span><br><span class="line">(4,13)	(8,14)	(12,15)	(16,16)</span><br></pre></td></tr></table></figure>
+<p>​    不过直接定位还是有一点麻烦</p>
+<p>换个思路，我们设置n个指针，放在每一行中，然后，将他的坐标同时保存，并且，放入堆中</p>
+<p>每一次取出一个最小的，然后将这个指针右移，如果指针溢出，就不将右面的数组添加进堆中</p>
 <p>举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">nums = [1, 2, 3]</span><br><span class="line">target = 4</span><br><span class="line">首先，创建dp</span><br><span class="line">[0 0 0 0 0]</span><br><span class="line">然后初始化</span><br><span class="line">[0 1 1 1 0]</span><br><span class="line">然后开始扫描，找到第一个不为0的数，也就是下标为1的那个1</span><br><span class="line">然后判断 加上对应的nums的数字，是不是小于等于target</span><br><span class="line">1+1</span><br><span class="line">1+2</span><br><span class="line">1+3</span><br><span class="line">如果小于，对应的要加1</span><br><span class="line">得到新的dp</span><br><span class="line">[0 1 2 2 1]</span><br><span class="line">然后继续判断，到最后位置</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum4</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = [<span class="number">0</span>] * (target + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> i &lt;= target:</span><br><span class="line">                dp[i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(target + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> dp[i] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> nums:</span><br><span class="line">                <span class="keyword">if</span> i + j &lt;= target:</span><br><span class="line">                    dp[i + j] += dp[i]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">首先，我们将第一列，也就是，1，10，12，连同坐标，放到一个堆里面：</span><br><span class="line">[(1, 0, 0), (10, 1, 0), (12, 2, 0)]</span><br><span class="line">然后我们取出最小的，(1,0,0),然后将5连同坐标放进去</span><br><span class="line">[(5, 0, 1), (12, 2, 0), (10, 1, 0)]</span><br><span class="line">然后重复上面的步骤，最后就得到第K个元素了</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        row = len(matrix)</span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        heap = [(matrix[i][<span class="number">0</span>], i, <span class="number">0</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(row)]</span><br><span class="line"></span><br><span class="line">        heapq.heapify(heap)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k - <span class="number">1</span>):</span><br><span class="line">            temp = heapq.heappop(heap)</span><br><span class="line">            <span class="keyword">if</span> temp[<span class="number">2</span>] + <span class="number">1</span> &lt; col:</span><br><span class="line">                heapq.heappush(heap, (matrix[temp[<span class="number">1</span>]][temp[<span class="number">2</span>] + <span class="number">1</span>], temp[<span class="number">1</span>], temp[<span class="number">2</span>] + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        res = heapq.heappop(heap)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
           
         
@@ -922,7 +1107,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 100. 相同的树/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 1. 两数之和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -941,8 +1126,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 100. 相同的树/" itemprop="url">
-                  LeetCode 100. 相同的树
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 1. 两数之和/" itemprop="url">
+                  LeetCode 1. 两数之和
                 </a>
               
             
@@ -1005,8 +1190,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 100. 相同的树/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 100. 相同的树/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 1. 两数之和/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 1. 两数之和/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1037,211 +1222,15 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个二叉树，编写一个函数来检验它们是否相同。</p>
-<p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:       1         1</span><br><span class="line">          / \       / \</span><br><span class="line">         2   3     2   3</span><br><span class="line"></span><br><span class="line">        [1,2,3],   [1,2,3]</span><br><span class="line"></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:      1          1</span><br><span class="line">          /           \</span><br><span class="line">         2             2</span><br><span class="line"></span><br><span class="line">        [1,2],     [1,null,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:       1         1</span><br><span class="line">          / \       / \</span><br><span class="line">         2   1     1   2</span><br><span class="line"></span><br><span class="line">        [1,2,1],   [1,1,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *right;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(struct TreeNode* p, struct TreeNode* q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p &amp;&amp; !q)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (p &amp;&amp; !q || !p &amp;&amp; q || p-&gt;val != q-&gt;val || !p-&gt;left &amp;&amp; q-&gt;left || p-&gt;right &amp;&amp; !q-&gt;right) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> isSameTree(p-&gt;left,q-&gt;left) &amp;&amp; isSameTree(p-&gt;right,q-&gt;right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 38. 报数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 38. 报数/" itemprop="url">
-                  LeetCode 38. 报数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 38. 报数/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 38. 报数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">报数序列是指一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下：</span><br><span class="line"></span><br><span class="line">1.     1</span><br><span class="line">2.     11</span><br><span class="line">3.     21</span><br><span class="line">4.     1211</span><br><span class="line">5.     111221</span><br><span class="line">1 被读作  &quot;one 1&quot;  (&quot;一个一&quot;) , 即 11。</span><br><span class="line">11 被读作 &quot;two 1s&quot; (&quot;两个一&quot;）, 即 21。</span><br><span class="line">21 被读作 &quot;one 2&quot;,  &quot;one 1&quot; （&quot;一个二&quot; ,  &quot;一个一&quot;) , 即 1211。</span><br><span class="line"></span><br><span class="line">给定一个正整数 n ，输出报数序列的第 n 项。</span><br><span class="line"></span><br><span class="line">注意：整数顺序将表示为一个字符串。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: 1</span><br><span class="line">输出: &quot;1&quot;</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: 4</span><br><span class="line">输出: &quot;1211&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    一开始，看了半天没明白什么意思，后来才明白</p>
-<p>​    这个序列是从1开始的，然后我们读出来，也就是one 1，变成了11，也就是说，下一个数是上一个数读音变化出来的</p>
-<p>​    11，读成”two 1s”， 变成了21</p>
-<p>以此类推：</p>
-<p>1</p>
-<p>11</p>
-<p>21</p>
-<p>1211</p>
-<p>111221</p>
-<p>21112211</p>
-<p>1221112221</p>
-<p>。。。</p>
-<p>​    明确了题目的意思，也就容易写了</p>
-<ul>
-<li>如果当前是1 并且下一个不是1，就直接变成11</li>
-<li>如果当前是1，并且下一个是1，变成21</li>
-<li>如果当前是2，下一个不是2，变成12</li>
-<li>如果当前是2，下一个是2，变成22</li>
-</ul>
-<p>只会出现这4种情况</p>
-<p>​    如果用一个数组实现，发现是有点问题的，需要不断地移动数据</p>
-<p>​    因此，选择使用两个数组，一个存放上一次的结果，另一个存放根据上一次计算出来的结果</p>
-<pre><code>需要非常注意的就是，这两个数组的长度问题
-</code></pre><p>​    考虑到最大的可能性，新的数组长度可能是上一个的2倍    </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span> *result = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">char</span> *next = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(result) * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">char</span> *temp;</span><br><span class="line"></span><br><span class="line">    result[<span class="number">0</span>] = <span class="string">'1'</span>;</span><br><span class="line">    result[<span class="number">1</span>] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> next_pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> equal_num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        next_pos = <span class="number">0</span>;</span><br><span class="line">        pos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (result[pos]) &#123;</span><br><span class="line">            <span class="comment">// 判断有几个相同字符</span></span><br><span class="line">            <span class="comment">// 如果下一个字符存在，一直判断有几个相同的字符</span></span><br><span class="line">            <span class="keyword">if</span> (result[pos + <span class="number">1</span>] == result[pos]) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (result[pos] == result[pos + <span class="number">1</span>]) &#123;</span><br><span class="line">                    equal_num++;</span><br><span class="line">                    pos++;</span><br><span class="line">                &#125;</span><br><span class="line">                pos++;</span><br><span class="line">                next[next_pos] = <span class="string">'0'</span> + equal_num;</span><br><span class="line">                next[next_pos + <span class="number">1</span>] = result[pos - equal_num];</span><br><span class="line">                next_pos += <span class="number">2</span>;</span><br><span class="line">                equal_num = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 如果下一个字符是'\0'</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (!result[pos + <span class="number">1</span>]) &#123;</span><br><span class="line">                next[next_pos] = <span class="string">'1'</span>;</span><br><span class="line">                next[next_pos + <span class="number">1</span>] = result[pos];</span><br><span class="line">                next[next_pos + <span class="number">2</span>] = <span class="string">'\0'</span>;</span><br><span class="line">                pos++;</span><br><span class="line">                next_pos += <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                <span class="comment">// 如果下一个字符与当前字符不相同</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (result[pos + <span class="number">1</span>] &amp;&amp; result[pos] != result[pos + <span class="number">1</span>]) &#123;</span><br><span class="line">                next[next_pos] = <span class="string">'1'</span>;</span><br><span class="line">                next[next_pos + <span class="number">1</span>] = result[pos];;</span><br><span class="line">                pos++;</span><br><span class="line">                next_pos += <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        next[next_pos] = <span class="string">'\0'</span>;</span><br><span class="line">        temp = result;</span><br><span class="line">        result = next;</span><br><span class="line">        <span class="built_in">free</span>(temp);</span><br><span class="line">        next = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(result) * <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(next);</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (result[count]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"number: %d \n"</span>, n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"length: %d \n"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; (num &lt;&lt; i)) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"1"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">1</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">2</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">3</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">4</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">5</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">6</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">7</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">8</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">9</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">10</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">11</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">12</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">13</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">14</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">25</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">30</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">50</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/Users/zhangguohao/CLionProjects/untitled/cmake-build-debug/untitled</span><br><span class="line">number: 1 </span><br><span class="line">length: 1 </span><br><span class="line">1</span><br><span class="line">number: 2 </span><br><span class="line">length: 2 </span><br><span class="line">11</span><br><span class="line">number: 3 </span><br><span class="line">length: 2 </span><br><span class="line">21</span><br><span class="line">number: 4 </span><br><span class="line">length: 4 </span><br><span class="line">1211</span><br><span class="line">number: 5 </span><br><span class="line">length: 6 </span><br><span class="line">111221</span><br><span class="line">number: 6 </span><br><span class="line">length: 6 </span><br><span class="line">312211</span><br><span class="line">number: 7 </span><br><span class="line">length: 8 </span><br><span class="line">13112221</span><br><span class="line">number: 8 </span><br><span class="line">length: 10 </span><br><span class="line">1113213211</span><br><span class="line">number: 9 </span><br><span class="line">length: 14 </span><br><span class="line">31131211131221</span><br><span class="line">number: 10 </span><br><span class="line">length: 20 </span><br><span class="line">13211311123113112211</span><br><span class="line">number: 11 </span><br><span class="line">length: 26 </span><br><span class="line">11131221133112132113212221</span><br><span class="line">number: 12 </span><br><span class="line">length: 34 </span><br><span class="line">3113112221232112111312211312113211</span><br><span class="line">number: 13 </span><br><span class="line">length: 46 </span><br><span class="line">1321132132111213122112311311222113111221131221</span><br><span class="line">number: 14 </span><br><span class="line">length: 62 </span><br><span class="line">11131221131211131231121113112221121321132132211331222113112211</span><br><span class="line">number: 25 </span><br><span class="line">length: 1182 </span><br><span class="line">132113213221133112132123123112111311222112132113311213211231232112311311222112111312211311123113322112132113212231121113112221121321132132211231232112311321322112311311222113111231133221121113122113121113221112131221123113111231121123222112132113213221133112132123123112111312111312212231131122211311123113322112111312211312111322111213122112311311123112112322211211131221131211132221232112111312111213111213211231132132211211131221232112111312212221121123222112132113213221133112132123123112111311222112132113213221132213211321322112311311222113311213212322211211131221131211221321123113213221121113122113121132211332113221122112133221123113112221131112311332111213122112311311123112111331121113122112132113121113222112311311221112131221123113112221121113311211131122211211131221131211132221121321132132212321121113121112133221123113112221131112212211131221121321131211132221123113112221131112311332211211133112111311222112111312211311123113322112111312211312111322212321121113121112133221121321132132211331121321231231121113112221121321132122311211131122211211131221131211322113322112111312211322132113213221123113112221131112311311121321122112132231121113122113322113111221131221</span><br><span class="line">number: 30 </span><br><span class="line">length: 4462 </span><br><span class="line">..</span><br></pre></td></tr></table></figure>
-<p>​    后面的数据太长。。。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</span><br><span class="line"></span><br><span class="line">你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line"></span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h3 id="2-1-解题1"><a href="#2-1-解题1" class="headerlink" title="2.1 解题1"></a>2.1 解题1</h3><p>​    一般我们第一时间就能想到的思路，就是用双重for循环来遍历一遍，肯定可以得到结果；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">循环1：元素1 in 数组</span><br><span class="line">	循环2：元素2 in 数组</span><br><span class="line">		判断：元素1与元素2不是同一个元素 and 它们之和等于目标值：</span><br><span class="line">			返回元素1和元素2的下标</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* result = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt; numsSize<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt;numsSize;j++ )&#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] + nums[j] == target)&#123;</span><br><span class="line">                    result[<span class="number">0</span>] = i;</span><br><span class="line">                    result[<span class="number">1</span>] = j;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-解题2"><a href="#2-2-解题2" class="headerlink" title="2.2 解题2"></a>2.2 解题2</h3><p>​    双重for循环会浪费时间和空间，并且有这样的一个缺点，就是已经计算过的值，并不会保存，每一次的计算，与前面的计算没有关系，如果我们每一次计算都能利用前面计算的结果，那么效率应该会提高。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">创建一个容器：buff  #使用buff存储下标和目标值与当前值的差值</span><br><span class="line">循环： 元素 in 数组</span><br><span class="line">	判断： 如果当前值在容器中存在</span><br><span class="line">		返回：容器中的值下标，当前下标</span><br><span class="line">	判断： 不存在</span><br><span class="line">		将当前值得下标与(目标值-当前值)存储倒容器中</span><br></pre></td></tr></table></figure>
+<p>​    实际上，这里利用了一个缓冲容器的思路，将差值作为键，下标作为值存储到字典中，那么实际上我们只需要用一层循环就可以了，每一次都将前面元素的差值存储，那么每遇到一个元素，判断一下这个值在是不是在字典中，如果在，那么这个值与字典中的下标所代表的值之和肯定就是目标值，时间复杂度是O(n)。</p>
+<h2 id="3、参考代码"><a href="#3、参考代码" class="headerlink" title="3、参考代码"></a>3、参考代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python版本：3</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        buff_dict = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> buff_dict:</span><br><span class="line">                <span class="keyword">return</span> [buff_dict[nums[i]], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                buff_dict[target - nums[i]] = i</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1423,6 +1412,204 @@
 <p>​    如果直接用字典，插入和删除都能够满足要求，但是删除不可以，不能随机的找出想要的数字</p>
 <p>随意，将数组和字典结合起来使用，我们使用数组保存元素，当我们想要删除的时候，就将当前元素与末尾元素调换，然后删除末尾元素即可，这样就得到了线性时间复杂度，并且，为了删除能快速定位这个元素，我们使用字典，保存元素所在的下标</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.nums = []</span><br><span class="line">        self.nums_index = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> self.nums_index:</span><br><span class="line">            self.nums.append(val)</span><br><span class="line">            self.nums_index[val] = len(self.nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Removes a value from the set. Returns true if the set contained the specified element.</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.nums_index:</span><br><span class="line">            <span class="keyword">if</span> len(self.nums) == <span class="number">1</span>:</span><br><span class="line">                self.nums.pop()</span><br><span class="line">                self.nums_index.pop(val)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">                index = self.nums_index[val]</span><br><span class="line">                self.nums[index], self.nums[<span class="number">-1</span>] = self.nums[<span class="number">-1</span>], self.nums[index]</span><br><span class="line">                self.nums_index[self.nums[index]] = index</span><br><span class="line">                self.nums.pop()</span><br><span class="line">                self.nums_index.pop(val)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get a random element from the set.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        index = random.randint(<span class="number">0</span>, len(self.nums) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> self.nums[index]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your RandomizedSet object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = RandomizedSet()</span></span><br><span class="line"><span class="comment"># param_1 = obj.insert(val)</span></span><br><span class="line"><span class="comment"># param_2 = obj.remove(val)</span></span><br><span class="line"><span class="comment"># param_3 = obj.getRandom()</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/" itemprop="url">
+                  LeetCode 377. 组合总和 Ⅳ
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
+<p>给定一个由正整数组成且不存在重复数字的数组，找出和为给定目标正整数的组合的个数。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">nums = [1, 2, 3]</span><br><span class="line">target = 4</span><br><span class="line"></span><br><span class="line">所有可能的组合为：</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line"></span><br><span class="line">请注意，顺序不同的序列被视作不同的组合。</span><br><span class="line"></span><br><span class="line">因此输出为 7。</span><br></pre></td></tr></table></figure>
+<p><strong>进阶：</strong><br>如果给定的数组中含有负数会怎么样？<br>问题会产生什么变化？<br>我们需要在题目中添加什么限制来允许负数的出现？</p>
+<p><strong>致谢：</strong><br>特别感谢 <a href="https://leetcode.com/pbrother/" target="_blank" rel="noopener">@pbrother</a> 添加此问题并创建所有测试用例。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题使用动态规划来做</p>
+<ul>
+<li><p>首先，将书数组中的所有的数字，建立哈希，方便查找</p>
+</li>
+<li><p>然后，建立dp[target+1]</p>
+</li>
+<li><p>然后对每一个下标开始判断</p>
+<ul>
+<li><p>例如，对和为5进行判断</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dp[5]  =  	dp[0]+5(if 5 in nums) </span><br><span class="line">		+	dp[1]+4(if 4 in nums) </span><br><span class="line">		+ 	dp[2]+3(if 3 in nums)</span><br><span class="line">		+	dp[3]+2(if 2 in nums) </span><br><span class="line">		+	dp[4]+1(if 1 in nums)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>以此类推，最后得到结果</p>
+</li>
+</ul>
+<p>​    上面的思路好像有点问题，还超时了</p>
+<p>​    换个思路，再来一次，这一次我们使用构造法，</p>
+<p>首先，将dp数组创建出来，然后将所有的nums数组中出现的数字对应的下标置一</p>
+<p>接着，从前面向后进行扫描，遇到不为0的数，就用这个数字，加上nums中的数字，将对应的下标的数字增加1</p>
+<p>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">nums = [1, 2, 3]</span><br><span class="line">target = 4</span><br><span class="line">首先，创建dp</span><br><span class="line">[0 0 0 0 0]</span><br><span class="line">然后初始化</span><br><span class="line">[0 1 1 1 0]</span><br><span class="line">然后开始扫描，找到第一个不为0的数，也就是下标为1的那个1</span><br><span class="line">然后判断 加上对应的nums的数字，是不是小于等于target</span><br><span class="line">1+1</span><br><span class="line">1+2</span><br><span class="line">1+3</span><br><span class="line">如果小于，对应的要加1</span><br><span class="line">得到新的dp</span><br><span class="line">[0 1 2 2 1]</span><br><span class="line">然后继续判断，到最后位置</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum4</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = [<span class="number">0</span>] * (target + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> i &lt;= target:</span><br><span class="line">                dp[i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(target + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> dp[i] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> nums:</span><br><span class="line">                <span class="keyword">if</span> i + j &lt;= target:</span><br><span class="line">                    dp[i + j] += dp[i]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2018,198 +2205,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 385. Mini Parser/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 385. Mini Parser/" itemprop="url">
-                  LeetCode 385. Mini Parser
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 385. Mini Parser/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 385. Mini Parser/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>Given a nested list of integers represented as a string, implement a parser to deserialize it.</p>
-<p>Each element is either an integer, or a list – whose elements may also be integers or other lists.</p>
-<p><strong>Note:</strong> You may assume that the string is well-formed:</p>
-<ul>
-<li>String is non-empty.</li>
-<li>String does not contain white spaces.</li>
-<li>String contains only digits <code>0-9</code>, <code>[</code>, <code>-</code> <code>,</code>, <code>]</code>.</li>
-</ul>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given s = &quot;324&quot;,</span><br><span class="line"></span><br><span class="line">You should return a NestedInteger object which contains a single integer 324.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Given s = &quot;[123,[456,[789]]]&quot;,</span><br><span class="line"></span><br><span class="line">Return a NestedInteger object containing a nested list with 2 elements:</span><br><span class="line"></span><br><span class="line">1. An integer containing value 123.</span><br><span class="line">2. A nested list containing two elements:</span><br><span class="line">    i.  An integer containing value 456.</span><br><span class="line">    ii. A nested list with one element:</span><br><span class="line">         a. An integer containing value 789.</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先来理解一下，这是一个嵌套的对象的反序列化，需要关注的几个点：</p>
-<ul>
-<li>数字的识别<ul>
-<li>如果一个字母是数字的话，就要不断的向后移动，直到这个不是数字为止</li>
-</ul>
-</li>
-<li>list的识别<ul>
-<li>遇到’[]’的时候，将这个字母入栈，等到遇到’]’的时候，出栈</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment"># This is the interface that allows for creating nested lists.</span></span><br><span class="line"><span class="comment"># You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment">#class NestedInteger:</span></span><br><span class="line"><span class="comment">#    def __init__(self, value=None):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        If value is not specified, initializes an empty list.</span></span><br><span class="line"><span class="comment">#        Otherwise initializes a single integer equal to value.</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    def isInteger(self):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        @return True if this NestedInteger holds a single integer, rather than a nested list.</span></span><br><span class="line"><span class="comment">#        :rtype bool</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    def add(self, elem):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        Set this NestedInteger to hold a nested list and adds a nested integer elem to it.</span></span><br><span class="line"><span class="comment">#        :rtype void</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    def setInteger(self, value):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        Set this NestedInteger to hold a single integer equal to value.</span></span><br><span class="line"><span class="comment">#        :rtype void</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    def getInteger(self):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        @return the single integer that this NestedInteger holds, if it holds a single integer</span></span><br><span class="line"><span class="comment">#        Return None if this NestedInteger holds a nested list</span></span><br><span class="line"><span class="comment">#        :rtype int</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#    def getList(self):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        @return the nested list that this NestedInteger holds, if it holds a nested list</span></span><br><span class="line"><span class="comment">#        Return None if this NestedInteger holds a single integer</span></span><br><span class="line"><span class="comment">#        :rtype List[NestedInteger]</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deserialize</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: NestedInteger</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        res = NestedInteger()</span><br><span class="line">        nest_stack = [res]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s[<span class="number">0</span>].isnumeric() <span class="keyword">or</span> s[<span class="number">0</span>] == <span class="string">'-'</span>:</span><br><span class="line">            num_buff = s[<span class="number">0</span>]</span><br><span class="line">            num_sign = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            num_sign = <span class="keyword">False</span></span><br><span class="line">            num_buff = <span class="string">''</span></span><br><span class="line">        index = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> index &lt; len(s):</span><br><span class="line">            <span class="keyword">if</span> num_sign:</span><br><span class="line">                <span class="keyword">if</span> s[index].isnumeric():</span><br><span class="line">                    num_buff += s[index]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    num_sign = <span class="keyword">False</span></span><br><span class="line">                    nest_stack[<span class="number">-1</span>].setInteger(int(num_buff))</span><br><span class="line">                    nest_stack.pop()</span><br><span class="line">                    index -= <span class="number">1</span></span><br><span class="line">                    num_buff = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> s[index].isnumeric() <span class="keyword">or</span> s[index] == <span class="string">'-'</span>:</span><br><span class="line">                    num_sign = <span class="keyword">True</span></span><br><span class="line">                    num_buff = s[index]</span><br><span class="line">                    temp = NestedInteger()</span><br><span class="line">                    nest_stack[<span class="number">-1</span>].add(temp)</span><br><span class="line">                    nest_stack.append(temp)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> s[index] == <span class="string">'['</span>:</span><br><span class="line">                        temp = NestedInteger()</span><br><span class="line">                        nest_stack[<span class="number">-1</span>].add(temp)</span><br><span class="line">                        nest_stack.append(temp)</span><br><span class="line">                    <span class="keyword">elif</span> s[index] == <span class="string">']'</span>:</span><br><span class="line">                        nest_stack.pop()</span><br><span class="line"></span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> num_buff:</span><br><span class="line">            nest_stack[<span class="number">-1</span>].setInteger(int(num_buff))</span><br><span class="line">            nest_stack.pop()</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2261,7 +2256,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">387</span>
+                    <span class="site-state-item-count">389</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2278,7 +2273,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2295,7 +2294,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
