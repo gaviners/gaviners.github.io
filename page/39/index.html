@@ -346,6 +346,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 95. 不同的二叉搜索树 II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 95. 不同的二叉搜索树 II/" itemprop="url">
+                  LeetCode 95. 不同的二叉搜索树 II
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 95. 不同的二叉搜索树 II/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 95. 不同的二叉搜索树 II/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个整数 <em>n</em>，生成所有由 1 … <em>n</em> 为节点所组成的<strong>二叉搜索树</strong>。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">输入: 3</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,null,3,2],</span><br><span class="line">  [3,2,null,1],</span><br><span class="line">  [3,1,null,null,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [1,null,2,null,3]</span><br><span class="line">]</span><br><span class="line">解释:</span><br><span class="line">以上的输出对应以下 5 种不同结构的二叉搜索树：</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    看到二叉树，首先想到的就是递归求解，不顾哦这个形式有一点特殊，特殊在哪里呢？</p>
+<p>​    这个题目是典型的分治法，但是有一点不同，就在于，小问题之间需要相互组合求解，例如，确定一个根节点，但是左节点的可能性有多个，右节点的可能性也有多个，于是，同一个根节点，就有了几棵树</p>
+<p>​    基本的解题思路是这样的</p>
+<ul>
+<li>从1到n中，先确定根节点</li>
+<li>假如确定了5，那么1-4中是他的左子树，6-n是右子树</li>
+<li>左子树和右子树都有多个，这时候，相互之间的组合就有多个</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateTrees</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[TreeNode]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.dfs(<span class="number">1</span>, n)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, left, right)</span>:</span></span><br><span class="line">        result = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> left &gt; right:</span><br><span class="line">            result.append(<span class="keyword">None</span>)</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> left_node <span class="keyword">in</span> self.dfs(left, i - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">for</span> right_node <span class="keyword">in</span> self.dfs(i + <span class="number">1</span>, right):</span><br><span class="line">                    root_node = TreeNode(i)</span><br><span class="line">                    root_node.left = left_node</span><br><span class="line">                    root_node.right = right_node</span><br><span class="line">                    result.append(root_node)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 96. 不同的二叉搜索树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -723,7 +903,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 93. 复原IP地址/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 92. 反转链表 II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -742,8 +922,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 93. 复原IP地址/" itemprop="url">
-                  LeetCode 93. 复原IP地址
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 92. 反转链表 II/" itemprop="url">
+                  LeetCode 92. 反转链表 II
                 </a>
               
             
@@ -806,8 +986,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 93. 复原IP地址/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 93. 复原IP地址/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 92. 反转链表 II/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 92. 反转链表 II/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -838,16 +1018,16 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
-<p>给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>反转从位置 <em>m</em> 到 <em>n</em> 的链表。请使用一趟扫描完成反转。</p>
+<p><strong>说明:</strong><br>1 ≤ <em>m</em> ≤ <em>n</em> ≤ 链表长度。</p>
 <p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;25525511135&quot;</span><br><span class="line">输出: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;]</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    先想到的是深度优先搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4</span><br><span class="line">输出: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    设置两个指针，第一个指针先走m步然后两个指针一块走一面走，一面反转</p>
+<p>​    考虑到头部的元素也可能反转，所以要在最前面添加一个节点，用来指向返回的头结点</p>
 <p>​    </p>
-<p>每一次，取一个字符，2个字符，3个字符，分别判断，如果满足条件，继续判断</p>
-<p>如果刚好用尽了所有字符，并且数组里面元素刚刚好4个，表示满足条件，加入结果数组</p>
-<p>需要注意，如果有0，那么前两位不能是0</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">restoreIpAddresses</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        result = []</span><br><span class="line">        self.dfs(s, <span class="number">0</span>, [], result)</span><br><span class="line">        <span class="keyword">return</span> list(set(result))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, s, index, current, result)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> index &gt;= len(s):</span><br><span class="line">            <span class="keyword">if</span> len(current) == <span class="number">4</span>:</span><br><span class="line">                result.append(<span class="string">"."</span>.join(current))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">elif</span> len(current) &gt;= <span class="number">4</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        temp = current[:]</span><br><span class="line">        temp_num = int(s[index:index + <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span> temp_num &lt;= <span class="number">255</span> <span class="keyword">and</span> (len(s) - index - <span class="number">1</span>) &lt;= (<span class="number">3</span> - len(current)) * <span class="number">3</span>:</span><br><span class="line">            temp.append(s[index:index + <span class="number">1</span>])</span><br><span class="line">            self.dfs(s, index + <span class="number">1</span>, temp, result)</span><br><span class="line"></span><br><span class="line">        temp = current[:]</span><br><span class="line">        temp_num = int(s[index:index + <span class="number">2</span>])</span><br><span class="line">        <span class="keyword">if</span> temp_num &lt;= <span class="number">255</span> <span class="keyword">and</span> s[index] != <span class="string">'0'</span> <span class="keyword">and</span> (len(s) - index - <span class="number">2</span>) &lt;= (<span class="number">3</span> - len(current)) * <span class="number">3</span>:</span><br><span class="line">            temp.append(s[index:index + <span class="number">2</span>])</span><br><span class="line">            self.dfs(s, index + <span class="number">2</span>, temp, result)</span><br><span class="line"></span><br><span class="line">        temp = current[:]</span><br><span class="line">        temp_num = int(s[index:index + <span class="number">3</span>])</span><br><span class="line">        <span class="keyword">if</span> temp_num &lt;= <span class="number">255</span> <span class="keyword">and</span> s[index:index + <span class="number">2</span>] != <span class="string">'00'</span> <span class="keyword">and</span> s[index] != <span class="string">'0'</span> <span class="keyword">and</span> (len(s) - index - <span class="number">3</span>) &lt;= (</span><br><span class="line">            <span class="number">3</span> - len(current)) * <span class="number">3</span>:</span><br><span class="line">            temp.append(s[index:index + <span class="number">3</span>])</span><br><span class="line">            self.dfs(s, index + <span class="number">3</span>, temp, result)</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseBetween</span><span class="params">(self, head, m, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type m: int</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        prev = ListNode(<span class="number">0</span>)</span><br><span class="line">        result_head = prev</span><br><span class="line">        prev.next = head</span><br><span class="line"></span><br><span class="line">        temp = m</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> temp &gt; <span class="number">1</span>:</span><br><span class="line">            prev = prev.next</span><br><span class="line">            temp -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        first_reverse = prev.next</span><br><span class="line"></span><br><span class="line">        first = prev.next</span><br><span class="line">        second = first.next</span><br><span class="line">        temp_node = second</span><br><span class="line">        <span class="keyword">if</span> temp_node:</span><br><span class="line">            temp_node = first.next.next</span><br><span class="line"></span><br><span class="line">        temp = n</span><br><span class="line">        <span class="keyword">while</span> temp - m &gt; <span class="number">0</span>:</span><br><span class="line">            second.next = first</span><br><span class="line">            first = second</span><br><span class="line">            second = temp_node</span><br><span class="line">            <span class="keyword">if</span> temp_node:</span><br><span class="line">                temp_node = temp_node.next</span><br><span class="line">            temp -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        prev.next = first</span><br><span class="line">        first_reverse.next = second</span><br><span class="line">        <span class="keyword">return</span> result_head.next</span><br></pre></td></tr></table></figure>
+<p>​    </p>
 
           
         
@@ -1515,7 +1695,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 376. 摆动序列/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -1534,8 +1714,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/" itemprop="url">
-                  LeetCode 376. 摆动序列
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/" itemprop="url">
+                  LeetCode 378. 有序矩阵中第K小的元素
                 </a>
               
             
@@ -1598,8 +1778,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 378. 有序矩阵中第K小的元素/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1630,42 +1810,22 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为<strong>摆动序列。</strong>第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。</p>
-<p>例如， <code>[1,7,4,9,2,5]</code> 是一个摆动序列，因为差值 <code>(6,-3,5,-7,3)</code> 是正负交替出现的。相反, <code>[1,4,7,2,5]</code> 和 <code>[1,7,4,5,5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</p>
-<p>给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个 <em>n x n</em> 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第k小的元素。<br>请注意，它是排序后的第k小元素，而不是第k个元素。</p>
 <p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,7,4,9,2,5]</span><br><span class="line">输出: 6</span><br><span class="line">解释: 整个序列就是一个摆动序列。</span><br><span class="line"></span><br><span class="line">输入: [1,17,5,10,13,15,10,5,16,8]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 它的几个子序列满足摆动序列。其中一个是[1,17,10,13,10,16,8]。</span><br><span class="line"></span><br><span class="line">输入: [1,2,3,4,5,6,7,8,9]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
-<p><strong>进阶:</strong><br>你能否用 O(<em>n</em>) 时间复杂度完成此题?</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    使用动态规划，使用两个数组，down和up,分别保存到当前数字为止，前面一个是下降沿与上升沿的最大值</p>
-<ul>
-<li><p>如果nums[i] &gt; nums[i - 1]:</p>
-<ul>
-<li><p>也就是说现在这个是上升沿，那么上升沿更新为前面下降沿加一</p>
-</li>
-<li><p>下降沿不变</p>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">up[i] = down[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">down[i] = down[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>如果nums[i] &lt; nums[i - 1]: </p>
-<ul>
-<li><p>现在这个是下降沿，那个当前的下降沿用前面的上升沿加一更新，上升沿不变</p>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">down[i] = up[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">up[i] = up[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>如果前后相等：</p>
-<ul>
-<li><p>保持不变</p>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">up[i] = up[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wiggleMaxLength</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        length = len(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> length &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> length</span><br><span class="line"></span><br><span class="line">        up = [<span class="number">1</span>] * length</span><br><span class="line">        down = [<span class="number">1</span>] * length</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, length):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i - <span class="number">1</span>]:</span><br><span class="line">                up[i] = down[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> nums[i] &lt; nums[i - <span class="number">1</span>]:</span><br><span class="line">                down[i] = up[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                up[i] = up[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">                up[i] = up[i - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> max(up[<span class="number">-1</span>], down[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">返回 13。</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong><br>你可以假设 k 的值永远是有效的, $1 ≤ k ≤ n^2$ 。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    有一种思路，我们能够直接判断当前值所处的范围</p>
+<p>左上角的都是小于当前值的，右下角的都是大于当前值的，因此，我们就能够直接得到当前值在整个矩阵中所可能处于的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1,1) (2,4) (3,7)</span><br><span class="line">(2,4) (4,6) (6,8)</span><br><span class="line">(3,7) (6,8) (9,9)</span><br></pre></td></tr></table></figure>
+<p>假如我们想要找第8个元素，就判断(6,8)位置的数字</p>
+<p>如果想要找第6个元素，就要判断(3,7),(4,6),(6,8)所处的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1,1) 	(2,4) 	(3,7) 	(4,13)</span><br><span class="line">(2,4) 	(4,6) 	(6,8) 	(8,14)</span><br><span class="line">(3,7) 	(6,8) 	(9,9) 	(12,15)</span><br><span class="line">(4,13)	(8,14)	(12,15)	(16,16)</span><br></pre></td></tr></table></figure>
+<p>​    不过直接定位还是有一点麻烦</p>
+<p>换个思路，我们设置n个指针，放在每一行中，然后，将他的坐标同时保存，并且，放入堆中</p>
+<p>每一次取出一个最小的，然后将这个指针右移，如果指针溢出，就不将右面的数组添加进堆中</p>
+<p>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">首先，我们将第一列，也就是，1，10，12，连同坐标，放到一个堆里面：</span><br><span class="line">[(1, 0, 0), (10, 1, 0), (12, 2, 0)]</span><br><span class="line">然后我们取出最小的，(1,0,0),然后将5连同坐标放进去</span><br><span class="line">[(5, 0, 1), (12, 2, 0), (10, 1, 0)]</span><br><span class="line">然后重复上面的步骤，最后就得到第K个元素了</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        row = len(matrix)</span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        heap = [(matrix[i][<span class="number">0</span>], i, <span class="number">0</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(row)]</span><br><span class="line"></span><br><span class="line">        heapq.heapify(heap)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k - <span class="number">1</span>):</span><br><span class="line">            temp = heapq.heappop(heap)</span><br><span class="line">            <span class="keyword">if</span> temp[<span class="number">2</span>] + <span class="number">1</span> &lt; col:</span><br><span class="line">                heapq.heappush(heap, (matrix[temp[<span class="number">1</span>]][temp[<span class="number">2</span>] + <span class="number">1</span>], temp[<span class="number">1</span>], temp[<span class="number">2</span>] + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        res = heapq.heappop(heap)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1755,7 +1915,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">386</span>
+                    <span class="site-state-item-count">387</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2365,6 +2525,8 @@
 
   
   
+    
+      
     
       
     
