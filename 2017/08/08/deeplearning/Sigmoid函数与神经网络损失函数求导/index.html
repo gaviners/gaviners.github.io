@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://www.aisky.men/2017/08/08/deeplearning/Sigmoid函数与神经网络损失函数求导/func-s1.png">
 <meta property="og:image" content="https://www.aisky.men/2017/08/08/deeplearning/Sigmoid函数与神经网络损失函数求导/func-s2.png">
 <meta property="og:image" content="https://www.aisky.men/2017/08/08/deeplearning/Sigmoid函数与神经网络损失函数求导/func-nn.png">
-<meta property="og:updated_time" content="2018-08-08T12:21:55.000Z">
+<meta property="og:updated_time" content="2018-08-09T00:05:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sigmoid函数与神经网络损失函数求导">
 <meta name="twitter:description" content="1、sigmoid函数​    sigmoid函数，也就是s型曲线函数，如下：  函数：f(z)=\frac{1}{1+e^{-z}} 导数：f&apos;(z)=f(z)(1-f(z))​    上面是我们常见的形式，虽然知道这样的形式，也知道计算流程，不够感觉并不太直观，下面来分析一下。 1.1 从指数函数到sigmoid​    首先我们来画出指数函数的基本图形：      ​    从上图，我们得到">
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-08 20:21:55" itemprop="dateModified" datetime="2018-08-08T20:21:55+08:00">2018-08-08</time>
+                <time title="修改时间：2018-08-09 08:05:25" itemprop="dateModified" datetime="2018-08-09T08:05:25+08:00">2018-08-09</time>
               
             
           </span>
@@ -532,9 +532,9 @@ x_2
 <p>​    然后，我们根据损失函数，写出损失函数的公式，在这里，只有一个输入，一个输出，所以损失函数写出来较为简单：</p>
 <p>​    在这里，m=1;</p>
 <script type="math/tex; mode=display">
-\begin{aligned}J(\Theta) &= - \frac{1}{m}  \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2\\& = - \frac{1}{m}\left[       y * log(a^3) + (1-y)* log(1-a^3)         \right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2\end{aligned}</script><p>​        说明：$\frac{\lambda}{2m}\sum<em>{l=1}^{L-1} \sum</em>{i=1}^{s<em>l} \sum</em>{j=1}^{s<em>{l+1}} ( \Theta</em>{j,i}^{(l)})^2$实际上就是所有的权重的平方和，一般不会将和偏置项相乘的那个放进来；这个项很简单，暂时先不管它，后面不暂时不写这一项（这个是正则化）。</p>
-<p>​        $J(\Theta)  = - \frac{1}{m}\left[      y <em> log(a^3) + (1-y)</em> log(1-a^3) \right] $</p>
-<p>​    然后我们得到了上面的式子，这里我们知道，如果我们想要求$\theta^2_{12}$的偏导数的话，会发现，这个式子其实是一个复合函数，$y$是常数，$a^3$是$z^3$的$sigmoid$函数变换，而$z^3$则是$a^2$与权重相乘得来的，现在我们找到了权重在哪里，就可以开始求偏导了，在这里，$a^3$写成$s(z^3)$，然后，我们就得到了下面的推导：</p>
+\begin{aligned}J(\Theta) &= - \frac{1}{m}  \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2\\& = - \frac{1}{m}\left[       y * log(a^3) + (1-y)* log(1-a^3)         \right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2\end{aligned}</script><p>​        说明：<script type="math/tex">\frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2</script>实际上就是所有的权重的平方和，一般不会将和偏置项相乘的那个放进来；这个项很简单，暂时先不管它，后面不暂时不写这一项（这个是正则化）。</p>
+<p>​      <script type="math/tex">J(\Theta)  = - \frac{1}{m}\left[      y * log(a^3) + (1-y)* log(1-a^3) \right]</script></p>
+<p>​    然后我们得到了上面的式子，这里我们知道，如果我们想要求$\theta^2_{12}​$的偏导数的话，会发现，这个式子其实是一个复合函数，$y​$是常数，$a^3​$是$z^3​$的$sigmoid​$函数变换，而$z^3​$则是$a^2​$与权重相乘得来的，现在我们找到了权重在哪里，就可以开始求偏导了，在这里，$a^3​$写成$s(z^3)​$，然后，我们就得到了下面的推导：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}\frac{\partial J(\Theta)}{\partial \theta^2_{12}}& = - \frac{1}{m}\left[  y* \frac{1}{s(z^3)}  - (1-y) * \frac{1}{1-s(z^3)}  \right] * s(z^3)*(1-s(z^3)) * a^2_{12}\\&= - \frac{1}{m}\left[  y* (1-s(z^3)  -  (1-y) * s(z^3)  \right] * a^2_{12}\\&= - \frac{1}{m}\left[  y -s(z^3) \right] * a^2_{12}\\&= \frac{1}{m}\left[  s(z^3) -y  \right] * a^2_{12}\\&= \frac{1}{m}\left[  a^3 -y  \right] * a^2_{12}\end{aligned}</script><p>​    根据上面的推导，可以得到下面的式子：</p>
 <script type="math/tex; mode=display">
