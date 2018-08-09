@@ -346,200 +346,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 279. 完全平方数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 279. 完全平方数/" itemprop="url">
-                  LeetCode 279. 完全平方数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 279. 完全平方数/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 279. 完全平方数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定正整数 <em>n</em>，找到若干个完全平方数（比如 <code>1, 4, 9, 16, ...</code>）使得它们的和等于 <em>n</em>。你需要让组成和的完全平方数的个数最少。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: n = 12</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 12 = 4 + 4 + 4.</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: n = 13</span><br><span class="line">输出: 2</span><br><span class="line">解释: 13 = 4 + 9.</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    使用dp来做，</p>
-<ul>
-<li><p>如果当前的这个整数直接是平方数，直接返回1即可</p>
-</li>
-<li><p>如果不是，就将当前数之前的所有的平方数找出来，加上当前数减去平方数对应的索引值，更新结果，找到最小值</p>
-</li>
-</ul>
-<p>举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n = 12</span><br><span class="line">[0 1 0 0 1 0 0 0 0 1 0 0 0 ]</span><br><span class="line">首先，从1开始，因为是1，跳过</span><br><span class="line">到2，2之前的平方数是1，2-1=1，因此，更新一下结果，1+1，2</span><br><span class="line">[0 1 2 0 1 0 0 0 0 1 0 0 0 ]</span><br><span class="line">然后是3</span><br><span class="line">3之前的平方数只有1，3-1=2，位置2对应的结果是2，2+1=3，更新为3</span><br><span class="line">以此类推</span><br></pre></td></tr></table></figure>
-<p>第一个版本，超时了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSquares</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        buff = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        before_square = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            temp = i * i</span><br><span class="line">            <span class="keyword">if</span> temp &lt;= n:</span><br><span class="line">                buff[temp] = <span class="number">1</span></span><br><span class="line">                before_square = temp</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> before_square == n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> buff[i] == <span class="number">0</span>:</span><br><span class="line">                temp = i</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, i):</span><br><span class="line">                    <span class="keyword">if</span> buff[j] == <span class="number">1</span>:</span><br><span class="line">                        temp = min(temp, buff[j] + buff[i - j])</span><br><span class="line">                buff[i] = temp</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> buff[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
-<p>​    为了提升效率，将所有的完全平方数存起来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    buff = [<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSquares</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        self.buff += [<span class="number">0</span>] * (n - len(self.buff) + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        square_buff = []</span><br><span class="line"></span><br><span class="line">        before_square = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            temp = i * i</span><br><span class="line">            <span class="keyword">if</span> temp &lt;= n:</span><br><span class="line">                self.buff[temp] = <span class="number">1</span></span><br><span class="line">                square_buff.append(temp)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> before_square == n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> self.buff[i] == <span class="number">0</span>:</span><br><span class="line">                temp = i</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> square_buff:</span><br><span class="line">                    <span class="keyword">if</span> j &lt; i:</span><br><span class="line">                        temp = min(temp, self.buff[j] + self.buff[i - j])</span><br><span class="line">                self.buff[i] = temp</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.buff[n]</span><br></pre></td></tr></table></figure>
-<p>​    因为可能需要需要多次运行，因此，只需要计算新那一部分</p>
-<p>看了下别人的算法，发现，原来是数学不好（脸红。。。）</p>
-<p>​    四平方和定理说明每个正整数均可表示为4个整数的平方和。它是费马多边形数定理和华林问题的特例。注意有些整数不可表示为3个整数的平方和，例如7。</p>
-<p>​    根据3平方和定理，当且仅当</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if and only if n is not of the form &#123;\displaystyle n=4^&#123;a&#125;(8b+7)&#125; n = 4^a(8b + 7) for integers a and b.</span><br></pre></td></tr></table></figure>
-<p>​    也就是说，上面形式的数字，是不能够表示成3平方和的，只能是4平方和</p>
-<p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSquares</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> (int(n ** <span class="number">0.5</span>)) ** <span class="number">2</span> == n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (n &amp; <span class="number">3</span>) == <span class="number">0</span>:</span><br><span class="line">            n &gt;&gt;= <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">7</span>) == <span class="number">7</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span></span><br><span class="line"></span><br><span class="line">        sqrt_n = int(n ** <span class="number">0.5</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, sqrt_n + <span class="number">1</span>):</span><br><span class="line">            temp = n - i * i</span><br><span class="line">            <span class="keyword">if</span> (int(temp ** <span class="number">0.5</span>)) ** <span class="number">2</span> == temp:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 28. 实现strStr()/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2164,6 +1970,197 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 3. 无重复字符的最长子串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 3. 无重复字符的最长子串/" itemprop="url">
+                  LeetCode 3. 无重复字符的最长子串
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 3. 无重复字符的最长子串/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 3. 无重复字符的最长子串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最长不重复字符子串</span><br></pre></td></tr></table></figure>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Given a string, find the length of the longest substring without repeating characters.</span><br><span class="line"></span><br><span class="line">Examples:</span><br><span class="line"></span><br><span class="line">Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.</span><br><span class="line"></span><br><span class="line">Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.</span><br><span class="line"></span><br><span class="line">Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</span><br></pre></td></tr></table></figure>
+<p>​    给定一个字符串，找出不含有重复字符的<strong>最长子串</strong>的长度。</p>
+<p><strong>示例：</strong></p>
+<p>给定 <code>&quot;abcabcbb&quot;</code> ，没有重复字符的最长子串是 <code>&quot;abc&quot;</code> ，那么长度就是3。</p>
+<p>给定 <code>&quot;bbbbb&quot;</code> ，最长的子串就是 <code>&quot;b&quot;</code> ，长度是1。</p>
+<p>给定 <code>&quot;pwwkew&quot;</code> ，最长子串是 <code>&quot;wke&quot;</code> ，长度是3。请注意答案必须是一个<strong>子串</strong>，<code>&quot;pwke&quot;</code> 是 <em>子序列</em>  而不是子串。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h3 id="2-1-穷举法"><a href="#2-1-穷举法" class="headerlink" title="2.1 穷举法"></a>2.1 穷举法</h3><p>​    双重循环得到所有的子串，然后判断每个是不是不重复的，是的话，更新最大不重复子串的值</p>
+<h3 id="2-2-滑动窗口法"><a href="#2-2-滑动窗口法" class="headerlink" title="2.2 滑动窗口法"></a>2.2 滑动窗口法</h3><p>​    设计两个指针，i，j指向字符串的下标；</p>
+<p>​    （j-i表示不重复子串的值）</p>
+<p>​    从前向后遍历，遇到一个字符，判断这个字符是不是在集合中，如果不在，就将这个字符放到集合中；</p>
+<p>​    如果在，就将第i个字符从集合中删除，i加一，一直删除到前一个a为止</p>
+<p>​    例如下面的字符串：</p>
+<p>​    abcad</p>
+<ul>
+<li>初始化，i=0，j=0</li>
+<li>j不断递增，当j=3，发现集合中有重复的字符串了，然后开始删除，将a删除，然后i指向1</li>
+<li>将a放入集合中</li>
+<li>不断地重复操作</li>
+</ul>
+<h3 id="2-3-哈希表法"><a href="#2-3-哈希表法" class="headerlink" title="2.3 哈希表法"></a>2.3 哈希表法</h3><p>​    在集合中，我们需要不断地删除一个元素，才能够移动i指针，如果能够直接找到新的指针，就能够直接更新i的值，采用key-value的方式，将字符看成key，下标看成value</p>
+<h3 id="2-4-缓存表"><a href="#2-4-缓存表" class="headerlink" title="2.4 缓存表"></a>2.4 缓存表</h3><p>​    哈希表的实现较为复杂，如果已知字符的个数，字符在ASCII表中的位置，创建一张表，存储当前字符的下标，不断地更新；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index[<span class="number">128</span>],i,j;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">128</span>;i++)&#123;</span><br><span class="line">        index[i] =<span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>,j=<span class="number">0</span>;s[j];j++)&#123;</span><br><span class="line">        i = i &gt; index[s[j]]? i : index[s[j]];</span><br><span class="line">        ans = ans &gt; j-i+<span class="number">1</span> ? ans : j-i+<span class="number">1</span>;</span><br><span class="line">        index[s[j]] = j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2215,7 +2212,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">389</span>
+                    <span class="site-state-item-count">390</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

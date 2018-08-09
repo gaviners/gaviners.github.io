@@ -715,6 +715,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/" itemprop="url">
+                  LeetCode 717. 1比特与2比特字符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>有两种特殊字符。第一种字符可以用一比特<code>0</code>来表示。第二种字符可以用两比特(<code>10</code> 或 <code>11</code>)来表示。</p>
+<p>现给一个由若干比特组成的字符串。问最后一个字符是否必定为一个一比特字符。给定的字符串总是由0结束。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">bits = [1, 0, 0]</span><br><span class="line">输出: True</span><br><span class="line">解释: </span><br><span class="line">唯一的编码方式是一个两比特字符和一个一比特字符。所以最后一个字符是一比特字符。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">bits = [1, 1, 1, 0]</span><br><span class="line">输出: False</span><br><span class="line">解释: </span><br><span class="line">唯一的编码方式是两比特字符和两比特字符。所以最后一个字符不是一比特字符。</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong></p>
+<ul>
+<li><code>1 &lt;= len(bits) &lt;= 1000</code>.</li>
+<li><code>bits[i]</code> 总是<code>0</code> 或 <code>1</code>.</li>
+</ul>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isOneBitCharacter</span><span class="params">(<span class="keyword">int</span>* bits, <span class="keyword">int</span> bitsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bitsSize; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == bitsSize<span class="number">-1</span>)&#123;</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (bits[i] == <span class="number">1</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 720. 词典中最长的单词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1078,7 +1259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 728. 自除数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -1097,8 +1278,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/" itemprop="url">
-                  LeetCode 717. 1比特与2比特字符
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 728. 自除数/" itemprop="url">
+                  LeetCode 728. 自除数
                 </a>
               
             
@@ -1161,8 +1342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 717. 1比特与2比特字符/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 728. 自除数/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 728. 自除数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1193,19 +1374,18 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>有两种特殊字符。第一种字符可以用一比特<code>0</code>来表示。第二种字符可以用两比特(<code>10</code> 或 <code>11</code>)来表示。</p>
-<p>现给一个由若干比特组成的字符串。问最后一个字符是否必定为一个一比特字符。给定的字符串总是由0结束。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">bits = [1, 0, 0]</span><br><span class="line">输出: True</span><br><span class="line">解释: </span><br><span class="line">唯一的编码方式是一个两比特字符和一个一比特字符。所以最后一个字符是一比特字符。</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">bits = [1, 1, 1, 0]</span><br><span class="line">输出: False</span><br><span class="line">解释: </span><br><span class="line">唯一的编码方式是两比特字符和两比特字符。所以最后一个字符不是一比特字符。</span><br></pre></td></tr></table></figure>
-<p><strong>注意:</strong></p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    <em>自除数</em> 是指可以被它包含的每一位数除尽的数。</p>
+<p>例如，128 是一个自除数，因为 <code>128 % 1 == 0</code>，<code>128 % 2 == 0</code>，<code>128 % 8 == 0</code>。</p>
+<p>还有，自除数不允许包含 0 。</p>
+<p>给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： </span><br><span class="line">上边界left = 1, 下边界right = 22</span><br><span class="line">输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
 <ul>
-<li><code>1 &lt;= len(bits) &lt;= 1000</code>.</li>
-<li><code>bits[i]</code> 总是<code>0</code> 或 <code>1</code>.</li>
+<li>每个输入参数的边界满足 <code>1 &lt;= left &lt;= right &lt;= 10000</code>。</li>
 </ul>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isOneBitCharacter</span><span class="params">(<span class="keyword">int</span>* bits, <span class="keyword">int</span> bitsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bitsSize; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == bitsSize<span class="number">-1</span>)&#123;</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (bits[i] == <span class="number">1</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">selfDividingNumbers</span><span class="params">(self, left, right)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type left: int</span></span><br><span class="line"><span class="string">        :type right: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right + <span class="number">1</span>):</span><br><span class="line">            judge = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">                judge = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">            temp = i</span><br><span class="line">            <span class="keyword">while</span> temp &gt; <span class="number">0</span>:</span><br><span class="line">                digit = temp % <span class="number">10</span></span><br><span class="line">                <span class="keyword">if</span> digit == <span class="number">0</span> <span class="keyword">or</span> i % digit != <span class="number">0</span>:</span><br><span class="line">                    judge = <span class="keyword">False</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                temp //= <span class="number">10</span></span><br><span class="line">            <span class="keyword">if</span> judge:</span><br><span class="line">                res.append(i)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1391,186 +1571,6 @@
 <p>​    这里需要注意的就是，左上角的元素需要存储，单独设置一个变量存储即可，</p>
 <p>​    如果是行元素或者列元素将它置1，就设置为1，如果本身就是0，设置为2</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setZeroes</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        row = len(matrix)</span><br><span class="line">        col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># top 存储左上角的交叉点的状态</span></span><br><span class="line">        <span class="comment"># 1: 行置0</span></span><br><span class="line">        <span class="comment"># 2: 列置0</span></span><br><span class="line">        <span class="comment"># 3: 行列都置0</span></span><br><span class="line">        top = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> matrix[i][j] == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                        top = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">elif</span> top != <span class="number">3</span>:</span><br><span class="line">                        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">if</span> top == <span class="number">2</span>:</span><br><span class="line">                                top = <span class="number">3</span></span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                top = <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> j == <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">if</span> top == <span class="number">1</span>:</span><br><span class="line">                                top = <span class="number">3</span></span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                top = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> top == <span class="number">2</span> <span class="keyword">and</span> i == <span class="number">0</span>:</span><br><span class="line">                            top = <span class="number">3</span></span><br><span class="line">                        <span class="keyword">elif</span> top == <span class="number">1</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                            top = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">                    matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">                    matrix[<span class="number">0</span>][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, row):</span><br><span class="line">            <span class="keyword">if</span> matrix[i][<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">                    matrix[i][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, col):</span><br><span class="line">            <span class="keyword">if</span> matrix[<span class="number">0</span>][i] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(row):</span><br><span class="line">                    matrix[j][i] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> top == <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> top == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> top == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 728. 自除数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 728. 自除数/" itemprop="url">
-                  LeetCode 728. 自除数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 728. 自除数/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 728. 自除数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    <em>自除数</em> 是指可以被它包含的每一位数除尽的数。</p>
-<p>例如，128 是一个自除数，因为 <code>128 % 1 == 0</code>，<code>128 % 2 == 0</code>，<code>128 % 8 == 0</code>。</p>
-<p>还有，自除数不允许包含 0 。</p>
-<p>给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： </span><br><span class="line">上边界left = 1, 下边界right = 22</span><br><span class="line">输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<ul>
-<li>每个输入参数的边界满足 <code>1 &lt;= left &lt;= right &lt;= 10000</code>。</li>
-</ul>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">selfDividingNumbers</span><span class="params">(self, left, right)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type left: int</span></span><br><span class="line"><span class="string">        :type right: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right + <span class="number">1</span>):</span><br><span class="line">            judge = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">                judge = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">            temp = i</span><br><span class="line">            <span class="keyword">while</span> temp &gt; <span class="number">0</span>:</span><br><span class="line">                digit = temp % <span class="number">10</span></span><br><span class="line">                <span class="keyword">if</span> digit == <span class="number">0</span> <span class="keyword">or</span> i % digit != <span class="number">0</span>:</span><br><span class="line">                    judge = <span class="keyword">False</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                temp //= <span class="number">10</span></span><br><span class="line">            <span class="keyword">if</span> judge:</span><br><span class="line">                res.append(i)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2202,7 +2202,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">389</span>
+                    <span class="site-state-item-count">390</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

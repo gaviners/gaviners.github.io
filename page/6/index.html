@@ -346,185 +346,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 153. 寻找旋转排序数组中的最小值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 153. 寻找旋转排序数组中的最小值/" itemprop="url">
-                  LeetCode 153. 寻找旋转排序数组中的最小值
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 153. 寻找旋转排序数组中的最小值/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 153. 寻找旋转排序数组中的最小值/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
-<p>( 例如，数组 <code>[0,1,2,4,5,6,7]</code> 可能变为 <code>[4,5,6,7,0,1,2]</code> )。</p>
-<p>请找出其中最小的元素。</p>
-<p>你可以假设数组中不存在重复元素。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,4,5,1,2]</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [4,5,6,7,0,1,2]</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    难道这道题就是要找到最小值？</p>
-<p>​    虽然通过了。。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> min(nums)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 16. 最接近的三数之和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1073,6 +894,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 166. 分数到小数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 166. 分数到小数/" itemprop="url">
+                  LeetCode 166. 分数到小数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 166. 分数到小数/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 166. 分数到小数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。</p>
+<p>如果小数部分为循环小数，则将循环的部分括在括号内。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: numerator = 1, denominator = 2</span><br><span class="line">输出: &quot;0.5&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: numerator = 2, denominator = 1</span><br><span class="line">输出: &quot;2&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: numerator = 2, denominator = 3</span><br><span class="line">输出: &quot;0.(6)&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    再找思路的过程中，反向思考，如果是无限循环小数，如何变成分数呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">步骤1.将无限循环小数分为2个部分,0.3454545...45为例,将其分0.3+0.04545...45这2个部分.</span><br><span class="line">步骤2.将这2个部分分别化成分数,0.3=3/10,</span><br><span class="line">0.0454545...45的划分方法.先设它为a,那么就有：</span><br><span class="line">10a=0.454545...45</span><br><span class="line">1000a=45.4545.45</span><br><span class="line">1000a-10a=45</span><br><span class="line">990a=45</span><br><span class="line">a=45/990=1/22</span><br><span class="line">所以0.0454545...45=1/22</span><br><span class="line">步骤3.再将2个部分相加就得到该无限循环小数化成分数的结果了</span><br><span class="line">3/10+1/22=66/220+10/220=76/220=19/55</span><br><span class="line">所以0.3454545...45=19/55</span><br></pre></td></tr></table></figure>
+<p>​    这个题目可以这样做，首先将数据分成两部分，整数部分和小数部分，</p>
+<ul>
+<li>建立一个哈希，缓存余数</li>
+<li>对小数部分进行判断，是不是循环的，如果余数不为0，表示要继续计算下去</li>
+<li>如果余数出现过了，表示这个就是循环的，当前的数字不需要加入结果集中</li>
+</ul>
+<p>有一点需要注意，符号的问题，先把结果的正负号保存下来，然后计算的都用正数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fractionToDecimal</span><span class="params">(self, numerator, denominator)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type numerator: int</span></span><br><span class="line"><span class="string">        :type denominator: int</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        sign = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> (numerator &gt; <span class="number">0</span> <span class="keyword">and</span> denominator &lt; <span class="number">0</span>) <span class="keyword">or</span> (numerator &lt; <span class="number">0</span> <span class="keyword">and</span> denominator &gt; <span class="number">0</span>):</span><br><span class="line">            sign = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        numerator = abs(numerator)</span><br><span class="line">        denominator = abs(denominator)</span><br><span class="line"></span><br><span class="line">        integer_part = numerator // denominator</span><br><span class="line">        remainder = numerator % denominator</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> sign == <span class="number">1</span>:</span><br><span class="line">            result = <span class="string">""</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = <span class="string">"-"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> remainder == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> result + str(integer_part)</span><br><span class="line"></span><br><span class="line">        remainder_hash = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        decimal_cache = []</span><br><span class="line">        is_cycle = <span class="keyword">False</span></span><br><span class="line">        cycle_index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> remainder != <span class="number">0</span>:</span><br><span class="line">            temp = remainder = remainder</span><br><span class="line">            cur_num = remainder * <span class="number">10</span> // denominator</span><br><span class="line">            remainder = remainder * <span class="number">10</span> % denominator</span><br><span class="line">            <span class="keyword">if</span> remainder_hash.get(temp) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                remainder_hash[temp] = cycle_index</span><br><span class="line">                decimal_cache.append(cur_num)</span><br><span class="line">                cycle_index += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cycle_index = remainder_hash[temp]</span><br><span class="line">                is_cycle = <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> is_cycle:</span><br><span class="line">            result += str(integer_part) + <span class="string">"."</span> + <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result += str(integer_part) + <span class="string">"."</span> + <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache[:cycle_index]]) + <span class="string">"("</span> + <span class="string">""</span>.join(</span><br><span class="line">                [str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache[cycle_index:]]) + <span class="string">")"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 165. 比较版本号/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1384,192 +1391,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: numbers = [2, 7, 11, 15], target = 9</span><br><span class="line">输出: [1,2]</span><br><span class="line">解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</span><br></pre></td></tr></table></figure>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    因为是升序数组，那么直接设置两个下标数，从两边进行逼近</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Return an array of size *returnSize.</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* numbers, <span class="keyword">int</span> numbersSize, <span class="keyword">int</span> target, <span class="keyword">int</span>* returnSize)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> left_index = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> right_index = numbersSize;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbersSize; i++) &#123;</span><br><span class="line">        temp =numbers[left_index - <span class="number">1</span>] + numbers[right_index - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (temp == target) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp &gt; target) &#123;</span><br><span class="line">            right_index--;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp &lt; target) &#123;</span><br><span class="line">            left_index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *result = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">2</span>);</span><br><span class="line">    result[<span class="number">0</span>] = left_index;</span><br><span class="line">    result[<span class="number">1</span>] = right_index;</span><br><span class="line">    *returnSize = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 166. 分数到小数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 166. 分数到小数/" itemprop="url">
-                  LeetCode 166. 分数到小数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 166. 分数到小数/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 166. 分数到小数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。</p>
-<p>如果小数部分为循环小数，则将循环的部分括在括号内。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: numerator = 1, denominator = 2</span><br><span class="line">输出: &quot;0.5&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: numerator = 2, denominator = 1</span><br><span class="line">输出: &quot;2&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: numerator = 2, denominator = 3</span><br><span class="line">输出: &quot;0.(6)&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    再找思路的过程中，反向思考，如果是无限循环小数，如何变成分数呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">步骤1.将无限循环小数分为2个部分,0.3454545...45为例,将其分0.3+0.04545...45这2个部分.</span><br><span class="line">步骤2.将这2个部分分别化成分数,0.3=3/10,</span><br><span class="line">0.0454545...45的划分方法.先设它为a,那么就有：</span><br><span class="line">10a=0.454545...45</span><br><span class="line">1000a=45.4545.45</span><br><span class="line">1000a-10a=45</span><br><span class="line">990a=45</span><br><span class="line">a=45/990=1/22</span><br><span class="line">所以0.0454545...45=1/22</span><br><span class="line">步骤3.再将2个部分相加就得到该无限循环小数化成分数的结果了</span><br><span class="line">3/10+1/22=66/220+10/220=76/220=19/55</span><br><span class="line">所以0.3454545...45=19/55</span><br></pre></td></tr></table></figure>
-<p>​    这个题目可以这样做，首先将数据分成两部分，整数部分和小数部分，</p>
-<ul>
-<li>建立一个哈希，缓存余数</li>
-<li>对小数部分进行判断，是不是循环的，如果余数不为0，表示要继续计算下去</li>
-<li>如果余数出现过了，表示这个就是循环的，当前的数字不需要加入结果集中</li>
-</ul>
-<p>有一点需要注意，符号的问题，先把结果的正负号保存下来，然后计算的都用正数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fractionToDecimal</span><span class="params">(self, numerator, denominator)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type numerator: int</span></span><br><span class="line"><span class="string">        :type denominator: int</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        sign = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> (numerator &gt; <span class="number">0</span> <span class="keyword">and</span> denominator &lt; <span class="number">0</span>) <span class="keyword">or</span> (numerator &lt; <span class="number">0</span> <span class="keyword">and</span> denominator &gt; <span class="number">0</span>):</span><br><span class="line">            sign = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        numerator = abs(numerator)</span><br><span class="line">        denominator = abs(denominator)</span><br><span class="line"></span><br><span class="line">        integer_part = numerator // denominator</span><br><span class="line">        remainder = numerator % denominator</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> sign == <span class="number">1</span>:</span><br><span class="line">            result = <span class="string">""</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = <span class="string">"-"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> remainder == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> result + str(integer_part)</span><br><span class="line"></span><br><span class="line">        remainder_hash = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        decimal_cache = []</span><br><span class="line">        is_cycle = <span class="keyword">False</span></span><br><span class="line">        cycle_index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> remainder != <span class="number">0</span>:</span><br><span class="line">            temp = remainder = remainder</span><br><span class="line">            cur_num = remainder * <span class="number">10</span> // denominator</span><br><span class="line">            remainder = remainder * <span class="number">10</span> % denominator</span><br><span class="line">            <span class="keyword">if</span> remainder_hash.get(temp) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                remainder_hash[temp] = cycle_index</span><br><span class="line">                decimal_cache.append(cur_num)</span><br><span class="line">                cycle_index += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cycle_index = remainder_hash[temp]</span><br><span class="line">                is_cycle = <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> is_cycle:</span><br><span class="line">            result += str(integer_part) + <span class="string">"."</span> + <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result += str(integer_part) + <span class="string">"."</span> + <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache[:cycle_index]]) + <span class="string">"("</span> + <span class="string">""</span>.join(</span><br><span class="line">                [str(i) <span class="keyword">for</span> i <span class="keyword">in</span> decimal_cache[cycle_index:]]) + <span class="string">")"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1990,7 +1811,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 17.电话号码的字母组合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -2009,8 +1830,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/" itemprop="url">
-                  LeetCode 173. 二叉搜索树迭代器
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 17.电话号码的字母组合/" itemprop="url">
+                  LeetCode 17.电话号码的字母组合
                 </a>
               
             
@@ -2073,8 +1894,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 173. 二叉搜索树迭代器/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 17.电话号码的字母组合/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 17.电话号码的字母组合/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2105,13 +1926,193 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。</p>
-<p>调用 <code>next()</code> 将返回二叉搜索树中的下一个最小的数。</p>
-<p>注意: <code>next()</code> 和<code>hasNext()</code> 操作的时间复杂度是O(1)，并使用 <em>O(h)</em> 内存，其中 <em>h</em> 是树的高度。</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    想要得到下一个数值，我们使用栈来存储，因为要得到最小值，所以是中遍历，放到栈里面，顺序相反，因此遍历的顺序应该是右-》根 -》左</p>
-<p>​    这样就能够不断地pop了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a  binary tree node</span></span><br><span class="line"><span class="comment"># class TreeNode(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span><span class="params">(object)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.buff = []</span><br><span class="line">        self.dfs(root)</span><br><span class="line">        print(self.buff)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> self.buff:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.buff.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.dfs(node.right)</span><br><span class="line">        self.buff.append(node.val)</span><br><span class="line">        self.dfs(node.left)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="comment"># Your BSTIterator will be called like this:</span></span><br><span class="line"><span class="comment"># i, v = BSTIterator(root), []</span></span><br><span class="line"><span class="comment"># while i.hasNext(): v.append(i.next())</span></span><br></pre></td></tr></table></figure>
-<p>​    或者说另一个思路，不必一次缓冲所有的，直接按照非递归中序遍历，缓存前面的节点即可</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    给定一个仅包含数字 <code>2-9</code> 的字符串，返回所有它能表示的字母组合。</p>
+<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png" alt="img"></p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong><br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    实际上这道题是求解一个笛卡尔积的过程，不断地求解，直到最后</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    def letterCombinations(self, digits):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :type digits: str</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        if len(digits) &lt;= 0:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        num_alpha = &#123;<span class="string">"2"</span>: <span class="string">"abc"</span>, <span class="string">"3"</span>: <span class="string">"def"</span>, <span class="string">"4"</span>: <span class="string">"ghi"</span>, <span class="string">"5"</span>: <span class="string">"jkl"</span>, <span class="string">"6"</span>: <span class="string">"mno"</span>, <span class="string">"7"</span>: <span class="string">"pqrs"</span>, <span class="string">"8"</span>: <span class="string">"tuv"</span>, <span class="string">"9"</span>: <span class="string">"wxyz"</span>&#125;</span><br><span class="line">        result = <span class="built_in">list</span>(num_alpha[digits[<span class="number">0</span>]])</span><br><span class="line">        <span class="keyword">for</span> i in digits[<span class="number">1</span>:]:</span><br><span class="line">            result = [<span class="string">""</span>.join(v) <span class="keyword">for</span> v in itertools.product(result, num_alpha[i])]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 171. Excel表列序号/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 171. Excel表列序号/" itemprop="url">
+                  LeetCode 171. Excel表列序号
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 171. Excel表列序号/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 171. Excel表列序号/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个Excel表格中的列名称，返回其相应的列序号。</p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 1</span><br><span class="line">B -&gt; 2</span><br><span class="line">C -&gt; 3</span><br><span class="line">...</span><br><span class="line">Z -&gt; 26</span><br><span class="line">AA -&gt; 27</span><br><span class="line">AB -&gt; 28 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;A&quot;</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;AB&quot;</span><br><span class="line">输出: 28</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;ZY&quot;</span><br><span class="line">输出: 701</span><br></pre></td></tr></table></figure>
+<h2 id="2、-解题思路"><a href="#2、-解题思路" class="headerlink" title="2、 解题思路"></a>2、 解题思路</h2><p>​    因为是从1开始的，因此，我们我们将这个数减去’A’，加上1，然后乘以26对应的阶数就得到了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">titleToNumber</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!s) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> orderNUmber = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        result += (s[i] - <span class="string">'A'</span> + <span class="number">1</span>) * orderNUmber;</span><br><span class="line">        orderNUmber *= <span class="number">26</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2201,7 +2202,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">389</span>
+                    <span class="site-state-item-count">390</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
