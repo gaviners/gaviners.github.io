@@ -346,6 +346,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 372. 超级次方/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 372. 超级次方/" itemprop="url">
+                  LeetCode 372. 超级次方
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 372. 超级次方/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 372. 超级次方/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>你的任务是计算 <em>a**b</em> 对 1337 取模，<em>a</em> 是一个正整数，<em>b</em> 是一个非常大的正整数且会以数组形式给出。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = 2</span><br><span class="line">b = [3]</span><br><span class="line"></span><br><span class="line">结果: 8</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = 2</span><br><span class="line">b = [1,0]</span><br><span class="line"></span><br><span class="line">结果: 1024</span><br></pre></td></tr></table></figure>
+<p><strong>致谢：</strong></p>
+<p>特别感谢 <a href="https://leetcode.com/stomach_ache" target="_blank" rel="noopener">@Stomach_ache</a> 添加这道题并创建所有测试用例。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这个是数学问题，一开始没什么思路，不过主要还是利用取模的公式，不断地减少数量级</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x * y mod p</span><br><span class="line">=</span><br><span class="line">(x mod p) * (y mod p) mod p</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">superPow</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type a: int</span></span><br><span class="line"><span class="string">        :type b: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p = int(<span class="string">""</span>.join(map(str, b)))</span><br><span class="line">        a = a % <span class="number">1337</span></span><br><span class="line">        <span class="keyword">return</span> self.calculate(a, p)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calculate</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> b == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> a % <span class="number">1337</span></span><br><span class="line"></span><br><span class="line">        val = self.calculate(a, b // <span class="number">2</span>)</span><br><span class="line">        val *= val</span><br><span class="line">        <span class="comment"># 如果是奇数</span></span><br><span class="line">        <span class="keyword">if</span> b &amp; <span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">            val *= a</span><br><span class="line">        <span class="keyword">return</span> val % <span class="number">1337</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 373. 查找和最小的K对数字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1490,7 +1669,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 38. 报数/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -1509,8 +1688,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 38. 报数/" itemprop="url">
-                  LeetCode 38. 报数
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/" itemprop="url">
+                  LeetCode 380. 常数时间插入、删除和获取随机元素
                 </a>
               
             
@@ -1573,8 +1752,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 38. 报数/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 38. 报数/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1605,34 +1784,19 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">报数序列是指一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下：</span><br><span class="line"></span><br><span class="line">1.     1</span><br><span class="line">2.     11</span><br><span class="line">3.     21</span><br><span class="line">4.     1211</span><br><span class="line">5.     111221</span><br><span class="line">1 被读作  &quot;one 1&quot;  (&quot;一个一&quot;) , 即 11。</span><br><span class="line">11 被读作 &quot;two 1s&quot; (&quot;两个一&quot;）, 即 21。</span><br><span class="line">21 被读作 &quot;one 2&quot;,  &quot;one 1&quot; （&quot;一个二&quot; ,  &quot;一个一&quot;) , 即 1211。</span><br><span class="line"></span><br><span class="line">给定一个正整数 n ，输出报数序列的第 n 项。</span><br><span class="line"></span><br><span class="line">注意：整数顺序将表示为一个字符串。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: 1</span><br><span class="line">输出: &quot;1&quot;</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: 4</span><br><span class="line">输出: &quot;1211&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    一开始，看了半天没明白什么意思，后来才明白</p>
-<p>​    这个序列是从1开始的，然后我们读出来，也就是one 1，变成了11，也就是说，下一个数是上一个数读音变化出来的</p>
-<p>​    11，读成”two 1s”， 变成了21</p>
-<p>以此类推：</p>
-<p>1</p>
-<p>11</p>
-<p>21</p>
-<p>1211</p>
-<p>111221</p>
-<p>21112211</p>
-<p>1221112221</p>
-<p>。。。</p>
-<p>​    明确了题目的意思，也就容易写了</p>
-<ul>
-<li>如果当前是1 并且下一个不是1，就直接变成11</li>
-<li>如果当前是1，并且下一个是1，变成21</li>
-<li>如果当前是2，下一个不是2，变成12</li>
-<li>如果当前是2，下一个是2，变成22</li>
-</ul>
-<p>只会出现这4种情况</p>
-<p>​    如果用一个数组实现，发现是有点问题的，需要不断地移动数据</p>
-<p>​    因此，选择使用两个数组，一个存放上一次的结果，另一个存放根据上一次计算出来的结果</p>
-<pre><code> 需要非常注意的就是，这两个数组的长度问题
-</code></pre><p>​    考虑到最大的可能性，新的数组长度可能是上一个的2倍    </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span> *result = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">char</span> *next = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(result) * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">char</span> *temp;</span><br><span class="line"></span><br><span class="line">    result[<span class="number">0</span>] = <span class="string">'1'</span>;</span><br><span class="line">    result[<span class="number">1</span>] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> next_pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> equal_num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        next_pos = <span class="number">0</span>;</span><br><span class="line">        pos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (result[pos]) &#123;</span><br><span class="line">            <span class="comment">// 判断有几个相同字符</span></span><br><span class="line">            <span class="comment">// 如果下一个字符存在，一直判断有几个相同的字符</span></span><br><span class="line">            <span class="keyword">if</span> (result[pos + <span class="number">1</span>] == result[pos]) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (result[pos] == result[pos + <span class="number">1</span>]) &#123;</span><br><span class="line">                    equal_num++;</span><br><span class="line">                    pos++;</span><br><span class="line">                &#125;</span><br><span class="line">                pos++;</span><br><span class="line">                next[next_pos] = <span class="string">'0'</span> + equal_num;</span><br><span class="line">                next[next_pos + <span class="number">1</span>] = result[pos - equal_num];</span><br><span class="line">                next_pos += <span class="number">2</span>;</span><br><span class="line">                equal_num = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 如果下一个字符是'\0'</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (!result[pos + <span class="number">1</span>]) &#123;</span><br><span class="line">                next[next_pos] = <span class="string">'1'</span>;</span><br><span class="line">                next[next_pos + <span class="number">1</span>] = result[pos];</span><br><span class="line">                next[next_pos + <span class="number">2</span>] = <span class="string">'\0'</span>;</span><br><span class="line">                pos++;</span><br><span class="line">                next_pos += <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                <span class="comment">// 如果下一个字符与当前字符不相同</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (result[pos + <span class="number">1</span>] &amp;&amp; result[pos] != result[pos + <span class="number">1</span>]) &#123;</span><br><span class="line">                next[next_pos] = <span class="string">'1'</span>;</span><br><span class="line">                next[next_pos + <span class="number">1</span>] = result[pos];;</span><br><span class="line">                pos++;</span><br><span class="line">                next_pos += <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        next[next_pos] = <span class="string">'\0'</span>;</span><br><span class="line">        temp = result;</span><br><span class="line">        result = next;</span><br><span class="line">        <span class="built_in">free</span>(temp);</span><br><span class="line">        next = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(result) * <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(next);</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (result[count]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"number: %d \n"</span>, n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"length: %d \n"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; (num &lt;&lt; i)) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"1"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">1</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">2</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">3</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">4</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">5</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">6</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">7</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">8</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">9</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">10</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">11</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">12</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">13</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">14</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">25</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">30</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, countAndSay(<span class="number">50</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/Users/zhangguohao/CLionProjects/untitled/cmake-build-debug/untitled</span><br><span class="line">number: 1 </span><br><span class="line">length: 1 </span><br><span class="line">1</span><br><span class="line">number: 2 </span><br><span class="line">length: 2 </span><br><span class="line">11</span><br><span class="line">number: 3 </span><br><span class="line">length: 2 </span><br><span class="line">21</span><br><span class="line">number: 4 </span><br><span class="line">length: 4 </span><br><span class="line">1211</span><br><span class="line">number: 5 </span><br><span class="line">length: 6 </span><br><span class="line">111221</span><br><span class="line">number: 6 </span><br><span class="line">length: 6 </span><br><span class="line">312211</span><br><span class="line">number: 7 </span><br><span class="line">length: 8 </span><br><span class="line">13112221</span><br><span class="line">number: 8 </span><br><span class="line">length: 10 </span><br><span class="line">1113213211</span><br><span class="line">number: 9 </span><br><span class="line">length: 14 </span><br><span class="line">31131211131221</span><br><span class="line">number: 10 </span><br><span class="line">length: 20 </span><br><span class="line">13211311123113112211</span><br><span class="line">number: 11 </span><br><span class="line">length: 26 </span><br><span class="line">11131221133112132113212221</span><br><span class="line">number: 12 </span><br><span class="line">length: 34 </span><br><span class="line">3113112221232112111312211312113211</span><br><span class="line">number: 13 </span><br><span class="line">length: 46 </span><br><span class="line">1321132132111213122112311311222113111221131221</span><br><span class="line">number: 14 </span><br><span class="line">length: 62 </span><br><span class="line">11131221131211131231121113112221121321132132211331222113112211</span><br><span class="line">number: 25 </span><br><span class="line">length: 1182 </span><br><span class="line">132113213221133112132123123112111311222112132113311213211231232112311311222112111312211311123113322112132113212231121113112221121321132132211231232112311321322112311311222113111231133221121113122113121113221112131221123113111231121123222112132113213221133112132123123112111312111312212231131122211311123113322112111312211312111322111213122112311311123112112322211211131221131211132221232112111312111213111213211231132132211211131221232112111312212221121123222112132113213221133112132123123112111311222112132113213221132213211321322112311311222113311213212322211211131221131211221321123113213221121113122113121132211332113221122112133221123113112221131112311332111213122112311311123112111331121113122112132113121113222112311311221112131221123113112221121113311211131122211211131221131211132221121321132132212321121113121112133221123113112221131112212211131221121321131211132221123113112221131112311332211211133112111311222112111312211311123113322112111312211312111322212321121113121112133221121321132132211331121321231231121113112221121321132122311211131122211211131221131211322113322112111312211322132113213221123113112221131112311311121321122112132231121113122113322113111221131221</span><br><span class="line">number: 30 </span><br><span class="line">length: 4462 </span><br><span class="line">..</span><br></pre></td></tr></table></figure>
-<p>​    后面的数据太长。。。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>设计一个支持在<em>平均</em> 时间复杂度 <strong>O(1)</strong> 下，执行以下操作的数据结构。</p>
+<ol>
+<li><code>insert(val)</code>：当元素 val 不存在时，向集合中插入该项。</li>
+<li><code>remove(val)</code>：元素 val 存在时，从集合中移除该项。</li>
+<li><code>getRandom</code>：随机返回现有集合中的一项。每个元素应该有<strong>相同的概率</strong>被返回。</li>
+</ol>
+<p><strong>示例 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 初始化一个空的集合。</span><br><span class="line">RandomizedSet randomSet = new RandomizedSet();</span><br><span class="line"></span><br><span class="line">// 向集合中插入 1 。返回 true 表示 1 被成功地插入。</span><br><span class="line">randomSet.insert(1);</span><br><span class="line"></span><br><span class="line">// 返回 false ，表示集合中不存在 2 。</span><br><span class="line">randomSet.remove(2);</span><br><span class="line"></span><br><span class="line">// 向集合中插入 2 。返回 true 。集合现在包含 [1,2] 。</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">// getRandom 应随机返回 1 或 2 。</span><br><span class="line">randomSet.getRandom();</span><br><span class="line"></span><br><span class="line">// 从集合中移除 1 ，返回 true 。集合现在包含 [2] 。</span><br><span class="line">randomSet.remove(1);</span><br><span class="line"></span><br><span class="line">// 2 已在集合中，所以返回 false 。</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">// 由于 2 是集合中唯一的数字，getRandom 总是返回 2 。</span><br><span class="line">randomSet.getRandom();</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    题目要求添加，删除，以及随机返回，都是$O(1)$的时间复杂度</p>
+<p>​    如果直接使用数组，插入和随机返回都能够满足要求，但是删除不可以，会留有空位</p>
+<p>​    如果直接用字典，插入和删除都能够满足要求，但是删除不可以，不能随机的找出想要的数字</p>
+<p>随意，将数组和字典结合起来使用，我们使用数组保存元素，当我们想要删除的时候，就将当前元素与末尾元素调换，然后删除末尾元素即可，这样就得到了线性时间复杂度，并且，为了删除能快速定位这个元素，我们使用字典，保存元素所在的下标</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.nums = []</span><br><span class="line">        self.nums_index = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> self.nums_index:</span><br><span class="line">            self.nums.append(val)</span><br><span class="line">            self.nums_index[val] = len(self.nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Removes a value from the set. Returns true if the set contained the specified element.</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.nums_index:</span><br><span class="line">            <span class="keyword">if</span> len(self.nums) == <span class="number">1</span>:</span><br><span class="line">                self.nums.pop()</span><br><span class="line">                self.nums_index.pop(val)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">                index = self.nums_index[val]</span><br><span class="line">                self.nums[index], self.nums[<span class="number">-1</span>] = self.nums[<span class="number">-1</span>], self.nums[index]</span><br><span class="line">                self.nums_index[self.nums[index]] = index</span><br><span class="line">                self.nums.pop()</span><br><span class="line">                self.nums_index.pop(val)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get a random element from the set.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        index = random.randint(<span class="number">0</span>, len(self.nums) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> self.nums[index]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your RandomizedSet object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = RandomizedSet()</span></span><br><span class="line"><span class="comment"># param_1 = obj.insert(val)</span></span><br><span class="line"><span class="comment"># param_2 = obj.remove(val)</span></span><br><span class="line"><span class="comment"># param_3 = obj.getRandom()</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -2089,180 +2253,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 383. 赎金信/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 383. 赎金信/" itemprop="url">
-                  LeetCode 383. 赎金信
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 383. 赎金信/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 383. 赎金信/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串ransom能不能由第二个字符串magazines里面的字符构成。如果可以构成，返回 true ；否则返回 false。</p>
-<p>(题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。)</p>
-<p><strong>注意：</strong></p>
-<p>你可以假设两个字符串均只含有小写字母。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">canConstruct</span><span class="params">(<span class="keyword">char</span>* ransomNote, <span class="keyword">char</span>* magazine)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ran_count[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> mag_count[<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">        ran_count[i] = <span class="number">0</span>;</span><br><span class="line">        mag_count[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> length_ran = <span class="built_in">strlen</span>(ransomNote);</span><br><span class="line">    <span class="keyword">int</span> length_mag = <span class="built_in">strlen</span>(magazine);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length_ran; i++) &#123;</span><br><span class="line">        ran_count[ransomNote[i] - <span class="string">'a'</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length_mag; i++) &#123;</span><br><span class="line">        mag_count[magazine[i] - <span class="string">'a'</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(ran_count[i] &gt; mag_count[i])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2314,7 +2304,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">395</span>
+                    <span class="site-state-item-count">397</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
