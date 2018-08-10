@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 855. 考场就座/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 852. 山脉数组的峰顶索引/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -365,8 +365,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 855. 考场就座/" itemprop="url">
-                  LeetCode 855. 考场就座
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 852. 山脉数组的峰顶索引/" itemprop="url">
+                  LeetCode 852. 山脉数组的峰顶索引
                 </a>
               
             
@@ -429,8 +429,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 855. 考场就座/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 855. 考场就座/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 852. 山脉数组的峰顶索引/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 852. 山脉数组的峰顶索引/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -461,40 +461,24 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    在考场里，一排有 <code>N</code> 个座位，分别编号为 <code>0, 1, 2, ..., N-1</code> 。</p>
-<p>​    当学生进入考场后，他必须坐在能够使他与离他最近的人之间的距离达到最大化的座位上。如果有多个这样的座位，他会坐在编号最小的座位上。(另外，如果考场里没有人，那么学生就坐在 0 号座位上。)</p>
-<p>​    返回 <code>ExamRoom(int N)</code> 类，它有两个公开的函数：其中，函数 <code>ExamRoom.seat()</code> 会返回一个 <code>int</code> （整型数据），代表学生坐的位置；函数 <code>ExamRoom.leave(int p)</code> 代表坐在座位 <code>p</code> 上的学生现在离开了考场。请确保每次调用 <code>ExamRoom.leave(p)</code> 时都有学生坐在座位 <code>p</code> 上。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入：[&quot;ExamRoom&quot;,&quot;seat&quot;,&quot;seat&quot;,&quot;seat&quot;,&quot;seat&quot;,&quot;leave&quot;,&quot;seat&quot;], [[10],[],[],[],[],[4],[]]</span><br><span class="line">输出：[null,0,9,4,2,null,5]</span><br><span class="line">解释：</span><br><span class="line">ExamRoom(10) -&gt; null</span><br><span class="line">seat() -&gt; 0，没有人在考场里，那么学生坐在 0 号座位上。</span><br><span class="line">seat() -&gt; 9，学生最后坐在 9 号座位上。</span><br><span class="line">seat() -&gt; 4，学生最后坐在 4 号座位上。</span><br><span class="line">seat() -&gt; 2，学生最后坐在 2 号座位上。</span><br><span class="line">leave(4) -&gt; null</span><br><span class="line">seat() -&gt; 5，学生最后坐在 5 号座位上。</span><br></pre></td></tr></table></figure>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>我们把符合下列属性的数组 <code>A</code> 称作山脉：</p>
+<ul>
+<li><code>A.length &gt;= 3</code></li>
+<li>存在 <code>0 &lt; i &lt; A.length - 1</code> 使得<code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></li>
+</ul>
+<p>给定一个确定为山脉的数组，返回任何满足 <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code> 的 <code>i</code> 的值。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[0,1,0]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[0,2,1,0]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ol>
-<li><code>1 &lt;= N &lt;= 10^9</code></li>
-<li>在所有的测试样例中 <code>ExamRoom.seat()</code> 和 <code>ExamRoom.leave()</code> 最多被调用 <code>10^4</code> 次。</li>
-<li>调用 <code>ExamRoom.leave(p)</code> 时需要确保当前有学生坐在座位 <code>p</code> 上。</li>
+<li><code>3 &lt;= A.length &lt;= 10000</code></li>
+<li>0 &lt;= A[i] &lt;= 10^6</li>
+<li>A 是如上定义的山脉</li>
 </ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先确定一点，我们肯定需要存储已经坐下的位置</p>
-<p>​    然后每次想要新的座位的时候，就需要查找最大的空位，然后放入，</p>
-<p>​    因此，使用list来存储已经坐下的位置，然后每一次需要查询一下，看看那个空位最大，然后返回</p>
-<p>​    需要注意的是，第一个位置和最后一个位置，不需要除以2，中间位置的距离才需要除以2</p>
-<p>​    ==寻找座位==</p>
-<ul>
-<li><p>判断作为是不是空，如果是，座位是0</p>
-</li>
-<li><p>如果不为空，第一个距离就是座位表里面的第一个数，位置是0，</p>
-</li>
-<li><p>从第二个数开始，每一次减去前面的那个数，除以2表示距离</p>
-</li>
-<li><p>如果距离变大，就更新位置和距离</p>
-</li>
-<li><p>判断完毕以后，跳出来判断最后一个位置</p>
-</li>
-<li><p>然后将位置假如座位表，并返回</p>
-<p>==离开座位==</p>
-</li>
-<li><p>需要注意的是，离开座位的时候，需要判断这个座位有没有人</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bisect</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExamRoom</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        self.N = N</span><br><span class="line">        self.seats = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seat</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.seats:</span><br><span class="line">            pos = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dist, pos = self.seats[<span class="number">0</span>], <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate(self.seats):</span><br><span class="line">                <span class="keyword">if</span> i:</span><br><span class="line">                    prev = self.seats[i<span class="number">-1</span>]</span><br><span class="line">                    d = (s - prev) // <span class="number">2</span></span><br><span class="line">                    <span class="keyword">if</span> d &gt; dist:</span><br><span class="line">                        dist, pos = d, prev + d</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Considering the right-most seat.</span></span><br><span class="line">            d = self.N - <span class="number">1</span> - self.seats[<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> d &gt; dist:</span><br><span class="line">                pos = self.N - <span class="number">1</span></span><br><span class="line">        bisect.insort(self.seats, pos)</span><br><span class="line">        <span class="keyword">return</span> pos</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leave</span><span class="params">(self, p)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.seats.count(p) != <span class="number">0</span>:</span><br><span class="line">            self.seats.remove(p)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your ExamRoom object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = ExamRoom(N)</span></span><br><span class="line"><span class="comment"># param_1 = obj.seat()</span></span><br><span class="line"><span class="comment"># obj.leave(p)</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peakIndexInMountainArray</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> A.index(max(A))</span><br></pre></td></tr></table></figure>
+<p>​    </p>
 
           
         
@@ -689,6 +673,208 @@
 <li>其他情况返回False</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buddyStrings</span><span class="params">(self, A, B)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: str</span></span><br><span class="line"><span class="string">        :type B: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        length_a = len(A)</span><br><span class="line">        length_b = len(B)</span><br><span class="line">        <span class="keyword">if</span> length_a != length_b:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        buff = &#123;&#125;</span><br><span class="line">        buff_count = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length_a):</span><br><span class="line">            <span class="keyword">if</span> A[i] != B[i]:</span><br><span class="line">                buff[i] = (A[i], B[i])</span><br><span class="line">            <span class="keyword">if</span> buff_count.get(A[i]) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                buff_count[A[i]] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                buff_count[A[i]] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(buff) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> len(buff_count) &gt; <span class="number">0</span> <span class="keyword">and</span>  max(buff_count.values()) &gt;= <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(buff) == <span class="number">2</span>:</span><br><span class="line">            temp = list(buff.values())</span><br><span class="line">            <span class="keyword">if</span> sorted(temp[<span class="number">0</span>]) == sorted(temp[<span class="number">1</span>]):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 855. 考场就座/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 855. 考场就座/" itemprop="url">
+                  LeetCode 855. 考场就座
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 855. 考场就座/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 855. 考场就座/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    在考场里，一排有 <code>N</code> 个座位，分别编号为 <code>0, 1, 2, ..., N-1</code> 。</p>
+<p>​    当学生进入考场后，他必须坐在能够使他与离他最近的人之间的距离达到最大化的座位上。如果有多个这样的座位，他会坐在编号最小的座位上。(另外，如果考场里没有人，那么学生就坐在 0 号座位上。)</p>
+<p>​    返回 <code>ExamRoom(int N)</code> 类，它有两个公开的函数：其中，函数 <code>ExamRoom.seat()</code> 会返回一个 <code>int</code> （整型数据），代表学生坐的位置；函数 <code>ExamRoom.leave(int p)</code> 代表坐在座位 <code>p</code> 上的学生现在离开了考场。请确保每次调用 <code>ExamRoom.leave(p)</code> 时都有学生坐在座位 <code>p</code> 上。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入：[&quot;ExamRoom&quot;,&quot;seat&quot;,&quot;seat&quot;,&quot;seat&quot;,&quot;seat&quot;,&quot;leave&quot;,&quot;seat&quot;], [[10],[],[],[],[],[4],[]]</span><br><span class="line">输出：[null,0,9,4,2,null,5]</span><br><span class="line">解释：</span><br><span class="line">ExamRoom(10) -&gt; null</span><br><span class="line">seat() -&gt; 0，没有人在考场里，那么学生坐在 0 号座位上。</span><br><span class="line">seat() -&gt; 9，学生最后坐在 9 号座位上。</span><br><span class="line">seat() -&gt; 4，学生最后坐在 4 号座位上。</span><br><span class="line">seat() -&gt; 2，学生最后坐在 2 号座位上。</span><br><span class="line">leave(4) -&gt; null</span><br><span class="line">seat() -&gt; 5，学生最后坐在 5 号座位上。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= N &lt;= 10^9</code></li>
+<li>在所有的测试样例中 <code>ExamRoom.seat()</code> 和 <code>ExamRoom.leave()</code> 最多被调用 <code>10^4</code> 次。</li>
+<li>调用 <code>ExamRoom.leave(p)</code> 时需要确保当前有学生坐在座位 <code>p</code> 上。</li>
+</ol>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先确定一点，我们肯定需要存储已经坐下的位置</p>
+<p>​    然后每次想要新的座位的时候，就需要查找最大的空位，然后放入，</p>
+<p>​    因此，使用list来存储已经坐下的位置，然后每一次需要查询一下，看看那个空位最大，然后返回</p>
+<p>​    需要注意的是，第一个位置和最后一个位置，不需要除以2，中间位置的距离才需要除以2</p>
+<p>​    ==寻找座位==</p>
+<ul>
+<li><p>判断作为是不是空，如果是，座位是0</p>
+</li>
+<li><p>如果不为空，第一个距离就是座位表里面的第一个数，位置是0，</p>
+</li>
+<li><p>从第二个数开始，每一次减去前面的那个数，除以2表示距离</p>
+</li>
+<li><p>如果距离变大，就更新位置和距离</p>
+</li>
+<li><p>判断完毕以后，跳出来判断最后一个位置</p>
+</li>
+<li><p>然后将位置假如座位表，并返回</p>
+<p>==离开座位==</p>
+</li>
+<li><p>需要注意的是，离开座位的时候，需要判断这个座位有没有人</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bisect</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExamRoom</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        self.N = N</span><br><span class="line">        self.seats = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seat</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.seats:</span><br><span class="line">            pos = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dist, pos = self.seats[<span class="number">0</span>], <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i, s <span class="keyword">in</span> enumerate(self.seats):</span><br><span class="line">                <span class="keyword">if</span> i:</span><br><span class="line">                    prev = self.seats[i<span class="number">-1</span>]</span><br><span class="line">                    d = (s - prev) // <span class="number">2</span></span><br><span class="line">                    <span class="keyword">if</span> d &gt; dist:</span><br><span class="line">                        dist, pos = d, prev + d</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Considering the right-most seat.</span></span><br><span class="line">            d = self.N - <span class="number">1</span> - self.seats[<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> d &gt; dist:</span><br><span class="line">                pos = self.N - <span class="number">1</span></span><br><span class="line">        bisect.insort(self.seats, pos)</span><br><span class="line">        <span class="keyword">return</span> pos</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leave</span><span class="params">(self, p)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.seats.count(p) != <span class="number">0</span>:</span><br><span class="line">            self.seats.remove(p)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your ExamRoom object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = ExamRoom(N)</span></span><br><span class="line"><span class="comment"># param_1 = obj.seat()</span></span><br><span class="line"><span class="comment"># obj.leave(p)</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -1110,7 +1296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 83.删除排序链表中的重复元素/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -1129,8 +1315,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 83.删除排序链表中的重复元素/" itemprop="url">
-                  LeetCode 83.删除排序链表中的重复元素
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/" itemprop="url">
+                  LeetCode 862. 和至少为 K 的最短子数组
                 </a>
               
             
@@ -1193,8 +1379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 83.删除排序链表中的重复元素/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 83.删除排序链表中的重复元素/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1225,13 +1411,56 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;1-&gt;2</span><br><span class="line">输出: 1-&gt;2</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;1-&gt;2-&gt;3-&gt;3</span><br><span class="line">输出: 1-&gt;2-&gt;3</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct ListNode* <span class="title">deleteDuplicates</span><span class="params">(struct ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果只有一个元素或为空</span></span><br><span class="line">    <span class="keyword">if</span> (!head || !head-&gt;next ) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> * <span class="title">result</span> = <span class="title">head</span>;</span></span><br><span class="line">    <span class="keyword">while</span> (head-&gt;next) &#123;</span><br><span class="line">        <span class="keyword">if</span> (head-&gt;val == head-&gt;next-&gt;val) &#123;</span><br><span class="line">            head-&gt;next = head-&gt;next-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct ListNode* <span class="title">deleteDuplicates</span><span class="params">(struct ListNode* head)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// 如果只有一个元素或为空</span></span><br><span class="line">    <span class="keyword">if</span> (!head || !head-&gt;next) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">cur</span> = <span class="title">head</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">ne</span> = <span class="title">head</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (head) &#123;</span><br><span class="line">        ne = head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ne) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(cur-&gt;val == ne-&gt;val)&#123;</span><br><span class="line">            cur-&gt;next = ne-&gt;next;</span><br><span class="line">            ne = ne-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            ne = ne-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    返回 <code>A</code> 的最短的非空连续子数组的<strong>长度</strong>，该子数组的和至少为 <code>K</code> 。</p>
+<p>如果没有和至少为 <code>K</code> 的非空子数组，返回 <code>-1</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1], K = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1,2], K = 4</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [2,-1,2], K = 3</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 50000</code></li>
+<li><code>-10 ^ 5 &lt;= A[i] &lt;= 10 ^ 5</code></li>
+<li><code>1 &lt;= K &lt;= 10 ^ 9</code></li>
+</ol>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    一开始，直接想到暴力破解法，直接算出从位置0到当前位置的和，然后每个位置遍历一遍，减去从位置0一直到当前位置的差值，如果能够满足条件，更新结果</p>
+<p>​    这种暴力破解法，超出了时间限制</p>
+<p>​    后来又想通过动态规划来做，以前做过一道题，叫做最大子序列和，也就是找出子序列中，最大的连续的和是多少，不过这道题反其道而行之，找出最小的满足条件的值，</p>
+<p>​    </p>
+<p>​    换个思路，使用滑动窗口的办法，首先，设置两个指针，一个纸箱滑动窗口左面，一个纸箱右面，还有一个和，表示当前窗口的和</p>
+<ul>
+<li>如果和小于K，就将r右移</li>
+<li>如果和小于0，将左指针和右指针一块移动，重新开始</li>
+<li>如果当前和大于k，左指针右移</li>
+<li>每一次遇到和大于K的情况，都更新result</li>
+</ul>
+<p>​    在写代码的时候，遇到一个问题，就是如果在左面的指针向右移动的时候，如果说已经判断当前窗口的值小于K，就继续移动right，实际上这样不行，因为前面可能还有负数，也就是说，left并没有移动到对应的位置上去</p>
+<p>​    所以，每一次找到的时候，我们需要将这个子数组前面所有的都尝试减去一遍，得到满足的值就更新result，并且，还需要将left放到对应的位置上去</p>
+<p>​    我们设置两个指针，一个是在这个过程中，left向右移动，最后一个满足和的要求的left，另一个则是在right处向左寻找，找到不为0的那个值，直到left结束</p>
+<p>​    </p>
+<p>​    这种思路，与求解最大子序列和有相似的地方，也有一点不同，最大子序列和并不需要移动左指针，只需要在和小于0的时候移动，</p>
+<p>​    所以，从这里可以看出来，凡是寻找连续子数组的情况，都能够用滑动窗口来解决</p>
+<p>​    哎，没想到，滑动窗口也超过时间限制了，再换一种</p>
+<h3 id="2-1-暴力破解法"><a href="#2-1-暴力破解法" class="headerlink" title="2.1 暴力破解法"></a>2.1 暴力破解法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestSubarray</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        order_sums = list(itertools.accumulate(A))</span><br><span class="line"></span><br><span class="line">        print(order_sums)</span><br><span class="line"></span><br><span class="line">        result = <span class="number">100000</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)):</span><br><span class="line">            <span class="keyword">if</span> result &lt;= <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> order_sums[i] &gt;= K:</span><br><span class="line">                result = min(result, i + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                <span class="keyword">if</span> order_sums[i] - order_sums[j] &gt;= K <span class="keyword">and</span> i - j &lt; result:</span><br><span class="line">                    result = i - j</span><br><span class="line">        <span class="keyword">if</span> result == <span class="number">100000</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Solution()</span><br><span class="line"></span><br><span class="line">print(a.shortestSubarray([<span class="number">77</span>, <span class="number">19</span>, <span class="number">35</span>, <span class="number">10</span>, <span class="number">-14</span>], <span class="number">19</span>))</span><br></pre></td></tr></table></figure>
+<p>​    暴力破解法超过了时间限制</p>
+<h3 id="2-2-滑动窗口法"><a href="#2-2-滑动窗口法" class="headerlink" title="2.2 滑动窗口法"></a>2.2 滑动窗口法</h3><p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestSubarray</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="number">-1</span></span><br><span class="line">        windows_sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        length = len(A)</span><br><span class="line"></span><br><span class="line">        result = length + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        max_value = <span class="number">-100000000</span></span><br><span class="line">        temp_sum = <span class="number">0</span></span><br><span class="line">        temp_left = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; length:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> right + <span class="number">1</span> &lt; length <span class="keyword">and</span> windows_sum &lt; K:</span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">                windows_sum += A[right]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                windows_sum -= A[left]</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                temp_sum = <span class="number">0</span></span><br><span class="line">                max_value = <span class="number">-100000000</span></span><br><span class="line">                temp_left = left</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(right, left - <span class="number">1</span>, <span class="number">-1</span>):</span><br><span class="line">                    temp_sum += A[i]</span><br><span class="line">                    <span class="keyword">if</span> temp_sum &gt; max_value:</span><br><span class="line">                        max_value = temp_sum</span><br><span class="line">                        temp_left = i</span><br><span class="line"></span><br><span class="line">                windows_sum = max_value</span><br><span class="line">                left = temp_left</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> windows_sum &gt;= K:</span><br><span class="line">                result = min(result, right - left + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">elif</span> windows_sum &lt; <span class="number">0</span>:</span><br><span class="line">                left = right + <span class="number">1</span></span><br><span class="line">                windows_sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> result == length + <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>​    哎，这个方法也超过时间限制了</p>
+<h3 id="2-3-滑动窗口改进"><a href="#2-3-滑动窗口改进" class="headerlink" title="2.3 滑动窗口改进"></a>2.3 滑动窗口改进</h3><p>​    实际上，前面的方法还是有点复杂，实际上，同样是滑动窗口，并不一定非得要在原来的数组上滑动，也可以在我们构造的累加和数组上滑动</p>
+<p>​    例如，构造一个数组，如果right指向的数减去left指向的数能够大于等于K，更新结果值</p>
+<p>​    借助双端队列，我们在队列中，保存前面没有判断过的，并且比当前的累积和小的累加和，进行判断，判断完毕以后，就将最小的那个弹出，因为用不到了，还需要向后判断，距离会变大，所以最左端的就用不到了</p>
+<p>​    注意，双端队列里面保存的是索引值，这样才计算结果值</p>
+<p>​    构造和数列的时候，在前面放置一个0，这样我们才能得到与第一个元素的差值</p>
+<p>例如[1,2,3]</p>
+<p>和数列</p>
+<p>[1,3,6]</p>
+<p>​    如果我们不放置一个0在前面，就会发现我们用3-1，6-1，得到的是第2个元素，第2，3元素之和，无法得到第0元素之和</p>
+<p>​    所以，放置一个0才可以</p>
+<p>​    这一次时间没有超过限制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestSubarray</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        length = len(A)</span><br><span class="line">        result = length + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> length &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        sums = [<span class="number">0</span>] + list(itertools.accumulate(A))</span><br><span class="line">        less_than = collections.deque()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> index, cur_sum <span class="keyword">in</span> enumerate(sums):</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> less_than <span class="keyword">and</span> cur_sum &lt;= sums[less_than[<span class="number">-1</span>]]:</span><br><span class="line">                less_than.pop()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> less_than <span class="keyword">and</span> cur_sum - sums[less_than[<span class="number">0</span>]] &gt;= K:</span><br><span class="line">                result = min(result, index - less_than[<span class="number">0</span>])</span><br><span class="line">                less_than.popleft()</span><br><span class="line"></span><br><span class="line">            less_than.append(index)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> result == length + <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>​</p>
 
           
         
@@ -1470,7 +1699,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 849. 到最近的人的最大距离/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -1489,8 +1718,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/" itemprop="url">
-                  LeetCode 862. 和至少为 K 的最短子数组
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 849. 到最近的人的最大距离/" itemprop="url">
+                  LeetCode 849. 到最近的人的最大距离
                 </a>
               
             
@@ -1553,8 +1782,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 862. 和至少为 K 的最短子数组/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 849. 到最近的人的最大距离/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 849. 到最近的人的最大距离/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1585,246 +1814,23 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    返回 <code>A</code> 的最短的非空连续子数组的<strong>长度</strong>，该子数组的和至少为 <code>K</code> 。</p>
-<p>如果没有和至少为 <code>K</code> 的非空子数组，返回 <code>-1</code> 。</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>在一排座位（ <code>seats</code>）中，<code>1</code> 代表有人坐在座位上，<code>0</code> 代表座位上是空的。</p>
+<p>至少有一个空座位，且至少有一人坐在座位上。</p>
+<p>亚历克斯希望坐在一个能够使他与离他最近的人之间的距离达到最大化的座位上。</p>
+<p>返回他到离他最近的人的最大距离。</p>
 <p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1], K = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,0,0,0,1,0,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">如果亚历克斯坐在第二个空位（seats[2]）上，他到离他最近的人的距离为 2 。</span><br><span class="line">如果亚历克斯坐在其它任何一个空位上，他到离他最近的人的距离为 1 。</span><br><span class="line">因此，他到离他最近的人的最大距离是 2 。</span><br></pre></td></tr></table></figure>
 <p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1,2], K = 4</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [2,-1,2], K = 3</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,0,0,0]</span><br><span class="line">输出：3</span><br><span class="line">解释： </span><br><span class="line">如果亚历克斯坐在最后一个座位上，他离最近的人有 3 个座位远。</span><br><span class="line">这是可能的最大距离，所以答案是 3 。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
 <ol>
-<li><code>1 &lt;= A.length &lt;= 50000</code></li>
-<li><code>-10 ^ 5 &lt;= A[i] &lt;= 10 ^ 5</code></li>
-<li><code>1 &lt;= K &lt;= 10 ^ 9</code></li>
+<li><code>1 &lt;= seats.length &lt;= 20000</code></li>
+<li><code>seats</code> 中只含有 0 和 1，至少有一个 <code>0</code>，且至少有一个 <code>1</code>。</li>
 </ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    一开始，直接想到暴力破解法，直接算出从位置0到当前位置的和，然后每个位置遍历一遍，减去从位置0一直到当前位置的差值，如果能够满足条件，更新结果</p>
-<p>​    这种暴力破解法，超出了时间限制</p>
-<p>​    后来又想通过动态规划来做，以前做过一道题，叫做最大子序列和，也就是找出子序列中，最大的连续的和是多少，不过这道题反其道而行之，找出最小的满足条件的值，</p>
-<p>​    </p>
-<p>​    换个思路，使用滑动窗口的办法，首先，设置两个指针，一个纸箱滑动窗口左面，一个纸箱右面，还有一个和，表示当前窗口的和</p>
-<ul>
-<li>如果和小于K，就将r右移</li>
-<li>如果和小于0，将左指针和右指针一块移动，重新开始</li>
-<li>如果当前和大于k，左指针右移</li>
-<li>每一次遇到和大于K的情况，都更新result</li>
-</ul>
-<p>​    在写代码的时候，遇到一个问题，就是如果在左面的指针向右移动的时候，如果说已经判断当前窗口的值小于K，就继续移动right，实际上这样不行，因为前面可能还有负数，也就是说，left并没有移动到对应的位置上去</p>
-<p>​    所以，每一次找到的时候，我们需要将这个子数组前面所有的都尝试减去一遍，得到满足的值就更新result，并且，还需要将left放到对应的位置上去</p>
-<p>​    我们设置两个指针，一个是在这个过程中，left向右移动，最后一个满足和的要求的left，另一个则是在right处向左寻找，找到不为0的那个值，直到left结束</p>
-<p>​    </p>
-<p>​    这种思路，与求解最大子序列和有相似的地方，也有一点不同，最大子序列和并不需要移动左指针，只需要在和小于0的时候移动，</p>
-<p>​    所以，从这里可以看出来，凡是寻找连续子数组的情况，都能够用滑动窗口来解决</p>
-<p>​    哎，没想到，滑动窗口也超过时间限制了，再换一种</p>
-<h3 id="2-1-暴力破解法"><a href="#2-1-暴力破解法" class="headerlink" title="2.1 暴力破解法"></a>2.1 暴力破解法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestSubarray</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        order_sums = list(itertools.accumulate(A))</span><br><span class="line"></span><br><span class="line">        print(order_sums)</span><br><span class="line"></span><br><span class="line">        result = <span class="number">100000</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)):</span><br><span class="line">            <span class="keyword">if</span> result &lt;= <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> order_sums[i] &gt;= K:</span><br><span class="line">                result = min(result, i + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                <span class="keyword">if</span> order_sums[i] - order_sums[j] &gt;= K <span class="keyword">and</span> i - j &lt; result:</span><br><span class="line">                    result = i - j</span><br><span class="line">        <span class="keyword">if</span> result == <span class="number">100000</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Solution()</span><br><span class="line"></span><br><span class="line">print(a.shortestSubarray([<span class="number">77</span>, <span class="number">19</span>, <span class="number">35</span>, <span class="number">10</span>, <span class="number">-14</span>], <span class="number">19</span>))</span><br></pre></td></tr></table></figure>
-<p>​    暴力破解法超过了时间限制</p>
-<h3 id="2-2-滑动窗口法"><a href="#2-2-滑动窗口法" class="headerlink" title="2.2 滑动窗口法"></a>2.2 滑动窗口法</h3><p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestSubarray</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="number">-1</span></span><br><span class="line">        windows_sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        length = len(A)</span><br><span class="line"></span><br><span class="line">        result = length + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        max_value = <span class="number">-100000000</span></span><br><span class="line">        temp_sum = <span class="number">0</span></span><br><span class="line">        temp_left = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; length:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> right + <span class="number">1</span> &lt; length <span class="keyword">and</span> windows_sum &lt; K:</span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">                windows_sum += A[right]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                windows_sum -= A[left]</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                temp_sum = <span class="number">0</span></span><br><span class="line">                max_value = <span class="number">-100000000</span></span><br><span class="line">                temp_left = left</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(right, left - <span class="number">1</span>, <span class="number">-1</span>):</span><br><span class="line">                    temp_sum += A[i]</span><br><span class="line">                    <span class="keyword">if</span> temp_sum &gt; max_value:</span><br><span class="line">                        max_value = temp_sum</span><br><span class="line">                        temp_left = i</span><br><span class="line"></span><br><span class="line">                windows_sum = max_value</span><br><span class="line">                left = temp_left</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> windows_sum &gt;= K:</span><br><span class="line">                result = min(result, right - left + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">elif</span> windows_sum &lt; <span class="number">0</span>:</span><br><span class="line">                left = right + <span class="number">1</span></span><br><span class="line">                windows_sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> result == length + <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>​    哎，这个方法也超过时间限制了</p>
-<h3 id="2-3-滑动窗口改进"><a href="#2-3-滑动窗口改进" class="headerlink" title="2.3 滑动窗口改进"></a>2.3 滑动窗口改进</h3><p>​    实际上，前面的方法还是有点复杂，实际上，同样是滑动窗口，并不一定非得要在原来的数组上滑动，也可以在我们构造的累加和数组上滑动</p>
-<p>​    例如，构造一个数组，如果right指向的数减去left指向的数能够大于等于K，更新结果值</p>
-<p>​    借助双端队列，我们在队列中，保存前面没有判断过的，并且比当前的累积和小的累加和，进行判断，判断完毕以后，就将最小的那个弹出，因为用不到了，还需要向后判断，距离会变大，所以最左端的就用不到了</p>
-<p>​    注意，双端队列里面保存的是索引值，这样才计算结果值</p>
-<p>​    构造和数列的时候，在前面放置一个0，这样我们才能得到与第一个元素的差值</p>
-<p>例如[1,2,3]</p>
-<p>和数列</p>
-<p>[1,3,6]</p>
-<p>​    如果我们不放置一个0在前面，就会发现我们用3-1，6-1，得到的是第2个元素，第2，3元素之和，无法得到第0元素之和</p>
-<p>​    所以，放置一个0才可以</p>
-<p>​    这一次时间没有超过限制</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestSubarray</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        length = len(A)</span><br><span class="line">        result = length + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> length &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        sums = [<span class="number">0</span>] + list(itertools.accumulate(A))</span><br><span class="line">        less_than = collections.deque()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> index, cur_sum <span class="keyword">in</span> enumerate(sums):</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> less_than <span class="keyword">and</span> cur_sum &lt;= sums[less_than[<span class="number">-1</span>]]:</span><br><span class="line">                less_than.pop()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> less_than <span class="keyword">and</span> cur_sum - sums[less_than[<span class="number">0</span>]] &gt;= K:</span><br><span class="line">                result = min(result, index - less_than[<span class="number">0</span>])</span><br><span class="line">                less_than.popleft()</span><br><span class="line"></span><br><span class="line">            less_than.append(index)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> result == length + <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>​</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 868. 二进制间距/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 868. 二进制间距/" itemprop="url">
-                  LeetCode 868. 二进制间距
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 868. 二进制间距/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 868. 二进制间距/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
-<p>给定一个正整数 <code>N</code>，找到并返回 <code>N</code> 的二进制表示中两个连续的 1 之间的最长距离。 </p>
-<p>如果没有两个连续的 1，返回 <code>0</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：22</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">22 的二进制是 0b10110 。</span><br><span class="line">在 22 的二进制表示中，有三个 1，组成两对连续的 1 。</span><br><span class="line">第一对连续的 1 中，两个 1 之间的距离为 2 。</span><br><span class="line">第二对连续的 1 中，两个 1 之间的距离为 1 。</span><br><span class="line">答案取两个距离之中最大的，也就是 2 。</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：5</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">5 的二进制是 0b101 。</span><br></pre></td></tr></table></figure>
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：6</span><br><span class="line">输出：1</span><br><span class="line">解释：</span><br><span class="line">6 的二进制是 0b110 。</span><br></pre></td></tr></table></figure>
-<p><strong>示例 4：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：8</span><br><span class="line">输出：0</span><br><span class="line">解释：</span><br><span class="line">8 的二进制是 0b1000 。</span><br><span class="line">在 8 的二进制表示中没有连续的 1，所以返回 0 。</span><br></pre></td></tr></table></figure>
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= N &lt;= 10^9</code></li>
-</ul>
 <h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    </p>
-<p>题目其实很简单，只需要一遍扫描即可</p>
-<ul>
-<li>判断当前位置是不是1，如果是，更新间距（第一个1不需要更新）</li>
-<li>一直向后判断，判断32次即可</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">binaryGap</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        result = <span class="number">0</span></span><br><span class="line">        cur = <span class="number">-1</span></span><br><span class="line">        first = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>):</span><br><span class="line">            <span class="keyword">if</span> N &amp; (<span class="number">1</span> &lt;&lt; i) != <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> first:</span><br><span class="line">                    result = max(result, i - cur)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    first = <span class="keyword">True</span></span><br><span class="line">                cur = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>​    使用了基于字符串的想法，先把list变成字符串，然后通过1进行分割，第一个和最后一个单独判断，找出中间的连续最多的0的长度</p>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDistToClosest</span><span class="params">(self, seats)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type seats: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        total = <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> seats]).split(<span class="string">"1"</span>)</span><br><span class="line">        left = total[<span class="number">0</span>]</span><br><span class="line">        right = total[len(total) - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(total[<span class="number">1</span>:<span class="number">-1</span>]) == <span class="number">0</span>:</span><br><span class="line">            max_zeros = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            max_zeros = len(max(total[<span class="number">1</span>:<span class="number">-1</span>], key=<span class="keyword">lambda</span> x: len(x)))</span><br><span class="line"></span><br><span class="line">        result = (max_zeros + <span class="number">1</span>) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> left != <span class="string">""</span>:</span><br><span class="line">            result = max(result, len(left))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> right != <span class="string">""</span>:</span><br><span class="line">            result = max(result, len(right))</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2280,7 +2286,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">397</span>
+                    <span class="site-state-item-count">398</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
