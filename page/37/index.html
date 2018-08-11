@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 812. 最大三角形面积/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 819. 最常见的单词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -365,8 +365,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 812. 最大三角形面积/" itemprop="url">
-                  LeetCode 812. 最大三角形面积
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 819. 最常见的单词/" itemprop="url">
+                  LeetCode 819. 最常见的单词
                 </a>
               
             
@@ -429,8 +429,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 812. 最大三角形面积/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 812. 最大三角形面积/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 819. 最常见的单词/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 819. 最常见的单词/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -461,21 +461,209 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定包含多个点的集合，从其中取三个点组成三角形，返回能组成的最大三角形的面积。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]</span><br><span class="line">输出: 2</span><br><span class="line">解释: </span><br><span class="line">这五个点如下图所示。组成的橙色三角形是最大的，面积为2。</span><br></pre></td></tr></table></figure>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/04/1027.png" alt="img"></p>
-<p><strong>注意:</strong> </p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>​    </p>
+<p>给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中的单词。题目保证至少有一个词不在禁用列表中，而且答案唯一。</p>
+<p>禁用列表中的单词用小写字母表示，不含标点符号。段落中的单词不区分大小写。答案都是小写字母。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: </span><br><span class="line">paragraph = &quot;Bob hit a ball, the hit BALL flew far after it was hit.&quot;</span><br><span class="line">banned = [&quot;hit&quot;]</span><br><span class="line">输出: &quot;ball&quot;</span><br><span class="line">解释: </span><br><span class="line">&quot;hit&quot; 出现了3次，但它是一个禁用的单词。</span><br><span class="line">&quot;ball&quot; 出现了2次 (同时没有其他单词出现2次)，所以它是段落里出现次数最多的，且不在禁用列表中的单词。 </span><br><span class="line">注意，所有这些单词在段落里不区分大小写，标点符号需要忽略（即使是紧挨着单词也忽略， 比如 &quot;ball,&quot;）， </span><br><span class="line">&quot;hit&quot;不是最终的答案，虽然它出现次数更多，但它在禁用单词列表中。</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong> </p>
 <ul>
-<li><code>3 &lt;= points.length &lt;= 50</code>.</li>
-<li>不存在重复的点。</li>
-<li><code>-50 &lt;= points[i][j] &lt;= 50</code>.</li>
-<li>结果误差值在 <code>10^-6</code> 以内都认为是正确答案。</li>
+<li><code>1 &lt;= 段落长度 &lt;= 1000</code>.</li>
+<li><code>1 &lt;= 禁用单词个数 &lt;= 100</code>.</li>
+<li><code>1 &lt;= 禁用单词长度 &lt;= 10</code>.</li>
+<li>答案是唯一的, 且都是小写字母 (即使在 <code>paragraph</code> 里是大写的，即使是一些特定的名词，答案都是小写的。)</li>
+<li><code>paragraph</code> 只包含字母、空格和下列标点符号<code>!?&#39;,;.</code></li>
+<li><code>paragraph</code> 里单词之间都由空格隔开。</li>
+<li>不存在没有连字符或者带有连字符的单词。</li>
+<li>单词里只包含字母，不会出现省略号或者其他标点符号。</li>
 </ul>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这个题目的难点在于要知道如何利用三个点的坐标求解面积，</p>
-<p>​    有时间可以看看有限元分析</p>
-<p>已知三个点坐标求 三角形面积</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">设A(x1,y1),B(x2,y2),C(x3,y3) </span><br><span class="line">由A--&gt;B--&gt;C--&gt;A 按逆时针方向转。(行列式书写要求） </span><br><span class="line">设三角形的面积为S </span><br><span class="line">则S=（1/2)*(下面行列式） </span><br><span class="line">|x1 y1 1| </span><br><span class="line">|x2 y2 1| </span><br><span class="line">|x3 y3 1| </span><br><span class="line">S=(1/2)*(x1y2*1+x2y3*1+x3y1*1-x1y3*1-x2y1*1-x3y2*1) </span><br><span class="line">即用三角形的三个顶点坐标求其面积的公式为: </span><br><span class="line">S=(1/2)*(x1y2+x2y3+x3y1-x1y3-x2y1-x3y2)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestTriangleArea</span><span class="params">(self, points)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type points: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> max([self.getArea(point1, point2, point3) <span class="keyword">for</span> point1, point2, point3 <span class="keyword">in</span> itertools.combinations(points, <span class="number">3</span>)])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getArea</span><span class="params">(self, point1, point2, point3)</span>:</span></span><br><span class="line">        (x1, y1), (x2, y2), (x3, y3) = point1, point2, point3</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.5</span> * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    文本中有特殊字符，可以用正则删掉，也可以使用translate，maketrans的方式，</p>
+<p>​    这个是建立映射关系，将某个字符映射到某个字符上</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mostCommonWord</span><span class="params">(self, paragraph, banned)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type paragraph: str</span></span><br><span class="line"><span class="string">        :type banned: List[str]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        pa = [v.lower().translate(str.maketrans(<span class="string">'!?\',;.'</span>, <span class="string">'\0\0\0\0\0\0'</span>)).replace(<span class="string">"\0"</span>,<span class="string">""</span>) <span class="keyword">for</span> v <span class="keyword">in</span> paragraph.split(<span class="string">" "</span>)]</span><br><span class="line"></span><br><span class="line">        count = collections.Counter(pa)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> banned:</span><br><span class="line">            <span class="keyword">if</span> count.get(i):</span><br><span class="line">                count.pop(i)</span><br><span class="line">        <span class="keyword">return</span> count.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 82. 删除排序链表中的重复元素 II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 82. 删除排序链表中的重复元素 II/" itemprop="url">
+                  LeetCode 82. 删除排序链表中的重复元素 II
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 82. 删除排序链表中的重复元素 II/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 82. 删除排序链表中的重复元素 II/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 <em>没有重复出现</em> 的数字。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5</span><br><span class="line">输出: 1-&gt;2-&gt;5</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;1-&gt;1-&gt;2-&gt;3</span><br><span class="line">输出: 2-&gt;3</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    设置两个指针，如果第一个指针指向的节点的值等于第二个指针指向的节点的值，就将将第二个指针后移，一直移到不相等或者为空，</p>
+<p>​    然后，这一段就是需要删除的</p>
+<p>​    这个题目的关键点就在与，头指针的判定，我们需要构造一个节点，这个节点指向头指针</p>
+<p>​    然后从头指针开始删除</p>
+<p>​    一开始，prev指向的不是头指针，而是我们构造的节点，因为头部的元素也可能是需要删除的    </p>
+<p>​        <strong>注意，prev指向前面一个有效节点</strong></p>
+<p>​    使用p，q两个指针进行判断，如果两个值相等，表示遇到了需要删除的，就让q继续向下走，直到找到不相等的那个或者None为止，这时候，中间的一段需要删除；</p>
+<p>​    然后令prev的next指向q，这样就删掉了中间的重复节点，然后继续判断</p>
+<p>​    如果下一个值与当前的值不相等，表示当前的值是一个有效节点，prev指向这个节点</p>
+<p>​    以此类推，不断地向下判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.next:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        prev = ListNode(<span class="number">0</span>)</span><br><span class="line">        prev.next = head</span><br><span class="line"></span><br><span class="line">        result_head = prev</span><br><span class="line"></span><br><span class="line">        p = head</span><br><span class="line">        q = head.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> p <span class="keyword">and</span> q:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> p.val == q.val:</span><br><span class="line">                <span class="keyword">while</span> q.next:</span><br><span class="line">                    <span class="keyword">if</span> p.val != q.val:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    q = q.next</span><br><span class="line">                <span class="keyword">if</span> p.val == q.val:</span><br><span class="line">                    prev.next = <span class="keyword">None</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    prev.next = q</span><br><span class="line">                    p = q</span><br><span class="line">                    q = q.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = p</span><br><span class="line">                p = q</span><br><span class="line">                q = q.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result_head.next</span><br></pre></td></tr></table></figure>
+<p>​    </p>
 
           
         
@@ -1959,187 +2147,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 848. 字母移位/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 848. 字母移位/" itemprop="url">
-                  LeetCode 848. 字母移位
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 848. 字母移位/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 848. 字母移位/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>有一个由小写字母组成的字符串 <code>S</code>，和一个整数数组 <code>shifts</code>。</p>
-<p>我们将字母表中的下一个字母称为原字母的 <em>移位</em>（由于字母表是环绕的， <code>&#39;z&#39;</code> 将会变成 <code>&#39;a&#39;</code>）。</p>
-<p>例如·，<code>shift(&#39;a&#39;) = &#39;b&#39;</code>， <code>shift(&#39;t&#39;) = &#39;u&#39;</code>,， 以及 <code>shift(&#39;z&#39;) = &#39;a&#39;</code>。</p>
-<p>对于每个 <code>shifts[i] = x</code> ， 我们会将 <code>S</code> 中的前 <code>i+1</code> 个字母移位 <code>x</code> 次。</p>
-<p>返回将所有这些移位都应用到 <code>S</code> 后最终得到的字符串。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：S = &quot;abc&quot;, shifts = [3,5,9]</span><br><span class="line">输出：&quot;rpl&quot;</span><br><span class="line">解释： </span><br><span class="line">我们以 &quot;abc&quot; 开始。</span><br><span class="line">将 S 中的第 1 个字母移位 3 次后，我们得到 &quot;dbc&quot;。</span><br><span class="line">再将 S 中的前 2 个字母移位 5 次后，我们得到 &quot;igc&quot;。</span><br><span class="line">最后将 S 中的这 3 个字母移位 9 次后，我们得到答案 &quot;rpl&quot;。</span><br></pre></td></tr></table></figure>
-<p><strong>提示：</strong></p>
-<ol>
-<li><code>1 &lt;= S.length = shifts.length &lt;= 20000</code></li>
-<li><code>0 &lt;= shifts[i] &lt;= 10 ^ 9</code></li>
-</ol>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shiftingLetters</span><span class="params">(self, S, shifts)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type shifts: List[int]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">    </span><br><span class="line">        move = list(reversed(list(itertools.accumulate(reversed(shifts)))))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> index, c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            S = S[:index] + chr((ord(c) - <span class="number">97</span> + move[index]) % <span class="number">26</span> + <span class="number">97</span>) + S[index + <span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">return</span> S</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2191,7 +2198,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">399</span>
+                    <span class="site-state-item-count">400</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
