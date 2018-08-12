@@ -346,6 +346,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/12/leetcode/LeetCode 423. 从英文中重建数字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/leetcode/LeetCode 423. 从英文中重建数字/" itemprop="url">
+                  LeetCode 423. 从英文中重建数字
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-12 19:01:00 / 修改时间：19:02:01" itemprop="dateCreated datePublished" datetime="2018-08-12T19:01:00+08:00">2018-08-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/12/leetcode/LeetCode 423. 从英文中重建数字/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/12/leetcode/LeetCode 423. 从英文中重建数字/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个<strong>非空</strong>字符串，其中包含字母顺序打乱的英文单词表示的数字<code>0-9</code>。按升序输出原始的数字。</p>
+<p><strong>注意:</strong></p>
+<ol>
+<li>输入只包含小写英文字母。</li>
+<li>输入保证合法并可以转换为原始的数字，这意味着像 “abc” 或 “zerone” 的输入是不允许的。</li>
+<li>输入字符串的长度小于 50,000。</li>
+</ol>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;owoztneoer&quot;</span><br><span class="line"></span><br><span class="line">输出: &quot;012&quot; (zeroonetwo)</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;fviefuro&quot;</span><br><span class="line"></span><br><span class="line">输出: &quot;45&quot; (fourfive)</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先来分析下每个数字的英文组成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zero</span><br><span class="line">one</span><br><span class="line">two</span><br><span class="line">three</span><br><span class="line">four</span><br><span class="line">five</span><br><span class="line">six</span><br><span class="line">seven</span><br><span class="line">eight</span><br><span class="line">nine</span><br></pre></td></tr></table></figure>
+<p>​    根据上面的字符，我们发现，一共出现了下面几个字符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;, &apos;i&apos;, &apos;n&apos;, &apos;o&apos;, &apos;r&apos;, &apos;s&apos;, &apos;t&apos;, &apos;u&apos;, &apos;v&apos;, &apos;w&apos;, &apos;x&apos;, &apos;z&apos;]</span><br></pre></td></tr></table></figure>
+<p>​    其中，仅仅在某一个数字中出现的有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">z: zero</span><br><span class="line">w: two</span><br><span class="line">u: four</span><br><span class="line">x: six</span><br><span class="line">g: eight</span><br></pre></td></tr></table></figure>
+<p>​    因此，根据这几个字符的数量，我们就能够直接判断上面几个数字的数量</p>
+<p>并且，有了上面几个数字以后，我们就可以判断机器的数字了，例如1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">one </span><br><span class="line">在所有数字中，包含o的只有0，1，2，4，而我们已经得到0，2，4的数量，就可以直接算出1的数量了</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">three</span><br><span class="line">r仅仅出现在zero，four，同样的也能够计算出3的数量了</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">five</span><br><span class="line">f仅仅出现在four，five，也可以计算出5的数量了</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seven</span><br><span class="line">v仅仅出现在five，seven中，利用v直接计算7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nine</span><br><span class="line">其他数字都已经计算出来了，剩下的9，利用n来计算也可以，i也可以，e也可以，用n的计算量比较小，因为n仅出现在one，seven，nine中</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">originalDigits</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">zero</span><span class="params">()</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        buff = collections.defaultdict(zero)</span><br><span class="line">        nums = [<span class="number">0</span>] * <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            buff[c] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        nums[<span class="number">0</span>] = buff[<span class="string">'z'</span>]</span><br><span class="line">        nums[<span class="number">2</span>] = buff[<span class="string">'w'</span>]</span><br><span class="line">        nums[<span class="number">4</span>] = buff[<span class="string">'u'</span>]</span><br><span class="line">        nums[<span class="number">6</span>] = buff[<span class="string">'x'</span>]</span><br><span class="line">        nums[<span class="number">8</span>] = buff[<span class="string">'g'</span>]</span><br><span class="line">        nums[<span class="number">1</span>] = buff[<span class="string">'o'</span>] - nums[<span class="number">0</span>] - nums[<span class="number">2</span>] -nums[<span class="number">4</span>]</span><br><span class="line">        nums[<span class="number">3</span>] = buff[<span class="string">'r'</span>] - nums[<span class="number">0</span>] - nums[<span class="number">4</span>]</span><br><span class="line">        nums[<span class="number">5</span>] = buff[<span class="string">'f'</span>] - nums[<span class="number">4</span>]</span><br><span class="line">        nums[<span class="number">7</span>] = buff[<span class="string">'v'</span>] - nums[<span class="number">5</span>]</span><br><span class="line">        nums[<span class="number">9</span>] = buff[<span class="string">'i'</span>] - nums[<span class="number">5</span>] - nums[<span class="number">6</span>] - nums[<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">        ans = [str(i) * n <span class="keyword">for</span> i, n <span class="keyword">in</span> enumerate(nums)]</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(ans)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/12/leetcode/LeetCode: 421. 数组中两个数的最大异或值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2084,185 +2276,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/09/leetcode/LeetCode: 399. 除法求值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/leetcode/LeetCode: 399. 除法求值/" itemprop="url">
-                  LeetCode 399. 除法求值
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-09 10:30:30 / 修改时间：11:41:14" itemprop="dateCreated datePublished" datetime="2018-08-09T10:30:30+08:00">2018-08-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/09/leetcode/LeetCode: 399. 除法求值/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/09/leetcode/LeetCode: 399. 除法求值/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给出方程式 <code>A / B = k</code>, 其中 <code>A</code> 和 <code>B</code> 均为代表字符串的变量， <code>k</code> 是一个浮点型数字。根据已知方程式求解问题，并返回计算结果。如果结果不存在，则返回 <code>-1.0</code>。</p>
-<p><strong>示例 :</strong><br>给定 <code>a / b = 2.0, b / c = 3.0</code><br>问题: <code>a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ?</code><br>返回 <code>[6.0, 0.5, -1.0, 1.0, -1.0 ]</code></p>
-<p>输入为: <code>vector&lt;pair&lt;string, string&gt;&gt; equations, vector&lt;double&gt;&amp; values, vector&lt;pair&lt;string, string&gt;&gt; queries</code>(方程式，方程式结果，问题方程式)， 其中 <code>equations.size() == values.size()</code>，即方程式的长度与方程式结果长度相等（程式与结果一一对应），并且结果值均为正数。以上为方程式的描述。 返回<code>vector&lt;double&gt;</code>类型。</p>
-<p>基于上述例子，输入如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">equations(方程式) = [ [&quot;a&quot;, &quot;b&quot;], [&quot;b&quot;, &quot;c&quot;] ],</span><br><span class="line">values(方程式结果) = [2.0, 3.0],</span><br><span class="line">queries(问题方程式) = [ [&quot;a&quot;, &quot;c&quot;], [&quot;b&quot;, &quot;a&quot;], [&quot;a&quot;, &quot;e&quot;], [&quot;a&quot;, &quot;a&quot;], [&quot;x&quot;, &quot;x&quot;] ].</span><br></pre></td></tr></table></figure>
-<p>输入总是有效的。你可以假设除法运算中不会出现除数为0的情况，且不存在任何矛盾的结果。</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题是一个图相关的，是一个有向图，将每一个变量看成是节点，节点之间的边是前面节点除以后面节点的值，而我们要找的答案，就是遍历这个图，找到问题方程式所经过的路径，并且将所有的路径值乘起来，就得到了答案；</p>
-<p>​    该如何存储相互之间的关系呢？</p>
-<p>​    在python里面，直接使用字典即可，键就表示前面的节点，值的话，需要保存两个，一个是后面的一个节点，另一个是边的值，如下所示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ [&quot;a&quot;, &quot;b&quot;], [&quot;b&quot;, &quot;c&quot;] ]</span><br><span class="line">[2.0, 3.0]</span><br><span class="line">我们对上面的进行转换，</span><br><span class="line">defaultdict(&lt;class &apos;dict&apos;&gt;, &#123;&apos;a&apos;: &#123;&apos;a&apos;: 1.0, &apos;b&apos;: 2.0&#125;, &apos;c&apos;: &#123;&apos;b&apos;: 0.3333333333333333, &apos;c&apos;: 1.0&#125;, &apos;b&apos;: &#123;&apos;a&apos;: 0.5, &apos;c&apos;: 3.0, &apos;b&apos;: 1.0&#125;&#125;)</span><br><span class="line">找出每一个值能够直接除以得到的结果</span><br></pre></td></tr></table></figure>
-<p>​    然后使用深度优先搜索，找出来即可</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calcEquation</span><span class="params">(self, equations, values, queries)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type equations: List[List[str]]</span></span><br><span class="line"><span class="string">        :type values: List[float]</span></span><br><span class="line"><span class="string">        :type queries: List[List[str]]</span></span><br><span class="line"><span class="string">        :rtype: List[float]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        graph = collections.defaultdict(dict)</span><br><span class="line">        res = [<span class="number">0</span>] * len(queries)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (x, y), val <span class="keyword">in</span> zip(equations, values):</span><br><span class="line">            graph[x][x] = graph[y][y] = <span class="number">1.0</span></span><br><span class="line">            graph[x][y] = val</span><br><span class="line">            graph[y][x] = <span class="number">1</span> / val</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(queries)):</span><br><span class="line">            temp_graph = graph.copy()</span><br><span class="line">            res[i] = self.dfs(queries[i][<span class="number">0</span>], queries[i][<span class="number">1</span>], temp_graph)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, x, y, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span> graph:</span><br><span class="line">            <span class="keyword">if</span> y <span class="keyword">in</span> graph[x]:</span><br><span class="line">                <span class="keyword">return</span> graph[x][y]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = graph[x]</span><br><span class="line">                graph.pop(x)</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> temp:</span><br><span class="line">                    <span class="keyword">if</span> i != x:</span><br><span class="line">                        val = self.dfs(i, y, graph)</span><br><span class="line">                        <span class="keyword">if</span> val &gt; <span class="number">0</span>:</span><br><span class="line">                            <span class="keyword">return</span> temp[i] * val</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1.0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1.0</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2314,7 +2327,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">401</span>
+                    <span class="site-state-item-count">402</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
