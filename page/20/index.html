@@ -346,6 +346,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 368. 最大整除子集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 368. 最大整除子集/" itemprop="url">
+                  LeetCode 368. 最大整除子集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 368. 最大整除子集/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 368. 最大整除子集/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给出一个由<strong>无重复的</strong>正整数组成的集合, 找出其中最大的整除子集, 子集中任意一对 (Si, Sj) 都要满足: Si % Sj = 0 或 Sj % Si = 0。</p>
+<p>如果有多个目标子集，返回其中任何一个均可。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">集合: [1,2,3]</span><br><span class="line"></span><br><span class="line">结果: [1,2] (当然, [1,3] 也正确)</span><br></pre></td></tr></table></figure>
+<p> <strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">集合: [1,2,4,8]</span><br><span class="line"></span><br><span class="line">结果: [1,2,4,8]</span><br></pre></td></tr></table></figure>
+<p><strong>致谢：</strong><br>特别感谢 <a href="https://leetcode.com/stomach_ache" target="_blank" rel="noopener">@Stomach_ache</a> 添加这道题并创建所有测试用例。</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    使用动态规划来做</p>
+<ul>
+<li>首先，对数组进行排序</li>
+<li>然后对于当前数字，先前寻找，能够整除的最大的数目</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = max(dp[i], dp[j]+1)</span><br></pre></td></tr></table></figure>
+<p>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3]</span><br><span class="line">建立一个数组，存放当前点最大的整除序列数目</span><br><span class="line">在建立一个数组，保存当前节点最大的整除序列是由前面哪一个点增加得来的</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">初始化为1，表示所有节点能够被自己整除</span><br><span class="line">[1 1 1]</span><br><span class="line">初始化为自己的下标，表示还没有通过前面的那个节点，得到最大的整除序列</span><br><span class="line">[0 1 2]</span><br><span class="line"></span><br><span class="line">首先是第一个点</span><br><span class="line">1，前面没有节点了，不用判断</span><br><span class="line">然后是2，判断能被1整除，更新dp，下标数组</span><br><span class="line">[1 2 1]</span><br><span class="line">[0 0 2]</span><br><span class="line">然后是3，3可以被1整除，更新dp，下标数组</span><br><span class="line">[1 2 2]</span><br><span class="line">[0 0 0]</span><br><span class="line">于是，我们就通过前向数组，就能得到整除的那个序列</span><br><span class="line">现在最大的就是2，从2这个点开始</span><br><span class="line">2，1</span><br><span class="line">到前向节点与当前节点是一个截止</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestDivisibleSubset</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        </span><br><span class="line">        length = len(nums)</span><br><span class="line"></span><br><span class="line">        dp = [<span class="number">1</span>] * length</span><br><span class="line">        pre = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(length)]</span><br><span class="line"></span><br><span class="line">        nums.sort()</span><br><span class="line">        max_length = <span class="number">1</span></span><br><span class="line">        max_index = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                <span class="keyword">if</span> nums[i] % nums[j] == <span class="number">0</span> <span class="keyword">and</span> dp[i] &lt; dp[j] + <span class="number">1</span>:</span><br><span class="line">                    dp[i] = dp[j] + <span class="number">1</span></span><br><span class="line">                    pre[i] = j</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> dp[i] &gt; max_length:</span><br><span class="line">                max_length = dp[i]</span><br><span class="line">                max_index = i</span><br><span class="line"></span><br><span class="line">        result = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> max_index != pre[max_index]:</span><br><span class="line">            result.append(nums[max_index])</span><br><span class="line">            max_index = pre[max_index]</span><br><span class="line"></span><br><span class="line">        result.append(nums[max_index])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 371.两整数之和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1261,210 +1446,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 376. 摆动序列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/" itemprop="url">
-                  LeetCode 376. 摆动序列
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为<strong>摆动序列。</strong>第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。</p>
-<p>例如， <code>[1,7,4,9,2,5]</code> 是一个摆动序列，因为差值 <code>(6,-3,5,-7,3)</code> 是正负交替出现的。相反, <code>[1,4,7,2,5]</code> 和 <code>[1,7,4,5,5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</p>
-<p>给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。</p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,7,4,9,2,5]</span><br><span class="line">输出: 6</span><br><span class="line">解释: 整个序列就是一个摆动序列。</span><br><span class="line"></span><br><span class="line">输入: [1,17,5,10,13,15,10,5,16,8]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 它的几个子序列满足摆动序列。其中一个是[1,17,10,13,10,16,8]。</span><br><span class="line"></span><br><span class="line">输入: [1,2,3,4,5,6,7,8,9]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
-<p><strong>进阶:</strong><br>你能否用 O(<em>n</em>) 时间复杂度完成此题?</p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    使用动态规划，使用两个数组，down和up,分别保存到当前数字为止，前面一个是下降沿与上升沿的最大值</p>
-<ul>
-<li><p>如果nums[i] &gt; nums[i - 1]:</p>
-<ul>
-<li><p>也就是说现在这个是上升沿，那么上升沿更新为前面下降沿加一</p>
-</li>
-<li><p>下降沿不变</p>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">up[i] = down[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">down[i] = down[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>如果nums[i] &lt; nums[i - 1]: </p>
-<ul>
-<li><p>现在这个是下降沿，那个当前的下降沿用前面的上升沿加一更新，上升沿不变</p>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">down[i] = up[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">up[i] = up[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>如果前后相等：</p>
-<ul>
-<li><p>保持不变</p>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">up[i] = up[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wiggleMaxLength</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        length = len(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> length &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> length</span><br><span class="line"></span><br><span class="line">        up = [<span class="number">1</span>] * length</span><br><span class="line">        down = [<span class="number">1</span>] * length</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, length):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i - <span class="number">1</span>]:</span><br><span class="line">                up[i] = down[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> nums[i] &lt; nums[i - <span class="number">1</span>]:</span><br><span class="line">                down[i] = up[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                up[i] = up[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">                up[i] = up[i - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> max(up[<span class="number">-1</span>], down[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 377. 组合总和 Ⅳ/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2043,7 +2024,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 376. 摆动序列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="夜行">
@@ -2062,8 +2043,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/" itemprop="url">
-                  LeetCode 380. 常数时间插入、删除和获取随机元素
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/" itemprop="url">
+                  LeetCode 376. 摆动序列
                 </a>
               
             
@@ -2126,8 +2107,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 380. 常数时间插入、删除和获取随机元素/" itemprop="commentCount"></span>
+                <a href="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 376. 摆动序列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2158,19 +2139,42 @@
         
           
             <p>[TOC]</p>
-<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>设计一个支持在<em>平均</em> 时间复杂度 <strong>O(1)</strong> 下，执行以下操作的数据结构。</p>
-<ol>
-<li><code>insert(val)</code>：当元素 val 不存在时，向集合中插入该项。</li>
-<li><code>remove(val)</code>：元素 val 存在时，从集合中移除该项。</li>
-<li><code>getRandom</code>：随机返回现有集合中的一项。每个元素应该有<strong>相同的概率</strong>被返回。</li>
-</ol>
-<p><strong>示例 :</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 初始化一个空的集合。</span><br><span class="line">RandomizedSet randomSet = new RandomizedSet();</span><br><span class="line"></span><br><span class="line">// 向集合中插入 1 。返回 true 表示 1 被成功地插入。</span><br><span class="line">randomSet.insert(1);</span><br><span class="line"></span><br><span class="line">// 返回 false ，表示集合中不存在 2 。</span><br><span class="line">randomSet.remove(2);</span><br><span class="line"></span><br><span class="line">// 向集合中插入 2 。返回 true 。集合现在包含 [1,2] 。</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">// getRandom 应随机返回 1 或 2 。</span><br><span class="line">randomSet.getRandom();</span><br><span class="line"></span><br><span class="line">// 从集合中移除 1 ，返回 true 。集合现在包含 [2] 。</span><br><span class="line">randomSet.remove(1);</span><br><span class="line"></span><br><span class="line">// 2 已在集合中，所以返回 false 。</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">// 由于 2 是集合中唯一的数字，getRandom 总是返回 2 。</span><br><span class="line">randomSet.getRandom();</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    题目要求添加，删除，以及随机返回，都是$O(1)$的时间复杂度</p>
-<p>​    如果直接使用数组，插入和随机返回都能够满足要求，但是删除不可以，会留有空位</p>
-<p>​    如果直接用字典，插入和删除都能够满足要求，但是删除不可以，不能随机的找出想要的数字</p>
-<p>随意，将数组和字典结合起来使用，我们使用数组保存元素，当我们想要删除的时候，就将当前元素与末尾元素调换，然后删除末尾元素即可，这样就得到了线性时间复杂度，并且，为了删除能快速定位这个元素，我们使用字典，保存元素所在的下标</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.nums = []</span><br><span class="line">        self.nums_index = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> self.nums_index:</span><br><span class="line">            self.nums.append(val)</span><br><span class="line">            self.nums_index[val] = len(self.nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Removes a value from the set. Returns true if the set contained the specified element.</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.nums_index:</span><br><span class="line">            <span class="keyword">if</span> len(self.nums) == <span class="number">1</span>:</span><br><span class="line">                self.nums.pop()</span><br><span class="line">                self.nums_index.pop(val)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">                index = self.nums_index[val]</span><br><span class="line">                self.nums[index], self.nums[<span class="number">-1</span>] = self.nums[<span class="number">-1</span>], self.nums[index]</span><br><span class="line">                self.nums_index[self.nums[index]] = index</span><br><span class="line">                self.nums.pop()</span><br><span class="line">                self.nums_index.pop(val)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get a random element from the set.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        index = random.randint(<span class="number">0</span>, len(self.nums) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> self.nums[index]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your RandomizedSet object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = RandomizedSet()</span></span><br><span class="line"><span class="comment"># param_1 = obj.insert(val)</span></span><br><span class="line"><span class="comment"># param_2 = obj.remove(val)</span></span><br><span class="line"><span class="comment"># param_3 = obj.getRandom()</span></span><br></pre></td></tr></table></figure>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为<strong>摆动序列。</strong>第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。</p>
+<p>例如， <code>[1,7,4,9,2,5]</code> 是一个摆动序列，因为差值 <code>(6,-3,5,-7,3)</code> 是正负交替出现的。相反, <code>[1,4,7,2,5]</code> 和 <code>[1,7,4,5,5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</p>
+<p>给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,7,4,9,2,5]</span><br><span class="line">输出: 6</span><br><span class="line">解释: 整个序列就是一个摆动序列。</span><br><span class="line"></span><br><span class="line">输入: [1,17,5,10,13,15,10,5,16,8]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 它的几个子序列满足摆动序列。其中一个是[1,17,10,13,10,16,8]。</span><br><span class="line"></span><br><span class="line">输入: [1,2,3,4,5,6,7,8,9]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p><strong>进阶:</strong><br>你能否用 O(<em>n</em>) 时间复杂度完成此题?</p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    使用动态规划，使用两个数组，down和up,分别保存到当前数字为止，前面一个是下降沿与上升沿的最大值</p>
+<ul>
+<li><p>如果nums[i] &gt; nums[i - 1]:</p>
+<ul>
+<li><p>也就是说现在这个是上升沿，那么上升沿更新为前面下降沿加一</p>
+</li>
+<li><p>下降沿不变</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">up[i] = down[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">down[i] = down[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>如果nums[i] &lt; nums[i - 1]: </p>
+<ul>
+<li><p>现在这个是下降沿，那个当前的下降沿用前面的上升沿加一更新，上升沿不变</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">down[i] = up[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">up[i] = up[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>如果前后相等：</p>
+<ul>
+<li><p>保持不变</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">up[i] = up[i - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wiggleMaxLength</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        length = len(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> length &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> length</span><br><span class="line"></span><br><span class="line">        up = [<span class="number">1</span>] * length</span><br><span class="line">        down = [<span class="number">1</span>] * length</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, length):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i - <span class="number">1</span>]:</span><br><span class="line">                up[i] = down[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> nums[i] &lt; nums[i - <span class="number">1</span>]:</span><br><span class="line">                down[i] = up[i - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                up[i] = up[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                down[i] = down[i - <span class="number">1</span>]</span><br><span class="line">                up[i] = up[i - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> max(up[<span class="number">-1</span>], down[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2260,7 +2264,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">403</span>
+                    <span class="site-state-item-count">404</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

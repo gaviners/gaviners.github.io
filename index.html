@@ -346,6 +346,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/13/leetcode/LeetCode 430. Flatten a Multilevel Doubly Linked List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/leetcode/LeetCode 430. Flatten a Multilevel Doubly Linked List/" itemprop="url">
+                  LeetCode 430. Flatten a Multilevel Doubly Linked List
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-13 16:49:40 / 修改时间：16:49:29" itemprop="dateCreated datePublished" datetime="2018-08-13T16:49:40+08:00">2018-08-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/13/leetcode/LeetCode 430. Flatten a Multilevel Doubly Linked List/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/13/leetcode/LeetCode 430. Flatten a Multilevel Doubly Linked List/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>You are given a doubly linked list which in addition to the next and previous pointers, it could have a child pointer, which may or may not point to a separate doubly linked list. These child lists may have one or more children of their own, and so on, to produce a multilevel data structure, as shown in the example below.</p>
+<p>Flatten the list so that all the nodes appear in a single-level, doubly linked list. You are given the head of the first level of the list.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line"> 1---2---3---4---5---6--NULL</span><br><span class="line">         |</span><br><span class="line">         7---8---9---10--NULL</span><br><span class="line">             |</span><br><span class="line">             11--12--NULL</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">1-2-3-7-8-11-12-9-10-4-5-6-NULL</span><br></pre></td></tr></table></figure>
+<p><strong>Explanation for the above example:</strong></p>
+<p>Given the following multilevel doubly linked list:</p>
+<p><img src="https://leetcode-cn.com/static/images/problemset/MultilevelLinkedList.png" alt="img"></p>
+<p>We should return the following flattened doubly linked list:</p>
+<p><img src="https://leetcode-cn.com/static/images/problemset/MultilevelLinkedListFlattened.png" alt="img"></p>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    可以使用深度优先搜索，也可以不是用，首先来剖析一下问题</p>
+<p>​    这道题与前面114题很相似，如果当前的节点有子节点，该如何做呢？</p>
+<p>​    将剩下的节点，挂到子节点的末尾，然后，将当前节点的next指向子节点，子节点的prev指向当前节点即可，然后节点后移，继续判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: Node</span></span><br><span class="line"><span class="string">        :rtype: Node</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ans = head</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> head:</span><br><span class="line">            <span class="keyword">if</span> head.child:</span><br><span class="line">                head_next = head.next</span><br><span class="line">                temp = head.child</span><br><span class="line">                <span class="keyword">while</span> temp.next:</span><br><span class="line">                    temp = temp.next</span><br><span class="line">                temp.next = head_next</span><br><span class="line">                head_next.prev = temp</span><br><span class="line"></span><br><span class="line">                head.next = head.child</span><br><span class="line">                head.child.prev = head</span><br><span class="line">                head.child = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">            head = head.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>​    思路很简单，但是通过了19个测试用了，下一个超时了，因此，要考虑如何提高效率</p>
+<p>​    考虑在展开的过程中，不直接将下一个元素挂到子列的尾部，而是保存到栈中，等到遍历到最后的时候，就将栈中的元素取出来，接到尾部，然后继续判断即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># Definition for a Node.</span></span><br><span class="line"><span class="string">class Node(object):</span></span><br><span class="line"><span class="string">    def __init__(self, val, prev, next, child):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.prev = prev</span></span><br><span class="line"><span class="string">        self.next = next</span></span><br><span class="line"><span class="string">        self.child = child</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: Node</span></span><br><span class="line"><span class="string">        :rtype: Node</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ans = head</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">        stack = []</span><br><span class="line">        prev = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">while</span> head <span class="keyword">or</span> stack:</span><br><span class="line">            <span class="keyword">if</span> head:</span><br><span class="line">                prev = head</span><br><span class="line">                <span class="keyword">if</span> head.child:</span><br><span class="line">                    <span class="keyword">if</span> head.next:</span><br><span class="line">                        stack.append(head.next)</span><br><span class="line">                    head.next = head.child</span><br><span class="line">                    head.child.prev = head</span><br><span class="line">                    head.child = <span class="keyword">None</span></span><br><span class="line">                head = head.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = stack.pop()</span><br><span class="line">                prev.next = temp</span><br><span class="line">                temp.prev = prev</span><br><span class="line">                head = temp</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>​    这样，仅需要从头到尾遍历一遍即可得出结果</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/13/leetcode/LeetCode: 424. 替换后的最长重复字符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2076,200 +2260,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/10/leetcode/LeetCode: 406. 根据身高重建队列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/10/leetcode/LeetCode: 406. 根据身高重建队列/" itemprop="url">
-                  LeetCode 406. 根据身高重建队列
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-10 09:30:20 / 修改时间：11:26:09" itemprop="dateCreated datePublished" datetime="2018-08-10T09:30:20+08:00">2018-08-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/10/leetcode/LeetCode: 406. 根据身高重建队列/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/10/leetcode/LeetCode: 406. 根据身高重建队列/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>假设有打乱顺序的一群人站成一个队列。 每个人由一个整数对<code>(h, k)</code>表示，其中<code>h</code>是这个人的身高，<code>k</code>是排在这个人前面且身高大于或等于<code>h</code>的人数。 编写一个算法来重建这个队列。</p>
-<p><strong>注意：</strong><br>总人数少于1100人。</p>
-<p><strong>示例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先来分析一下，按照位置来划分</p>
-<ul>
-<li>首先，建立结果集</li>
-<li>然后第0号位置，可能出现哪些元素？肯定是从身高等于0的里面选，如果有多个呢，那么取出最小的那个即可<ul>
-<li>如上面，也就是[5,0]</li>
-</ul>
-</li>
-<li>然后是第1个位置，可能出现哪些元素呢？就是刚刚0号位置剩下的元素，加上前面人数为1的那些元素，从这里面找出最小的那个值</li>
-</ul>
-<p>​    于是，根据上面的思路，我们发现，假设我们已经按照身高从大到小排好序，并且，身高相同的，使用人数从小到大排序，然后使用插入法，会发生什么呢?</p>
-<p>​    首先，最大的那个元素，会被放到第一个，然后从第二个元素开始，按照人数进行插入，如果是身高相同的话，会按照人数依次排列，这正是我们想要的结果</p>
-<p>​    也就是说，首先，第一次排序，已经将所有的身高相同的放入了正确的顺序</p>
-<p>​    然后，我们将身高低于这个的，依次插入对应的位置，这样每一个元素，大于这个元素的个数也是正确的</p>
-<p>​    </p>
-<p>​    所以，主要需要理解的点，就在于下面：</p>
-<ul>
-<li>首先将身高相同的顺序确定下来</li>
-<li>然后，因为身高是按照从大到小排序的，因此，直接按照对应的人数进行插入，就得到正确的大于等于的人数</li>
-</ul>
-<p>举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]</span><br><span class="line">首先我们按照身高从大到小排序，然后身高相同，按照人数排序</span><br><span class="line">[[7, 0], [7, 1], [6, 1], [5, 0], [5, 2], [4, 4]]</span><br><span class="line">我们看到，身高相同的，例如7,5,最终顺序目前已经是正确的了</span><br><span class="line">res = []</span><br><span class="line">首先将[7，0]按照人数插入结果集</span><br><span class="line">res = [[7,0]]</span><br><span class="line">然后是[7,1]</span><br><span class="line">res = [[7,0],[7,1]]</span><br><span class="line">再来是[6,1]</span><br><span class="line">res = [[7,0],[6,1],[7,1]]</span><br><span class="line">现在就能看出来了，[6，1]插入的位置，因为是按照降序排列的，因此，直接插入1这个位置，保证前面有1个大于等于当前数字的，问题的精髓就在这里了。</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reconstructQueue</span><span class="params">(self, people)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type people: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        sort_key = functools.cmp_to_key(<span class="keyword">lambda</span> x, y: y[<span class="number">0</span>] - x[<span class="number">0</span>] <span class="keyword">if</span> x[<span class="number">0</span>] != y[<span class="number">0</span>] <span class="keyword">else</span> x[<span class="number">1</span>] - y[<span class="number">1</span>])</span><br><span class="line">        sort_people = sorted(people, key=sort_key)</span><br><span class="line">        res = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> sort_people:</span><br><span class="line">            res.insert(i[<span class="number">1</span>], i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<p>​    在python3里面，排序函数不支持比较函数了，可以使用functools里面提供的，将函数转换成key</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2321,7 +2311,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">403</span>
+                    <span class="site-state-item-count">404</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
