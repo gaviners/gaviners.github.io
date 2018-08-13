@@ -346,6 +346,415 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/07/leetcode/LeetCode: 10. 正则表达式匹配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/leetcode/LeetCode: 10. 正则表达式匹配/" itemprop="url">
+                  LeetCode 10. 正则表达式匹配
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-07 12:15:57 / 修改时间：12:16:02" itemprop="dateCreated datePublished" datetime="2018-08-07T12:15:57+08:00">2018-08-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/07/leetcode/LeetCode: 10. 正则表达式匹配/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/07/leetcode/LeetCode: 10. 正则表达式匹配/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串 (s) 和一个字符模式 (p)。实现支持 &apos;.&apos; 和 &apos;*&apos; 的正则表达式匹配。</span><br><span class="line"></span><br><span class="line">&apos;.&apos; 匹配任意单个字符。</span><br><span class="line">&apos;*&apos; 匹配零个或多个前面的元素。</span><br><span class="line">匹配应该覆盖整个字符串 (s) ，而不是部分字符串。</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">s 可能为空，且只包含从 a-z 的小写字母。</span><br><span class="line">p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。</span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &apos;*&apos; 代表可匹配零个或多个前面的元素, 即可以匹配 &apos;a&apos; 。因此, 重复 &apos;a&apos; 一次, 字符串可变为 &quot;aa&quot;。</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">s = &quot;ab&quot;</span><br><span class="line">p = &quot;.*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &quot;.*&quot; 表示可匹配零个或多个(&apos;*&apos;)任意字符(&apos;.&apos;)。</span><br><span class="line">示例 4:</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">s = &quot;aab&quot;</span><br><span class="line">p = &quot;c*a*b&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &apos;c&apos; 可以不被重复, &apos;a&apos; 可以被重复一次。因此可以匹配字符串 &quot;aab&quot;。</span><br><span class="line">示例 5:</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">s = &quot;mississippi&quot;</span><br><span class="line">p = &quot;mis*is*p*.&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h3 id="2-1-递归法"><a href="#2-1-递归法" class="headerlink" title="2.1 递归法"></a>2.1 递归法</h3><ul>
+<li>先判断特殊情况，如果匹配规则是0，直接根据字符串返回结果</li>
+<li>如果第2个字符不是*，就判断第一个字符是不是匹配，如果是，就从下一个字符和下一个</li>
+<li>如果匹配规则第二个是<code>*</code>,那么就判断这个<code>*</code>过滤了几个字符</li>
+<li>最后，判断剩下的规则</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">char</span> *p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length_str = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> length_pattern = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (s[i++]) &#123;</span><br><span class="line">        length_str++;</span><br><span class="line">    &#125;</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p[i++]) &#123;</span><br><span class="line">        length_pattern++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果匹配规则的长度为0，如果字符串长度为0，返回真，否则返回假；</span></span><br><span class="line">    <span class="keyword">if</span> (length_pattern == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (length_str == <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果匹配规则只有一个字符，判断字符串是否是1，</span></span><br><span class="line">    <span class="comment">// 两个字符是不是相等，或者匹配字符是'.'</span></span><br><span class="line">    <span class="keyword">if</span> (length_pattern == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (length_str == <span class="number">1</span> &amp;&amp; (s[<span class="number">0</span>] == p[<span class="number">0</span>] || p[<span class="number">0</span>] == <span class="string">'.'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (p[<span class="number">1</span>] != <span class="string">'*'</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果匹配规则第一个字符不是*,表示肯定会匹配到字符，这时候如果字符长度是0，返回假</span></span><br><span class="line">        <span class="keyword">if</span> (length_str == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 这时候，判断第一个字符是否匹配，并判断后续的字符</span></span><br><span class="line">        <span class="keyword">return</span> (s[<span class="number">0</span>] == p[<span class="number">0</span>] || p[<span class="number">0</span>] == <span class="string">'.'</span>) &amp;&amp; isMatch(&amp;s[<span class="number">1</span>], &amp;p[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果规则第二个字符是*，这时候，就要判断，字符串不为空，如果字符串为空，就直接判断空字符串与后面的规则是不是匹配</span></span><br><span class="line">    <span class="comment">// 还要判断第一个字符是不是匹配，如果不匹配，表示前面*将前面的过滤掉了，重新判断字符串与后面的规则的匹配情况</span></span><br><span class="line">    <span class="comment">// 如果第一个字符匹配，判断匹配了几个字符</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((s[<span class="number">0</span>] != <span class="string">'\0'</span>) &amp;&amp; (s[<span class="number">0</span>] == p[<span class="number">0</span>] || p[<span class="number">0</span>] == <span class="string">'.'</span>)) &#123;</span><br><span class="line">        <span class="comment">// 如果说这个*匹配了0个，那么就直接判断后面的是不是匹配</span></span><br><span class="line">        <span class="keyword">if</span> (isMatch(s, &amp;p[<span class="number">2</span>])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果*匹配了多个，判断匹配了几个</span></span><br><span class="line">        <span class="comment">// 将s的指针向前移动一位，表示匹配了一个</span></span><br><span class="line">        <span class="comment">// 这里需要判断的是，是不是将所有的s中的字符都匹配掉了，如果是的话，就要退出来</span></span><br><span class="line">        s = &amp;s[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这时候，知道*匹配了几个字符，判断后面的规则是否成立</span></span><br><span class="line">    <span class="keyword">return</span> isMatch(s, &amp;p[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    下面是一种化简形式，基本思路是相同的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!*p)</span><br><span class="line">    <span class="keyword">return</span> !*s;</span><br><span class="line"><span class="keyword">if</span> (p[<span class="number">1</span>] == <span class="string">'*'</span>)</span><br><span class="line">    <span class="keyword">return</span> isMatch(s, p+<span class="number">2</span>) || (*p == <span class="string">'.'</span> &amp;&amp; *s || *s == *p) &amp;&amp; isMatch(s+<span class="number">1</span>, p);</span><br><span class="line"><span class="keyword">return</span> (*s == *p || (*p == <span class="string">'.'</span> &amp;&amp; *s)) &amp;&amp; isMatch(s+<span class="number">1</span>, p+<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-动态规划"><a href="#2-2-动态规划" class="headerlink" title="2.2 动态规划"></a>2.2 动态规划</h3><p>​    创建一个数组，用来存放中间结果</p>
+<p>​    例如，字符串字符数是3，匹配字符是4，那么考虑到都可能是0的情况，也就是说，有下面的对应情况</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符数/匹配字符数</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>匹配</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    如上表，我们知道，0个字符和0个匹配字符，肯定是匹配的</p>
+<p>​    然后，如果匹配字符的第二个字符是”*”,也是会匹配的，由此得到下面的情况</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符数/匹配字符数</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>匹配</td>
+<td></td>
+<td>匹配</td>
+<td></td>
+<td>匹配</td>
+</tr>
+<tr>
+<td>1</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    第一列中，出列第一个，其他的都不会匹配，这是初始状况</p>
+<p>​    剩下的就是不断地将匹配状况判断出来，并写入表格，直到得到最后一个，字符数是3，匹配字符数是4，这种情况是不是匹配</p>
+<p>​    举个例子，<code>&quot;abc&quot;</code>和<code>&quot;a*bc&quot;</code> ，很明显这个是匹配的</p>
+<p>​    下面就来计算一下</p>
+<p>因为第二个匹配字符是*,，所以初始化的二维数组就如上面的所示</p>
+<p>​    接下来，判断右下方的状况</p>
+<p>​    1：1</p>
+<p>因为这时候，需要判断的是前面的一个字符是不是匹配，也就是<code>dp[0][0]</code>, 并且当前字符是相等的，或者匹配字符是”.“</p>
+<p>（如果是奇数个匹配字符，肯定无法匹配0个字符）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符数/匹配字符数</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>匹配</td>
+<td>不匹配</td>
+<td>匹配</td>
+<td>不匹配</td>
+<td>匹配</td>
+</tr>
+<tr>
+<td>1</td>
+<td>不匹配</td>
+<td>匹配</td>
+<td>匹配</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>不匹配</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>接下来判断1：2</p>
+<p>​    这时候需要判断几种情况，只要有一种能够匹配，就代表可以匹配到</p>
+<ul>
+<li><p><code>*</code>匹配了0个字符</p>
+<p>匹配字符的第二个字符是* ,首先判断，匹配字符向前推2个，也就是看<code>dp[1][0]</code>，明显是不匹配的</p>
+</li>
+<li><p><code>*</code> 匹配了一个字符</p>
+<ul>
+<li><p>（向左看）</p>
+<p>表示，如果不看*， 前面的字符能不能匹配</p>
+<p>判断向前看一个匹配字符，也就是a，是不是和字符串的能够匹配，如果可以，表示能够匹配，明显在表格里面得到了</p>
+</li>
+<li><p>（向上看）</p>
+<p>如果不看前面的一个字符，当前的匹配串不是能够匹配到，如果能的话，只需要判断*前面的字符能不能匹配到</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>然后判断1：3</p>
+<p>​    因为匹配字符第三个字符是b，因此，只需要判断前面的一个，也就是<code>dp[0][2]</code>, 也就是说，前面的匹配如果是成功的，那么看当前字符匹配是不是对的，如果是，那么就是匹配的</p>
+<p>​    根据上面的规则，得到下面的矩阵：</p>
+<p>s：abc</p>
+<p>p：a*bc</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符数/匹配字符数</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>匹配</td>
+<td>不匹配</td>
+<td>匹配</td>
+<td>不匹配</td>
+<td>不匹配</td>
+</tr>
+<tr>
+<td>1</td>
+<td>不匹配</td>
+<td>匹配</td>
+<td>匹配</td>
+<td>不匹配</td>
+<td>不匹配</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不匹配</td>
+<td>不匹配</td>
+<td>不匹配</td>
+<td>匹配</td>
+<td>不匹配</td>
+</tr>
+<tr>
+<td>3</td>
+<td>不匹配</td>
+<td>不匹配</td>
+<td>不匹配</td>
+<td>不匹配</td>
+<td>匹配</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    由此可见，最右下角的依赖于其他的元素进行判断，也就是动态规划的主要思想，依赖于前面的计算结果</p>
+<p>​    不管什么样的规则，我们都能够找到这样的一个矩阵进行匹配</p>
+<p>​    相比起递归调用的繁琐，动态规划要快</p>
+<p>​    不过递归调用的思路要清晰很多</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"string.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">char</span> *p)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> length_str = (<span class="keyword">int</span>) <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> length_pattern = (<span class="keyword">int</span>) <span class="built_in">strlen</span>(p);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> dp[length_str + <span class="number">1</span>][length_pattern + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 初始化边界条件，也就是第0列，第1行</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; length_str + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; length_pattern + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 奇数个是不能匹配到0个字符的，因此为假</span></span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">2</span>) &#123;</span><br><span class="line">            dp[<span class="number">0</span>][i] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="comment">// 当为偶数个的时候，判断隔着一个字符的那个位置，能不能匹配到，如果能，就能</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p[i - <span class="number">1</span>] == <span class="string">'*'</span>) &#123;</span><br><span class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">2</span>];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[<span class="number">0</span>][i] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接下来填充数组</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; length_str + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; length_pattern + <span class="number">1</span>; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p[j - <span class="number">1</span>] == <span class="string">'*'</span>) &#123;</span><br><span class="line">                dp[i][j] = dp[i][j - <span class="number">2</span>] || dp[i][j - <span class="number">1</span>] || (dp[i - <span class="number">1</span>][j] &amp;&amp; (s[i - <span class="number">1</span>] == p[j - <span class="number">2</span>] || p[j - <span class="number">2</span>] == <span class="string">'.'</span>));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] &amp;&amp; (s[i - <span class="number">1</span>] == p[j - <span class="number">1</span>] || p[j - <span class="number">1</span>] == <span class="string">'.'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length_str + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length_pattern + <span class="number">1</span>; ++j) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%s\t"</span>, dp[i][j] ? <span class="string">"true"</span> : <span class="string">"false"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[length_str][length_pattern];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; (num &lt;&lt; i)) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"1"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"string: %s\t \npattern: %s\t\nresult: %s\n"</span>, <span class="string">"abc"</span>, <span class="string">"ab*c"</span>, isMatch(<span class="string">"abc"</span>, <span class="string">"a*bc"</span>) ? <span class="string">"true"</span> : <span class="string">"false"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"string: %s\t \npattern: %s\t\nresult: %s\n"</span>, <span class="string">"aab"</span>, <span class="string">"c*a*b"</span>, isMatch(<span class="string">"aab"</span>, <span class="string">"c*a*b"</span>) ? <span class="string">"true"</span> : <span class="string">"false"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/Users/zhangguohao/CLionProjects/untitled/cmake-build-debug/untitled</span><br><span class="line">true	false	true	false	false	</span><br><span class="line">false	true	true	false	false	</span><br><span class="line">false	false	false	true	false	</span><br><span class="line">false	false	false	false	true	</span><br><span class="line">string: abc	 </span><br><span class="line">pattern: ab*c	</span><br><span class="line">result: true</span><br><span class="line">true	false	true	false	true	false	</span><br><span class="line">false	false	false	true	true	false	</span><br><span class="line">false	false	false	false	true	false	</span><br><span class="line">false	false	false	false	false	true	</span><br><span class="line">string: aab	 </span><br><span class="line">pattern: c*a*b	</span><br><span class="line">result: true</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2017/10/10/tools/Vmware Fusion配置Nat静态IP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -849,7 +1258,7 @@ x_2
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">402</span>
+                    <span class="site-state-item-count">403</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1467,6 +1876,8 @@ x_2
 
   
   
+    
+      
     
       
     
