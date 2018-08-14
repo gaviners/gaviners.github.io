@@ -346,6 +346,406 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 126. 单词接龙 II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 126. 单词接龙 II/" itemprop="url">
+                  LeetCode 126. 单词接龙 II
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-14 13:37:30 / 修改时间：13:37:53" itemprop="dateCreated datePublished" datetime="2018-08-14T13:37:30+08:00">2018-08-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 126. 单词接龙 II/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 126. 单词接龙 II/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定两个单词（<em>beginWord</em> 和 <em>endWord</em>）和一个字典 <em>wordList</em>，找出所有从 <em>beginWord</em> 到 <em>endWord</em> 的最短转换序列。转换需遵循如下规则：</p>
+<ol>
+<li>每次转换只能改变一个字母。</li>
+<li>转换过程中的中间单词必须是字典中的单词。</li>
+</ol>
+<p><strong>说明:</strong></p>
+<ul>
+<li>如果不存在这样的转换序列，返回一个空列表。</li>
+<li>所有单词具有相同的长度。</li>
+<li>所有单词只由小写字母组成。</li>
+<li>字典中不存在重复的单词。</li>
+<li>你可以假设 <em>beginWord</em> 和 <em>endWord</em> 是非空的，且二者不相同。</li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">beginWord = &quot;hit&quot;,</span><br><span class="line">endWord = &quot;cog&quot;,</span><br><span class="line">wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [&quot;hit&quot;,&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;cog&quot;],</span><br><span class="line">  [&quot;hit&quot;,&quot;hot&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">beginWord = &quot;hit&quot;</span><br><span class="line">endWord = &quot;cog&quot;</span><br><span class="line">wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">输出: []</span><br><span class="line"></span><br><span class="line">解释: endWord &quot;cog&quot; 不在字典中，所以不存在符合要求的转换序列。</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题与127题单词接龙和433题基因变化相似，区别就在与，我们需要保存路径的前向节点，最后遍历一遍，就得到结果了</p>
+<p>​    换个思路解决问题，首先来构建一个结构，每一个都保存这当前值的前向节点</p>
+<p>分两步来做</p>
+<ul>
+<li><p>首先，将数组进行转换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d = collections.defaultdict(list)</span><br><span class="line">        wordList.append(beginWord)</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> wordList:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(word)):</span><br><span class="line">                s = word[:i] + <span class="string">"_"</span> + word[i + <span class="number">1</span>:]</span><br><span class="line">                d[s] += [word]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 经过上面的变换，得到下面的结果</span><br><span class="line">defaultdict(&lt;class &apos;list&apos;&gt;, &#123;&apos;l_g&apos;: [&apos;log&apos;], &apos;d_g&apos;: [&apos;dog&apos;], &apos;_og&apos;: [&apos;dog&apos;, &apos;log&apos;, &apos;cog&apos;], &apos;l_t&apos;: [&apos;lot&apos;], &apos;do_&apos;: [&apos;dot&apos;, &apos;dog&apos;], &apos;ho_&apos;: [&apos;hot&apos;], &apos;co_&apos;: [&apos;cog&apos;], &apos;hi_&apos;: [&apos;hit&apos;], &apos;h_t&apos;: [&apos;hot&apos;, &apos;hit&apos;], &apos;_it&apos;: [&apos;hit&apos;], &apos;lo_&apos;: [&apos;lot&apos;, &apos;log&apos;], &apos;d_t&apos;: [&apos;dot&apos;], &apos;c_g&apos;: [&apos;cog&apos;], &apos;_ot&apos;: [&apos;hot&apos;, &apos;dot&apos;, &apos;lot&apos;]&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后，将前向节点字典生成出来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pre = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> _, value <span class="keyword">in</span> d.items():</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> value:</span><br><span class="line">                pre[i] = pre[i].union(set(value))</span><br><span class="line">                pre[i].remove(i)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaultdict(&lt;class &apos;set&apos;&gt;, &#123;&apos;dog&apos;: &#123;&apos;log&apos;, &apos;dot&apos;, &apos;cog&apos;&#125;, &apos;log&apos;: &#123;&apos;dog&apos;, &apos;lot&apos;, &apos;cog&apos;&#125;, &apos;lot&apos;: &#123;&apos;hot&apos;, &apos;log&apos;, &apos;dot&apos;&#125;, &apos;hot&apos;: &#123;&apos;lot&apos;, &apos;dot&apos;, &apos;hit&apos;&#125;, &apos;dot&apos;: &#123;&apos;dog&apos;, &apos;hot&apos;, &apos;lot&apos;&#125;, &apos;hit&apos;: &#123;&apos;hot&apos;&#125;, &apos;cog&apos;: &#123;&apos;dog&apos;, &apos;log&apos;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样，我们就能够利用树的性质，进行层次遍历，需要注意的就是，已经访问过的节点不能继续访问，不然会产生回环，因此，需要保存一下访问过的路径</p>
+<p>这样，我们就能够从endword开始，向前寻找beginword，找到以后，就加入到结果集中</p>
+</li>
+</ul>
+<p>​    这个思路可以，不过最后是在127题的解题思路上修改了一下，如下</p>
+<p>​    如果能够正向的找到endword，那么我们在重新反向找到beginword，就得到路径了，下面就是基于这个思路来做的：</p>
+<ul>
+<li><p>首先，将数组进行变换，同前面一样</p>
+</li>
+<li><p>然后，利用两个set，一个是访问过，一个是未访问过，然后进行层次遍历</p>
+<p>在遍历的过程中，建立一个字典，前向节点的字典，方便我们根据这个字典，回溯路径</p>
+</li>
+</ul>
+<p>如果层次遍历无法得到，最后直接返回[]</p>
+<p>如果第一次找到了，我们就跳出来，根据前向节点的字典，进行路径回溯，然后加入到结果集中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findLadders</span><span class="params">(self, beginWord, endWord, wordList)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type beginWord: str</span></span><br><span class="line"><span class="string">        :type endWord: str</span></span><br><span class="line"><span class="string">        :type wordList: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> endWord <span class="keyword">not</span> <span class="keyword">in</span> wordList:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        d = collections.defaultdict(list)</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> wordList:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(word)):</span><br><span class="line">                s = word[:i] + <span class="string">"_"</span> + word[i + <span class="number">1</span>:]</span><br><span class="line">                d[s] += [word]</span><br><span class="line"></span><br><span class="line">        path_node = set()</span><br><span class="line"></span><br><span class="line">        visited = set([beginWord])</span><br><span class="line">        temp = set()</span><br><span class="line">        not_visited = set(wordList)</span><br><span class="line"></span><br><span class="line">        pre = collections.defaultdict(set)</span><br><span class="line"></span><br><span class="line">        pop_item = set()</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> visited:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(len(i)):</span><br><span class="line">                    s = i[:j] + <span class="string">"_"</span> + i[j + <span class="number">1</span>:]</span><br><span class="line">                    temp = temp.union(set(d[s]))</span><br><span class="line">                    <span class="keyword">for</span> w <span class="keyword">in</span> d[s]:</span><br><span class="line">                        path_node.add(w)</span><br><span class="line">                        <span class="keyword">if</span> i != w:</span><br><span class="line">                            pre[w].add(i)</span><br><span class="line">                    pop_item.add(s)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> pop_item:</span><br><span class="line">                d.pop(p)</span><br><span class="line">            pop_item.clear()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> len(temp) == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> []</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> endWord <span class="keyword">in</span> temp:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">            not_visited = not_visited - temp</span><br><span class="line">            visited = temp</span><br><span class="line">            temp = set()</span><br><span class="line"></span><br><span class="line">        ans = [[endWord]]</span><br><span class="line">        temp_ans = []</span><br><span class="line">        visited_path = set([endWord])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(count):</span><br><span class="line">            <span class="keyword">for</span> path <span class="keyword">in</span> ans:</span><br><span class="line">                temp_next = pre[path[<span class="number">-1</span>]] - visited_path</span><br><span class="line">                <span class="keyword">for</span> node <span class="keyword">in</span> temp_next:</span><br><span class="line">                    temp_ans.append(path.copy())</span><br><span class="line">                    temp_ans[<span class="number">-1</span>].append(node)</span><br><span class="line">                visited_path.add(path[<span class="number">-1</span>])</span><br><span class="line">            ans = temp_ans</span><br><span class="line">            temp_ans = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [ list(reversed(x)) <span class="keyword">for</span> x <span class="keyword">in</span> ans <span class="keyword">if</span> x[<span class="number">-1</span>] == beginWord ]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 433. 最小基因变化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="夜行">
+      <meta itemprop="description" content="天行健，君子以自强不息！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夜行">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 433. 最小基因变化/" itemprop="url">
+                  LeetCode 433. 最小基因变化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-14 10:20:30 / 修改时间：13:36:42" itemprop="dateCreated datePublished" datetime="2018-08-14T10:20:30+08:00">2018-08-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 433. 最小基因变化/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/14/leetcode/LeetCode-887-三维形体投影面积/LeetCode 433. 最小基因变化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>一条基因序列由一个带有8个字符的字符串表示，其中每个字符都属于 <code>&quot;A&quot;</code>, <code>&quot;C&quot;</code>, <code>&quot;G&quot;</code>, <code>&quot;T&quot;</code>中的任意一个。</p>
+<p>假设我们要调查一个基因序列的变化。<strong>一次</strong>基因变化意味着这个基因序列中的<strong>一个</strong>字符发生了变化。</p>
+<p>例如，基因序列由<code>&quot;AACCGGTT&quot;</code> 变化至 <code>&quot;AACCGGTA&quot;</code>即发生了一次基因变化。</p>
+<p>与此同时，每一次基因变化的结果，都需要是一个合法的基因串，即该结果属于一个基因库。</p>
+<p>现在给定3个参数 — start, end, bank，分别代表起始基因序列，目标基因序列及基因库，请找出能够使起始基因序列变化为目标基因序列所需的最少变化次数。如果无法实现目标变化，请返回 -1。</p>
+<p><strong>注意:</strong></p>
+<ol>
+<li>起始基因序列默认是合法的，但是它并不一定会出现在基因库中。</li>
+<li>所有的目标基因序列必须是合法的。</li>
+<li>假定起始基因序列与目标基因序列是不一样的。</li>
+</ol>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start: &quot;AACCGGTT&quot;</span><br><span class="line">end:   &quot;AACCGGTA&quot;</span><br><span class="line">bank: [&quot;AACCGGTA&quot;]</span><br><span class="line"></span><br><span class="line">返回值: 1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start: &quot;AACCGGTT&quot;</span><br><span class="line">end:   &quot;AAACGGTA&quot;</span><br><span class="line">bank: [&quot;AACCGGTA&quot;, &quot;AACCGCTA&quot;, &quot;AAACGGTA&quot;]</span><br><span class="line"></span><br><span class="line">返回值: 2</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">start: &quot;AAAAACCC&quot;</span><br><span class="line">end:   &quot;AACCCCCC&quot;</span><br><span class="line">bank: [&quot;AAAACCCC&quot;, &quot;AAACCCCC&quot;, &quot;AACCCCCC&quot;]</span><br><span class="line"></span><br><span class="line">返回值: 3</span><br></pre></td></tr></table></figure>
+<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    这道题跟127题很相似,直接应该使用广度优先搜索来做，直接使用127提的解法就可以</p>
+<p>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">start: &quot;AACCGGTT&quot;</span><br><span class="line">end:   &quot;AACCGGTA&quot;</span><br><span class="line">bank: [&quot;AACCGGTA&quot;]</span><br><span class="line">首先，我们将bank进行建模</span><br><span class="line">&#123;&quot;AACCGGT_&quot;:[&quot;AACCGGTA&quot;]&#125;</span><br><span class="line">然后，设置两个set()，visited和not_visited</span><br><span class="line">利用这两个set进行广度优先遍历</span><br><span class="line">首先，对于visited中的每一个元素，我们改变一位，判断是不是在bank里面出现，如果出现了，就放到temp中</span><br><span class="line">然后，判断temp中是否还有元素，如果没有，表示找不到了，返回-1</span><br><span class="line">如果有元素，继续判断，判断end是不是出现在temp中，如果出现了，返回计数，没有出现，返回第一步，继续判断</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minMutation</span><span class="params">(self, start, end, bank)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type start: str</span></span><br><span class="line"><span class="string">        :type end: str</span></span><br><span class="line"><span class="string">        :type bank: List[str]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> gene <span class="keyword">in</span> bank:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(gene)):</span><br><span class="line">                s = gene[:i] + <span class="string">"_"</span> + gene[i + <span class="number">1</span>:]</span><br><span class="line">                d[s] = d.get(s, []) + [gene]</span><br><span class="line"></span><br><span class="line">        visited = set([start])</span><br><span class="line">        temp = set()</span><br><span class="line">        not_visited = set(bank)</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> visited:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(len(i)):</span><br><span class="line">                    s = i[:j] + <span class="string">"_"</span> + i[j + <span class="number">1</span>:]</span><br><span class="line">                    temp = temp.union(set(d.get(s, [])))</span><br><span class="line">                    d.pop(s, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span> len(temp) == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> end <span class="keyword">in</span> temp:</span><br><span class="line">                <span class="keyword">return</span> count</span><br><span class="line"></span><br><span class="line">            not_visited = not_visited - temp</span><br><span class="line">            visited = temp</span><br><span class="line">            temp = set()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/13/leetcode/LeetCode 430. Flatten a Multilevel Doubly Linked List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1879,387 +2279,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/10/leetcode/LeetCode 416. 分割等和子集/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/10/leetcode/LeetCode 416. 分割等和子集/" itemprop="url">
-                  LeetCode 416. 分割等和子集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-10 17:50:20 / 修改时间：19:45:04" itemprop="dateCreated datePublished" datetime="2018-08-10T17:50:20+08:00">2018-08-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/10/leetcode/LeetCode 416. 分割等和子集/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/10/leetcode/LeetCode 416. 分割等和子集/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>给定一个<strong>只包含正整数</strong>的<strong>非空</strong>数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
-<p><strong>注意:</strong></p>
-<ol>
-<li>每个数组中的元素不会超过 100</li>
-<li>数组的大小不会超过 200</li>
-</ol>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: [1, 5, 11, 5]</span><br><span class="line"></span><br><span class="line">输出: true</span><br><span class="line"></span><br><span class="line">解释: 数组可以分割成 [1, 5, 5] 和 [11].</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: [1, 2, 3, 5]</span><br><span class="line"></span><br><span class="line">输出: false</span><br><span class="line"></span><br><span class="line">解释: 数组不能分割成两个元素和相等的子集.</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先来分析一下，什么条件是满足的，也就是说我们首先从里面找出加起来和等于总和一半的子集，只要子集存在，就返回True</p>
-<p>​    若子数组总和加起来是奇数，那么肯定是False</p>
-<p>​    </p>
-<p><strong>思路一：</strong></p>
-<p>​    使用递归求解，对每一个元素，我们有两种选择，加上或者不加，这样就有了两个分支，当和已经大于总和一半的时候，直接返回False</p>
-<p>​    如果小于，分两种情况，一种是加上当前数，另一个是不加当前数，然后进行判断</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canPartition</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        total = sum(nums)</span><br><span class="line">        <span class="keyword">if</span> total % <span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.dfs(<span class="number">0</span>, nums, <span class="number">0</span>, total // <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, index, nums, cur, target)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> index &gt;= len(nums):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">if</span> cur == target:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">elif</span> cur &gt; target:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.dfs(index + <span class="number">1</span>, nums, cur, target) <span class="keyword">or</span> self.dfs(index + <span class="number">1</span>, nums, cur + nums[index], target)</span><br></pre></td></tr></table></figure>
-<p>​    超出时间限制了，这个递归的思路是很简单的，</p>
-<p><strong>思路二：</strong></p>
-<p>​    动态规划法</p>
-<p>​    建立一个二维数组，横坐标表示前面i个元素，纵坐标表示能够得到和j</p>
-<p>例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1, 5, 11, 5]</span><br><span class="line">一共4个元素，那么i取值0，1，2，3，4，分别表示取0个元素，1个元素，</span><br><span class="line">然后总和是22，取一半就是11，因此，纵坐标取值0-11，</span><br><span class="line">然后我们就得到前面i个元素是不是能够得到j这个值</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = dp[i<span class="number">-1</span>][j] <span class="keyword">or</span> dp[i<span class="number">-1</span>][j-nums[i]]</span><br></pre></td></tr></table></figure>
-<p>​    上面是状态转换方程</p>
-<p>​    二维的数组状态很多，然后分析一下，实际上，对于每一个j来说，只要上一层中，不管取几个元素，只要能够得到，我们就设置为True，如果都不能得到，就设置为Fasle</p>
-<p>​    那么，我们就能够根据i一开始的取值，初始化j</p>
-<p>​    对应的i所在的位置，都设置为True</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[j] = dp[j] or dp[j-nums[i]]</span><br></pre></td></tr></table></figure>
-<p>​    于是，状态转换变成了一维的，节省了空间，将低了计算量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canPartition</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        total = sum(nums)</span><br><span class="line">        <span class="keyword">if</span> total % <span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        target = total // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        dp = [<span class="keyword">False</span>] * (target + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(target, <span class="number">0</span>, <span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">if</span> dp[j]:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> j &gt;= i:</span><br><span class="line">                        dp[j] = dp[j] <span class="keyword">or</span> dp[j - i]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.aisky.men/2018/08/10/leetcode/LeetCode: 413. 等差数列划分/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="夜行">
-      <meta itemprop="description" content="天行健，君子以自强不息！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="夜行">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/10/leetcode/LeetCode: 413. 等差数列划分/" itemprop="url">
-                  LeetCode 413. 等差数列划分
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-10 10:30:20 / 修改时间：11:25:56" itemprop="dateCreated datePublished" datetime="2018-08-10T10:30:20+08:00">2018-08-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/10/leetcode/LeetCode: 413. 等差数列划分/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/10/leetcode/LeetCode: 413. 等差数列划分/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1、题目描述"><a href="#1、题目描述" class="headerlink" title="1、题目描述"></a>1、题目描述</h2><p>如果一个数列至少有三个元素，并且任意两个相邻元素之差相同，则称该数列为等差数列。</p>
-<p>例如，以下数列为等差数列:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, 3, 5, 7, 9</span><br><span class="line">7, 7, 7, 7</span><br><span class="line">3, -1, -5, -9</span><br></pre></td></tr></table></figure>
-<p>以下数列不是等差数列。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 1, 2, 5, 7</span><br></pre></td></tr></table></figure>
-<p>数组 A 包含 N 个数，且索引从0开始。数组 A 的一个子数组划分为数组 (P, Q)，P 与 Q 是整数且满足 0&lt;=P&lt;Q&lt;N 。</p>
-<p>如果满足以下条件，则称子数组(P, Q)为等差数组：</p>
-<p>元素 A[P], A[p + 1], …, A[Q - 1], A[Q] 是等差的。并且 P + 1 &lt; Q 。</p>
-<p>函数要返回数组 A 中所有为等差数组的子数组个数。</p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">返回: 3, A 中有三个子等差数组: [1, 2, 3], [2, 3, 4] 以及自身 [1, 2, 3, 4]。</span><br></pre></td></tr></table></figure>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><p>​    首先，我们发现，实际上，先要找出连续的等差数列，然后算出等差数列的长度</p>
-<p>举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4 5</span><br><span class="line">长度为3的等差数列有：</span><br><span class="line">1 2 3</span><br><span class="line">2 3 4</span><br><span class="line">3 4 5</span><br><span class="line">长度为4的等差数列有</span><br><span class="line">1 2 3 4</span><br><span class="line">2 3 4 5</span><br><span class="line">长度为5的有：</span><br><span class="line">1 2 3 4 5</span><br><span class="line">于是，我们发现了规律</span><br><span class="line">5-2</span><br><span class="line">5-3</span><br><span class="line">5-4</span><br><span class="line">也就是1+2+3</span><br><span class="line">也就是从1加到n-2为止</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">如果从另一个角度来看，当前的等差数列长度:</span><br><span class="line">变成3：结果加1</span><br><span class="line">变成4，结果加2</span><br><span class="line">变成5，结果加3</span><br><span class="line">变成6，结果加4</span><br><span class="line">从这个角度更容易编程实现</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numberOfArithmeticSlices</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(A) &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        cur = <span class="number">2</span></span><br><span class="line">        diff = A[<span class="number">1</span>] - A[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, len(A)):</span><br><span class="line">            cur_diff = A[i] - A[i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">if</span> cur_diff == diff:</span><br><span class="line">                cur += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                diff = cur_diff</span><br><span class="line">                cur = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> cur &gt;= <span class="number">3</span>:</span><br><span class="line">                res += cur - <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2311,7 +2330,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">404</span>
+                    <span class="site-state-item-count">406</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
