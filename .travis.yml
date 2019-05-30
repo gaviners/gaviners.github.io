@@ -3,7 +3,6 @@ node_js:
   - "v10.11.0"
 branches:
   only:
-  - master
   - gitbook_blog
 notifications:
   email:
@@ -36,18 +35,16 @@ script:
 after_script:
    - cd ./_book
    - git init
-   - git config user.name "gavin"
+   - git config user.name "zhishengqianjun"
    - git config user.email "zhishengqianjun@163.com"
    - git add .
    - git commit -m "Update Gitbook By TravisCI With Build $TRAVIS_BUILD_NUMBER"
    - git push --force --quiet "https://zhishengqianjun:${CO_TOKEN}@${CO_REF}" master:master
    - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-     #- git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
-     #- git push --quiet "https://hanyajun0123:${CODING_TOKEN}@${CO_REF}" master:master --tags
 
 env:
  global:
    # Coding Pages
-   - CO_REF: git.dev.tencent.com/zhishengqianjun/blog.git 
+   - CO_REF: git.dev.tencent.com/zhishengqianjun/blog.git
    - GH_REF: github.com/gaviners/gaviners.github.io.git
 
