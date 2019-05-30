@@ -4,6 +4,7 @@ node_js:
 branches:
   only:
   - master
+  - gitbook_blog
 notifications:
   email:
     recipients:
