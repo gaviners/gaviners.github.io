@@ -21,6 +21,7 @@ before_install:
 install:
  - npm install -g gitbook-cli
 script:
+- gitbook install
 - gitbook build
 deploy:
   provider: pages
