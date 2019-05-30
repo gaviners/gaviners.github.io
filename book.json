@@ -67,7 +67,7 @@
         },
 	"expandable-chapters-small":{},
         "edit-link": {
-            "base": "https://github.com/gaviners/gaviners.github.io/blob/gitbook",
+            "base": "https://github.com/gaviners/gaviners.github.io/blob/gitbook_blog",
             "label": "Edit This Page"
         },
         "anchor-navigation-ex": {
