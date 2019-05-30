@@ -40,11 +40,15 @@
         "sectionx@^3.1.0",
         "local-video@^1.0.1",
         "anchor-navigation-ex@0.1.8",
+        "tbfed-pagefooter",
         "todo@^0.1.3",
         "pageview-count",
+        "github-buttons",
+        "top-nav",
         "sitemap",
         "terminal@^0.3.2",
         "alerts@^0.2.0",
+        "github",
         "include-csv@^0.1.0",
         "puml@^1.0.1",
         "versions-select@^0.1.1",
@@ -67,23 +71,33 @@
             "unindent": true,
             "edit": true
         },
+        "github": {
+            "url": "https://github.com/gaviners/gaviners.github.io"
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy zhishengqianjun@163.com",
+            "modify_label": "修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+       },
         "simple-page-toc": {
             "maxDepth": 3,
             "skipFirstH1": true
         },
-	"expandable-chapters-small":{},
+	    "expandable-chapters-small":{},
         "edit-link": {
             "base": "https://github.com/gaviners/gaviners.github.io/blob/gitbook_blog",
             "label": "Edit This Page"
         },
+
         "anchor-navigation-ex": {
             "isRewritePageTitle": false,
             "tocLevel1Icon": "fa fa-hand-o-right",
             "tocLevel2Icon": "fa fa-hand-o-right",
             "tocLevel3Icon": "fa fa-hand-o-right"
         },
-	"flow": {
-	    "line-color": "red"
+
+	    "flow": {
+	        "line-color": "red"
         },
         "sectionx": {
             "tag": "b"
